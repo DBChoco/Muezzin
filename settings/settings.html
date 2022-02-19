@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="settings.css" rel="stylesheet">
+    <script src="settings.js"></script>
+    <title>Muezzin</title>
+  </head>
+  <body>
+    <h1 id=settingsTitle>Settings</h1>
+
+    <div class="grid-container">
+      <div class="grid-itemL"> Language </div>
+      <div class="grid-itemR"> 
+        <form >
+          <select id="langlist" name="Language">
+            <option id="English" name="English">🇬🇧 English</option>
+            <option id="Français" name="Français">🇫🇷 Français</option>
+            <option id="Español" name="Español">🇪🇸 Español</option>
+          </select>
+        </form>
+      </div>
+      <div class="grid-itemL"> Location </div>
+      <div class="grid-itemR">  </div>
+      <div class="grid-itemL grid-sub"> Coordinates</div>
+      <div class="grid-itemR"> 
+        <div>
+          <label for="latInput">Latitude:</label>
+          <input id="latInput" type="number" value="0.00" min="-90" max="90" step="0.1" maxlength="5"
+          placeholder="00.00"> 
+        </div>
+        <div>
+          <label for="lonInput">Longitude:</label>
+          <input id="lonInput" type="number" value="0.00" min="-180" max="180" step="0.1"
+          placeholder="00.00">
+        </div>
+        
+      </div>
+      <div class="grid-itemL grid-sub"> TimeZone </div>
+      <div class="grid-itemR"> 
+        <form >
+          <select id="tzlist" name="TimeZone"></select>
+        </form>
+      </div>
+      <div class="grid-itemL"> Advanced </div>
+      <div class="grid-itemR">  </div>
+      <div class="grid-itemL grid-sub"> Calculation Methods </div>
+      <div class="grid-itemR">  
+        <form >
+          <select id="calcMethodList" name="calcMethodList">
+            <option id="MWL" value="MWL">Muslim World League</option>
+            <option id="Egyptian" value="Egyptian">Egyptian</option>
+            <option id="Karachi" value="Karachi">Karachi</option>
+            <option id="UAQ" value="UAQ">Umm al-Qura</option>
+            <option id="Dubai" value="Dubai">Dubai</option>
+            <option id="Qatar" value="Qatar">Qatar</option>
+            <option id="Kuwait" value="Kuwait">Kuwait</option>
+            <option id="MC" value="MC">Moonsighting Committee</option>
+            <option id="Singapore" value="Singapore">Singapore</option>
+            <option id="Turkey" value="Turkey">Turkey</option>
+            <option id="Tehran" value="Tehran">Tehran</option>
+            <option id="ISNA" value="ISNA">ISNA</option>
+          </select> <br>
+        </form>
+      </div>
+      <div class="grid-itemL grid-sub"> Madhab </div>
+      <div class="grid-itemR"> 
+          <select id="madhabList" name="madhabList">
+            <option id="Shafi" value="Shafi">Shafi</option>
+            <option id="Hanafi" value="Hanafi">Hanafi</option>
+          </select>  
+      </div>
+      <div class="grid-itemL grid-sub"> High Latitude Rule </div>
+      <div class="grid-itemR"> 
+          <select id="highLatitudeRuleList" name="highLatitudeRuleList">
+            <option id="MOTN" value="MOTN">Middle of the Night</option>
+            <option id="SOTN" value="SOTN">Seventh of the Night</option>
+            <option id="TA" value="TA">Twilight Angle</option>
+          </select>  
+      </div>
+      <div class="grid-itemL grid-sub" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top"> Polar Circle Resolution </div>
+      <div class="grid-itemR"> 
+          <select id="polarCircleResolutionList" name="polarCircleResolutionList">
+            <option id="CC" value="CC" selected>Closest City</option>
+            <option id="CD" value="CD">Closest Date</option>
+            <option id="UND" value="UND">Do not calculate</option>
+          </select>  
+      </div>
+      <div class="grid-itemL grid-sub"> Shafaq </div>
+      <div class="grid-itemR"> 
+          <select id="shafaqList" name="shafaqList">
+            <option id="shafaqG" value="shafaqG" selected>General</option>
+            <option id="shafaqR" value="shafaqR">Red Twilight (ahmer)</option>
+            <option id="shafaqW" value="shafaqW">White Twilight (abyad)</option>
+          </select>  
+      </div>
+    </div>
+
+  </body>
+  <footer>
+    <button id="return">⚙</button>
+  </footer>
+</html>
