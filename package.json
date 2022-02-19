@@ -22,7 +22,12 @@
   },
   "dependencies": {
     "adhan": "^4.3.1",
+    "bootstrap": "^5.1.3",
+    "electron-store": "^8.0.1",
+    "electron-tabs": "^0.15.0",
+    "fontawesome": "^5.6.3",
+    "howler": "^2.2.3",
     "moment": "^2.29.1",
-    "tailwind": "^4.0.0"
+    "moment-timezone": "^0.5.34"
   }
 }
