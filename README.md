@@ -1,7 +1,10 @@
-<pre>
+
 
 # Muezzin
 
+![image](https://github.com/DBChoco/Muezzin/blob/main/ressources/images/v2B.png?raw=true)
+
+<pre>
 Used software (might have been modified or not):
     -Adhan-js from https://github.com/batoulapps/adhan-js
     -Moment & Moment-tz
