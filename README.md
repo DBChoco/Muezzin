@@ -1,4 +1,5 @@
-
+Link for linux preview: 
+https://drive.google.com/file/d/1KzTmfkNMYyIfxSWaqsVOycfDlcqV3JfC/view?usp=sharing
 
 # Muezzin
 
