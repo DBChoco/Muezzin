@@ -1,5 +1,7 @@
 Link for linux preview: 
-https://drive.google.com/file/d/1KzTmfkNMYyIfxSWaqsVOycfDlcqV3JfC/view?usp=sharing
+https://drive.google.com/file/d/1KzTmfkNMYyIfxSWaqsVOycfDlcqV3JfC/view?usp=sharing <br>
+Link for windows preview: 
+https://drive.google.com/file/d/1tfs8myu_HrJUYXXfcxUnPv6beYIHPcMB/view?usp=sharing
 
 # Muezzin
 
