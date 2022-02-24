@@ -1,29 +1,36 @@
-Link for linux preview: 
-https://drive.google.com/file/d/1KzTmfkNMYyIfxSWaqsVOycfDlcqV3JfC/view?usp=sharing <br>
-Link for windows preview: 
-https://drive.google.com/file/d/1tfs8myu_HrJUYXXfcxUnPv6beYIHPcMB/view?usp=sharing
+<pre>
 
 # Muezzin
 
-![image](https://github.com/DBChoco/Muezzin/blob/main/ressources/images/v2B.png?raw=true)
-
-<pre>
 Used software (might have been modified or not):
     -Adhan-js from https://github.com/batoulapps/adhan-js
     -Moment & Moment-tz
     -electron-store from https://github.com/sindresorhus/electron-store
-    -howler from https://github.com/goldfire/howler.js
     -bootstrap
 
 
 To-do:
-    -Maybe add save button to settings page
-    -Optimize
-    -Make it all pretty (css)
-    -Add format for time
+    -Add languages (https://en.wikipedia.org/wiki/Islam_by_country)
+    -Add comments to code for later
+    -Make it so the default values vary depending on the place
+    -Add buffer while things load
+    -Add citation / reddit / github /paypal/bitcoin to settings page
+    -Autolaunch ==> Add to settings
+    -Autoupdate
+    -Change button colors (to black/white)
     
 
-    --Use modals for popups
+Doing:
 
-    CHANGE MAIN FOR PROCESS AND RENDERER FOR UI
+    Optional 
+        -Specific adhan for each prayers
+        -Mosque Mode
+        -Add tooltips (helpers) - placeholders - modals
+
+    Bugs:
+
+    Not possible yet:
+        -Cahnge date format (currently not possible, not easy at least)
+        -Make date format actually do something / or remove
+
 </pre>

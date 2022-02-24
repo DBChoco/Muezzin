@@ -1,56 +1,81 @@
-window.api.handle('play', msg => {
-    athan.play();
-})
 
-window.api.handle('stop', msg => {
-    athan.pause();
-    athan.load();
-    console.log("SDFSDFQFS")
-})
 
 var athan = new Audio('../../ressources/audio/azan3.mp3');
 var dua = new Audio('../../ressources/audio/dua.mp3');
-athan.addEventListener('ended', function(){
-    dua.play();
-})
+var playDua = true;
+var interval;
+
+var volume;
+
+loadSettings()
+
+setUpHandlers()
 
 
-/*
-
-var audioInterval;
-var progressBar;
-
-
-window.addEventListener('DOMContentLoaded', () => { 
-    progressBar = document.getElementById("progress-bar");
-    playButton.addEventListener("click", function(){
-        athan.play()
-        setInterval(refreshPB, 1000);
-
-    });
-    stopButton.addEventListener("click", function(){
-        athan.stop()
-        if (audioInterval != undefined){
-            clearInterval(audioInterval);
-        }
-        
-    });
-})
-
-function playAthan(athan){
-    if (athan.playing()){
-        athan.stop();
-        athan.play();
-    }
-    else{
-        athan.play();
-    }
+async function loadSettings(){
+    volume = await window.api.getFromStore('volume', 50)
+    athan.volume = volume/100
+    dua.volume = volume/100
 }
 
 function refreshPB(){
-    var total = athan.duration();
-    var porcent = (athan.seek() / total )* 100;
-    progressBar.ariaValueNow = porcent;
-    console.log(porcent)
-    progressBar.style.width = porcent + "%"
-}*/
+    var total = athan.duration;
+    var porcent = (athan.currentTime / total )* 100;
+    window.api.send('progress-request', porcent)
+}
+
+function setUpHandlers(){
+    window.api.handle('volume-reply', msg => {
+        athan.volume = msg/100
+        dua.volume = msg/100
+    })
+    window.api.handle('play', msg => {
+        if (!athan.paused || !dua.paused){
+            stop()
+        }
+        playDua = msg[2]
+        athan = new Audio(msg[1]);
+        setUpAdhanListeners()
+        athan.play();
+    })
+    window.api.handle('stop', msg => {
+        stop()
+    })
+
+    window.api.send('startup-request');
+    window.api.handle('startup-reply', msg => {
+        if (msg == true){
+            var bismillah = new Audio('../../ressources/audio/Bismillah - Fatih Sefaragic.mp3');
+            bismillah.volume = volume/100;
+            bismillah.play()
+        }
+    })
+}
+
+function stop(){
+    athan.pause();
+    athan.load();
+    dua.pause();
+    dua.load();
+}
+
+function setUpAdhanListeners(){
+    athan.addEventListener('ended', function(){
+        window.api.send('progress-request', 0)
+        if (playDua){
+            dua.play();
+        }
+        clearInterval(interval)
+    })
+
+    athan.addEventListener('play', function(){
+        loadSettings()
+        interval = setInterval(function(){
+            refreshPB()
+        },500)
+    })
+    athan.addEventListener('abort', function(){
+        window.api.send('progress-request', 0)
+        clearInterval(interval)
+    })
+}

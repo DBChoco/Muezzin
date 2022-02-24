@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'; style-src 'self' 'unsafe-inline'">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../ressources/fontawesome-free-6.0.0-web/css/fontawesome.min.css">
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="styles.css" rel="stylesheet">
+    
+    <title>Muezzin</title>
+  </head>
+  <header>
+      <h1 id="title">Muezzin</h1>
+  </header>
+  <body class="d-flex flex-column min-vh-100">
+    
+    <div id="main" class="d-flex flex-column">
+      <h1 class="shader" id="clock">00:00</h1>
+      <h3 class="shader" id="dateLoc">Date today - Location</h3>
+      <h1 class="shader" id="timeLeft">Time until XYZ prayer: 00:00</h1>
+    </div>
+      
+
+    <div class="box">
+      <div class="grid-container shader">
+        <div class="grid-item left grid-top" id="fajr"> Fajr </div>
+        <div class="grid-item right grid-top" id="fajrTime"> 00:00 </div>
+        <div class="grid-item left" id="sunrise"> Sunrise </div>  
+        <div class="grid-item right" id="sunriseTime"> 00:00 </div>
+        <div class="grid-item left" id="duhr"> Duhr </div>
+        <div class="grid-item right" id="duhrTime"> 00:00 </div>
+        <div class="grid-item left" id="Asr"> Asr </div>
+        <div class="grid-item right" id="AsrTime"> 00:00 </div>
+        <div class="grid-item left" id="Maghrib"> Maghrib </div>
+        <div class="grid-item right" id="MaghribTime"> 00:00 </div>
+        <div class="grid-item left grid-bottom" id="Isha"> Isha </div>
+        <div class="grid-item right grid-bottom" id="IshaTime"> 00:00 </div>
+      </div>
+      <div class="box-bottom">
+        <input data-provide="datepicker" type="date" id="calendar" name="calendar">
+      </div>
+    </div>
+
+    <!-- You can also require other files to run in this process -->
+    <script src="renderer.js"></script>
+  </body>
+  <footer class="mt-auto" >
+    <div id="footer" >
+      <div id="upperPart">
+        <div id="audioControls">
+          <button type="button" id="stopB" class="btn btn-dark"><i class="fa fa-stop"></i></button>
+          <button type="button" id="playB" class="btn btn-dark"><i class="fa fa-play"></i></button>
+          <div id="volume">
+            <i class="fa fa-volume-down"></i>
+            <input type="range" class="form-range" id="volSlider">
+            <i class="fa fa-volume-up"></i>
+          </div>
+          
+          
+        </div>
+        <button href="../settings/settings.html" id="settingsWheel" class="btn btn-dark">Settings</button>
+      </div>
+      
+      <div class="progress">
+        <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+  </footer>
+</html>
