@@ -1,0 +1,4 @@
+node_modules
+electron-builder.yml
+.vscode
+dist

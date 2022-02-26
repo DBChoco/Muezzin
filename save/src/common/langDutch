@@ -1,0 +1,90 @@
+ en: {
+        'settings': 'Instellingen', //settingsTitle
+        'language': 'Taal', //langText
+        'timeformat': 'Tijdformaat', //tfText
+        '24hour': '24-uur', //24hTimeFormatText
+        '12hour': '12-uur', //12hTimeFormatText
+        'showSseconds': 'Seconden tonen', //showSecondsText
+        'dateFormat': 'Datumformaat', //dfText
+        'dateFormat1': 'DD/MM/YYYY', //id="df1Text"
+        'dateFormat2': 'MM/DD/YYYY', //id="df2Text"
+        'dateFormat3': 'YYYY/MM/DD', //id="df3Text"
+        'notifications': 'Notificaties', //notifText
+        'notifCheck': 'Notificaties aanzetten', //notifCheckText
+        'coordinates': 'Coördinaten', //coordinatesText
+        'latitude': 'Breedtegraad', //latText
+        'longitude': 'Lengtegraad', //lonText
+        'timezone': 'Tijdzone', // tzText
+        'adhan': 'Adhan', //adhanText and others in main
+        'adhanCheck': 'Adhan aanzetten', //adhanCheckText
+        'AdhanMecca': 'Adhan Mekka', //adhanMeccaText //Traduire juste Mecca
+        'adhanAqsa': 'Adhan al-Aqsa', //adhanAqsaText
+        'customAdhan': 'Aangepaste Adhan', //customAdhanText
+        'duaAfterAdhan': "Du'a na Adhani", //duaAfterText
+        'theme': 'Thema', //themeText
+        'darkMode': 'Donkere modus', //darkModeText
+        'bgImage': 'Achtergrondafbeelding', //bgImageText
+        'bgImageCheck': 'Achtergrondafbeelding aanzetten', //bgImageCheckText
+        'calcMethods': 'Berekeningsmethoden', //calcMethodsText
+        'mwl': 'Moslim Wereld Liga', //MWL
+        'egyptian': 'Egyptisch', //Egyptian
+        'karachi': 'Karachi', //Karachi
+        'uaq': 'Umm al-Qura', //UAQ
+        'dubai': 'Dubai', //Dubai
+        'qatar': 'Qatar', //Qatar
+        'kuwait': 'Koeweit', //Kuwait
+        'mc': 'Moonsighting Committee', //MC //pas traduire ça
+        'singapore': 'Singapore', //Singapore
+        'turkey': 'Turkije', //Turkey
+        'tehran': 'Teheran', //Tehran
+        'isna': 'ISNA (NA)', //ISNA
+        'madhab': 'Madhab', //MadhabText
+        'shafi': 'Shafi', //shafi
+        'hanafi': 'Hanafi', //Hanafi
+        'hlr': 'Regel voor hoge breedtegraad', //hlrText
+        'motn': 'Middernacht', //MOTN
+        'sotn': 'Zevende van de nacht', //SOTN
+        'ta': 'Schemeringshoek', //TA
+        'pcr': 'Resolutie poolcirkel', //pcrText
+        'cc': 'Dichtstbijzijnde stad', //CC
+        'cd': 'Dichtstbijzijnde datum', //CD
+        'und': 'Niet berekenen', //UND
+        'shafaq': 'Shafaq', //ShafaqText
+        'general': 'Algemeen', //shafaqG
+        'ahmer': 'Rode schemering (ahmer)', //shafaqR
+        'abyad': 'Witte schemering (abyad)', //shafaqW
+        'return': 'Terug', //return
+        'general': 'Algemeen', //v-pills-general-tab
+        'location': 'Plaats', //v-pills-location-tab
+        'audio': 'Audio', //v-pills-audio-tab
+        'appearance': 'Verschijning', //v-pills-appearance-tab
+        'advanced': 'Geavanceerde', //v-pills-advanced-tab
+        'muezzin': 'Muezzin',
+        'autoStart': 'Auto Start', //autoStartText
+        'startAtLaunch': 'Begin bij lancering', //autoStartCheckText
+        'copyright': 'Copyright 2022, Muezzin, Alle rechten voorbehouden.', //copyright
+        'quote': 'Voorwaar, het gebed is de gelovigen op vaste tijden voorgeschreven.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'source': "Qur'an: 4/103", //source
+        'fajr': 'Fajr',
+        'sunrise': 'Zonsopkomst',
+        'dhuhr': 'Dhuhr',
+        'asr': 'Asr',
+        'maghrib': 'Maghrib',
+        'isha': 'Isha',
+        'now': 'Nou',
+        'startUpSound': 'Opstartgeluid', //startUpSoundText
+        'playSound': 'Geluid afspelen bij opstarten', //startUpSoundText2
+        'sysTray': 'Systeemvak', //systrayText
+        'minToTray': 'Verkleinen naar systeemvak', //systrayCheckText
+        'customSettings': 'Aangepaste instellingen', //customSettText
+        'enableCS': 'Aangepaste berekeningsinstellingen aanzetten', //enableCalcText
+        'fAngle': 'Fajr Hoek', //fajrAngleText
+        'mAngle': 'Maghrib Hoek', //maghribAngleText
+        'iAngle': 'Isha Hoek', //ishaAngleText
+        'delayAfterM': 'Vertraging na Maghrib', //delayText
+        'delayMin': 'Vertraging (minuten)', //delayFormText
+	'timeUntil': 'Tijd tot',
+	'france': 'Frankrijk', //France12 15 & 18
+        'russia': 'Rusland', //Russia
+        'gulf': 'Perzische Golf', //Gulf
+    },
