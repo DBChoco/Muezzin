@@ -372,7 +372,7 @@ async function loadBackgroundImage(){
     for (let element of shaders){
       element.style.backgroundColor = "transparent"
     }
-    document.body.style.backgroundImage = none; 
+    document.body.style.backgroundImage = "none"; 
   }
 }
 

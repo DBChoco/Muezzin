@@ -12,10 +12,12 @@ Used software (might have been modified or not):
 To-do:
     -Add languages (https://en.wikipedia.org/wiki/Islam_by_country)
     -Add comments to code for later
-    -Autoupdate
     
-Doing:
-    -setup menu https://www.electronjs.org/docs/latest/api/menu
+    
+Doing: 
+    -Autoupdate: Use modal to show update, progress and restart
+    -Add donate button: https://www.paypal.com/donate/?hosted_button_id=DQFLG3KTZ9WU4
+
 
 
     Optional:
@@ -25,6 +27,8 @@ Doing:
 
     Bugs:
         -Add try/catch clauses (ex: if no internet)
+        -Time until... does not update on change
+        -Bad time zone detection, implement geolocation api
 
     Not possible yet:
         -Change date format (currently not possible, not easy at least)

@@ -24,7 +24,7 @@ function createWindow () {
     }
   })
 
-  mainWindow.removeMenu()
+  //mainWindow.removeMenu()
 
   mainWindow.maximize();
   // and load the index.html of the app.
@@ -105,11 +105,21 @@ const adhan = require('adhan')
 const momentz = require('moment-timezone')
 const language = require('../common/language.js')
 const AutoLaunch = require('auto-launch');
-const { autoUpdater } = require("electron-updater")
+var autoLauncher = new AutoLaunch({
+  name: "Muezzin"
+});
 
-autoUpdater.logger = require("electron-log")
-autoUpdater.logger.transports.file.level = "info"
-autoUpdater.checkForUpdatesAndNotify()
+
+const { autoUpdater } = require("electron-updater")
+setAutoUpdate()
+
+autoUpdater.on('update-available', () => {
+  console.log('UPDATE')
+  alert("UPDATE")
+});autoUpdater.on('update-downloaded', () => {
+  console.log('UPDATE')
+  alert("UPDATE")
+});
 
 function showNotification (message) {
   if (Notification.isSupported()){
@@ -137,7 +147,7 @@ checkTime();
 function checkTime(){
   var interval = setInterval(function(){
     var prayers = nextPrayer();
-    if (prayers != undefined && (adhanCheck || notifCheck)){
+    if (prayers != undefined && prayers[0] != undefined && (adhanCheck || notifCheck)){
         var timeUntilCurrentPrayer = timeUntilPrayer(prayers[0])
         console.log(timeUntilCurrentPrayer)
         if(timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] == -1 && timeUntilCurrentPrayer[2] == 0){ //-1 because math.floor
@@ -146,7 +156,7 @@ function checkTime(){
             mediaWindow.webContents.send('play', adhanPath);
           }
           if (notifCheck){
-            langNow + ": " + prayers[2]
+            showNotification(langNow + ": " + prayers[2])
           }
         }
     } 
@@ -175,7 +185,7 @@ async function loadSettings(){
   startupSound = await store.get('startup', false);
   customValues = await store.get('customSettings', [false, 0,0,0]);
   delay = await store.get('delay', [false, 0]);
-  var autoStart = await window.api.getFromStore('autoStart', 'true');
+  var autoStart = store.get('autoStart', 'true');
   setAutoStart(autoStart)
 }
 
@@ -397,6 +407,7 @@ async function waitFor(something, doSomething){
 function nextPrayer(){
   var now = new Date();
   var currentPrayer, nextPrayer, currentName, nextName;
+  if (prayerTimes != undefined){
     if (now >= prayerTimes.isha){
       if (tomorrowPrayers == undefined){
         calcTomorrowPrayers();
@@ -405,37 +416,39 @@ function nextPrayer(){
       nextPrayer = tomorrowPrayers.fajr
       currentName = langIsha
       nextName = langFajr
+    }
+    else if (now >= prayerTimes.maghrib){
+        currentPrayer = prayerTimes.maghrib;
+        nextPrayer = prayerTimes.isha;
+        currentName = langMaghrib
+        nextName = langIsha
+    }
+    else if (now >= prayerTimes.asr){
+        currentPrayer = prayerTimes.asr;
+        nextPrayer = prayerTimes.maghrib;
+        currentName = langAsr
+        nextName = langMaghrib
+    }
+    else if (now >= prayerTimes.dhuhr){
+        currentPrayer = prayerTimes.dhuhr;
+        nextPrayer = prayerTimes.asr;
+        currentName = langDhuhr
+        nextName = langAsr
+    }
+    else if (now >= prayerTimes.fajr){
+        currentPrayer = prayerTimes.fajr;
+        nextPrayer = prayerTimes.dhuhr;
+        currentName = langFajr
+        nextName = langDhuhr
+    }
+    else{
+        currentPrayer = prayerTimes.fajr;
+        nextPrayer = prayerTimes.fajr;
+        currentName = langFajr
+        nextName = langFajr
+    }
   }
-  else if (now >= prayerTimes.maghrib){
-      currentPrayer = prayerTimes.maghrib;
-      nextPrayer = prayerTimes.isha;
-      currentName = langMaghrib
-      nextName = langIsha
-  }
-  else if (now >= prayerTimes.asr){
-      currentPrayer = prayerTimes.asr;
-      nextPrayer = prayerTimes.maghrib;
-      currentName = langAsr
-      nextName = langMaghrib
-  }
-  else if (now >= prayerTimes.dhuhr){
-      currentPrayer = prayerTimes.dhuhr;
-      nextPrayer = prayerTimes.asr;
-      currentName = langDhuhr
-      nextName = langAsr
-  }
-  else if (now >= prayerTimes.fajr){
-      currentPrayer = prayerTimes.fajr;
-      nextPrayer = prayerTimes.dhuhr;
-      currentName = langFajr
-      nextName = langDhuhr
-  }
-  else{
-      currentPrayer = prayerTimes.fajr;
-      nextPrayer = prayerTimes.fajr;
-      currentName = langFajr
-      nextName = langFajr
-  }
+ 
     return [currentPrayer, nextPrayer, currentName, nextName]
 
 }
@@ -568,9 +581,6 @@ function loadLang(){
 }
 
 function setAutoStart(autoStart){
-  var autoLauncher = new AutoLaunch({
-    name: "Muezzin"
-  });
   if(autoStart){
     // Checking if autoLaunch is enabled, if not then enabling it.
     autoLauncher.isEnabled().then(function(isEnabled) {
@@ -589,5 +599,24 @@ function setAutoStart(autoStart){
       }
     }
   }
-  
+}
+
+
+/*
+*Set up autoupdate + handlers and eventlisteners
+*https://medium.com/@johndyer24/creating-and-deploying-an-auto-updating-electron-app-for-mac-and-windows-using-electron-builder-6a3982c0cee6
+*/
+function setAutoUpdate(){
+  autoUpdater.logger = require("electron-log")
+  autoUpdater.logger.transports.file.level = "info"
+  autoUpdater.checkForUpdatesAndNotify()
+  autoUpdater.on('update-available', () => {
+    mainWindow.webContents.send('update_available');
+  });
+  autoUpdater.on('update-downloaded', () => {
+    mainWindow.webContents.send('update_downloaded');
+  });
+  ipcMain.on('restart_app', () => {
+    autoUpdater.quitAndInstall();
+  });
 }
