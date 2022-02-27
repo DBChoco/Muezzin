@@ -15,7 +15,7 @@ module.exports = {
 
         var shaders = document.getElementsByClassName("shader")
         if (darkMode){
-          link.href = '../../node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.css';
+          link.href = '../../node_modules/bootstrap-dark-5/dist/css/bootstrap-night.css';
           changeButtons(darkMode)
           changeNavLink(darkMode)
           document.body.style.borderColor = "#FFFFFF";

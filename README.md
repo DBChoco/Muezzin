@@ -18,8 +18,6 @@ Doing:
     -Autoupdate: Use modal to show update, progress and restart
     -Add donate button: https://www.paypal.com/donate/?hosted_button_id=DQFLG3KTZ9WU4
 
-
-
     Optional:
         -Specific adhan for each prayers
         -Mosque Mode
@@ -27,8 +25,6 @@ Doing:
 
     Bugs:
         -Add try/catch clauses (ex: if no internet)
-        -Time until... does not update on change
-        -Bad time zone detection, implement geolocation api
 
     Not possible yet:
         -Change date format (currently not possible, not easy at least)

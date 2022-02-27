@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow, ipcMain, Tray, Menu, Notification} = require('electron')
+const {app, BrowserWindow, ipcMain, Tray, Menu, Notification, nativeImage} = require('electron')
 const path = require('path')
 
 let tray = null
@@ -80,7 +80,8 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 
-  tray = new Tray('ressources/images/icon.png')
+  const iconPath = path.join(__dirname, '../../ressources/images/icon.png')
+  tray = new Tray(nativeImage.createFromPath(iconPath))
   const contextMenu = Menu.buildFromTemplate([
     { label: 'Open', click:  function(){
       mainWindow.show(); }},
@@ -88,7 +89,7 @@ app.whenReady().then(() => {
       app.isQuiting = true;
       app.quit();}}
   ])
-  tray.setToolTip('This is my application.')
+  tray.setToolTip('Muezzin')
   tray.setContextMenu(contextMenu)
 })
 
@@ -379,7 +380,6 @@ async function setUpHandlers(){
   })
 }
 
-
 function calcTomorrowPrayers(){
   const today = new Date();
   const tomorrow = new Date();
@@ -483,7 +483,10 @@ function msToTime(duration){ //https://stackoverflow.com/questions/19700283/how-
   return res;
 }
 
+
+//checks if the app is being launched for the first time and if so, get location from location api
 function checkFirstTime(){
+  store.clear()
   var first = !store.has("lat")
   if (first){
     var IPGeolocationAPI = require('ip-geolocation-api-javascript-sdk');
@@ -501,12 +504,14 @@ function checkFirstTime(){
       loadDefaultCalcMethod(json["continent_code"], json["country_code2"])
       store.set('latitude', json["latitude"])
       store.set('longitude', json["longitude"])
+      store.set('timezone', json["time_zone"]["name"])
       loadSettings()
       mainWindow.webContents.send('update');
     }
   }
 }
 
+//Looks at the continent and country of the user and chooses a calculation method
 function loadDefaultCalcMethod(continentCode, countryCode){
   if (countryCode == "RU"){
     store.set('calcmeth', "Russia");
@@ -607,6 +612,11 @@ function setAutoStart(autoStart){
 *https://medium.com/@johndyer24/creating-and-deploying-an-auto-updating-electron-app-for-mac-and-windows-using-electron-builder-6a3982c0cee6
 */
 function setAutoUpdate(){
+
+  setInterval(() => {
+    mainWindow.webContents.send('update_error');
+  }, 10000);
+
   autoUpdater.logger = require("electron-log")
   autoUpdater.logger.transports.file.level = "info"
   autoUpdater.checkForUpdatesAndNotify()
@@ -616,7 +626,11 @@ function setAutoUpdate(){
   autoUpdater.on('update-downloaded', () => {
     mainWindow.webContents.send('update_downloaded');
   });
-  ipcMain.on('restart_app', () => {
+  autoUpdater.on('error', () => {
+    mainWindow.webContents.send('update_error');
+  });
+  
+  ipcMain.handle('restart_app', () => {
     autoUpdater.quitAndInstall();
   });
 }

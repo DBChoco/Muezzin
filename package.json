@@ -1,6 +1,6 @@
 {
   "name": "muezzin",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Prayer Time Caller",
   "main": "src/main/main.js",
   "scripts": {
@@ -27,11 +27,9 @@
     "electron-builder": "^22.14.13"
   },
   "dependencies": {
-    "@popperjs/core": "^2.11.2",
     "adhan": "^4.3.1",
     "auto-launch": "^5.0.5",
     "bootstrap": "^5.1.3",
-    "bootstrap-dark": "^1.0.3",
     "bootstrap-dark-5": "^1.1.3",
     "electron-get-location": "^1.0.1",
     "electron-log": "^4.4.6",
@@ -58,6 +56,12 @@
     "nsis": {
       "oneClick": false
     },
+    "appx":{
+      "applicationId": "Muezzin",
+      "backgroundColor": "#382bcc",
+      "publisher": "DBChoco",
+      "languages": ["EN", "FR", "ES", "AR", "DE", "IT", "NB", "SV", "DA", "NL"]
+    },
     "linux": {
       "icon": "ressources/images/logo.png",
       "category": "Utility",
@@ -68,4 +72,5 @@
     "url": "https://github.com/DBChoco/Muezzin/issues"
   },
   "homepage": "https://github.com/DBChoco/Muezzin#readme"
+  
 }

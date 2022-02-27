@@ -12,7 +12,7 @@ var timezone, calcmeth, madhab, hlr, pcr, shafaq, timeFormat, shortTimeFormat, d
 var prayerTimes, calPrayers, tommorowPrayers;
 var datePick, progressBar, volume;
 var loadedUI = false;
-var langFajr, langSunrise, langDhuhr, langmaghrib, langisha, langAdhan, langNow, langTimeUntil;
+var langFajr, langSunrise, langDhuhr, langMaghrib, langIsha, langAdhan, langNow, langTimeUntil;
 
 var loaded = true;
 var event1 = new Event('loadedSettings')
@@ -36,26 +36,16 @@ window.addEventListener('loadedSettings', () => {
     volumeSlider()
     loadBackgroundImage()
     setKeyPress()
-
+    setupButtonListeners()
+    setupUpdateModal()
+    
     const interval = setInterval(function() {
-        loadClock()
-        loadNextPrayer()
-        if ((new Date).getMinutes == 0 && (new Date).getSeconds == 0){
-          loadSettings()
-        }
-        }, 1000)
-
-    document.getElementById('settingsWheel').addEventListener("click", function(){
-        window.api.send("settingsO");
-        window.location.href = "../settings/settings.html";
-    })
-
-    document.getElementById('playB').addEventListener("click", function(){
-        window.api.send("play");
-    })
-    document.getElementById('stopB').addEventListener("click", function(){
-      window.api.send("stop");
-  })
+      loadClock()
+      loadNextPrayer()
+      if ((new Date).getMinutes == 0 && (new Date).getSeconds == 0){
+        loadSettings()
+      }
+    }, 1000)
 })
 
 window.addEventListener('loadedUI', () => { 
@@ -186,15 +176,6 @@ function timeUntilPrayer(prayer){
 
 //Loads the next prayers text: Prayer X in Y time;
 function loadNextPrayer(){
-  var playingAdhan = "Adhan"
-  if (lang == 'en'){
-    now = "Now: "; timeUntil = "Time until ";
-  } else if (lang == 'fr'){
-    now = "Maintenant: "; timeUntil = "Temps avant al ";
-  }
-  else if (lang == 'es'){
-    now = "Ahora: "; timeUntil = "Tiempo antes del ";
-  }
     var prayers = nextPrayer();
     if (prayers[0] != undefined){
         var timeUntilCurrentPrayer = timeUntilPrayer(prayers[0])
@@ -212,50 +193,52 @@ function loadNextPrayer(){
           window.dispatchEvent(event2)
         }
     } 
-
 }
 
 function nextPrayer(){
   var now = new Date();
   var currentPrayer, nextPrayer, currentName, nextName;
-  if (now >= prayerTimes.isha){
+  if (prayerTimes != undefined && langFajr != undefined){
+    if (now >= prayerTimes.isha){
       currentPrayer = prayerTimes.isha;
       nextPrayer = tommorowPrayers.fajr
-      currentName = langisha
+      currentName = langIsha
       nextName = langFajr
+    }
+    else if (now >= prayerTimes.maghrib){
+        currentPrayer = prayerTimes.maghrib;
+        nextPrayer = prayerTimes.isha;
+        currentName = langMaghrib
+        nextName = langIsha
+    }
+    else if (now >= prayerTimes.asr){
+        currentPrayer = prayerTimes.asr;
+        nextPrayer = prayerTimes.maghrib;
+        currentName = langAsr
+        nextName = langMaghrib
+    }
+    else if (now >= prayerTimes.dhuhr){
+        currentPrayer = prayerTimes.dhuhr;
+        nextPrayer = prayerTimes.asr;
+        currentName = langDhuhr
+        nextName = langAsr
+    }
+    else if (now >= prayerTimes.fajr){
+        currentPrayer = prayerTimes.fajr;
+        nextPrayer = prayerTimes.dhuhr;
+        
+        currentName = langFajr
+        nextName = langDhuhr
+    }
+    else{
+        currentPrayer = prayerTimes.fajr;
+        nextPrayer = prayerTimes.fajr;
+        currentName = langFajr
+        nextName = langFajr
+    }
+    return [currentPrayer, nextPrayer, currentName, nextName]
   }
-  else if (now >= prayerTimes.maghrib){
-      currentPrayer = prayerTimes.maghrib;
-      nextPrayer = prayerTimes.isha;
-      currentName = langmaghrib
-      nextName = langisha
-  }
-  else if (now >= prayerTimes.asr){
-      currentPrayer = prayerTimes.asr;
-      nextPrayer = prayerTimes.maghrib;
-      currentName = langasr
-      nextName = langmaghrib
-  }
-  else if (now >= prayerTimes.dhuhr){
-      currentPrayer = prayerTimes.dhuhr;
-      nextPrayer = prayerTimes.asr;
-      currentName = langDhuhr
-      nextName = langasr
-  }
-  else if (now >= prayerTimes.fajr){
-      currentPrayer = prayerTimes.fajr;
-      nextPrayer = prayerTimes.dhuhr;
-      
-      currentName = langFajr
-      nextName = langDhuhr
-  }
-  else{
-      currentPrayer = prayerTimes.fajr;
-      nextPrayer = prayerTimes.fajr;
-      currentName = langFajr
-      nextName = langFajr
-  }
-  return [currentPrayer, nextPrayer, currentName, nextName]
+  
 }
 
 function timeUntilPrayer(prayer) {
@@ -307,7 +290,7 @@ function loadHandles(){
   })
   window.api.handle('prayersReply', msg => {
     prayerTimes = msg
-    nextPrayer
+    nextPrayer()
   })
   window.api.handle('tomorrow-reply', msg => {
     tommorowPrayers = msg
@@ -323,6 +306,8 @@ function loadHandles(){
   })
 }
 
+
+//Loads time format (for now date format does nothing)
 async function loadTimeDateFormat(){
   var timeF = await window.api.getFromStore('timeFormat', 12);
   var sec = await window.api.getFromStore('seconds', true);
@@ -340,6 +325,8 @@ async function loadTimeDateFormat(){
   shortTimeFormat = timeFormat.replace(":ss", "")
 }
 
+
+//Sets event listeners and IPCRenderers to make volume sliders work
 function volumeSlider(){
   var volSlider = document.getElementById('volSlider');
   volSlider.value = volume
@@ -352,6 +339,8 @@ function volumeSlider(){
   })
 }
 
+
+//Hides the media player in case the Adhan is disabled
 async function hidePlayer(){
   var enableAdhan = await window.api.getFromStore('adhanCheck', true)
   console.log(enableAdhan)
@@ -360,9 +349,10 @@ async function hidePlayer(){
   }
 }
 
+
+// If a bgImage is set in the settings, it gets applied, otherwise it disables the shaders
 async function loadBackgroundImage(){
   var bgImage = await window.api.getFromStore('bgImage', [true, '../../ressources/images/bgImage.jpg'])
-  console.log(bgImage)
   if (bgImage[0]){
     
     document.body.style.backgroundImage = "url('" + bgImage[1] + "')"; 
@@ -404,17 +394,72 @@ function loadLang(){
   langFajr =  window.api.getLanguage(lang, 'fajr')
   langSunrise =  window.api.getLanguage(lang, 'sunrise')
   langDhuhr = window.api.getLanguage(lang, 'dhuhr')
-  langasr= window.api.getLanguage(lang, 'asr')
-  langmaghrib = window.api.getLanguage(lang, 'maghrib')
-  langisha = window.api.getLanguage(lang, 'isha')
+  langAsr= window.api.getLanguage(lang, 'asr')
+  langMaghrib = window.api.getLanguage(lang, 'maghrib')
+  langIsha = window.api.getLanguage(lang, 'isha')
   langAdhan = window.api.getLanguage(lang, 'adhan')
   langNow = window.api.getLanguage(lang, 'now')
   langTimeUntil = window.api.getLanguage(lang, 'timeUntil')
   document.getElementById('fajr').innerText = langFajr
   document.getElementById('sunrise').innerText = langSunrise
   document.getElementById('dhuhr').innerText = langDhuhr
-  document.getElementById('asr').innerText = langasr
-  document.getElementById('maghrib').innerText = langmaghrib
-  document.getElementById('isha').innerText = langisha
+  document.getElementById('asr').innerText = langAsr
+  document.getElementById('maghrib').innerText = langMaghrib
+  document.getElementById('isha').innerText = langIsha
   document.getElementById('settingsWheel').innerText = window.api.getLanguage(lang, 'settings')
+}
+
+function setupButtonListeners(){
+  document.getElementById('settingsWheel').addEventListener("click", function(){
+    window.api.send("settingsO");
+    window.location.href = "../settings/settings.html";
+  })
+  document.getElementById('playB').addEventListener("click", function(){
+      window.api.send("play");
+  })
+  document.getElementById('stopB').addEventListener("click", function(){
+    window.api.send("stop");
+  })
+}
+
+function setupUpdateModal(){
+  var myModal = new bootstrap.Modal(document.getElementById('updateModal'), {
+  })
+  var modal = document.getElementById("updateModal")
+  var modalTitle = document.getElementById("updateModalLabel")
+  var modalBody = document.getElementById('modalBody')
+  var modalButton1 = document.getElementById('modalButton1')
+
+
+  window.api.handle('update_available', msg => {
+    modalTitle.innerText = window.api.getLanguage(lang, 'updateAvalible')
+    modalBody.innerText = window.api.getLanguage(lang, 'downloadSoon')
+    modalButton1.innerText = window.api.getLanguage(lang, 'ok')
+    modalButton1.addEventListener("click", function(){
+      myModal.hide()
+    })
+    myModal.show()
+  })
+
+  window.api.handle('update_downloaded', msg => {
+    modalTitle.innerText = window.api.getLanguage(lang, 'updateDownloaded')
+    modalBody.innerText = window.api.getLanguage(lang, 'downloadFinished')
+    modalButton1.innerText = window.api.getLanguage(lang, 'restart')
+    modalButton1.addEventListener("click", function(){
+      window.api.send('restart_app');
+    })
+    myModal.show()
+  })
+
+  window.api.handle('update_error', msg => {
+    modalTitle.innerText = window.api.getLanguage(lang, 'error')
+    var link = document.createElement("a")
+    link.href = "https://github.com/DBChoco/Muezzin"
+    modalBody.innerText = window.api.getLanguage(lang, 'submitReport') + " " + link
+    modalButton1.innerText = window.api.getLanguage(lang, 'ok')
+    modalButton1.addEventListener("click", function(){
+      myModal.hide()
+    })
+    myModal.show()
+  })
 }

@@ -97,6 +97,15 @@ var dict = {
         'donate': 'Donate', //menu label
         'preferences': 'Preferences', //menu label
         'resetSettings': 'Reset settings', //menu label
+        'updateAvalible': 'Update avalible', 
+        'downloadSoon': "Download will start soon, you'll be notified when it is ready.", 
+        'updateDownloaded': 'Update downloaded', 
+        'downloadFinished': 'Update downloaded, restart Muezzin to apply it.', 
+        'ok': 'Okay', 
+        'restart': 'Restart', 
+        'error': 'Error while updating', 
+        'submitReport': 'Please submit a report and update the app manually', 
+        'here': 'here', 
     },
     fr: {
         'settings': 'Options', //settingsTitle
@@ -186,9 +195,18 @@ var dict = {
         'france': 'France', //France12 15 & 18
         'russia': 'Russie', //Russia
         'gulf': 'Région du Golfe', //Gulf
-        'donate': 'Donate', //menu label
-        'preferences': 'Preferences', //menu label
-        'resetSettings': 'Reset settings', //menu label
+        'donate': 'Faire un don', //menu label
+        'preferences': 'Préférences', //menu label
+        'resetSettings': 'Réinitialiser les options', //menu label
+        'updateAvalible': 'Mise à jour disponible', 
+        'downloadSoon': "Le téléchargement commencera bientôt, vous serez averti quand il est prêt.", 
+        'updateDownloaded': 'Mise à jour téléchargée', 
+        'downloadFinished': "Mise à jour téléchargée, redémarrez Muzzin pour l'appliquer.", 
+        'ok': "D'accord", 
+        'restart': 'Redémarrer', 
+        'error': 'Erreur lors de la mise à jour', 
+        'submitReport': "Veuillez soumettre un rapport et mettre à jour l'application manuellement", 
+        'here': 'ici', 
     },
     es: {
         'settings': 'Ajustes', //settingsTitle
@@ -279,9 +297,18 @@ var dict = {
         'france': 'Francia', //France12 15 & 18
         'russia': 'Rusia', //Russia
         'gulf': 'Región del Golfo ', //Gulf
-        'donate': 'Donate', //menu label
-        'preferences': 'Preferences', //menu label
-        'resetSettings': 'Reset settings', //menu label
+        'donate': 'Donar', //menu label
+        'preferences': 'Preferencias', //menu label
+        'resetSettings': 'Reiniciar ajustes', //menu label
+        'updateAvalible': 'Actualizar disponible', 
+        'downloadSoon': "La descarga comenzará pronto, se le notificará cuando esté listo.", 
+        'updateDownloaded': 'Actualización descargada', 
+        'downloadFinished': 'Actualización descargada, reinicie MUEZZIN para aplicarla.', 
+        'ok': 'Okey', 
+        'restart': 'Reiniciar', 
+        'error': 'Error al actualizar', 
+        'submitReport': 'Por favor envíe un informe y actualice la aplicación manualmente', 
+        'here': 'aquí', 
     },
     ar: {
         'settings': 'الإعدادات', //settingsTitle
@@ -372,9 +399,18 @@ var dict = {
         'france': 'فرنسا', //France12 15 & 18
         'russia': 'روسيا', //Russia
         'gulf': 'منطقة الخليج ', //Gulf
-        'donate': 'Donate', //menu label
-        'preferences': 'Preferences', //menu label
-        'resetSettings': 'Reset settings', //menu label
+        'donate': 'تبرع', //menu label
+        'preferences': 'تفضيلات', //menu label
+        'resetSettings': 'اعادة الضبط', //menu label
+        'updateAvalible': 'تحديث متوفرة', 
+        'downloadSoon': "سيبدأ التنزيل قريبا، سيتم إعلامك عندما يكون جاهزا.", 
+        'updateDownloaded': 'تحديث تم التحديث', 
+        'downloadFinished': 'تحديث تم تنزيله، أعد تشغيل Muezzin لتطبيقه.', 
+        'ok': 'حسنا', 
+        'restart': 'اعادة تشغيل', 
+        'error': 'خطأ أثناء التحديث', 
+        'submitReport': 'يرجى تقديم تقرير وتحديث التطبيق يدويا', 
+        'here': 'هنا', 
     },
     it: {
         'settings': 'Impostazioni', //settingsTitle
@@ -465,8 +501,527 @@ var dict = {
         'france': 'Francia', //France12 15 & 18
         'russia': 'Russia', //Russia
         'gulf': 'Gulf region', //Gulf
+        'donate': 'Donare', //menu label
+        'preferences': 'Preferenze', //menu label
+        'resetSettings': 'Ripristina le impostazioni', //menu label
+        'updateAvalible': 'Aggiorna Disponibile', 
+        'downloadSoon': "Il download inizierà presto, riceverai una notifica quando è pronto.", 
+        'updateDownloaded': 'Aggiornamento scaricato', 
+        'downloadFinished': 'Aggiornamento scaricato, riavviare Muezzin per applicarlo.', 
+        'ok': 'Bene', 
+        'restart': 'Riavviare', 
+        'error': "Errore durante l'aggiornamento", 
+        'submitReport': "Si prega di inviare un report e aggiornare l'app manualmente", 
+        'here': 'qui', 
+    },
+    ge: {
+        'settings': 'Einstellungen', //settingsTitle
+        'language': 'Sprache', //langText
+        'timeformat': 'Zeitformat', //tfText
+        '24hour': '24 Stunden', //24hTimeFormatText
+        '12hour': '12 Stunden', //12hTimeFormatText
+        'showSseconds': 'Sekunden anzeigen', //showSecondsText
+        'dateFormat': 'Datumsformat', //dfText
+        'dateFormat1': 'DD/MM/YYYY', //id="df1Text"
+        'dateFormat2': 'MM/DD/YYYY', //id="df2Text"
+        'dateFormat3': 'YYYY/MM/DD', //id="df3Text"
+        'notifications': 'Benachrichtigungen', //notifText
+        'notifCheck': 'Benachrichtigungen aktivieren', //notifCheckText
+        'coordinates': 'Koordinaten', //coordinatesText
+        'latitude': 'Breitengrad', //latText
+        'longitude': 'Längengrad', //lonText
+        'timezone': 'Zeitzone', // tzText
+        'adhan': 'Adhan', //adhanText and others in main
+        'adhanCheck': 'Adhan aktivieren', //adhanCheckText
+        'AdhanMecca': 'Adhan Mekka', //adhanMeccaText //Traduire juste Mecca
+        'adhanAqsa': 'Adhan al-Aqsa', //adhanAqsaText
+        'customAdhan': 'Benutzerdefinierte Adhan', //customAdhanText
+        'duaAfterAdhan': "Du'a nach Adhan", //duaAfterText
+        'theme': 'Thema', //themeText
+        'darkMode': 'Dunkelmodus', //darkModeText
+        'bgImage': 'Hintergrundbild', //bgImageText
+        'bgImageCheck': 'Hintergrundbild aktivieren', //bgImageCheckText
+        'calcMethods': 'Berechnungsmethoden', //calcMethodsText
+        'mwl': 'Islamische Weltliga', //MWL
+        'egyptian': 'Ägyptisch', //Egyptian
+        'karachi': 'Karatschi', //Karachi
+        'uaq': 'Umm al-Qura', //UAQ
+        'dubai': 'Dubai', //Dubai
+        'qatar': 'Katar', //Qatar
+        'kuwait': 'Kuwait', //Kuwait
+        'mc': 'Moonsighting Committee', //MC //pas traduire ça
+        'singapore': 'Singapur', //Singapore
+        'turkey': 'Türkei', //Turkey
+        'tehran': 'Teheran', //Tehran
+        'isna': 'ISNA (NA)', //ISNA
+        'madhab': 'Madhab', //MadhabText
+        'shafi': 'Shafi', //shafi
+        'hanafi': 'Hanafi', //Hanafi
+        'hlr': 'Regel für hohe Breitengrade', //hlrText
+        'motn': 'Mitten in der Nacht', //MOTN
+        'sotn': 'Siebter der Nacht', //SOTN
+        'ta': 'Dämmerungswinkel', //TA
+        'pcr': 'Polarkreisauflösung', //pcrText
+        'cc': 'Nächste Stadt', //CC
+        'cd': 'Nächstes Datum', //CD
+        'und': 'Nicht rechnen', //UND
+        'shafaq': 'Shafaq', //ShafaqText
+        'general': 'Allgemein', //shafaqG
+        'ahmer': 'Rote Dämmerung (ahmer)', //shafaqR
+        'abyad': 'Weiße Dämmerung (abyad)', //shafaqW
+        'return': 'Zurück', //return
+        'general': 'Allgemein', //v-pills-general-tab
+        'location': 'Standort', //v-pills-location-tab
+        'audio': 'Audio', //v-pills-audio-tab
+        'appearance': 'Aussehen', //v-pills-appearance-tab
+        'advanced': 'Erweiterte', //v-pills-advanced-tab
+        'muezzin': 'Muezzin',
+        'autoStart': 'Auto-Start', //autoStartText
+        'startAtLaunch': 'Beim Start beginnen', //autoStartCheckText
+        'copyright': 'Copyright 2022, Muezzin, Alle Rechte vorbehalten.', //copyright
+        'quote': 'Wahrlich das Gebet zu bestimmten Zeiten ist für die Gläubigen eine Pflicht.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'source': "Qur'an: 4/103", //source
+        'fajr': 'Fajr',
+        'sunrise': 'Sonnenaufgang',
+        'dhuhr': 'Dhuhr',
+        'asr': 'Asr',
+        'maghrib': 'Maghrib',
+        'isha': 'Isha',
+        'now': 'Jetzt',
+        'startUpSound': 'Startgeräusch', //startUpSoundText
+        'playSound': 'Geräusch beim Start abspielen', //startUpSoundText2
+        'sysTray': 'System Tray', //systrayText
+        'minToTray': 'In Statusleiste minimieren', //systrayCheckText
+        'customSettings': 'Benutzerdefinierte Einstellungen', //customSettText
+        'enableCS': 'Benutzerdefinierte Berechnungseinstellungen aktivieren', //enableCalcText
+        'fAngle': 'Fajr Winkel', //fajrAngleText
+        'mAngle': 'Maghrib Winkel', //maghribAngleText
+        'iAngle': 'Isha Winkel', //ishaAngleText
+        'delayAfterM': 'Verzögerung nach Maghrib', //delayText
+        'delayMin': 'Verzögerung (Minuten)', //delayFormText
+        'timeUntil': 'Zeit bis',
+        'france': 'Frankreich', //France12 15 & 18
+        'russia': 'Russland', //Russia
+        'gulf': 'Persischer Golf', //Gulf
+        'donate': 'Spenden', //menu label
+        'preferences': 'Vorlieben', //menu label
+        'resetSettings': 'Einstellungen zurücksetzen', //menu label
+        'updateAvalible': 'Verfügbarkeiten aktualisieren.', 
+        'downloadSoon': "Der Download beginnt bald, Sie werden benachrichtigt, wenn es fertig ist.", 
+        'updateDownloaded': 'Update heruntergeladen', 
+        'downloadFinished': "Update heruntergeladen, muezzin neu starten, um es anzuwenden", 
+        'ok': 'Okay', 
+        'restart': 'Neu starten', 
+        'error': 'Fehler beim Aktualisieren.', 
+        'submitReport': 'Bitte senden Sie einen Bericht und aktualisieren Sie die App manuell', 
+        'here': 'hier', 
+    },
+    de: {
+        'settings': 'Instellingen', //settingsTitle
+        'language': 'Taal', //langText
+        'timeformat': 'Tijdformaat', //tfText
+        '24hour': '24-uur', //24hTimeFormatText
+        '12hour': '12-uur', //12hTimeFormatText
+        'showSseconds': 'Seconden tonen', //showSecondsText
+        'dateFormat': 'Datumformaat', //dfText
+        'dateFormat1': 'DD/MM/YYYY', //id="df1Text"
+        'dateFormat2': 'MM/DD/YYYY', //id="df2Text"
+        'dateFormat3': 'YYYY/MM/DD', //id="df3Text"
+        'notifications': 'Notificaties', //notifText
+        'notifCheck': 'Notificaties aanzetten', //notifCheckText
+        'coordinates': 'Coördinaten', //coordinatesText
+        'latitude': 'Breedtegraad', //latText
+        'longitude': 'Lengtegraad', //lonText
+        'timezone': 'Tijdzone', // tzText
+        'adhan': 'Adhan', //adhanText and others in main
+        'adhanCheck': 'Adhan aanzetten', //adhanCheckText
+        'AdhanMecca': 'Adhan Mekka', //adhanMeccaText //Traduire juste Mecca
+        'adhanAqsa': 'Adhan al-Aqsa', //adhanAqsaText
+        'customAdhan': 'Aangepaste Adhan', //customAdhanText
+        'duaAfterAdhan': "Du'a na Adhani", //duaAfterText
+        'theme': 'Thema', //themeText
+        'darkMode': 'Donkere modus', //darkModeText
+        'bgImage': 'Achtergrondafbeelding', //bgImageText
+        'bgImageCheck': 'Achtergrondafbeelding aanzetten', //bgImageCheckText
+        'calcMethods': 'Berekeningsmethoden', //calcMethodsText
+        'mwl': 'Moslim Wereld Liga', //MWL
+        'egyptian': 'Egyptisch', //Egyptian
+        'karachi': 'Karachi', //Karachi
+        'uaq': 'Umm al-Qura', //UAQ
+        'dubai': 'Dubai', //Dubai
+        'qatar': 'Qatar', //Qatar
+        'kuwait': 'Koeweit', //Kuwait
+        'mc': 'Moonsighting Committee', //MC //pas traduire ça
+        'singapore': 'Singapore', //Singapore
+        'turkey': 'Turkije', //Turkey
+        'tehran': 'Teheran', //Tehran
+        'isna': 'ISNA (NA)', //ISNA
+        'madhab': 'Madhab', //MadhabText
+        'shafi': 'Shafi', //shafi
+        'hanafi': 'Hanafi', //Hanafi
+        'hlr': 'Regel voor hoge breedtegraad', //hlrText
+        'motn': 'Middernacht', //MOTN
+        'sotn': 'Zevende van de nacht', //SOTN
+        'ta': 'Schemeringshoek', //TA
+        'pcr': 'Resolutie poolcirkel', //pcrText
+        'cc': 'Dichtstbijzijnde stad', //CC
+        'cd': 'Dichtstbijzijnde datum', //CD
+        'und': 'Niet berekenen', //UND
+        'shafaq': 'Shafaq', //ShafaqText
+        'general': 'Algemeen', //shafaqG
+        'ahmer': 'Rode schemering (ahmer)', //shafaqR
+        'abyad': 'Witte schemering (abyad)', //shafaqW
+        'return': 'Terug', //return
+        'general': 'Algemeen', //v-pills-general-tab
+        'location': 'Plaats', //v-pills-location-tab
+        'audio': 'Audio', //v-pills-audio-tab
+        'appearance': 'Verschijning', //v-pills-appearance-tab
+        'advanced': 'Geavanceerde', //v-pills-advanced-tab
+        'muezzin': 'Muezzin',
+        'autoStart': 'Auto Start', //autoStartText
+        'startAtLaunch': 'Begin bij lancering', //autoStartCheckText
+        'copyright': 'Copyright 2022, Muezzin, Alle rechten voorbehouden.', //copyright
+        'quote': 'Voorwaar, het gebed is de gelovigen op vaste tijden voorgeschreven.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'source': "Qur'an: 4/103", //source
+        'fajr': 'Fajr',
+        'sunrise': 'Zonsopkomst',
+        'dhuhr': 'Dhuhr',
+        'asr': 'Asr',
+        'maghrib': 'Maghrib',
+        'isha': 'Isha',
+        'now': 'Nou',
+        'startUpSound': 'Opstartgeluid', //startUpSoundText
+        'playSound': 'Geluid afspelen bij opstarten', //startUpSoundText2
+        'sysTray': 'Systeemvak', //systrayText
+        'minToTray': 'Verkleinen naar systeemvak', //systrayCheckText
+        'customSettings': 'Aangepaste instellingen', //customSettText
+        'enableCS': 'Aangepaste berekeningsinstellingen aanzetten', //enableCalcText
+        'fAngle': 'Fajr Hoek', //fajrAngleText
+        'mAngle': 'Maghrib Hoek', //maghribAngleText
+        'iAngle': 'Isha Hoek', //ishaAngleText
+        'delayAfterM': 'Vertraging na Maghrib', //delayText
+        'delayMin': 'Vertraging (minuten)', //delayFormText
+        'timeUntil': 'Tijd tot',
+        'france': 'Frankrijk', //France12 15 & 18
+        'russia': 'Rusland', //Russia
+        'gulf': 'Perzische Golf', //Gulf
+        'donate': 'Doneren', //menu label
+        'preferences': 'Voorkeuren', //menu label
+        'resetSettings': 'Reset instellingen', //menu label
+        'updateAvalible': 'Update Beschikbaar', 
+        'downloadSoon': "Download start binnenkort, je wordt op de hoogte gebracht wanneer het klaar is.", 
+        'updateDownloaded': 'Update gedownload', 
+        'downloadFinished': 'Update gedownload, herstart Muezzin om het toe te passen.', 
+        'ok': 'Oke', 
+        'restart': 'Herstarten', 
+        'error': 'Fout tijdens het updaten', 
+        'submitReport': 'Dien een rapport in en werk de app handmatig bij', 
+        'here': 'hier', 
+    },
+    sv: {
+        'settings': 'Inställningar', //settingsTitle
+        'language': 'Språk', //langText
+        'timeformat': 'Tidsformat', //tfText
+        '24hour': '24-timmars', //24hTimeFormatText
+        '12hour': '12-timmars', //12hTimeFormatText
+        'showSseconds': 'Visa sekunder', //showSecondsText
+        'dateFormat': 'Datumformat', //dfText
+        'dateFormat1': 'DD/MM/YYYY', //id="df1Text"
+        'dateFormat2': 'MM/DD/YYYY', //id="df2Text"
+        'dateFormat3': 'YYYY/MM/DD', //id="df3Text"
+        'notifications': 'Notiser', //notifText
+        'notifCheck': 'Aktivera notiser', //notifCheckText
+        'coordinates': 'Koordinater', //coordinatesText
+        'latitude': 'Latitud', //latText
+        'longitude': 'Longitud', //lonText
+        'timezone': 'Tidszon', // tzText
+        'adhan': 'Adhan', //adhanText and others in main
+        'adhanCheck': 'Aktivera Adhan', //adhanCheckText
+        'AdhanMecca': 'Adhan Mecka', //adhanMeccaText //Traduire juste Mecca
+        'adhanAqsa': 'Adhan al-Aqsa', //adhanAqsaText
+        'customAdhan': 'Anpassad Adhan', //customAdhanText
+        'duaAfterAdhan': "Du'a efter Adhan", //duaAfterText
+        'theme': 'Tema', //themeText
+        'darkMode': 'Mörkt läge', //darkModeText
+        'bgImage': 'Bakgrundsbild', //bgImageText
+        'bgImageCheck': 'Aktivera bakgrundsbild', //bgImageCheckText
+        'calcMethods': 'Beräkningsmetoder', //calcMethodsText
+        'mwl': 'Muslimska världsligan', //MWL
+        'egyptian': 'Egyptisk', //Egyptian
+        'karachi': 'Karachi', //Karachi
+        'uaq': 'Umm al-Qura', //UAQ
+        'dubai': 'Dubai', //Dubai
+        'qatar': 'Qatar', //Qatar
+        'kuwait': 'Kuwait', //Kuwait
+        'mc': 'Moonsighting Committee', //MC //pas traduire ça
+        'singapore': 'Singapore', //Singapore
+        'turkey': 'Turkiet', //Turkey
+        'tehran': 'Teheran', //Tehran
+        'isna': 'ISNA (NA)', //ISNA
+        'madhab': 'Madhab', //MadhabText
+        'shafi': 'Shafi', //shafi
+        'hanafi': 'Hanafi', //Hanafi
+        'hlr': 'Hög latitud regel', //hlrText
+        'motn': 'Mitt i natten', //MOTN
+        'sotn': 'Nattens sjunde', //SOTN
+        'ta': 'Skymningsvinkel', //TA
+        'pcr': 'Polarcirkelupplösning', //pcrText
+        'cc': 'Närmaste stad', //CC
+        'cd': 'Närmaste datum', //CD
+        'und': 'Räkna inte', //UND
+        'shafaq': 'Shafaq', //ShafaqText
+        'general': 'Allmän', //shafaqG
+        'ahmer': 'Röd skymning (ahmer)', //shafaqR
+        'abyad': 'Vit skymning (abyad)', //shafaqW
+        'return': 'Retur', //return
+        'general': 'Allmän', //v-pills-general-tab
+        'location': 'Plats', //v-pills-location-tab
+        'audio': 'Audio', //v-pills-audio-tab
+        'appearance': 'Utseende', //v-pills-appearance-tab
+        'advanced': 'Avancerade ', //v-pills-advanced-tab
+        'muezzin': 'Muezzin',
+        'autoStart': 'Auto Start', //autoStartText
+        'startAtLaunch': 'Börja vid lanseringen', //autoStartCheckText
+        'copyright': 'Copyright 2022, Muezzin, Alla rättigheter förbehållna.', //copyright
+        'quote': 'Bönen är alla troendes plikt, knuten till bestämda tider.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'source': "Qur'an: 4/103", //source
+        'fajr': 'Fajr',
+        'sunrise': 'Soluppgång',
+        'dhuhr': 'Dhuhr',
+        'asr': 'Asr',
+        'maghrib': 'Maghrib',
+        'isha': 'Isha',
+        'now': 'Nu',
+        'startUpSound': 'Startljud', //startUpSoundText
+        'playSound': 'Spela upp ljud vid start', //startUpSoundText2
+        'sysTray': 'Systemfältet', //systrayText
+        'minToTray': 'Minimera till statusfältet', //systrayCheckText
+        'customSettings': 'Anpassade inställningar', //customSettText
+        'enableCS': 'Aktivera anpassade beräkningsinställningar', //enableCalcText
+        'fAngle': 'Fajr Vinkel', //fajrAngleText
+        'mAngle': 'Maghrib Vinkel', //maghribAngleText
+        'iAngle': 'Isha Vinkel', //ishaAngleText
+        'delayAfterM': 'Försening efter Maghrib', //delayText
+        'delayMin': 'Fördröjning (minuter)', //delayFormText
+        'timeUntil': 'Tid tills',
+        'france': 'Frankrike', //France12 15 & 18
+        'russia': 'Ryssland', //Russia
+        'gulf': 'Persiska viken', //Gulf
+        'donate': 'Donera', //menu label
+        'preferences': 'Preferenser', //menu label
+        'resetSettings': 'Återställ inställningar', //menu label
+        'updateAvalible': 'Uppdatera tillgängliga', 
+        'downloadSoon': "Ladda ner startar snart, du blir underrättad när den är klar.", 
+        'updateDownloaded': 'Uppdatering nedladdad', 
+        'downloadFinished': 'Uppdatering nedladdad, starta om Muezzin för att tillämpa den.', 
+        'ok': 'Okej', 
+        'restart': 'Omstart', 
+        'error': 'Fel vid uppdatering', 
+        'submitReport': 'Vänligen skicka en rapport och uppdatera appen manuellt', 
+        'here': 'här', 
+    },
+    no: {
+        'settings': 'Innstillinger', //settingsTitle
+        'language': 'Språk', //langText
+        'timeformat': 'Tidsformat', //tfText
+        '24hour': '24-timersklokke', //24hTimeFormatText
+        '12hour': '12-timersklokke', //12hTimeFormatText
+        'showSseconds': 'Vis sekunder', //showSecondsText
+        'dateFormat': 'Datoformat', //dfText
+        'dateFormat1': 'DD/MM/YYYY', //id="df1Text"
+        'dateFormat2': 'MM/DD/YYYY', //id="df2Text"
+        'dateFormat3': 'YYYY/MM/DD', //id="df3Text"
+        'notifications': 'Varslinger', //notifText
+        'notifCheck': 'Aktiver varslinger', //notifCheckText
+        'coordinates': 'Koordinater', //coordinatesText
+        'latitude': 'Breddegrad', //latText
+        'longitude': 'Lengdegrad', //lonText
+        'timezone': 'Tidssone', // tzText
+        'adhan': 'Adhan', //adhanText and others in main
+        'adhanCheck': 'Aktiver Adhan', //adhanCheckText
+        'AdhanMecca': 'Adhan Mekka', //adhanMeccaText //Traduire juste Mecca
+        'adhanAqsa': 'Adhan al-Aqsa', //adhanAqsaText
+        'customAdhan': 'Egendefinert Adhan', //customAdhanText
+        'duaAfterAdhan': "Du'a etter Adhan", //duaAfterText
+        'theme': 'Tema', //themeText
+        'darkMode': 'Mørk modus', //darkModeText
+        'bgImage': 'Bakgrunnsbilde', //bgImageText
+        'bgImageCheck': 'Aktiver bakgrunnsbilde', //bgImageCheckText
+        'calcMethods': 'Beregningsmetoder', //calcMethodsText
+        'mwl': 'Den muslimske verdensligaen', //MWL
+        'egyptian': 'Egyptisk', //Egyptian
+        'karachi': 'Karachi', //Karachi
+        'uaq': 'Umm al-Qura', //UAQ
+        'dubai': 'Dubai', //Dubai
+        'qatar': 'Qatar', //Qatar
+        'kuwait': 'Kuwait', //Kuwait
+        'mc': 'Moonsighting Committee', //MC //pas traduire ça
+        'singapore': 'Singapore', //Singapore
+        'turkey': 'Tyrkia', //Turkey
+        'tehran': 'Teheran', //Tehran
+        'isna': 'ISNA (NA)', //ISNA
+        'madhab': 'Madhab', //MadhabText
+        'shafi': 'Shafi', //shafi
+        'hanafi': 'Hanafi', //Hanafi
+        'hlr': 'Høy breddegradsregel', //hlrText
+        'motn': 'Midt på natten', //MOTN
+        'sotn': 'Nattens syvende', //SOTN
+        'ta': 'Tussmørke vinkel', //TA
+        'pcr': 'Polarsirkeloppløsning', //pcrText
+        'cc': 'Nærmeste by', //CC
+        'cd': 'Nærmeste dato', //CD
+        'und': 'Ikke beregn', //UND
+        'shafaq': 'Shafaq', //ShafaqText
+        'general': 'Generell', //shafaqG
+        'ahmer': 'Rød tussmørke (ahmer)', //shafaqR
+        'abyad': 'Hvit tussmørke (abyad)', //shafaqW
+        'return': 'Retur', //return
+        'general': 'Generell', //v-pills-general-tab
+        'location': 'Plassering', //v-pills-location-tab
+        'audio': 'Audio', //v-pills-audio-tab
+        'appearance': 'Utseende', //v-pills-appearance-tab
+        'advanced': 'Avanserte', //v-pills-advanced-tab
+        'muezzin': 'Muezzin',
+        'autoStart': 'Auto Start', //autoStartText
+        'startAtLaunch': 'Start ved lansering', //autoStartCheckText
+        'copyright': 'Copyright 2022, Muezzin, Alle rettigheter forbeholdt.', //copyright
+        'quote': 'Sannelig, tidebønnen er pålagt de troende ifølge fastsatte tider.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'source': "Qur'an: 4/103", //source
+        'fajr': 'Fajr',
+        'sunrise': 'Soloppgang',
+        'dhuhr': 'Dhuhr',
+        'asr': 'Asr',
+        'maghrib': 'Maghrib',
+        'isha': 'Isha',
+        'now': 'Nå',
+        'startUpSound': 'Oppstartslyd', //startUpSoundText
+        'playSound': 'Spill av lyd ved oppstart', //startUpSoundText2
+        'sysTray': 'Oppgavelinje', //systrayText
+        'minToTray': 'Minimer til statuslinjen', //systrayCheckText
+        'customSettings': 'Egendefinerte innstillinger', //customSettText
+        'enableCS': 'Aktiver tilpassede beregningsinnstillinger', //enableCalcText
+        'fAngle': 'Fajr Vinkel', //fajrAngleText
+        'mAngle': 'Maghrib Vinkel', //maghribAngleText
+        'iAngle': 'Isha Vinkel', //ishaAngleText
+        'delayAfterM': 'Forsinkelse etter Maghrib', //delayText
+        'delayMin': 'Forsinkelse (minutter)', //delayFormText
+        'timeUntil': 'Tid til',
+        'france': 'Frankrike', //France12 15 & 18
+        'russia': 'Russland', //Russia
+        'gulf': 'Persiabukten', //Gulf
+        'donate': 'Donere', //menu label
+        'preferences': 'Preferanser', //menu label
+        'resetSettings': 'Tilbakestill innstillinger', //menu label
+        'updateAvalible': 'Oppdater tilgjengelig', 
+        'downloadSoon': "Last ned vil starte snart, du vil bli varslet når den er klar.", 
+        'updateDownloaded': 'Oppdater nedlastet', 
+        'downloadFinished': 'Oppdater nedlastet, start Muezzin på nytt for å bruke den.', 
+        'ok': 'Greit', 
+        'restart': 'Omstart', 
+        'error': 'Feil under oppdatering', 
+        'submitReport': 'Vennligst send inn en rapport og oppdater appen manuelt', 
+        'here': 'her', 
+    },
+    da: {
+        'settings': 'Indstillinger', //settingsTitle
+        'language': 'Sprog', //langText
+        'timeformat': 'Tidsformat', //tfText
+        '24hour': '24-timersur', //24hTimeFormatText
+        '12hour': '12-timersur', //12hTimeFormatText
+        'showSseconds': 'Vis sekunder', //showSecondsText
+        'dateFormat': 'Datoformat', //dfText
+        'dateFormat1': 'DD/MM/YYYY', //id="df1Text"
+        'dateFormat2': 'MM/DD/YYYY', //id="df2Text"
+        'dateFormat3': 'YYYY/MM/DD', //id="df3Text"
+        'notifications': 'Notifikationer', //notifText
+        'notifCheck': 'Aktiver notifikationer', //notifCheckText
+        'coordinates': 'Koordinater', //coordinatesText
+        'latitude': 'Breddekreds', //latText
+        'longitude': 'Længdekreds', //lonText
+        'timezone': 'Tidszone', // tzText
+        'adhan': 'Adhan', //adhanText and others in main
+        'adhanCheck': 'Aktiver Adhan', //adhanCheckText
+        'AdhanMecca': 'Adhan Mekka', //adhanMeccaText //Traduire juste Mecca
+        'adhanAqsa': 'Adhan al-Aqsa', //adhanAqsaText
+        'customAdhan': 'Brugerdefineret Adhan', //customAdhanText
+        'duaAfterAdhan': "Du'a efter Adhan", //duaAfterText
+        'theme': 'Tema', //themeText
+        'darkMode': 'Mørk tilstand', //darkModeText
+        'bgImage': 'Baggrundsbillede', //bgImageText
+        'bgImageCheck': 'Aktiver baggrundsbillede', //bgImageCheckText
+        'calcMethods': 'Beregningsmetoder', //calcMethodsText
+        'mwl': 'Den muslimske verdensliga', //MWL
+        'egyptian': 'Egyptisk', //Egyptian
+        'karachi': 'Karachi', //Karachi
+        'uaq': 'Umm al-Qura', //UAQ
+        'dubai': 'Dubai', //Dubai
+        'qatar': 'Qatar', //Qatar
+        'kuwait': 'Kuwait', //Kuwait
+        'mc': 'Moonsighting Committee', //MC //pas traduire ça
+        'singapore': 'Singapore', //Singapore
+        'turkey': 'Tyrkiet', //Turkey
+        'tehran': 'Teheran', //Tehran
+        'isna': 'ISNA (NA)', //ISNA
+        'madhab': 'Madhab', //MadhabText
+        'shafi': 'Shafi', //shafi
+        'hanafi': 'Hanafi', //Hanafi
+        'hlr': 'Høj bredde-regel', //hlrText
+        'motn': 'Midt om natten', //MOTN
+        'sotn': 'Nattens syvende', //SOTN
+        'ta': 'Tusmørke vinkel', //TA
+        'pcr': 'Polarcirkelopløsning', //pcrText
+        'cc': 'Nærmeste by', //CC
+        'cd': 'Nærmeste dato', //CD
+        'und': 'Må ikke beregne', //UND
+        'shafaq': 'Shafaq', //ShafaqText
+        'general': 'Generel', //shafaqG
+        'ahmer': 'Rødt tusmørke (ahmer)', //shafaqR
+        'abyad': 'Hvid tusmørke (abyad)', //shafaqW
+        'return': 'Retur', //return
+        'general': 'Generel', //v-pills-general-tab
+        'location': 'Beliggenhed', //v-pills-location-tab
+        'audio': 'Audio', //v-pills-audio-tab
+        'appearance': 'Udseende', //v-pills-appearance-tab
+        'advanced': 'Avancerede', //v-pills-advanced-tab
+        'muezzin': 'Muezzin',
+        'autoStart': 'Auto Start', //autoStartText
+        'startAtLaunch': 'Start ved lanceringen', //autoStartCheckText
+        'copyright': 'Copyright 2022, Muezzin, Alle rettigheder forbeholdes.', //copyright
+        'quote': 'Sandelig, bønnen er foreskrevet de troende på fastsatte tider.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'source': "Qur'an: 4/103", //source
+        'fajr': 'Fajr',
+        'sunrise': 'Solopgang',
+        'dhuhr': 'Dhuhr',
+        'asr': 'Asr',
+        'maghrib': 'Maghrib',
+        'isha': 'Isha',
+        'now': 'Nu',
+        'startUpSound': 'Opstartslyd', //startUpSoundText
+        'playSound': 'Afspil lyd ved opstart', //startUpSoundText2
+        'sysTray': 'System bakke', //systrayText
+        'minToTray': 'Minimer til bakke', //systrayCheckText
+        'customSettings': 'Brugerdefinerede indstillinger', //customSettText
+        'enableCS': 'Aktiver brugerdefinerede beregningsindstillinger', //enableCalcText
+        'fAngle': 'Fajr Vinkel', //fajrAngleText
+        'mAngle': 'Maghrib Vinkel', //maghribAngleText
+        'iAngle': 'Isha Vinkel', //ishaAngleText
+        'delayAfterM': 'Forsinkelse efter Maghrib', //delayText
+        'delayMin': 'Forsinkelse (minutter)', //delayFormText
+        'timeUntil': 'Tid indtil',
+        'france': 'Frankrig', //France12 15 & 18
+        'russia': 'Rusland', //Russia
+        'gulf': 'Den Persiske Bugt', //Gulf
         'donate': 'Donate', //menu label
-        'preferences': 'Preferences', //menu label
-        'resetSettings': 'Reset settings', //menu label
+        'preferences': 'Præferencer', //menu label
+        'resetSettings': 'Nulstil indstillingerne', //menu label
+        'updateAvalible': 'Opdatering til rådighed', 
+        'downloadSoon': "Download vil starte snart, vil du blive underrettet, når den er klar.", 
+        'updateDownloaded': 'Opdatering downloadet', 
+        'downloadFinished': 'Opdatering downloadet, genstart muezzin for at anvende det.', 
+        'ok': 'Okay', 
+        'restart': 'Genstart', 
+        'error': 'Fejl under opdatering.', 
+        'submitReport': 'Indsend venligst en rapport og opdater appen manuelt', 
+        'here': 'her', 
     },
 }
