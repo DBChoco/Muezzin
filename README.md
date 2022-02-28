@@ -81,7 +81,7 @@ Currently we support 10, and if you want us to add one more, you can submit a re
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- SUPPORTED LANGUAGES -->
-# Supported Languages
+### Supported Languages
 * English
 * Français
 * Español
@@ -114,7 +114,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 - [ ] Add mosque mode (improved visibility from afar & delays to prayers)
 - [ ] Multi-language Support
-    - [ ] Not Decided Yet
+    - [ ] Urdu
 
 See the [open issues](https://github.com/DBChoco/MuezzinPrayerTimes/issues) for a full list of proposed features (and known issues).
 
