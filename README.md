@@ -72,7 +72,7 @@
 We may all be familiar with Muslim Pro on our smartphones, but as someone who doesn't use my phone much, I wanted an app to help me keep track of prayer times without having to go on my smartphone, I wanted an app that was higly customizable and would let me choose <strong> my own </strong> Adhan and theme. And Alhamdoulillah after a few weeks of hard work, I did just that.
 
 On Muezzin you can choose to play an Adhan or not, you can import your own audio file; you can also chose to have a background or not, and import your own.
-Currently we support 8 or so languages, but if you want us to add one more, you can submit a report  <a href="https://github.com/DBChoco/MuezzinPrayerTimes/issues">here</a>
+Currently we support 10, and if you want us to add one more, you can submit a report  <a href="https://github.com/DBChoco/MuezzinPrayerTimes/issues">here</a>
 
 <div align="center">
   <img src="screenshots/settingsDark.png" alt="screenshot1" width="70%">
@@ -80,6 +80,18 @@ Currently we support 8 or so languages, but if you want us to add one more, you 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+<!-- SUPPORTED LANGUAGES -->
+# Supported Languages
+* English
+* Français
+* Español
+* Italiano
+* Arabic
+* Deutsch
+* Nederlands
+* Norks
+* Svenska
+* Dansk
 
 
 ### Built With
