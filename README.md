@@ -115,6 +115,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 - [ ] Add mosque mode (improved visibility from afar & delays to prayers)
 - [ ] Launch minimized
 - [ ] Add sunnah times
+- [ ] Fix German calendar
 - [ ] Multi-language Support
     - [ ] Urdu
 
