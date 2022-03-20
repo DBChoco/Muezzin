@@ -116,6 +116,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 - [ ] Launch minimized
 - [ ] Add sunnah times
 - [ ] Fix German calendar
+- [ ] Manual times
 - [ ] Multi-language Support
     - [ ] Urdu
 
