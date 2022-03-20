@@ -113,10 +113,10 @@ This section should list any major frameworks/libraries used to bootstrap your p
 ### Roadmap
 
 - [ ] Add mosque mode (improved visibility from afar & delays to prayers)
-- [ ] Launch minimized
-- [ ] Add sunnah times
-- [ ] Fix German calendar
-- [ ] Prayer times adjustements
+- [x] Launch minimized
+- [x] Add sunnah times
+- [x] Fix German calendar
+- [x] Prayer times adjustements
 - [ ] Multi-language Support
     - [ ] Urdu
 
