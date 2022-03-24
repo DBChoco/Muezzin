@@ -82,8 +82,18 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 
-  const iconPath = path.join(__dirname, '../../ressources/images/icon.png')
-  tray = new Tray(nativeImage.createFromPath(iconPath))
+  let iconPath;
+  if (process.platform == "win32"){
+    iconPath = path.join(__dirname, '../../ressources/images/icon.ico');
+  } else{
+    iconPath = path.join(__dirname, '../../ressources/images/icon.png');
+  }
+  if (process.platform == "darwin"){
+    tray = new Tray(nativeImage.createFromPath(iconPath).resize({ width: 16, height: 16 }))
+  }
+  else{
+    tray = new Tray(nativeImage.createFromPath(iconPath))
+  }
   const contextMenu = Menu.buildFromTemplate([
     { label: 'Open', click:  function(){
       mainWindow.show(); }},
@@ -122,13 +132,16 @@ autoUpdater.on('update-available', () => {
   console.log('DOWNLOADED')
 });
 
-function showNotification (message) {
-  if (Notification.isSupported()){
-    const NOTIFICATION_TITLE = 'Muezzin'
-    const NOTIFICATION_BODY = message
-    new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY, icon:"../ressources/images/BETA.png" }).show()
+if (process.platform != "darwin"){
+  function showNotification (message) {
+    if (Notification.isSupported()){
+      const NOTIFICATION_TITLE = 'Muezzin'
+      const NOTIFICATION_BODY = message
+      new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY, icon:"../ressources/images/BETA.png" }).show()
+    }
   }
 }
+
 
 var lat, lon, calcmeth, madhab, hlr, pcr, shafaq, prayerTimes, adhanPath;
 var customValues, delay;
