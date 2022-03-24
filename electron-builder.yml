@@ -1,0 +1,4 @@
+appId: com.muezzin.app
+publish:
+  provider: github
+  token: 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

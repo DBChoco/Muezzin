@@ -72,7 +72,7 @@ function setUpAdhanListeners(){
         loadSettings()
         interval = setInterval(function(){
             refreshPB()
-        },500)
+        },2000)
     })
     athan.addEventListener('abort', function(){
         window.api.send('progress-request', 0)

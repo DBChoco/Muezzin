@@ -1,6 +1,6 @@
 {
   "name": "muezzin",
-  "version": "0.0.6",
+  "version": "0.1.4",
   "description": "Prayer Time Caller",
   "main": "src/main/main.js",
   "scripts": {
@@ -10,12 +10,13 @@
     "build": "electron-builder build --linux --win --publish never",
     "deploy": "electron-builder build --linux --win --publish always"
   },
+  "icon": "ressources/images/icon.png",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DBChoco/Muezzin.git"
   },
   "keywords": [],
-  "author": "DBChoco",
+  "author": "DBChoco <smuky2k@gmail.com>",
   "license": "CC0-1.0",
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.63",
@@ -53,9 +54,6 @@
       "icon": "ressources/images/logo.png",
       "target": "nsis"
     },
-    "nsis": {
-      "oneClick": false
-    },
     "appx":{
       "applicationId": "Muezzin",
       "backgroundColor": "#382bcc",
@@ -65,7 +63,7 @@
     "linux": {
       "icon": "ressources/images/logo.png",
       "category": "Utility",
-      "target": "AppImage"
+      "target": ["AppImage", "snap", "tar.gz", "pacman"]
     }
   },
   "bugs": {

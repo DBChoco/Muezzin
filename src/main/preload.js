@@ -14,11 +14,14 @@ contextBridge.exposeInMainWorld( 'api', {
     coordinates: (lat, lon) => adhan.Coordinates(lat, lon),
     getClock: (format) => moment(new Date()).format(format),
     getTimes: (times,timezone, format) => moment(momentz(times).tz(timezone)).format(format),
+    
     getFromStore: (key, def) => ipcRenderer.invoke('getStoreValue', key, def),
     setToStore: (key, value) => ipcRenderer.invoke('setStoreValue', key , value),
     timeZoneGuess: () => momentz.tz.guess(),
     timeZoneList: () => momentz.tz.names(),
     setTheme: (darkmode, css) => settings.toggleDarkMode(darkmode, css),
-    getLanguage: (lang, value) => language.loadTrans(lang, value)
+    getLanguage: (lang, value) => language.loadTrans(lang, value),
+    getSunnah: (prayerTimes) => new adhan.SunnahTimes(prayerTimes),
+    getPrayerTimes: (coordinates, date, parameters) => new adhan.PrayerTimes(coordinates, date, parameters)
 } )
 
