@@ -64,11 +64,15 @@
       "icon": "ressources/images/logo.png",
       "category": "Utility",
       "target": ["AppImage", "snap", "tar.gz", "pacman"]
+    },
+    "mac": {
+      "icon": "ressources/images/logo.png",
+      "category": "public.app-category.utilities",
+      "target": ["dmg"]
     }
   },
   "bugs": {
     "url": "https://github.com/DBChoco/Muezzin/issues"
   },
   "homepage": "https://github.com/DBChoco/Muezzin#readme"
-  
 }
