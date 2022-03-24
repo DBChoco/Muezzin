@@ -106,6 +106,7 @@ var dict = {
         'error': 'Error while updating', 
         'submitReport': 'Please submit a report and update the app manually', 
         'adjustements': 'Adjustments', //adjustmentsText
+        'here': 'here',
         'enableAdj': 'Enable adjustments', //adjCheckText
         'fajrAdj': 'Fajr Adjustments', //fajrAdjText
         'dhuhrAdj': 'Dhurh Adjustments', //fajrAdjText
@@ -409,12 +410,12 @@ var dict = {
         'copyright': 'Copyright 2022, Muezzin, All rights reserved.', //copyright
         'quote': 'إِنَّ الصَّلاةَ كانَت عَلَى المُؤمِنينَ كِتابًا مَوقوتًا', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
         'source': "القرآن: 4/103", //source
-        'fajr': 'الفجر',
+        'fajr': 'فجر',
         'sunrise': 'شروق',
-        'dhuhr': 'الزره',
-        'asr': 'عسير',
-        'maghrib': 'المغرب',
-        'isha': 'عيسبا',
+        'dhuhr': 'الظهر',
+        'asr': 'عصر',
+        'maghrib': 'مغرب',
+        'isha': 'عشاء ',
         'now': 'الآن',
         'timeUntil': 'الوقت حتى',
         'startUpSound': 'بدء الصوت', //startUpSoundText
@@ -1132,5 +1133,118 @@ var dict = {
         'motn': 'Midten af natten',  //MOTNCheckText
         'totn': 'Tredje af natten', //TOTNCheckText
         'minStart': 'Start minimeret', //minStartCheckText
+    },
+    ur: {
+        'settings': 'ترتیبات', //settingsTitle
+        'language': 'زبان', //langText
+        'timeformat': 'وقت کی ترتیب', //tfText
+        '24hour': '24', //24hTimeFormatText
+        '12hour': '12', //12hTimeFormatText
+        'showSseconds': 'سیکنڈ دکھائیں', //showSecondsText
+        'dateFormat': 'تاریخ کی شکل', //dfText
+        'dateFormat1': 'DD/MM/YYYY', //id="df1Text"
+        'dateFormat2': 'MM/DD/YYYY', //id="df2Text"
+        'dateFormat3': 'YYYY/MM/DD', //id="df3Text"
+        'notifications': 'اطلاعات', //notifText
+        'notifCheck': 'اطلاعات کو فعال کریں', //notifCheckText
+        'coordinates': ' سمتوں', //coordinatesText
+        'latitude': 'طول', //latText
+        'longitude': ' طول و عرض', //lonText
+        'timezone': 'ٹائم زون', // tzText
+        'adhan': 'عدنان', //adhanText and others in main
+        'adhanCheck': 'ایڈن کو فعال کریں', //adhanCheckText
+        'AdhanMecca': 'Adhan Mecca', //adhanMeccaText //Traduire juste Mecca
+        'adhanAqsa': 'Adhan al-Aqsa', //adhanAqsaText
+        'customAdhan': 'اپنی مرضی کے مطابق', //customAdhanText
+        'duaAfterAdhan': "دعا", //duaAfterText
+        'theme': 'خیالیہ', //themeText
+        'darkMode': 'گہرا موڈ', //darkModeText
+        'bgImage': 'پس منظر کی تصویر', //bgImageText
+        'bgImageCheck': 'پس منظر کی تصویر کو فعال کریں', //bgImageCheckText
+        'calcMethods': 'حساب کے طریقوں', //calcMethodsText
+        'mwl': 'مسلم ورلڈ لیگ', //MWL
+        'egyptian': 'مصری', //Egyptian
+        'karachi': 'کراچی', //Karachi
+        'uaq': 'ام القر', //UAQ
+        'dubai': 'دبئی', //Dubai
+        'qatar': 'قطر', //Qatar
+        'kuwait': 'کویت', //Kuwait
+        'mc': 'Moonsighting Committee', //MC //pas traduire ça
+        'singapore': 'سنگاپور', //Singapore
+        'turkey': 'ترکی', //Turkey
+        'tehran': 'تہران', //Tehran
+        'isna': 'ISNA (NA)', //ISNA
+        'madhab': 'مداب', //MadhabText
+        'shafi': 'شفیع', //shafi
+        'hanafi': 'حنفی', //Hanafi
+        'hlr': 'اعلی طول و عرض کی اصول', //hlrText
+        'motn': 'آدھی رات', //MOTN
+        'sotn': 'رات کی ساتویں', //SOTN
+        'ta': 'گودھولی زاویہ', //TA
+        'pcr': 'پولر سرکل قرارداد', //pcrText
+        'cc': 'قریب ترین شہر', //CC
+        'cd': 'قریب ترین تاریخ', //CD
+        'und': 'حساب نہیں کرتے', //UND
+        'shafaq': 'شفیق', //ShafaqText
+        'general': 'جنرل', //shafaqG
+        'ahmer': 'ریڈ گودھولی (احمد)', //shafaqR
+        'abyad': 'وائٹ گودھولی (ابدی)', //shafaqW
+        'return': 'واپسی', //return
+        'general': 'جنرل', //v-pills-general-tab
+        'location': 'مقام', //v-pills-location-tab
+        'audio': 'آڈیو', //v-pills-audio-tab
+        'appearance': 'ظہور', //v-pills-appearance-tab
+        'advanced': 'اعلی درجے کی', //v-pills-advanced-tab
+        'muezzin': 'Muezzin',
+        'autoStart': 'خود بخود شروع', //autoStartText
+        'startAtLaunch': 'لانچ پر شروع', //autoStartCheckText
+        'copyright': 'Copyright 2022, Muezzin, All rights reserved.', //copyright
+        'quote': ' قائم کرو۔ بیشک نماز مومنوں پر مقررہ وقت کے حساب سے فرض ہے', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'source': "Qur'an: 4/103", //source
+        'fajr': 'فجر',
+        'sunrise': 'سورج کی روشنی',
+        'dhuhr': 'دھہر',
+        'asr': 'عمر ',
+        'maghrib': 'مغرب',
+        'isha': 'عشاء',
+        'now': 'ابھی',
+        'timeUntil': 'ٹائمنٹیل',
+        'startUpSound': 'آواز شروع کرو', //startUpSoundText
+        'playSound': 'آغاز پر آواز کھیلیں', //startUpSoundText2
+        'sysTray': 'سسٹم ٹرے', //systrayText
+        'minToTray': 'ٹرے کو کم سے کم', //systrayCheckText
+        'customSettings': 'اپنی مرضی کے مطابق ترتیبات', //customSettText
+        'enableCS': 'اپنی مرضی کے مطابق حساب کی ترتیبات کو فعال کریں', //enableCalcText
+        'fAngle': 'فجر زاویہ', //fajrAngleText
+        'mAngle': 'مغرب زاویہ', //maghribAngleText
+        'iAngle': 'اسحا زاویہ', //ishaAngleText
+        'delayAfterM': 'مغرب کے بعد تاخیر', //delayText
+        'delayMin': 'تاخیر (منٹ)', //delayFormText
+        'france': 'فرانس', //France12 15 & 18
+        'russia': 'روس', //Russia
+        'gulf': 'خلیج علاقے', //Gulf
+        'donate': 'عطیہ', //menu label
+        'preferences': 'ترجیحات', //menu label
+        'resetSettings': 'ترتیبات کو دوبارہ ترتیب دیں', //menu label
+        'updateAvalible': 'اپلی کیشن کو اپ ڈیٹ کریں', 
+        'downloadSoon': "ڈاؤن لوڈ، اتارنا جلد ہی شروع ہو جائے گا، جب یہ تیار ہو تو آپ کو مطلع کیا جائے گا.", 
+        'updateDownloaded': 'ڈاؤن لوڈ کردہ اپ ڈیٹ', 
+        'downloadFinished': 'اپ ڈیٹ ڈاؤن لوڈ، اتارنا، اسے لاگو کرنے کے لئے Muezzin دوبارہ شروع کریں.', 
+        'ok': 'ٹھیک ہے', 
+        'restart': 'دوبارہ شروع کریں', 
+        'error': 'اپ ڈیٹ کرنے میں خرابی', 
+        'submitReport': 'براہ کرم ایک رپورٹ پیش کریں اور دستی طور پر اپلی کیشن کو اپ ڈیٹ کریں', 
+        'here': 'یہاں',
+        'adjustements': 'ایڈجسٹمنٹ', //adjustmentsText
+        'enableAdj': 'ایڈجسٹمنٹ کو فعال کریں', //adjCheckText
+        'fajrAdj': 'فجر ایڈجسٹمنٹ', //fajrAdjText
+        'dhuhrAdj': 'ظہر ایڈجسٹمنٹ', //fajrAdjText
+        'asrAdj': 'عصر ایڈجسٹمنٹ', //fajrAdjText
+        'maghribAdj': 'مغرب ایڈجسٹمنٹ', //fajrAdjText
+        'ishaAdj': 'عشاء ایڈجسٹمنٹ', //fajrAdjText
+        'showSunnah': 'سنت ٹائمز دکھائیں', //sunnahTimesText
+        'motn': 'آدھی رات',  //MOTNCheckText
+        'totn': 'رات کا تیسرا', //TOTNCheckText
+        'minStart': 'کم سے کم شروع', //minStartCheckText
     },
 }
