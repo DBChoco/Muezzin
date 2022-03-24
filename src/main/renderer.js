@@ -5,14 +5,14 @@
 // selectively enable features needed in the rendering
 // process.
 
-var prayerTimes;
 var lat = 0;
 var lon = 0;
 var timezone, calcmeth, madhab, hlr, pcr, shafaq, timeFormat, shortTimeFormat, dateFormat, lang;
-var prayerTimes, calPrayers, tommorowPrayers;
+var prayerTimes, calPrayers, tommorowPrayers, sunnahTimes;
 var datePick, progressBar, volume;
 var loadedUI = false;
 var langFajr, langSunrise, langDhuhr, langMaghrib, langIsha, langAdhan, langNow, langTimeUntil;
+var motnCheck, totnCheck, motnCheckOG, totnCheckOG;
 
 var loaded = true;
 var event1 = new Event('loadedSettings')
@@ -119,6 +119,13 @@ function loadPrayers(){
     document.getElementById("asrTime").innerText = window.api.getTimes(calPrayers.asr,timezone, shortTimeFormat);
     document.getElementById("maghribTime").innerText = window.api.getTimes(calPrayers.maghrib,timezone, shortTimeFormat);
     document.getElementById("ishaTime").innerText = window.api.getTimes(calPrayers.isha,timezone, shortTimeFormat);
+    if (totnCheck){
+      document.getElementById("totnTime").innerText = window.api.getTimes(totn,timezone, shortTimeFormat);
+    }
+    if (motnCheck){
+      document.getElementById("motnTime").innerText = window.api.getTimes(motn,timezone, shortTimeFormat);
+    }
+    
   }
 }
 
@@ -140,6 +147,9 @@ async function loadSettings(){
     window.api.setTheme(darkmode, "styles.css");
     await hidePlayer()
     await loadTimeDateFormat()
+    motnCheck = await window.api.getFromStore('motnSunnah', false); 
+    totnCheck = await window.api.getFromStore('totnSunnah', false); 
+    motnCheckOG = motnCheck; totnCheckOG = totnCheck;
     window.dispatchEvent(event1)
 }
 
@@ -255,6 +265,9 @@ function msToTime(duration){ //https://stackoverflow.com/questions/19700283/how-
   var seconds = Math.floor((duration / 1000) % 60) + 1,
     minutes = Math.floor((duration / (1000 * 60)) % 60),
     hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+  if (seconds == 60){
+    seconds = 00;
+  }
   var res = [hours, minutes, seconds]
   return res;
 }
@@ -285,15 +298,26 @@ function loadHandles(){
   window.api.handle('date-reply', msg => {
     calPrayers = msg;
     if (timezone != undefined){
-        loadPrayers();
+      if (calPrayers.date.getDate() == new Date().getDate() && calPrayers.date.getMonth() == new Date().getMonth() && calPrayers.date.getFullYear() == new Date().getFullYear()){
+        motnCheck =  motnCheckOG;
+        totnCheck =  totnCheckOG;
+      }
+      else{
+        motnCheck = false;
+        totnCheck = false;
+      }
+      setupSunnah();
+      loadPrayers();
     }
   })
   window.api.handle('prayersReply', msg => {
     prayerTimes = msg
+    
     nextPrayer()
   })
   window.api.handle('tomorrow-reply', msg => {
     tommorowPrayers = msg
+    setupSunnah()
   })
   window.api.handle('progress-reply', msg => {
     progressBar.value = msg;
@@ -343,7 +367,6 @@ function volumeSlider(){
 //Hides the media player in case the Adhan is disabled
 async function hidePlayer(){
   var enableAdhan = await window.api.getFromStore('adhanCheck', true)
-  console.log(enableAdhan)
   if (!enableAdhan){
     document.getElementById('audioControls').style.display = "none";
   }
@@ -365,7 +388,6 @@ async function loadBackgroundImage(){
     document.body.style.backgroundImage = "none"; 
   }
 }
-
 
 //Adds listener that brings you to the settings page when you press "Crtl + O"
 function setKeyPress(){
@@ -389,7 +411,6 @@ function hideLoader(){
   document.getElementById('loader').style.display = "none"
 }
 
-
 function loadLang(){
   langFajr =  window.api.getLanguage(lang, 'fajr')
   langSunrise =  window.api.getLanguage(lang, 'sunrise')
@@ -407,6 +428,8 @@ function loadLang(){
   document.getElementById('maghrib').innerText = langMaghrib
   document.getElementById('isha').innerText = langIsha
   document.getElementById('settingsWheel').innerText = window.api.getLanguage(lang, 'settings')
+  document.getElementById('motn').innerText = window.api.getLanguage(lang, 'motn')
+  document.getElementById('totn').innerText = window.api.getLanguage(lang, 'totn')
 }
 
 function setupButtonListeners(){
@@ -462,4 +485,45 @@ function setupUpdateModal(){
     })
     myModal.show()
   })
+}
+
+function setupSunnah(){
+  if (prayerTimes != undefined && tommorowPrayers != undefined){
+
+    if (motnCheck || totnCheck){
+      calculateSunnah()
+    }
+
+    var motnDiv = document.getElementsByClassName("motn");
+    if (motnCheck){
+      for (element of motnDiv){
+        element.style.display = "block"
+      }
+    }
+    else{
+      for (element of motnDiv){
+        element.style.display = "none"
+      }
+    }
+
+    var totnDiv = document.getElementsByClassName("totn");
+    if (totnCheck){
+      for (element of totnDiv){
+        element.style.display = "block"
+      }
+    }
+    else{
+      for (element of totnDiv){
+        element.style.display = "none"
+      }
+    }
+  }
+}
+
+function calculateSunnah(){
+  const nightDuration = (tommorowPrayers.fajr.getTime() - prayerTimes.maghrib.getTime());
+  //motn = intToHour(msToTime(prayerTimes.maghrib.getTime() +  nightDuration / 2));
+  //totn = intToHour(msToTime(prayerTimes.maghrib.getTime() +  nightDuration * (2 / 3);
+  motn = new Date(prayerTimes.maghrib.getTime() +  nightDuration / 2);
+  totn = new Date(prayerTimes.maghrib.getTime() +  nightDuration * (2 / 3));
 }

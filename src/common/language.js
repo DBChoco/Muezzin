@@ -105,7 +105,17 @@ var dict = {
         'restart': 'Restart', 
         'error': 'Error while updating', 
         'submitReport': 'Please submit a report and update the app manually', 
-        'here': 'here', 
+        'adjustements': 'Adjustments', //adjustmentsText
+        'enableAdj': 'Enable adjustments', //adjCheckText
+        'fajrAdj': 'Fajr Adjustments', //fajrAdjText
+        'dhuhrAdj': 'Dhurh Adjustments', //fajrAdjText
+        'asrAdj': 'Asr Adjustments', //fajrAdjText
+        'maghribAdj': 'Maghrib Adjustments', //fajrAdjText
+        'ishaAdj': 'Isha Adjustments', //fajrAdjText
+        'showSunnah': 'Show Sunnah times', //sunnahTimesText
+        'motn': 'Middle of the night',  //MOTNCheckText
+        'totn': 'Third of the night', //TOTNCheckText
+        'minStart': 'Start minimized', //minStartCheckText
     },
     fr: {
         'settings': 'Options', //settingsTitle
@@ -207,6 +217,17 @@ var dict = {
         'error': 'Erreur lors de la mise à jour', 
         'submitReport': "Veuillez soumettre un rapport et mettre à jour l'application manuellement", 
         'here': 'ici', 
+        'adjustements': 'Ajustements', //adjustmentsText
+        'enableAdj': 'Activer les ajustements', //adjCheckText
+        'fajrAdj': 'Ajustements de Fajr', //fajrAdjText
+        'dhuhrAdj': 'Ajustements de Dhurh', //fajrAdjText
+        'asrAdj': 'Ajustements de Asr', //fajrAdjText
+        'maghribAdj': 'Ajustements de Maghrib', //fajrAdjText
+        'ishaAdj': 'Ajustements de Isha', //fajrAdjText
+        'showSunnah': 'Montrer les temps de Sunnah', //sunnahTimesText
+        'motn': 'Millieu de la nuit',  //MOTNCheckText
+        'totn': 'Tiers de la nuit', //TOTNCheckText
+        'minStart': 'Commencé minimisé', //minStartCheckText
     },
     es: {
         'settings': 'Ajustes', //settingsTitle
@@ -309,6 +330,17 @@ var dict = {
         'error': 'Error al actualizar', 
         'submitReport': 'Por favor envíe un informe y actualice la aplicación manualmente', 
         'here': 'aquí', 
+        'adjustements': 'Ajustes', //adjustmentsText
+        'enableAdj': 'Activar ajustes', //adjCheckText
+        'fajrAdj': 'Ajustes de Fajr', //fajrAdjText
+        'dhuhrAdj': 'Ajustes de Dhurh', //fajrAdjText
+        'asrAdj': 'Ajustes de Asr', //fajrAdjText
+        'maghribAdj': 'Ajustes de Maghrib', //fajrAdjText
+        'ishaAdj': 'Ajustes de Isha', //fajrAdjText
+        'showSunnah': 'Mostrar los tiempos de Sunnah', //sunnahTimesText
+        'motn': 'Mitad de la noche',  //MOTNCheckText
+        'totn': 'Tercio de la noche', //TOTNCheckText
+        'minStart': 'Iniciar minimizado', //minStartCheckText
     },
     ar: {
         'settings': 'الإعدادات', //settingsTitle
@@ -411,6 +443,17 @@ var dict = {
         'error': 'خطأ أثناء التحديث', 
         'submitReport': 'يرجى تقديم تقرير وتحديث التطبيق يدويا', 
         'here': 'هنا', 
+        'adjustements': 'التعديلات', //adjustmentsText
+        'enableAdj': 'تمكين التعديلات', //adjCheckText
+        'fajrAdj': 'تعديلات الفجر', //fajrAdjText
+        'dhuhrAdj': 'دوس تعديلات', //fajrAdjText
+        'asrAdj': 'تعديلات العصر', //fajrAdjText
+        'maghribAdj': 'تعديلات المغربs', //fajrAdjText
+        'ishaAdj': 'تعديلات العشاء', //fajrAdjText
+        'showSunnah': 'أظهر سناه مرات', //sunnahTimesText
+        'motn': 'منتصف الليل',  //MOTNCheckText
+        'totn': 'ثالثا من الليل', //TOTNCheckText
+        'minStart': 'بداية الحد الادنى ', //minStartCheckText
     },
     it: {
         'settings': 'Impostazioni', //settingsTitle
@@ -513,8 +556,19 @@ var dict = {
         'error': "Errore durante l'aggiornamento", 
         'submitReport': "Si prega di inviare un report e aggiornare l'app manualmente", 
         'here': 'qui', 
+        'adjustements': 'Adeguamenti', //adjustmentsText
+        'enableAdj': 'Abilita le regolazioni', //adjCheckText
+        'fajrAdj': 'Regolazioni della Fajr', //fajrAdjText
+        'dhuhrAdj': 'Regolazioni della Dhurh', //fajrAdjText
+        'asrAdj': 'Regolazioni della Asr', //fajrAdjText
+        'maghribAdj': 'Regolazioni della Maghrib', //fajrAdjText
+        'ishaAdj': 'Regolazioni della Isha', //fajrAdjText
+        'showSunnah': 'Mostra i tempi di Sunnah', //sunnahTimesText
+        'motn': 'Nel mezzo della notte',  //MOTNCheckText
+        'totn': 'Terzo della notte', //TOTNCheckText
+        'minStart': 'Inizia minimizzato ', //minStartCheckText
     },
-    ge: {
+    de: {
         'settings': 'Einstellungen', //settingsTitle
         'language': 'Sprache', //langText
         'timeformat': 'Zeitformat', //tfText
@@ -615,8 +669,19 @@ var dict = {
         'error': 'Fehler beim Aktualisieren.', 
         'submitReport': 'Bitte senden Sie einen Bericht und aktualisieren Sie die App manuell', 
         'here': 'hier', 
+        'adjustements': 'Anpassungen', //adjustmentsText
+        'enableAdj': 'Anpassungen aktivieren', //adjCheckText
+        'fajrAdj': 'Fajr-Anpassungen', //fajrAdjText
+        'dhuhrAdj': 'Dhurh-Anpassungen', //fajrAdjText
+        'asrAdj': 'Asr-Anpassungen', //fajrAdjText
+        'maghribAdj': 'Maghrib-Anpassungen', //fajrAdjText
+        'ishaAdj': 'Isha-Anpassungen', //fajrAdjText
+        'showSunnah': 'Sunnah Zeit', //sunnahTimesText
+        'motn': 'Mitten in der Nacht',  //MOTNCheckText
+        'totn': 'Drittel der Nacht', //TOTNCheckText
+        'minStart': 'Minimiert starten', //minStartCheckText
     },
-    de: {
+    nl: {
         'settings': 'Instellingen', //settingsTitle
         'language': 'Taal', //langText
         'timeformat': 'Tijdformaat', //tfText
@@ -717,6 +782,17 @@ var dict = {
         'error': 'Fout tijdens het updaten', 
         'submitReport': 'Dien een rapport in en werk de app handmatig bij', 
         'here': 'hier', 
+        'adjustements': 'Aanpassingen', //adjustmentsText
+        'enableAdj': 'Schakel aanpassingen in', //adjCheckText
+        'fajrAdj': 'Fajr-aanpassingen', //fajrAdjText
+        'dhuhrAdj': 'Dhurh-aanpassingen', //fajrAdjText
+        'asrAdj': 'Asr-aanpassingen', //fajrAdjText
+        'maghribAdj': 'Maghrib-aanpassingen', //fajrAdjText
+        'ishaAdj': 'Isha-aanpassingen', //fajrAdjText
+        'showSunnah': 'Toon Sunnah-tijd', //sunnahTimesText
+        'motn': 'Middernacht',  //MOTNCheckText
+        'totn': 'Derde van de nacht', //TOTNCheckText
+        'minStart': 'Start geminimaliseerd', //minStartCheckText
     },
     sv: {
         'settings': 'Inställningar', //settingsTitle
@@ -819,6 +895,17 @@ var dict = {
         'error': 'Fel vid uppdatering', 
         'submitReport': 'Vänligen skicka en rapport och uppdatera appen manuellt', 
         'here': 'här', 
+        'adjustements': 'Justeringar', //adjustmentsText
+        'enableAdj': 'Aktivera justeringar', //adjCheckText
+        'fajrAdj': 'Fajr-justeringar', //fajrAdjText
+        'dhuhrAdj': 'Dhurh-justeringar', //fajrAdjText
+        'asrAdj': 'Asr-justeringar', //fajrAdjText
+        'maghribAdj': 'Maghrib-justeringar', //fajrAdjText
+        'ishaAdj': 'Isha-justeringar', //fajrAdjText
+        'showSunnah': 'Visa sunnah tid', //sunnahTimesText
+        'motn': 'Mitten av natten',  //MOTNCheckText
+        'totn': 'Tredje av natten', //TOTNCheckText
+        'minStart': 'Börja minimeras', //minStartCheckText
     },
     no: {
         'settings': 'Innstillinger', //settingsTitle
@@ -921,6 +1008,17 @@ var dict = {
         'error': 'Feil under oppdatering', 
         'submitReport': 'Vennligst send inn en rapport og oppdater appen manuelt', 
         'here': 'her', 
+        'adjustements': 'Justeringer', //adjustmentsText
+        'enableAdj': 'Aktiver justeringer', //adjCheckText
+        'fajrAdj': 'Fajr justeringer', //fajrAdjText
+        'dhuhrAdj': 'Dhurh justeringer', //fajrAdjText
+        'asrAdj': 'Asr justeringer', //fajrAdjText
+        'maghribAdj': 'Maghrib justeringer', //fajrAdjText
+        'ishaAdj': 'Isha justeringer', //fajrAdjText
+        'showSunnah': 'Vise Sunnah tid', //sunnahTimesText
+        'motn': 'Midten av natten',  //MOTNCheckText
+        'totn': 'Tredje av natten', //TOTNCheckText
+        'minStart': 'Start minimert', //minStartCheckText
     },
     da: {
         'settings': 'Indstillinger', //settingsTitle
@@ -1023,5 +1121,16 @@ var dict = {
         'error': 'Fejl under opdatering.', 
         'submitReport': 'Indsend venligst en rapport og opdater appen manuelt', 
         'here': 'her', 
+        'adjustements': 'Justeringer', //adjustmentsText
+        'enableAdj': 'Aktivér justeringer', //adjCheckText
+        'fajrAdj': 'Fajr-justeringer', //fajrAdjText
+        'dhuhrAdj': 'Dhurh-justeringer', //fajrAdjText
+        'asrAdj': 'Asr-justeringer', //fajrAdjText
+        'maghribAdj': 'Maghrib-justeringer', //fajrAdjText
+        'ishaAdj': 'Isha-justeringer', //fajrAdjText
+        'showSunnah': 'Vis Sunnah-tid', //sunnahTimesText
+        'motn': 'Midten af natten',  //MOTNCheckText
+        'totn': 'Tredje af natten', //TOTNCheckText
+        'minStart': 'Start minimeret', //minStartCheckText
     },
 }

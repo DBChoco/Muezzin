@@ -24,19 +24,19 @@ function createWindow () {
     }
   })
 
-  //mainWindow.removeMenu()
-
-  mainWindow.maximize();
+  ///DEBUG
+  mainWindow.removeMenu()
+  
   // and load the index.html of the app.
   mainWindow.loadFile('src/main/index.html')
 
+  mainWindow.maximize();
 
   mainWindow.on('minimize',function(event){
     event.preventDefault();
     mainWindow.hide();
   });
 
-  
   mainWindow.on('close', function (event) {
     if(!app.isQuiting && systray){
         event.preventDefault();
@@ -49,6 +49,8 @@ function createWindow () {
       return true;
     }
   });
+
+  
 
   //Create hidden mediaPlayer
   mediaWindow = new BrowserWindow({
@@ -116,10 +118,8 @@ setAutoUpdate()
 
 autoUpdater.on('update-available', () => {
   console.log('UPDATE')
-  alert("UPDATE")
 });autoUpdater.on('update-downloaded', () => {
-  console.log('UPDATE')
-  alert("UPDATE")
+  console.log('DOWNLOADED')
 });
 
 function showNotification (message) {
@@ -134,7 +134,8 @@ var lat, lon, calcmeth, madhab, hlr, pcr, shafaq, prayerTimes, adhanPath;
 var customValues, delay;
 var prayerTimes, datePrayerTimes, tomorrowPrayers;
 var adhanCheck, notifCheck, lang, startupSound;
-var langFajr, langSunrise, langDhuhr, langAsr, langMaghrib, langIsha, langAdhan, langNow;
+var langFajr, langDhuhr, langAsr, langMaghrib, langIsha, langAdhan, langNow;
+var adjustements;
 
 
 checkFirstTime()
@@ -186,7 +187,12 @@ async function loadSettings(){
   startupSound = await store.get('startup', false);
   customValues = await store.get('customSettings', [false, 0,0,0]);
   delay = await store.get('delay', [false, 0]);
-  var autoStart = store.get('autoStart', 'true');
+  var autoStart = store.get('autoStart', true);
+  var minStart = store.get('minStart', false);
+  adjustements = store.get('adj', [false, 0,0,0,0,0]);
+  if (minStart){
+    mainWindow.hide()
+  }
   setAutoStart(autoStart)
 }
 
@@ -197,7 +203,7 @@ async function loadSettings(){
 * @return {adhan.PrayerTimes} prayerTimes
 */
 function calcPrayerTimes(date = new Date()){
-  console.log("ola")
+  console.log("Calculating prayer times")
   var coordinates = new adhan.Coordinates(lat, lon)
 
   // https://github.com/batoulapps/adhan-js/blob/master/METHODS.md
@@ -323,6 +329,15 @@ function calcPrayerTimes(date = new Date()){
     default:
       params.shafaq = adhan.Shafaq.General;
   }
+
+  if(adjustements[0]){
+    params.adjustments.fajr = adjustements[1]
+    params.adjustments.dhuhr = adjustements[2]
+    params.adjustments.asr = adjustements[3]
+    params.adjustments.maghrib = adjustements[4]
+    params.adjustments.isha = adjustements[5]
+  }
+
   prayerTimes = new adhan.PrayerTimes(coordinates, date, params);
   return prayerTimes;
 }
@@ -486,7 +501,6 @@ function msToTime(duration){ //https://stackoverflow.com/questions/19700283/how-
 
 //checks if the app is being launched for the first time and if so, get location from location api
 function checkFirstTime(){
-  store.clear()
   var first = !store.has("lat")
   if (first){
     var IPGeolocationAPI = require('ip-geolocation-api-javascript-sdk');
@@ -612,11 +626,6 @@ function setAutoStart(autoStart){
 *https://medium.com/@johndyer24/creating-and-deploying-an-auto-updating-electron-app-for-mac-and-windows-using-electron-builder-6a3982c0cee6
 */
 function setAutoUpdate(){
-
-  setInterval(() => {
-    mainWindow.webContents.send('update_error');
-  }, 10000);
-
   autoUpdater.logger = require("electron-log")
   autoUpdater.logger.transports.file.level = "info"
   autoUpdater.checkForUpdatesAndNotify()

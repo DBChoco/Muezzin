@@ -31,9 +31,13 @@ async function saveSettings(){
   var systray = document.getElementById("systrayCheck").checked;
   var startupSound = document.getElementById("startUpSound").checked;
   var autoStart = document.getElementById("autoStartCheck").checked
+  var minStart = document.getElementById("minStartCheck").checked;
+  var motn = document.getElementById("MOTNCheck").checked;
+  var totn = document.getElementById("TOTNCheck").checked
 
   await saveAdhan()
   await saveBgImage()
+  await saveAdjustments()
   await window.api.setToStore('latitude', lat);
   await window.api.setToStore('longitude', lon);
   await window.api.setToStore('timezone', tz);
@@ -52,6 +56,9 @@ async function saveSettings(){
   await window.api.setToStore('systray', systray)
   await window.api.setToStore('startup', startupSound)
   await window.api.setToStore('autoStart', autoStart)
+  await window.api.setToStore('minStart', minStart)
+  await window.api.setToStore('motnSunnah', motn)
+  await window.api.setToStore('totnSunnah', totn)
   await saveCustomSettings()
 }
 
@@ -73,10 +80,14 @@ async function loadSettings(){
   dateFormat =  await window.api.getFromStore('dateFormat', 'DD/MM/YYYY');
   sec =  await window.api.getFromStore('seconds', true);
   language = await window.api.getFromStore('language', 'en');
-  var autoStart = await window.api.getFromStore('autoStart', 'true');
+  var autoStart = await window.api.getFromStore('autoStart', true);
+  var minStart = await window.api.getFromStore('minStart', false);
+  var motn = await window.api.getFromStore('motnSunnah', false);
+  var totn = await window.api.getFromStore('totnSunnah', false);
   
   await loadAdhan()
   await loadCustomSettings()
+  await loadAdjustments()
   var valueChecker = setInterval(function(){
     if (calcmethVal != undefined){
       document.getElementById("latInput").value = lat
@@ -94,6 +105,9 @@ async function loadSettings(){
       document.getElementById("systrayCheck").checked = systray;
       document.getElementById("startUpSound").checked = startupSound;
       document.getElementById("autoStartCheck").checked = autoStart;
+      document.getElementById("minStartCheck").checked = minStart;
+      document.getElementById("MOTNCheck").checked = motn;
+      document.getElementById("TOTNCheck").checked = totn;
       window.api.setTheme(darkMode, "settings.css");
       setTimeDateFormat()
       clearInterval(valueChecker)
@@ -523,6 +537,20 @@ function loadLanguage(lang){
   document.getElementById("France18").innerText = window.api.getLanguage(lang, "france") + " 18";
   document.getElementById("Russia").innerText = window.api.getLanguage(lang, "russia");
   document.getElementById("Gulf").innerText = window.api.getLanguage(lang, "gulf");
+  document.getElementById("adjustmentsText").innerText = window.api.getLanguage(lang, "adjustements");
+  document.getElementById("v-pills-adjustments-tab").innerText = window.api.getLanguage(lang, "adjustements");
+  document.getElementById("adjCheckText").innerText = window.api.getLanguage(lang, "enableAdj");
+  document.getElementById("fajrAdjText").innerText = window.api.getLanguage(lang, "fajrAdj");
+  document.getElementById("dhuhrAdjText").innerText = window.api.getLanguage(lang, "dhuhrAdj");
+  document.getElementById("asrAdjText").innerText = window.api.getLanguage(lang, "asrAdj");
+  document.getElementById("maghribAdjText").innerText = window.api.getLanguage(lang, "maghribAdj");
+  document.getElementById("ishaAdjText").innerText = window.api.getLanguage(lang, "ishaAdj");
+  document.getElementById("sunnahTimesText").innerText = window.api.getLanguage(lang, "showSunnah");
+  document.getElementById("MOTNCheckText").innerText = window.api.getLanguage(lang, "motn");
+  document.getElementById("TOTNCheckText").innerText = window.api.getLanguage(lang, "totn");
+  document.getElementById("minStartCheckText").innerText = window.api.getLanguage(lang, "minStart");
+  document.getElementById("adhanMecca").innerHTML = window.api.getLanguage(lang, "AdhanMecca");
+  document.getElementById("adhanAqsa").innerHTML  = window.api.getLanguage(lang, "adhanAqsa");
 }
 
 
@@ -602,5 +630,53 @@ async function saveCustomSettings(){
   else{
     await window.api.setToStore('delay', [false, 0])
   }
+}
+
+//Loads the prayer times adjustements from the store and adds an event listener for the adjustements check box
+async function loadAdjustments(){
+  var adjustements = await window.api.getFromStore('adj', [false, 0,0,0,0,0]);
+  console.log(adjustements)
+  for (let i = 1; i <= 5; i++){
+    console.log(adjustements[i])
+    if (adjustements[i] == undefined){
+      adjustements[i] = 0;
+      console.log(adjustements[i])
+    }
+  }
+  document.getElementById("adjCheck").checked = adjustements[0];
+  document.getElementById("fajrAdjInput").value = adjustements[1];
+  document.getElementById("dhuhrAdjInput").value = adjustements[2];
+  document.getElementById("asrAdjInput").value = adjustements[3];
+  document.getElementById("maghribAdjInput").value = adjustements[4];
+  document.getElementById("ishaAdjInput").value = adjustements[5];
+
+  enableAdjustements(document.getElementById("adjCheck").checked)
+  
+  document.getElementById("adjCheck").addEventListener("change", function(){
+    enableAdjustements(document.getElementById("adjCheck").checked)
+  })
+
+  function enableAdjustements(boolean){
+    document.getElementById("fajrAdjInput").disabled = !boolean;
+    document.getElementById("dhuhrAdjInput").disabled = !boolean;
+    document.getElementById("asrAdjInput").disabled = !boolean;
+    document.getElementById("maghribAdjInput").disabled = !boolean;
+    document.getElementById("ishaAdjInput").disabled = !boolean;
+  }
+}
+
+
+//Rounds the adjustements (Math.round) and saves them to the store
+async function saveAdjustments(){
+  var adjCheck = document.getElementById("adjCheck").checked;  
+  var fajrAdj = document.getElementById("fajrAdjInput").value;
+  var dhuhrAdj = document.getElementById("dhuhrAdjInput").value;
+  var asrAdj = document.getElementById("asrAdjInput").value;
+  var maghribrAdj = document.getElementById("maghribAdjInput").value;
+  var ishaAdj = document.getElementById("ishaAdjInput").value;
+
+  var adjustements = [adjCheck, Math.round(fajrAdj),Math.round(dhuhrAdj),Math.round(asrAdj),Math.round(maghribrAdj),Math.round(ishaAdj)]
+  
+  await window.api.setToStore('adj', adjustements);
 }
 

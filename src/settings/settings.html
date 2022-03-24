@@ -22,6 +22,7 @@
         <button class="nav-link" id="v-pills-audio-tab" data-bs-toggle="pill" data-bs-target="#v-pills-audio" type="button" role="tab" aria-controls="v-pills-audio" aria-selected="false">Audio</button>
         <button class="nav-link" id="v-pills-appearance-tab" data-bs-toggle="pill" data-bs-target="#v-pills-appearance" type="button" role="tab" aria-controls="v-pills-appearance" aria-selected="false">Appearance</button>
         <button class="nav-link" id="v-pills-advanced-tab" data-bs-toggle="pill" data-bs-target="#v-pills-advanced" type="button" role="tab" aria-controls="v-pills-advanced" aria-selected="false">Advanced</button>
+        <button class="nav-link" id="v-pills-adjustments-tab" data-bs-toggle="pill" data-bs-target="#v-pills-adjustments" type="button" role="tab" aria-controls="v-pills-adjustments" aria-selected="false">Adjustments</button>
       </div>
 
       <div class="tab-content" id="v-pills-tabContent">
@@ -38,8 +39,8 @@
                   <option id="Español" value="es">Español</option>
                   <option id="Español" value="it">Italiano</option>
                   <option id="Español" value="ar">عربي</option>
-                  <option id="Español" value="ge">Deutsch</option>
-                  <option id="Español" value="de">Nederlands</option>
+                  <option id="Español" value="de">Deutsch</option>
+                  <option id="Español" value="nl">Nederlands</option>
                   <option id="Español" value="no">Norsk (bokmål)</option>
                   <option id="Español" value="sv">Svenska</option>
                   <option id="Español" value="da">Dansk</option>
@@ -135,11 +136,20 @@
                 </label>
                 <input class="form-check-input" type="checkbox" id="autoStartCheck" checked>
               </div>
+
+              <div class="form-check grid-R-spacer">
+                <label class="form-check-label" for="minStartCheck" id="minStartCheckText">
+                  Start minimized
+                </label>
+                <input class="form-check-input" type="checkbox" id="minStartCheck" unchecked>
+              </div>
+
             </form>
             </div>
 
           </div>
         </div>
+
         <div class="tab-pane fade" id="v-pills-location" role="tabpanel" aria-labelledby="v-pills-location-tab"> <!-- Location -->
             <div class="grid-container">
               <div class="grid-itemL"> 
@@ -171,7 +181,7 @@
                 </form>
               </div>
             </div>
-          </div>
+        </div>
 
         <div class="tab-pane fade" id="v-pills-audio" role="tabpanel" aria-labelledby="v-pills-audio-tab"> <!-- Audio -->
           <div class="grid-container">
@@ -258,9 +268,27 @@
                   </div>
               </form>
             </div>
+
+            <div class="grid-itemL"> 
+              <p class="h4" id="sunnahTimesText">Show Sunnah times</p> 
+            </div>
+            <div class="grid-itemR"> 
+              <form >
+                <div class="form-check grid-R-spacer">
+                  <label  class="form-check-label" for="MOTNCheck" id="MOTNCheckText">Middle of the night</label>
+                  <input class="form-check-input" type="checkbox" value="" id="MOTNCheck" unchecked>
+                </div>
+
+                <div class="form-check grid-R-spacer">
+                  <label  class="form-check-label" for="TOTNCheck" id="TOTNCheckText">Third of the night</label>
+                  <input class="form-check-input" type="checkbox" value="" id="TOTNCheck" unchecked>
+                </div>
+              </form>
+            </div>
             
           </div>
         </div>
+
         <div class="tab-pane fade" id="v-pills-advanced" role="tabpanel" aria-labelledby="v-pills-advanced-tab"> <!-- Advanced -->
           <div class="grid-container">
             <div class="grid-itemL"> 
@@ -289,11 +317,6 @@
                 </select> <br>
               </form>
             </div>
-
-          
-
-
-            
 
             <div class="grid-itemL"> 
               <p class="h4" id="MadhabText">Madhab</p>   
@@ -388,8 +411,66 @@
                   placeholder="00"> 
                 </form>
             </div>
-
           </div>
+        </div>
+
+        <div class="tab-pane fade" id="v-pills-adjustments" role="tabpanel" aria-labelledby="v-pills-adjustments-tab"> <!-- Adjustements -->
+          <div class="grid-container">
+            <div class="grid-itemL"> 
+              <p class="h4" id="adjustmentsText">Adjustments</p> 
+            </div>
+            <div class="grid-itemR"> 
+              <form >
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="adjCheck" id="adjCheckText">
+                    Enable adjustments
+                  </label>
+                  <input class="form-check-input" type="checkbox" id="adjCheck" unchecked>
+                </div>
+                
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="fajrAdjInput" id="fajrAdjText">
+                    Fajr Adjustments
+                  </label>
+                  <input id="fajrAdjInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
+                  placeholder="00.00"> 
+                </div>
+
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="dhuhrAdjInput" id="dhuhrAdjText">
+                    Dhuhr Adjustments
+                  </label>
+                  <input id="dhuhrAdjInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
+                  placeholder="00.00"> 
+                </div>
+
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="asrAdjInput" id="asrAdjText">
+                    Asr Adjustments
+                  </label>
+                  <input id="asrAdjInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
+                  placeholder="00.00"> 
+                </div>
+
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="maghribAdjInput" id="maghribAdjText">
+                    Maghrib Adjustments
+                  </label>
+                  <input id="maghribAdjInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
+                  placeholder="00.00"> 
+                </div>
+              
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="ishaAdjInput" id="ishaAdjText">
+                    Isha Adjustments
+                  </label>
+                  <input id="ishaAdjInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
+                  placeholder="00.00"> 
+                </div>
+              </form>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
