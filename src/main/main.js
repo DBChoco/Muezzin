@@ -123,25 +123,24 @@ var autoLauncher = new AutoLaunch({
 });
 
 
+
 const { autoUpdater } = require("electron-updater")
-setAutoUpdate()
-
-autoUpdater.on('update-available', () => {
-  console.log('UPDATE')
-});autoUpdater.on('update-downloaded', () => {
-  console.log('DOWNLOADED')
-});
-
-if (process.platform != "darwin"){
-  function showNotification (message) {
-    if (Notification.isSupported()){
-      const NOTIFICATION_TITLE = 'Muezzin'
-      const NOTIFICATION_BODY = message
-      new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY, icon:"../ressources/images/BETA.png" }).show()
-    }
-  }
+if (process.platform != "darwin"){ //macOS apps need to be signed, but it isn't
+  setAutoUpdate()
+  autoUpdater.on('update-available', () => {
+    console.log('UPDATE')
+  });autoUpdater.on('update-downloaded', () => {
+    console.log('DOWNLOADED')
+  });
 }
 
+function showNotification (message) {
+  if (Notification.isSupported()){
+    const NOTIFICATION_TITLE = 'Muezzin'
+    const NOTIFICATION_BODY = message
+    new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY, icon:"../ressources/images/BETA.png" }).show()
+  }
+}
 
 var lat, lon, calcmeth, madhab, hlr, pcr, shafaq, prayerTimes, adhanPath;
 var customValues, delay;
