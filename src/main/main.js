@@ -119,7 +119,10 @@ const momentz = require('moment-timezone')
 const language = require('../common/language.js')
 const AutoLaunch = require('auto-launch');
 var autoLauncher = new AutoLaunch({
-  name: "Muezzin"
+  name: "Muezzin", 
+  mac:{
+    useLaunchAgent: true
+  }
 });
 
 
