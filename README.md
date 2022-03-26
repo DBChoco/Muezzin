@@ -27,9 +27,9 @@
   <h3 align="center">Muezzin - مؤذن</h3>
 
   <p align="center">
-    A prayer times and Adhan application for Windows and GNU/Linux
+    A prayer times and Adhan application for Windows, macOS and GNU/Linux 
     <br />
-    <a href="https://github.com/DBChoco/MuezzinPrayerTimes/releases/tag/v0.1.1"><strong>Download »</strong></a>
+    <a href="https://github.com/DBChoco/MuezzinPrayerTimes/releases/latest"><strong>Download »</strong></a>
     <br />
     <br />
     <a href="https://github.com/DBChoco/MuezzinPrayerTimes">View Demo</a>
@@ -93,7 +93,6 @@ Currently we support 10, and if you want us to add one more, you can submit a re
 * Svenska
 * Dansk
 
-
 ### Built With
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
@@ -107,7 +106,6 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [Many electron modules]
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 <!-- ROADMAP -->
 ### Roadmap
@@ -124,7 +122,40 @@ See the [open issues](https://github.com/DBChoco/MuezzinPrayerTimes/issues) for 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+<!-- How to install -->
+## How to install
 
+### Windows
+From the  <a href="https://github.com/DBChoco/MuezzinPrayerTimes/releases/latest"><strong>download page</strong></a>, select the .EXE installer.
+Download it and install it. 
+
+You might receive a warning, that is because the app is not signed and I do not have the money to do so. The app is completely safe, you can read through the source code or have a trusted friend do it for you, all the code is <b>Open-Source</b>.
+
+### macOS
+From the  <a href="https://github.com/DBChoco/MuezzinPrayerTimes/releases/latest"><strong>download page</strong></a>, select the .DMG installer.
+Download it and install it. 
+
+Same problem as the Windows installer
+> You might receive a warning, that is because the app is not signed and I do not have the money to do so. The app is completely safe, you can read through the source code or have a trusted friend do it for you, all the code is <b>Open-Source</b>.
+
+### GNU/Linux
+#### Arch based distributions
+You can either:
+ <ul>
+  <li><a href="https://github.com/DBChoco/MuezzinPrayerTimes/releases/latest"><strong>Download the .PACMAN file</strong></a> and install it through your favorite package manager</li>
+  <li>Install it thorugh the AUR package <a href="https://aur.archlinux.org/packages/muezzin-bin"><strong>muezzin-bin</strong></a> with yay -S muezzin-bin
+  </li>
+</ul> 
+
+#### Debian based distributions
+You can download the <a href="https://github.com/DBChoco/MuezzinPrayerTimes/releases/latest"><strong>Download the .DEB file</strong></a> and install it through your favorite package manager
+
+#### Others
+For other distributions, on the <a href="https://github.com/DBChoco/MuezzinPrayerTimes/releases/latest"><strong>download page</strong></a> you can choose from:
+ <ul>
+  <li>The .APPIMAGE file, which you can run on any Linux distribution and add to your autorun script</li>
+  <li>The .TAR.GZ file, which you can unarchive wherever you want and launch via the terminal</li>
+</ul> 
 
 <!-- CONTRIBUTING -->
 ## Contributing
