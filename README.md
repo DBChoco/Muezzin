@@ -49,10 +49,25 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#supported-languages">Supported Languages</a></li>
         <li><a href="#built-with">Built With</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
       </ul>
     </li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li>
+      <a href="#how-to-install">How To Install</a>
+      <ul>
+        <li><a href="#windows">Windows</a></li>
+        <li><a href="#macos">macOS</a></li>
+        <li><a href="#gnulinux">GNU/Linux</a>
+          <ul>
+            <li><a href="#arch-based-distributions">Arch based distributions</a></li>
+            <li><a href="#debian-based-distributions">Debian based distributions</a></li>
+            <li><a href="#others">Others</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -78,8 +93,6 @@ Currently we support 10, and if you want us to add one more, you can submit a re
   <img src="screenshots/settingsDark.png" alt="screenshot1" width="70%">
 </div>
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 <!-- SUPPORTED LANGUAGES -->
 ### Supported Languages
 * English
@@ -104,8 +117,6 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [fontAwesome](https://fontawesome.com/)
 * [Moment & Moment-timezone](https://momentjs.com/)
 * [Many electron modules]
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- ROADMAP -->
 ### Roadmap
@@ -156,6 +167,8 @@ For other distributions, on the <a href="https://github.com/DBChoco/MuezzinPraye
   <li>The .APPIMAGE file, which you can run on any Linux distribution and add to your autorun script</li>
   <li>The .TAR.GZ file, which you can unarchive wherever you want and launch via the terminal</li>
 </ul> 
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 ## Contributing
