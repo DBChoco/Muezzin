@@ -105,6 +105,7 @@ Currently we support 10, and if you want us to add one more, you can submit a re
 * Norks
 * Svenska
 * Dansk
+* Urdu
 
 ### Built With
 
@@ -127,7 +128,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 - [x] Fix German calendar
 - [x] Prayer times adjustements
 - [ ] Multi-language Support
-    - [ ] Urdu
+    - [x] Urdu
 
 See the [open issues](https://github.com/DBChoco/MuezzinPrayerTimes/issues) for a full list of proposed features (and known issues).
 
