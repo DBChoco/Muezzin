@@ -266,6 +266,9 @@ function msToTime(duration){ //https://stackoverflow.com/questions/19700283/how-
     minutes = Math.floor((duration / (1000 * 60)) % 60),
     hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
   if (seconds == 60){
+    if (minutes == 0){
+      minutes = 1;
+    }
     seconds = 00;
   }
   var res = [hours, minutes, seconds]

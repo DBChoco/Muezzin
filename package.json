@@ -63,7 +63,7 @@
     "linux": {
       "icon": "ressources/images/logo.png",
       "category": "Utility",
-      "target": ["AppImage", "snap", "tar.gz", "pacman"]
+      "target": ["AppImage", "snap", "tar.gz", "pacman", "deb"]
     },
     "mac": {
       "icon": "ressources/images/logo.png",
