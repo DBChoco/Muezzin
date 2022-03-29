@@ -126,10 +126,8 @@ This section should list any major frameworks/libraries used to bootstrap your p
   - [ ] Mosque interface with delays
   - [ ] Manual times
   - [ ] Custom text 
-- [x] Launch minimized
-- [x] Add sunnah times
-- [x] Fix German calendar
-- [x] Prayer times adjustements
+- [ ] Add Qur'an reading page
+- [ ] Add Tasbih
 - [ ] Multi-language Support
     - [x] Urdu
 
