@@ -36,7 +36,6 @@
     "electron-log": "^4.4.6",
     "electron-store": "^8.0.1",
     "electron-updater": "^4.6.5",
-    "font-awesome": "^4.7.0",
     "ip-geolocation-api-javascript-sdk": "^1.0.7",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.34"
@@ -54,21 +53,40 @@
       "icon": "ressources/images/logo.png",
       "target": "nsis"
     },
-    "appx":{
+    "appx": {
       "applicationId": "Muezzin",
       "backgroundColor": "#382bcc",
       "publisher": "DBChoco",
-      "languages": ["EN", "FR", "ES", "AR", "DE", "IT", "NB", "SV", "DA", "NL"]
+      "languages": [
+        "EN",
+        "FR",
+        "ES",
+        "AR",
+        "DE",
+        "IT",
+        "NB",
+        "SV",
+        "DA",
+        "NL"
+      ]
     },
     "linux": {
       "icon": "ressources/images/logo.png",
       "category": "Utility",
-      "target": ["AppImage", "snap", "tar.gz", "pacman", "deb"]
+      "target": [
+        "AppImage",
+        "snap",
+        "tar.gz",
+        "pacman",
+        "deb"
+      ]
     },
     "mac": {
       "icon": "ressources/images/logo.png",
       "category": "public.app-category.utilities",
-      "target": ["dmg"]
+      "target": [
+        "dmg"
+      ]
     }
   },
   "bugs": {

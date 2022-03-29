@@ -430,7 +430,7 @@ function loadLang(){
   document.getElementById('asr').innerText = langAsr
   document.getElementById('maghrib').innerText = langMaghrib
   document.getElementById('isha').innerText = langIsha
-  document.getElementById('settingsWheel').innerText = window.api.getLanguage(lang, 'settings')
+  document.getElementById('settingsWheel').innerHTML = '<i class="fa fa-cog" aria-hidden="true"></i>  ' +  window.api.getLanguage(lang, 'settings')
   document.getElementById('motn').innerText = window.api.getLanguage(lang, 'motn')
   document.getElementById('totn').innerText = window.api.getLanguage(lang, 'totn')
 }

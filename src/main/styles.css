@@ -89,6 +89,11 @@ body{
 #volume{
     padding-left: 10px;
     width: fit-content;
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: 10px;
+    font-size: x-large;
 }
 
 .form-range{
@@ -113,15 +118,11 @@ body{
 }*/
 
 #volSlider{
-    padding-top: 12px;
+    margin: auto 10px auto 10px;
 }
 
 .progress{
     height: 2px;
-}
-
-.bi{
-    font-size: 24px;
 }
 
 .center{

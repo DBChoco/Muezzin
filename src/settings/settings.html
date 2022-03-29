@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../node_modules/bootstrap-dark-5/dist/js/darkmode.js"></script>
+    <link href="../../ressources/fonts/all.min.css" rel="stylesheet" >
     <link href="settings.css" rel="stylesheet">
     <script src="settings.js"></script>
     <title>Muezzin</title>
@@ -17,12 +18,19 @@
     <div id="settingsContainer" class="container">
     <div class="d-flex align-items-start">
       <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <button class="nav-link active" id="v-pills-general-tab" data-bs-toggle="pill" data-bs-target="#v-pills-general" type="button" role="tab" aria-controls="v-pills-general" aria-selected="true">General</button>
-        <button class="nav-link" id="v-pills-location-tab" data-bs-toggle="pill" data-bs-target="#v-pills-location" type="button" role="tab" aria-controls="v-pills-location" aria-selected="false">Location</button>
+        <button class="nav-link active" id="v-pills-general-tab" data-bs-toggle="pill" data-bs-target="#v-pills-general" type="button" role="tab" aria-controls="v-pills-general" aria-selected="true">
+          <i class="fa-solid fa-mosque"></i>
+          General
+        </button>
+        <button class="nav-link" id="v-pills-location-tab" data-bs-toggle="pill" data-bs-target="#v-pills-location" type="button" role="tab" aria-controls="v-pills-location" aria-selected="false">
+          <i class="fa-solid fa-location-pin"></i>
+          Location
+        </button>
         <button class="nav-link" id="v-pills-audio-tab" data-bs-toggle="pill" data-bs-target="#v-pills-audio" type="button" role="tab" aria-controls="v-pills-audio" aria-selected="false">Audio</button>
         <button class="nav-link" id="v-pills-appearance-tab" data-bs-toggle="pill" data-bs-target="#v-pills-appearance" type="button" role="tab" aria-controls="v-pills-appearance" aria-selected="false">Appearance</button>
         <button class="nav-link" id="v-pills-advanced-tab" data-bs-toggle="pill" data-bs-target="#v-pills-advanced" type="button" role="tab" aria-controls="v-pills-advanced" aria-selected="false">Advanced</button>
         <button class="nav-link" id="v-pills-adjustments-tab" data-bs-toggle="pill" data-bs-target="#v-pills-adjustments" type="button" role="tab" aria-controls="v-pills-adjustments" aria-selected="false">Adjustments</button>
+        <button class="nav-link" id="v-pills-mosque-tab" data-bs-toggle="pill" data-bs-target="#v-pills-mosque" type="button" role="tab" aria-controls="v-pills-mosque" aria-selected="false">Mosque mode</button>
       </div>
 
       <div class="tab-content" id="v-pills-tabContent">
@@ -466,6 +474,65 @@
                     Isha Adjustments
                   </label>
                   <input id="ishaAdjInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
+                  placeholder="00.00"> 
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="tab-pane fade" id="v-pills-mosque" role="tabpanel" aria-labelledby="v-pills-mosque-tab"> <!-- Mosque mode -->
+          <div class="grid-container">
+            <div class="grid-itemL"> 
+              <p class="h4" id="mosqueModeText">Mosque mode</p> 
+            </div>
+            <div class="grid-itemR"> 
+              <form >
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="mosqueCheck" id="mosqueCheckText">
+                    Enable mosque mode
+                  </label>
+                  <input class="form-check-input" type="checkbox" id="mosqueCheck" unchecked>
+                </div>
+                
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="fajrdelayInput" id="fajrdelayText">
+                    Fajr delay
+                  </label>
+                  <input id="fajrdelayInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
+                  placeholder="00.00"> 
+                </div>
+
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="dhuhrdelayInput" id="dhuhrdelayText">
+                    Dhuhr delay
+                  </label>
+                  <input id="dhuhrdelayInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
+                  placeholder="00.00"> 
+                </div>
+
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="asrdelayInput" id="asrdelayText">
+                    Asr delay
+                  </label>
+                  <input id="asrdelayInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
+                  placeholder="00.00"> 
+                </div>
+
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="maghribdelayInput" id="maghribdelayText">
+                    Maghrib delay
+                  </label>
+                  <input id="maghribdelayInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
+                  placeholder="00.00"> 
+                </div>
+              
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="ishadelayInput" id="ishadelayText">
+                    Isha delay
+                  </label>
+                  <input id="ishadelayInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
                   placeholder="00.00"> 
                 </div>
               </form>

@@ -25,7 +25,7 @@ function createWindow () {
   })
 
   ///DEBUG
-  mainWindow.removeMenu()
+  //mainWindow.removeMenu()
   
   // and load the index.html of the app.
   mainWindow.loadFile('src/main/index.html')
@@ -124,7 +124,6 @@ var autoLauncher = new AutoLaunch({
     useLaunchAgent: true
   }
 });
-
 
 
 const { autoUpdater } = require("electron-updater")
