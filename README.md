@@ -210,7 +210,7 @@ Project Link: [https://github.com/DBChoco/Muezzin](https://github.com/your_usern
 * [Source of Bismillah startup sound](https://www.youtube.com/c/FatihSeferagic/featured)
 * [Inspiration for logo](https://www.youtube.com/watch?v=oM5hNuAmWs0)
 * [Template for the README page](https://github.com/othneildrew/Best-README-Template)
-* Thanks to a few of my friends for helping me translate Muezzin.
+* Thanks to a few of my friends for helping me translate Muezzin and build it for macOS
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
