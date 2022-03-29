@@ -128,6 +128,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
   - [ ] Custom text 
 - [ ] Add Qur'an reading page
 - [ ] Add Tasbih
+- [ ] Add icons to settings
 - [ ] Multi-language Support
     - [x] Urdu
 
