@@ -115,9 +115,9 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [Bootstrap](https://getbootstrap.com)
 * [Bootstrap-dark-5](https://vinorodrigues.github.io/bootstrap-dark-5/)
 * [adhan-js](https://github.com/batoulapps/adhan-js)
-* [fontAwesome](https://fontawesome.com/)
+* [FontAwesome](https://fontawesome.com/)
 * [Moment & Moment-timezone](https://momentjs.com/)
-* [Many electron modules]
+* Many electron modules
 
 <!-- ROADMAP -->
 ### Roadmap
