@@ -456,6 +456,14 @@ function addLangListener(){
 * @param  lang   the language selected by the user
 */
 function loadLanguage(lang){
+  document.getElementById("v-pills-general-tab").innerHTML = '<i class="fa-solid fa-kaaba"></i>  ' +  window.api.getLanguage(lang, "general");
+  document.getElementById("v-pills-location-tab").innerHTML = '<i class="fa-solid fa-location-dot"></i>  ' + window.api.getLanguage(lang, "location");
+  document.getElementById("v-pills-audio-tab").innerHTML = '<i class="fa-solid fa-volume-high"></i>  ' + window.api.getLanguage(lang, "audio");
+  document.getElementById("v-pills-appearance-tab").innerHTML = '<i class="fa-solid fa-language"></i>  ' +  window.api.getLanguage(lang, "appearance");
+  document.getElementById("v-pills-advanced-tab").innerHTML = '<i class="fa-solid fa-sliders"></i>  ' + window.api.getLanguage(lang, "advanced");
+  document.getElementById("v-pills-adjustments-tab").innerHTML = '<i class="fa-solid fa-clock"></i>  ' + window.api.getLanguage(lang, "adjustements");
+
+
   document.getElementById("langText").innerText = window.api.getLanguage(lang, "language");
   document.getElementById("settingsTitle").innerText = window.api.getLanguage(lang, "settings");
   document.getElementById("tfText").innerText = window.api.getLanguage(lang, "timeformat");
@@ -510,11 +518,6 @@ function loadLanguage(lang){
   document.getElementById("shafaqG").innerText = window.api.getLanguage(lang, "general");
   document.getElementById("shafaqR").innerText = window.api.getLanguage(lang, "ahmer");
   document.getElementById("shafaqW").innerText = window.api.getLanguage(lang, "abyad");
-  document.getElementById("v-pills-general-tab").innerText = window.api.getLanguage(lang, "general");
-  document.getElementById("v-pills-location-tab").innerText = window.api.getLanguage(lang, "location");
-  document.getElementById("v-pills-audio-tab").innerText = window.api.getLanguage(lang, "audio");
-  document.getElementById("v-pills-appearance-tab").innerText = window.api.getLanguage(lang, "appearance");
-  document.getElementById("v-pills-advanced-tab").innerText = window.api.getLanguage(lang, "advanced");
   document.getElementById("autoStartText").innerText = window.api.getLanguage(lang, "autoStart");
   document.getElementById("autoStartCheckText").innerText = window.api.getLanguage(lang, "startAtLaunch");
   document.getElementById("copyright").innerText = window.api.getLanguage(lang, "copyright");
@@ -537,8 +540,7 @@ function loadLanguage(lang){
   document.getElementById("France18").innerText = window.api.getLanguage(lang, "france") + " 18";
   document.getElementById("Russia").innerText = window.api.getLanguage(lang, "russia");
   document.getElementById("Gulf").innerText = window.api.getLanguage(lang, "gulf");
-  document.getElementById("adjustmentsText").innerText = window.api.getLanguage(lang, "adjustements");
-  document.getElementById("v-pills-adjustments-tab").innerText = window.api.getLanguage(lang, "adjustements");
+  document.getElementById("adjustmentsText").innerHTML = window.api.getLanguage(lang, "adjustements");
   document.getElementById("adjCheckText").innerText = window.api.getLanguage(lang, "enableAdj");
   document.getElementById("fajrAdjText").innerText = window.api.getLanguage(lang, "fajrAdj");
   document.getElementById("dhuhrAdjText").innerText = window.api.getLanguage(lang, "dhuhrAdj");
@@ -678,5 +680,51 @@ async function saveAdjustments(){
   var adjustements = [adjCheck, Math.round(fajrAdj),Math.round(dhuhrAdj),Math.round(asrAdj),Math.round(maghribrAdj),Math.round(ishaAdj)]
   
   await window.api.setToStore('adj', adjustements);
+}
+
+
+//Loads the prayer times mosqueMode from the store and adds an event listener for the mosqueMode check box
+async function loaddelayustments(){
+  var mosqueMode = await window.api.getFromStore('mosque', [false, 0,0,0,0,0]);
+  for (let i = 1; i <= 5; i++){
+    if (mosqueMode[i] == undefined){
+      mosqueMode[i] = 0;
+    }
+  }
+  document.getElementById("delayCheck").checked = mosqueMode[0];
+  document.getElementById("fajrdelayInput").value = mosqueMode[1];
+  document.getElementById("dhuhrdelayInput").value = mosqueMode[2];
+  document.getElementById("asrdelayInput").value = mosqueMode[3];
+  document.getElementById("maghribdelayInput").value = mosqueMode[4];
+  document.getElementById("ishadelayInput").value = mosqueMode[5];
+
+  enableMosque(document.getElementById("delayCheck").checked)
+  
+  document.getElementById("delayCheck").addEventListener("change", function(){
+    enableMosque(document.getElementById("delayCheck").checked)
+  })
+
+  function enableMosque(boolean){
+    document.getElementById("fajrdelayInput").disabled = !boolean;
+    document.getElementById("dhuhrdelayInput").disabled = !boolean;
+    document.getElementById("asrdelayInput").disabled = !boolean;
+    document.getElementById("maghribdelayInput").disabled = !boolean;
+    document.getElementById("ishadelayInput").disabled = !boolean;
+    document.getElementById("adhanCheck").disabled = !boolean;
+    adhanCheck
+  }
+}
+
+async function saveMosqueMode(){
+  var mosqueCheck = document.getElementById("mosqueCheck").checked;  
+  var fajrdelay = document.getElementById("fajrdelayInput").value;
+  var dhuhrdelay = document.getElementById("dhuhrdelayInput").value;
+  var asrdelay = document.getElementById("asrdelayInput").value;
+  var maghribrdelay = document.getElementById("maghribdelayInput").value;
+  var ishadelay = document.getElementById("ishadelayInput").value;
+
+  var mosqueMode = [mosqueCheck, Math.round(fajrdelay),Math.round(dhuhrdelay),Math.round(asrdelay),Math.round(maghribrdelay),Math.round(ishadelay)]
+  
+  await window.api.setToStore('mosque', mosqueMode);
 }
 
