@@ -37,36 +37,41 @@
   </header>
   <body class="d-flex flex-column min-vh-100">
     
-    <div id="main" class="d-flex flex-column">
-      <h1 class="shader" id="clock">00:00</h1>
-      <h3 class="shader" id="dateLoc">Date today - Location</h3>
-      <h1 class="shader" id="timeLeft">Time until XYZ prayer: 00:00</h1>
-    </div>
-
-
-    <div class="box">
-      <div class="grid-container shader">
-        <div class="grid-item left grid-top" id="fajr"> Fajr </div>
-        <div class="grid-item right grid-top" id="fajrTime"> 00:00 </div>
-        <div class="grid-item left" id="sunrise"> Sunrise </div>  
-        <div class="grid-item right" id="sunriseTime"> 00:00 </div>
-        <div class="grid-item left" id="dhuhr"> Duhr </div>
-        <div class="grid-item right" id="dhuhrTime"> 00:00 </div>
-        <div class="grid-item left" id="asr"> Asr </div>
-        <div class="grid-item right" id="asrTime"> 00:00 </div>
-        <div class="grid-item left" id="maghrib"> Maghrib </div>
-        <div class="grid-item right" id="maghribTime"> 00:00 </div>
-        <div class="grid-item left grid-bottom" id="isha"> Isha </div>
-        <div class="grid-item right grid-bottom" id="ishaTime"> 00:00 </div>
-        <div class="grid-item left motn" id="motn"> Middle of the night </div>
-        <div class="grid-item right motn" id="motnTime"> 00:00 </div>
-        <div class="grid-item left totn" id="totn"> Third of the night </div>
-        <div class="grid-item right totn" id="totnTime"> 00:00 </div>
-      </div>
-      <div class="box-bottom">
-        <input data-provide="datepicker" type="date" id="calendar" name="calendar">
+    <div id="mainContainer">
+      <div id="main" class="d-flex flex-column">
+        <h1 class="shader" id="clock">00:00</h1>
+        <h3 class="shader" id="dateLoc">Date today - Location</h3>
+        <h1 class="shader" id="timeLeft">Time until XYZ prayer: 00:00</h1>
       </div>
     </div>
+    
+
+    <div id="boxContainer">
+      <div class="box" id="box">
+        <div class="grid-container shader">
+          <div class="grid-item left grid-top" id="fajr"> Fajr </div>
+          <div class="grid-item right grid-top" id="fajrTime"> 00:00 </div>
+          <div class="grid-item left" id="sunrise"> Sunrise </div>  
+          <div class="grid-item right" id="sunriseTime"> 00:00 </div>
+          <div class="grid-item left" id="dhuhr"> Duhr </div>
+          <div class="grid-item right" id="dhuhrTime"> 00:00 </div>
+          <div class="grid-item left" id="asr"> Asr </div>
+          <div class="grid-item right" id="asrTime"> 00:00 </div>
+          <div class="grid-item left" id="maghrib"> Maghrib </div>
+          <div class="grid-item right" id="maghribTime"> 00:00 </div>
+          <div class="grid-item left grid-bottom" id="isha"> Isha </div>
+          <div class="grid-item right grid-bottom" id="ishaTime"> 00:00 </div>
+          <div class="grid-item left motn" id="motn"> Middle of the night </div>
+          <div class="grid-item right motn" id="motnTime"> 00:00 </div>
+          <div class="grid-item left totn" id="totn"> Third of the night </div>
+          <div class="grid-item right totn" id="totnTime"> 00:00 </div>
+        </div>
+        <div class="box-bottom">
+          <input data-provide="datepicker" type="date" id="calendar" name="calendar">
+        </div>
+      </div>
+    </div>
+    
 
     <!-- You can also require other files to run in this process -->
     <script src="renderer.js"></script>
