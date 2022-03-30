@@ -159,7 +159,7 @@ function checkTime(){
     var prayers = nextPrayer();
     if (prayers != undefined && prayers[0] != undefined && (adhanCheck || notifCheck)){
         var timeUntilCurrentPrayer = timeUntilPrayer(prayers[0])
-        console.log(timeUntilCurrentPrayer)
+        //console.log(timeUntilCurrentPrayer)
         if(timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] == -1 && timeUntilCurrentPrayer[2] == 0){ //-1 because math.floor
           //if(timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] == -26 && timeUntilCurrentPrayer[2] == 0){ //TESTING
           if (adhanCheck){
