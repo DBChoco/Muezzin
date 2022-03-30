@@ -37,6 +37,7 @@ window.addEventListener('loadedSettings', () => {
     loadBackgroundImage()
     setKeyPress()
     setupButtonListeners()
+    sizeListener()
     
     const interval = setInterval(function() {
       loadClock()
@@ -486,4 +487,22 @@ function calculateSunnah(){
   //totn = intToHour(msToTime(prayerTimes.maghrib.getTime() +  nightDuration * (2 / 3);
   motn = new Date(prayerTimes.maghrib.getTime() +  nightDuration / 2);
   totn = new Date(prayerTimes.maghrib.getTime() +  nightDuration * (2 / 3));
+}
+
+function sizeListener(){
+  window.addEventListener('resize', function(){
+    if (this.window.innerHeight < 500){
+      if (this.window.innerWidth < 500){
+        this.document.getElementById("box").style.display = "none"
+      }
+      else{
+        this.document.getElementById("box").style.display = "block"
+        this.document.getElementById("mainContainer").appendChild(this.document.getElementById("box"))
+      }
+    }
+    else{
+      this.document.getElementById("box").style.display = "block"
+      this.document.getElementById("boxContainer").appendChild(this.document.getElementById("box"))
+    }
+  })
 }

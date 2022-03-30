@@ -24,6 +24,10 @@ body{
     margin-top: 6vh;
 }
 
+#title{
+    font-size: 4vh;
+}
+
 #dateLoc{
     font-size: 3vh;
     margin-bottom: 5vh;
@@ -36,16 +40,17 @@ body{
 
 .grid-container {
     margin: auto;
+    margin-bottom: 1vh;
     display: grid;
     grid-template-columns:  auto auto;
-    width: 450px;
+    width: 48vh;
 }
 
 .grid-item {
     border-top: 1px solid ;
     border-bottom: 1px solid;
     padding: 5px;
-    font-size: 30px;
+    font-size: 3vh;
     text-align: center;
 }
 
@@ -66,26 +71,30 @@ body{
 
 .box-bottom{
     text-align: center;
-    padding-top: 20px;
 }
 
 .box{
     margin: 2vh;
-    margin-top: auto;
     margin-bottom: auto;
     align-items: center;
+}
+
+#calendar{
+    height: max(25px, 3vh);
+    font-size: max(12px, 1.5vh);
 }
 
 #settingsWheel{
     margin-left: auto;
     margin-right: 10px;
-    font-size: 24px;
+    font-size: max(1.5vh, 15px);
 }
 
 #stopB, #playB{
     margin: 10px;
     margin-bottom: 3px;
     margin-right: 0px;
+    font-size: max(1.5vh, 15px);
 }
 
 #volume{
