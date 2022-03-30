@@ -37,7 +37,6 @@ window.addEventListener('loadedSettings', () => {
     loadBackgroundImage()
     setKeyPress()
     setupButtonListeners()
-    setupUpdateModal()
     
     const interval = setInterval(function() {
       loadClock()
@@ -445,48 +444,6 @@ function setupButtonListeners(){
   })
   document.getElementById('stopB').addEventListener("click", function(){
     window.api.send("stop");
-  })
-}
-
-function setupUpdateModal(){
-  var myModal = new bootstrap.Modal(document.getElementById('updateModal'), {
-  })
-  var modal = document.getElementById("updateModal")
-  var modalTitle = document.getElementById("updateModalLabel")
-  var modalBody = document.getElementById('modalBody')
-  var modalButton1 = document.getElementById('modalButton1')
-
-
-  window.api.handle('update_available', msg => {
-    modalTitle.innerText = window.api.getLanguage(lang, 'updateAvalible')
-    modalBody.innerText = window.api.getLanguage(lang, 'downloadSoon')
-    modalButton1.innerText = window.api.getLanguage(lang, 'ok')
-    modalButton1.addEventListener("click", function(){
-      myModal.hide()
-    })
-    myModal.show()
-  })
-
-  window.api.handle('update_downloaded', msg => {
-    modalTitle.innerText = window.api.getLanguage(lang, 'updateDownloaded')
-    modalBody.innerText = window.api.getLanguage(lang, 'downloadFinished')
-    modalButton1.innerText = window.api.getLanguage(lang, 'restart')
-    modalButton1.addEventListener("click", function(){
-      window.api.send('restart_app');
-    })
-    myModal.show()
-  })
-
-  window.api.handle('update_error', msg => {
-    modalTitle.innerText = window.api.getLanguage(lang, 'error')
-    var link = document.createElement("a")
-    link.href = "https://github.com/DBChoco/Muezzin"
-    modalBody.innerText = window.api.getLanguage(lang, 'submitReport') + " " + link
-    modalButton1.innerText = window.api.getLanguage(lang, 'ok')
-    modalButton1.addEventListener("click", function(){
-      myModal.hide()
-    })
-    myModal.show()
   })
 }
 
