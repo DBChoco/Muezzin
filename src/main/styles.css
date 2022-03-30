@@ -21,7 +21,7 @@ body{
 
 #clock{
     font-size: 10vh;
-    margin-top: 6vh;
+    margin-top: 3vh;
 }
 
 #title{
@@ -105,6 +105,13 @@ body{
     margin-top: auto;
     margin-bottom: 10px;
     font-size: x-large;
+}
+
+#mainContainer{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    margin: auto;
 }
 
 .form-range{
