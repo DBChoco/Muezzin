@@ -1,6 +1,7 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow, ipcMain, Tray, Menu, Notification, nativeImage} = require('electron')
 const path = require('path')
+const {setUpdateNotification} = require('electron-update-notifier');
 
 let tray = null
 let mainWindow, mediaWindow;
@@ -125,22 +126,16 @@ var autoLauncher = new AutoLaunch({
   }
 });
 
-
-const { autoUpdater } = require("electron-updater")
-if (process.platform != "darwin"){ //macOS apps need to be signed, but it isn't
-  setAutoUpdate()
-  autoUpdater.on('update-available', () => {
-    console.log('UPDATE')
-  });autoUpdater.on('update-downloaded', () => {
-    console.log('DOWNLOADED')
-  });
-}
+setUpdateNotification({
+  debug: true,
+  silent: true // Optional, notify when new version available, otherwise remain silent 
+})
 
 function showNotification (message) {
   if (Notification.isSupported()){
     const NOTIFICATION_TITLE = 'Muezzin'
     const NOTIFICATION_BODY = message
-    new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY, icon:"../ressources/images/BETA.png" }).show()
+    new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY, icon:"../ressources/images/icon.png" }).show()
   }
 }
 
@@ -150,12 +145,11 @@ var prayerTimes, datePrayerTimes, tomorrowPrayers;
 var adhanCheck, notifCheck, lang, startupSound;
 var langFajr, langDhuhr, langAsr, langMaghrib, langIsha, langAdhan, langNow;
 var adjustements;
-
-
 checkFirstTime()
 loadSettings();
 setUpHandlers();
 checkTime();
+
 
 /**
 * Checks for Athan time and current time, then if they are the same, it plays the Athan
@@ -409,6 +403,7 @@ async function setUpHandlers(){
   })
 }
 
+
 function calcTomorrowPrayers(){
   const today = new Date();
   const tomorrow = new Date();
@@ -602,6 +597,7 @@ function loadDefaultCalcMethod(continentCode, countryCode){
   }
 }
 
+
 function loadLang(){
   langFajr =  language.loadTrans(lang, 'fajr')
   langSunrise =  language.loadTrans(lang, 'sunrise')
@@ -612,6 +608,7 @@ function loadLang(){
   langAdhan = language.loadTrans(lang, 'adhan')
   langNow = language.loadTrans(lang, 'now')
 }
+
 
 function setAutoStart(autoStart){
   if(autoStart){
@@ -632,28 +629,4 @@ function setAutoStart(autoStart){
       }
     }
   }
-}
-
-
-/*
-*Set up autoupdate + handlers and eventlisteners
-*https://medium.com/@johndyer24/creating-and-deploying-an-auto-updating-electron-app-for-mac-and-windows-using-electron-builder-6a3982c0cee6
-*/
-function setAutoUpdate(){
-  autoUpdater.logger = require("electron-log")
-  autoUpdater.logger.transports.file.level = "info"
-  autoUpdater.checkForUpdatesAndNotify()
-  autoUpdater.on('update-available', () => {
-    mainWindow.webContents.send('update_available');
-  });
-  autoUpdater.on('update-downloaded', () => {
-    mainWindow.webContents.send('update_downloaded');
-  });
-  autoUpdater.on('error', () => {
-    mainWindow.webContents.send('update_error');
-  });
-  
-  ipcMain.handle('restart_app', () => {
-    autoUpdater.quitAndInstall();
-  });
 }
