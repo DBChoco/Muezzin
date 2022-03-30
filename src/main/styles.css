@@ -71,6 +71,8 @@ body{
 
 .box{
     margin: 2vh;
+    margin-top: auto;
+    margin-bottom: auto;
     align-items: center;
 }
 
