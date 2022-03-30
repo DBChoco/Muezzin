@@ -1,6 +1,6 @@
 {
   "name": "muezzin",
-  "version": "0.1.2",
+  "version": "0.1.6",
   "description": "Prayer Time Caller",
   "main": "src/main/main.js",
   "scripts": {
