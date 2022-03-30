@@ -463,6 +463,7 @@ function loadLanguage(lang){
   document.getElementById("v-pills-advanced-tab").innerHTML = '<i class="fa-solid fa-sliders"></i>  ' + window.api.getLanguage(lang, "advanced");
   document.getElementById("v-pills-adjustments-tab").innerHTML = '<i class="fa-solid fa-clock"></i>  ' + window.api.getLanguage(lang, "adjustements");
 
+  document.getElementById("return").innerHTML = '<i class="fa fa-arrow-circle-left"></i>  ' + window.api.getLanguage(lang, "return");
 
   document.getElementById("langText").innerText = window.api.getLanguage(lang, "language");
   document.getElementById("settingsTitle").innerText = window.api.getLanguage(lang, "settings");
@@ -534,7 +535,7 @@ function loadLanguage(lang){
   document.getElementById("ishaAngleText").innerText = window.api.getLanguage(lang, "iAngle");
   document.getElementById("delayText").innerText = window.api.getLanguage(lang, "delayAfterM");
   document.getElementById("delayFormText").innerText = window.api.getLanguage(lang, "delayMin");
-  document.getElementById("return").innerText = window.api.getLanguage(lang, "return");
+  
   document.getElementById("France12").innerText = window.api.getLanguage(lang, "france") + " 12";
   document.getElementById("France15").innerText = window.api.getLanguage(lang, "france") + " 15";
   document.getElementById("France18").innerText = window.api.getLanguage(lang, "france") + " 18";
