@@ -1,27 +1,10 @@
 <div id="top"></div>
 
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
--->
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/DBChoco/MuezzinPrayerTimes">
-    <img src="ressources/images/logo.png" alt="Logo" width="150" height="150">
+    <img src="ressources/images/icon.png" alt="Logo" width="150" height="150">
   </a>
 
   <h3 align="center">Muezzin - مؤذن</h3>
@@ -39,6 +22,34 @@
     <a href="https://github.com/DBChoco/MuezzinPrayerTimes/issues">Request Feature</a>
   </p>
 </div>
+
+<p align="center">
+  <a href="https://github.com/DBChoco/Muezzin/graphs/contributors" alt="Contributors">
+      <img src="https://img.shields.io/github/contributors/DBChoco/Muezzin" />
+  </a>
+  <a href="https://github.com/DBChoco/Muezzin/pulse" alt="Activity">
+      <img src="https://img.shields.io/github/commit-activity/m/DBChoco/Muezzin" />
+  </a>
+  <a href="https://github.com/DBChoco/Muezzin" alt="Activity">
+        <img src="https://img.shields.io/github/stars/DBChoco/Muezzin.svg" />
+  </a>
+  <a href="https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2FDBChoco" alt="Activity">
+        <img src="https://img.shields.io/github/followers/DBChoco.svg?style=social&label=Follow&maxAge=2592000" />
+  </a>
+  <a href="https://www.reddit.com/r/Muezzin/" alt="Reddit">
+        <img src="https://aleen42.github.io/badges/src/reddit.svg" />
+  </a>
+  <br>
+  <a href="https://github.com/DBChoco/Muezzin" alt="Activity">
+        <img src="https://img.shields.io/github/release/DBChoco/Muezzin.svg" />
+  </a>
+  <a href="https://aur.archlinux.org/packages/muezzin-bin" alt="AUR">
+        <img src="https://img.shields.io/aur/version/muezzin-bin" />
+  </a>
+  <a href="https://snapcraft.io/muezzin">
+    <img alt="muezzin" src="https://snapcraft.io/muezzin/badge.svg" />
+  </a>
+</p>
 
 
 
