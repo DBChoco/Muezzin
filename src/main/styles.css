@@ -84,7 +84,7 @@ body{
 #settingsWheel{
     margin-left: auto;
     margin-right: 10px;
-    font-size: max(1.5vh, 15px);
+    font-size: max(1.8vh, 15px);
 }
 
 #stopB, #playB{
