@@ -2,3 +2,5 @@ node_modules
 electron-builder.yml
 .vscode
 dist
+flatpak/.flatpak-builder
+flatpak/build

@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Muezzin
-Exec=muezzin
+Exec=muezzin-run
 Terminal=false
 Type=Application
 Icon=com.muezzin.app
