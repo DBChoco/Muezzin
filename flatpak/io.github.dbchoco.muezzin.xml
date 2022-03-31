@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>cpm.muezzin.app</id>
+  <id>io.github.muezzin</id>
   
   <name>Muezzin</name>
   <summary>Islamic prayer times application</summary>
@@ -16,7 +16,7 @@
     </p>
   </description>
 
-  <launchable type="desktop-id">com.muezzin.app.desktop</launchable>
+  <launchable type="desktop-id">io.github.muezzin.desktop</launchable>
   <screenshots>
     <screenshot type="default">
       <caption>Main Screen - Light Mode</caption>
