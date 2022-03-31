@@ -1,22 +1,5 @@
 <div id="top"></div>
 
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
--->
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -39,6 +22,15 @@
     <a href="https://github.com/DBChoco/MuezzinPrayerTimes/issues">Request Feature</a>
   </p>
 </div>
+
+<p align="center">
+    <a href="https://github.com/DBChoco/Muezzin/graphs/contributors" alt="Contributors">
+        <img src="https://img.shields.io/github/contributors/badges/shields?style=for-the-badge&logo=appveyor" /></a>
+    <a href="https://github.com/DBChoco/Muezzin/pulse" alt="Activity">
+        <img src="https://img.shields.io/github/commit-activity/m/badges/shields?style=for-the-badge&logo=appveyor" /></a>
+    <a href="https://circleci.com/gh/DBChoco/Muezzin/tree/master">
+        <img src="https://img.shields.io/circleci/project/github/badges/shields/master?style=for-the-badge&logo=appveyor" alt="build status"></a>
+</p>
 
 
 
