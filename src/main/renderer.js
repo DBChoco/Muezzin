@@ -37,6 +37,7 @@ window.addEventListener('loadedSettings', () => {
     loadBackgroundImage()
     setKeyPress()
     setupButtonListeners()
+    setupUpdateModal()
     
     const interval = setInterval(function() {
       loadClock()
@@ -69,8 +70,14 @@ function loadHijriDate(){
       hijri = false;
     }
     else{
-      document.getElementById("dateLoc").innerText = ((new Date).toLocaleDateString(lang, 
-        { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })).capitalize()
+      if (lang == "ur"){
+        document.getElementById("dateLoc").innerText = ((new Date).toLocaleDateString("ar", 
+          { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })).capitalize()
+      }
+      else{
+        document.getElementById("dateLoc").innerText = ((new Date).toLocaleDateString(lang, 
+          { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })).capitalize()
+      }
       hijri = true;
     };
   }, 5000)
@@ -486,4 +493,36 @@ function calculateSunnah(){
   //totn = intToHour(msToTime(prayerTimes.maghrib.getTime() +  nightDuration * (2 / 3);
   motn = new Date(prayerTimes.maghrib.getTime() +  nightDuration / 2);
   totn = new Date(prayerTimes.maghrib.getTime() +  nightDuration * (2 / 3));
+}
+
+function setupUpdateModal(){
+  var myModal = new bootstrap.Modal(document.getElementById('updateModal'), {
+  })
+
+  var modalButton1 = document.getElementById('modalButton1')
+  var modalButton2 = document.getElementById('modalButton2')
+  var modalClose = document.getElementById('modalClose')
+
+  window.api.handle('update-available', msg => {
+    /*modalTitle.innerText = window.api.getLanguage(lang, 'updateAvalible')
+    modalBody.innerText = window.api.getLanguage(lang, 'downloadSoon')
+    modalButton1.innerText = window.api.getLanguage(lang, 'ok')*/
+
+    document.getElementById("updateModalLabel").innerText = window.api.getLanguage(lang, 'updateAvailable')
+    document.getElementById('modalBody').innerText = window.api.getLanguage(lang, 'version') + " " + msg[1] + " " + window.api.getLanguage(lang, 'available')
+    modalButton1.innerText = window.api.getLanguage(lang, 'download')
+    modalButton2.innerText = window.api.getLanguage(lang, 'later')
+
+    modalButton1.addEventListener("click", function(){
+      window.api.openExternal("https://github.com/DBChoco/Muezzin/releases/latest")
+    })
+    modalButton2.addEventListener("click", function(){
+      myModal.hide()
+    })
+    modalClose.addEventListener("click", function(){
+      myModal.hide()
+    })
+    
+    myModal.show()
+  })
 }

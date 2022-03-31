@@ -94,17 +94,8 @@ var dict = {
         'france': 'France', //France12 15 & 18
         'russia': 'Russia', //Russia
         'gulf': 'Gulf Region', //Gulf
-        'donate': 'Donate', //menu label
         'preferences': 'Preferences', //menu label
         'resetSettings': 'Reset settings', //menu label
-        'updateAvalible': 'Update avalible', 
-        'downloadSoon': "Download will start soon, you'll be notified when it is ready.", 
-        'updateDownloaded': 'Update downloaded', 
-        'downloadFinished': 'Update downloaded, restart Muezzin to apply it.', 
-        'ok': 'Okay', 
-        'restart': 'Restart', 
-        'error': 'Error while updating', 
-        'submitReport': 'Please submit a report and update the app manually', 
         'adjustements': 'Adjustments', //adjustmentsText
         'here': 'here',
         'enableAdj': 'Enable adjustments', //adjCheckText
@@ -117,6 +108,11 @@ var dict = {
         'motn': 'Middle of the night',  //MOTNCheckText
         'totn': 'Third of the night', //TOTNCheckText
         'minStart': 'Start minimized', //minStartCheckText
+        'updateAvailable': 'Update available', 
+        'version': 'Version',
+        'available': 'is available for download on GitHub',
+        'download': 'Download',
+        'later': 'Later'
     },
     fr: {
         'settings': 'Options', //settingsTitle
@@ -206,17 +202,8 @@ var dict = {
         'france': 'France', //France12 15 & 18
         'russia': 'Russie', //Russia
         'gulf': 'Région du Golfe', //Gulf
-        'donate': 'Faire un don', //menu label
         'preferences': 'Préférences', //menu label
         'resetSettings': 'Réinitialiser les options', //menu label
-        'updateAvalible': 'Mise à jour disponible', 
-        'downloadSoon': "Le téléchargement commencera bientôt, vous serez averti quand il est prêt.", 
-        'updateDownloaded': 'Mise à jour téléchargée', 
-        'downloadFinished': "Mise à jour téléchargée, redémarrez Muzzin pour l'appliquer.", 
-        'ok': "D'accord", 
-        'restart': 'Redémarrer', 
-        'error': 'Erreur lors de la mise à jour', 
-        'submitReport': "Veuillez soumettre un rapport et mettre à jour l'application manuellement", 
         'here': 'ici', 
         'adjustements': 'Ajustements', //adjustmentsText
         'enableAdj': 'Activer les ajustements', //adjCheckText
@@ -229,6 +216,11 @@ var dict = {
         'motn': 'Millieu de la nuit',  //MOTNCheckText
         'totn': 'Tiers de la nuit', //TOTNCheckText
         'minStart': 'Commencé minimisé', //minStartCheckText
+        'updateAvailable': 'Mise à jour disponible', 
+        'version': 'Version',
+        'available': 'est disponible au téléchargement sur GitHub',
+        'download': 'Télécharger',
+        'later': 'Plus tard'
     },
     es: {
         'settings': 'Ajustes', //settingsTitle
@@ -319,18 +311,8 @@ var dict = {
         'france': 'Francia', //France12 15 & 18
         'russia': 'Rusia', //Russia
         'gulf': 'Región del Golfo ', //Gulf
-        'donate': 'Donar', //menu label
         'preferences': 'Preferencias', //menu label
         'resetSettings': 'Reiniciar ajustes', //menu label
-        'updateAvalible': 'Actualizar disponible', 
-        'downloadSoon': "La descarga comenzará pronto, se le notificará cuando esté listo.", 
-        'updateDownloaded': 'Actualización descargada', 
-        'downloadFinished': 'Actualización descargada, reinicie MUEZZIN para aplicarla.', 
-        'ok': 'Okey', 
-        'restart': 'Reiniciar', 
-        'error': 'Error al actualizar', 
-        'submitReport': 'Por favor envíe un informe y actualice la aplicación manualmente', 
-        'here': 'aquí', 
         'adjustements': 'Ajustes', //adjustmentsText
         'enableAdj': 'Activar ajustes', //adjCheckText
         'fajrAdj': 'Ajustes de Fajr', //fajrAdjText
@@ -342,6 +324,11 @@ var dict = {
         'motn': 'Mitad de la noche',  //MOTNCheckText
         'totn': 'Tercio de la noche', //TOTNCheckText
         'minStart': 'Iniciar minimizado', //minStartCheckText
+        'updateAvailable': 'Actualización disponible', 
+        'version': 'Versión',
+        'available': 'está disponible para descargar en GitHub',
+        'download': 'Descargar',
+        'later': 'Luego'
     },
     ar: {
         'settings': 'الإعدادات', //settingsTitle
@@ -432,18 +419,8 @@ var dict = {
         'france': 'فرنسا', //France12 15 & 18
         'russia': 'روسيا', //Russia
         'gulf': 'منطقة الخليج ', //Gulf
-        'donate': 'تبرع', //menu label
         'preferences': 'تفضيلات', //menu label
         'resetSettings': 'اعادة الضبط', //menu label
-        'updateAvalible': 'تحديث متوفرة', 
-        'downloadSoon': "سيبدأ التنزيل قريبا، سيتم إعلامك عندما يكون جاهزا.", 
-        'updateDownloaded': 'تحديث تم التحديث', 
-        'downloadFinished': 'تحديث تم تنزيله، أعد تشغيل Muezzin لتطبيقه.', 
-        'ok': 'حسنا', 
-        'restart': 'اعادة تشغيل', 
-        'error': 'خطأ أثناء التحديث', 
-        'submitReport': 'يرجى تقديم تقرير وتحديث التطبيق يدويا', 
-        'here': 'هنا', 
         'adjustements': 'التعديلات', //adjustmentsText
         'enableAdj': 'تمكين التعديلات', //adjCheckText
         'fajrAdj': 'تعديلات الفجر', //fajrAdjText
@@ -455,6 +432,11 @@ var dict = {
         'motn': 'منتصف الليل',  //MOTNCheckText
         'totn': 'ثالثا من الليل', //TOTNCheckText
         'minStart': 'بداية الحد الادنى ', //minStartCheckText
+        'updateAvailable': 'التحديث متاح', 
+        'version': 'الإصدار',
+        'available': 'متاح للتحميل على جيثب',
+        'download': 'تحميل',
+        'later': 'فيما بعد'
     },
     it: {
         'settings': 'Impostazioni', //settingsTitle
@@ -545,18 +527,8 @@ var dict = {
         'france': 'Francia', //France12 15 & 18
         'russia': 'Russia', //Russia
         'gulf': 'Gulf region', //Gulf
-        'donate': 'Donare', //menu label
         'preferences': 'Preferenze', //menu label
         'resetSettings': 'Ripristina le impostazioni', //menu label
-        'updateAvalible': 'Aggiorna Disponibile', 
-        'downloadSoon': "Il download inizierà presto, riceverai una notifica quando è pronto.", 
-        'updateDownloaded': 'Aggiornamento scaricato', 
-        'downloadFinished': 'Aggiornamento scaricato, riavviare Muezzin per applicarlo.', 
-        'ok': 'Bene', 
-        'restart': 'Riavviare', 
-        'error': "Errore durante l'aggiornamento", 
-        'submitReport': "Si prega di inviare un report e aggiornare l'app manualmente", 
-        'here': 'qui', 
         'adjustements': 'Adeguamenti', //adjustmentsText
         'enableAdj': 'Abilita le regolazioni', //adjCheckText
         'fajrAdj': 'Regolazioni della Fajr', //fajrAdjText
@@ -568,6 +540,11 @@ var dict = {
         'motn': 'Nel mezzo della notte',  //MOTNCheckText
         'totn': 'Terzo della notte', //TOTNCheckText
         'minStart': 'Inizia minimizzato ', //minStartCheckText
+        'updateAvailable': 'Aggiornamento disponibile', 
+        'version': 'Versione',
+        'available': 'è disponibile per il download su GitHub',
+        'download': 'Scaricare',
+        'later': 'Più tardi'
     },
     de: {
         'settings': 'Einstellungen', //settingsTitle
@@ -658,18 +635,8 @@ var dict = {
         'france': 'Frankreich', //France12 15 & 18
         'russia': 'Russland', //Russia
         'gulf': 'Persischer Golf', //Gulf
-        'donate': 'Spenden', //menu label
         'preferences': 'Vorlieben', //menu label
         'resetSettings': 'Einstellungen zurücksetzen', //menu label
-        'updateAvalible': 'Verfügbarkeiten aktualisieren.', 
-        'downloadSoon': "Der Download beginnt bald, Sie werden benachrichtigt, wenn es fertig ist.", 
-        'updateDownloaded': 'Update heruntergeladen', 
-        'downloadFinished': "Update heruntergeladen, muezzin neu starten, um es anzuwenden", 
-        'ok': 'Okay', 
-        'restart': 'Neu starten', 
-        'error': 'Fehler beim Aktualisieren.', 
-        'submitReport': 'Bitte senden Sie einen Bericht und aktualisieren Sie die App manuell', 
-        'here': 'hier', 
         'adjustements': 'Anpassungen', //adjustmentsText
         'enableAdj': 'Anpassungen aktivieren', //adjCheckText
         'fajrAdj': 'Fajr-Anpassungen', //fajrAdjText
@@ -681,6 +648,11 @@ var dict = {
         'motn': 'Mitten in der Nacht',  //MOTNCheckText
         'totn': 'Drittel der Nacht', //TOTNCheckText
         'minStart': 'Minimiert starten', //minStartCheckText
+        'updateAvailable': 'Update verfügbar', 
+        'version': 'Ausführung',
+        'available': 'ist zum Download auf Github verfügbar',
+        'download': 'Herunterladen',
+        'later': 'Später'
     },
     nl: {
         'settings': 'Instellingen', //settingsTitle
@@ -771,18 +743,8 @@ var dict = {
         'france': 'Frankrijk', //France12 15 & 18
         'russia': 'Rusland', //Russia
         'gulf': 'Perzische Golf', //Gulf
-        'donate': 'Doneren', //menu label
         'preferences': 'Voorkeuren', //menu label
         'resetSettings': 'Reset instellingen', //menu label
-        'updateAvalible': 'Update Beschikbaar', 
-        'downloadSoon': "Download start binnenkort, je wordt op de hoogte gebracht wanneer het klaar is.", 
-        'updateDownloaded': 'Update gedownload', 
-        'downloadFinished': 'Update gedownload, herstart Muezzin om het toe te passen.', 
-        'ok': 'Oke', 
-        'restart': 'Herstarten', 
-        'error': 'Fout tijdens het updaten', 
-        'submitReport': 'Dien een rapport in en werk de app handmatig bij', 
-        'here': 'hier', 
         'adjustements': 'Aanpassingen', //adjustmentsText
         'enableAdj': 'Schakel aanpassingen in', //adjCheckText
         'fajrAdj': 'Fajr-aanpassingen', //fajrAdjText
@@ -794,6 +756,11 @@ var dict = {
         'motn': 'Middernacht',  //MOTNCheckText
         'totn': 'Derde van de nacht', //TOTNCheckText
         'minStart': 'Start geminimaliseerd', //minStartCheckText
+        'updateAvailable': 'Update beschikbaar', 
+        'version': 'Versie',
+        'available': 'is beschikbaar om te downloaden op GitHub',
+        'download': 'Gedownload',
+        'later': 'Later'
     },
     sv: {
         'settings': 'Inställningar', //settingsTitle
@@ -884,18 +851,8 @@ var dict = {
         'france': 'Frankrike', //France12 15 & 18
         'russia': 'Ryssland', //Russia
         'gulf': 'Persiska viken', //Gulf
-        'donate': 'Donera', //menu label
         'preferences': 'Preferenser', //menu label
         'resetSettings': 'Återställ inställningar', //menu label
-        'updateAvalible': 'Uppdatera tillgängliga', 
-        'downloadSoon': "Ladda ner startar snart, du blir underrättad när den är klar.", 
-        'updateDownloaded': 'Uppdatering nedladdad', 
-        'downloadFinished': 'Uppdatering nedladdad, starta om Muezzin för att tillämpa den.', 
-        'ok': 'Okej', 
-        'restart': 'Omstart', 
-        'error': 'Fel vid uppdatering', 
-        'submitReport': 'Vänligen skicka en rapport och uppdatera appen manuellt', 
-        'here': 'här', 
         'adjustements': 'Justeringar', //adjustmentsText
         'enableAdj': 'Aktivera justeringar', //adjCheckText
         'fajrAdj': 'Fajr-justeringar', //fajrAdjText
@@ -907,6 +864,11 @@ var dict = {
         'motn': 'Mitten av natten',  //MOTNCheckText
         'totn': 'Tredje av natten', //TOTNCheckText
         'minStart': 'Börja minimeras', //minStartCheckText
+        'updateAvailable': 'Uppdatering tillgänglig', 
+        'version': 'Version',
+        'available': 'är tillgänglig för nedladdning på GitHub',
+        'download': 'Ladda ner',
+        'later': 'Senare '
     },
     no: {
         'settings': 'Innstillinger', //settingsTitle
@@ -997,18 +959,8 @@ var dict = {
         'france': 'Frankrike', //France12 15 & 18
         'russia': 'Russland', //Russia
         'gulf': 'Persiabukten', //Gulf
-        'donate': 'Donere', //menu label
         'preferences': 'Preferanser', //menu label
         'resetSettings': 'Tilbakestill innstillinger', //menu label
-        'updateAvalible': 'Oppdater tilgjengelig', 
-        'downloadSoon': "Last ned vil starte snart, du vil bli varslet når den er klar.", 
-        'updateDownloaded': 'Oppdater nedlastet', 
-        'downloadFinished': 'Oppdater nedlastet, start Muezzin på nytt for å bruke den.', 
-        'ok': 'Greit', 
-        'restart': 'Omstart', 
-        'error': 'Feil under oppdatering', 
-        'submitReport': 'Vennligst send inn en rapport og oppdater appen manuelt', 
-        'here': 'her', 
         'adjustements': 'Justeringer', //adjustmentsText
         'enableAdj': 'Aktiver justeringer', //adjCheckText
         'fajrAdj': 'Fajr justeringer', //fajrAdjText
@@ -1020,6 +972,11 @@ var dict = {
         'motn': 'Midten av natten',  //MOTNCheckText
         'totn': 'Tredje av natten', //TOTNCheckText
         'minStart': 'Start minimert', //minStartCheckText
+        'updateAvailable': 'Oppdatering tilgjengelig', 
+        'version': 'Versjon',
+        'available': 'er tilgjengelig for nedlasting på GitHub',
+        'download': 'Nedlasting',
+        'later': 'Seinere'
     },
     da: {
         'settings': 'Indstillinger', //settingsTitle
@@ -1110,18 +1067,8 @@ var dict = {
         'france': 'Frankrig', //France12 15 & 18
         'russia': 'Rusland', //Russia
         'gulf': 'Den Persiske Bugt', //Gulf
-        'donate': 'Donate', //menu label
         'preferences': 'Præferencer', //menu label
         'resetSettings': 'Nulstil indstillingerne', //menu label
-        'updateAvalible': 'Opdatering til rådighed', 
-        'downloadSoon': "Download vil starte snart, vil du blive underrettet, når den er klar.", 
-        'updateDownloaded': 'Opdatering downloadet', 
-        'downloadFinished': 'Opdatering downloadet, genstart muezzin for at anvende det.', 
-        'ok': 'Okay', 
-        'restart': 'Genstart', 
-        'error': 'Fejl under opdatering.', 
-        'submitReport': 'Indsend venligst en rapport og opdater appen manuelt', 
-        'here': 'her', 
         'adjustements': 'Justeringer', //adjustmentsText
         'enableAdj': 'Aktivér justeringer', //adjCheckText
         'fajrAdj': 'Fajr-justeringer', //fajrAdjText
@@ -1133,6 +1080,11 @@ var dict = {
         'motn': 'Midten af natten',  //MOTNCheckText
         'totn': 'Tredje af natten', //TOTNCheckText
         'minStart': 'Start minimeret', //minStartCheckText
+        'updateAvailable': 'Opdatering tilgængelig', 
+        'version': 'Version',
+        'available': 'er tilgængelig til download på Github',
+        'download': 'Hent',
+        'later': 'Senere'
     },
     ur: {
         'settings': 'ترتیبات', //settingsTitle
@@ -1223,18 +1175,8 @@ var dict = {
         'france': 'فرانس', //France12 15 & 18
         'russia': 'روس', //Russia
         'gulf': 'خلیج علاقے', //Gulf
-        'donate': 'عطیہ', //menu label
         'preferences': 'ترجیحات', //menu label
         'resetSettings': 'ترتیبات کو دوبارہ ترتیب دیں', //menu label
-        'updateAvalible': 'اپلی کیشن کو اپ ڈیٹ کریں', 
-        'downloadSoon': "ڈاؤن لوڈ، اتارنا جلد ہی شروع ہو جائے گا، جب یہ تیار ہو تو آپ کو مطلع کیا جائے گا.", 
-        'updateDownloaded': 'ڈاؤن لوڈ کردہ اپ ڈیٹ', 
-        'downloadFinished': 'اپ ڈیٹ ڈاؤن لوڈ، اتارنا، اسے لاگو کرنے کے لئے Muezzin دوبارہ شروع کریں.', 
-        'ok': 'ٹھیک ہے', 
-        'restart': 'دوبارہ شروع کریں', 
-        'error': 'اپ ڈیٹ کرنے میں خرابی', 
-        'submitReport': 'براہ کرم ایک رپورٹ پیش کریں اور دستی طور پر اپلی کیشن کو اپ ڈیٹ کریں', 
-        'here': 'یہاں',
         'adjustements': 'ایڈجسٹمنٹ', //adjustmentsText
         'enableAdj': 'ایڈجسٹمنٹ کو فعال کریں', //adjCheckText
         'fajrAdj': 'فجر ایڈجسٹمنٹ', //fajrAdjText
@@ -1246,5 +1188,10 @@ var dict = {
         'motn': 'آدھی رات',  //MOTNCheckText
         'totn': 'رات کا تیسرا', //TOTNCheckText
         'minStart': 'کم سے کم شروع', //minStartCheckText
+        'updateAvailable': 'اپ ڈیٹ دستیاب', 
+        'version': 'ورژن',
+        'available': 'GitHub پر ڈاؤن لوڈ کے لئے دستیاب ہے',
+        'download': 'ڈاؤن لوڈ کریں',
+        'later': 'بعد میں'
     },
 }
