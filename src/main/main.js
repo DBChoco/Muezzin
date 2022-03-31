@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow, ipcMain, Tray, Menu, Notification, nativeImage, net} = require('electron')
+const {app, BrowserWindow, ipcMain, Tray, Menu, Notification, nativeImage, net, shell} = require('electron')
 const path = require('path')
 const Store = require('electron-store');
 const store = new Store();
@@ -43,8 +43,101 @@ function createWindow () {
     }
   })
 
-  ///DEBUG
-  //mainWindow.removeMenu()
+  const isMac = process.platform === 'darwin'
+  const template = [
+    // { role: 'appMenu' }
+    ...(isMac ? [{
+      label: app.name,
+      submenu: [
+        { role: 'about' },
+        { type: 'separator' },
+        { role: 'services' },
+        { type: 'separator' },
+        { role: 'hide' },
+        { role: 'hideOthers' },
+        { role: 'unhide' },
+        { type: 'separator' },
+        { role: 'quit' }
+      ]
+    }] : []),
+    // { role: 'fileMenu' }
+    {
+      label: 'File',
+      submenu: [
+        {
+          label: 'Reset settings',
+          click: function(){
+            store.clear();
+            mainWindow.reload();
+          }
+        },
+        isMac ? { role: 'close' } : { role: 'quit' }
+      ]
+    },
+    // { role: 'viewMenu' }
+    {
+      label: 'View',
+      submenu: [
+        { role: 'resetZoom' },
+        { role: 'zoomIn' },
+        { role: 'zoomOut' },
+        { type: 'separator' },
+        { role: 'togglefullscreen' }
+      ]
+    },
+    // { role: 'windowMenu' }
+    {
+      label: 'Window',
+      submenu: [
+        { role: 'minimize' },
+        { role: 'zoom' },
+        ...(isMac ? [
+          { type: 'separator' },
+          { role: 'front' },
+          { type: 'separator' },
+          { role: 'window' }
+        ] : [
+          { role: 'close' }
+        ])
+      ]
+    },
+    {
+      label: 'Debug',
+      submenu: [
+          { role: 'reload' },
+          { role: 'forceReload' },
+          { type: 'separator' },
+          { role: 'toggleDevTools' }
+      ]
+    },
+    {
+      role: 'help',
+      submenu: [
+        {
+          label: 'Website',
+          click: async () => {
+            await shell.openExternal('https://github.com/DBChoco/Muezzin')
+          }
+        },
+        {
+          label: 'Reddit',
+          click: async () => {
+            await shell.openExternal('https://www.reddit.com/r/Muezzin/')
+          }
+        },
+        { type: 'separator' },
+        {
+          label: 'Report an issue',
+          click: async () => {
+            await shell.openExternal('https://github.com/DBChoco/Muezzin/issues/new')
+          }
+        }
+      ]
+    }
+  ]
+  
+  const menu = Menu.buildFromTemplate(template)
+  Menu.setApplicationMenu(menu)
   
   // and load the index.html of the app.
   mainWindow.loadFile('src/main/index.html')
@@ -68,8 +161,6 @@ function createWindow () {
       return true;
     }
   });
-
-  
 
   //Create hidden mediaPlayer
   mediaWindow = new BrowserWindow({
