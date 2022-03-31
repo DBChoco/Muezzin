@@ -6,7 +6,7 @@ base: org.electronjs.Electron2.BaseApp
 base-version: '21.08'
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.node14
-command: muezzin
+command: muezzin-run
 separate-locales: false
 finish-args:
   - --share=ipc
@@ -31,15 +31,15 @@ modules:
     subdir: main
     sources:
       - type: archive
-        url: https://github.com/DBChoco/Muezzin/archive/refs/tags/v0.1.6.tar.gz
-        sha256: 6902c1ade233056cb309c386ad12fe5f463cf468268bfe691109effc504cf083
+        url: https://github.com/DBChoco/Muezzin/archive/refs/tags/v0.1.7.tar.gz
+        sha256: 55953d69db30417841d0f3397db3e9e0b71c9ce13f151dea148263d028216f16
         dest: main
 
       - generated-sources.json
 
       # Wrapper to launch the app
       - type: script
-        dest-filename: run.sh
+        dest-filename: muezzin-run
         commands:
           - zypak-wrapper.sh /app/main/muezzin "$@"
 
@@ -55,4 +55,4 @@ modules:
       # Bundle app and dependencies
       - cp -a dist/linux*unpacked /app/main
       # Install app wrapper
-      - install -Dm755 -t /app/bin/ ../run.sh
+      - install -Dm755 -t /app/bin/ ../muezzin-run
