@@ -50,24 +50,6 @@
       "icon": "ressources/images/icon.ico",
       "target": "nsis"
     },
-    "appx": {
-      "applicationId": "Muezzin",
-      "backgroundColor": "#382bcc",
-      "publisher": "DBChoco",
-      "languages": [
-        "EN",
-        "FR",
-        "ES",
-        "AR",
-        "DE",
-        "IT",
-        "NB",
-        "SV",
-        "DA",
-        "NL",
-        "UR"
-      ]
-    },
     "linux": {
       "icon": "ressources/images/icon.png",
       "category": "Utility",
@@ -85,6 +67,30 @@
       "target": [
         "dmg"
       ]
+    },
+    "appx": {
+      "applicationId": "Muezzin",
+      "backgroundColor": "#382bcc",
+      "publisher": "DBChoco",
+      "languages": [
+        "EN",
+        "FR",
+        "ES",
+        "AR",
+        "DE",
+        "IT",
+        "NB",
+        "SV",
+        "DA",
+        "NL",
+        "UR"
+      ]
+      
+    },
+    "snap": {
+      "confinement": "strict",
+      "summary": "Islamic prayer times application",
+      "grade": "stable"
     }
   },
   "bugs": {
