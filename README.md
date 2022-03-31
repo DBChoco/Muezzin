@@ -24,12 +24,31 @@
 </div>
 
 <p align="center">
-    <a href="https://github.com/DBChoco/Muezzin/graphs/contributors" alt="Contributors">
-        <img src="https://img.shields.io/github/contributors/badges/shields?style=for-the-badge&logo=appveyor" /></a>
-    <a href="https://github.com/DBChoco/Muezzin/pulse" alt="Activity">
-        <img src="https://img.shields.io/github/commit-activity/m/badges/shields?style=for-the-badge&logo=appveyor" /></a>
-    <a href="https://circleci.com/gh/DBChoco/Muezzin/tree/master">
-        <img src="https://img.shields.io/circleci/project/github/badges/shields/master?style=for-the-badge&logo=appveyor" alt="build status"></a>
+  <a href="https://github.com/DBChoco/Muezzin/graphs/contributors" alt="Contributors">
+      <img src="https://img.shields.io/github/contributors/DBChoco/Muezzin" />
+  </a>
+  <a href="https://github.com/DBChoco/Muezzin/pulse" alt="Activity">
+      <img src="https://img.shields.io/github/commit-activity/m/DBChoco/Muezzin" />
+  </a>
+  <a href="https://github.com/DBChoco/Muezzin" alt="Activity">
+        <img src="https://img.shields.io/github/stars/DBChoco/Muezzin.svg" />
+  </a>
+  <a href="https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2FDBChoco" alt="Activity">
+        <img src="https://img.shields.io/github/followers/DBChoco.svg?style=social&label=Follow&maxAge=2592000" />
+  </a>
+  <a href="https://www.reddit.com/r/Muezzin/" alt="Reddit">
+        <img src="https://aleen42.github.io/badges/src/reddit.svg" />
+  </a>
+  <br>
+  <a href="https://github.com/DBChoco/Muezzin" alt="Activity">
+        <img src="https://img.shields.io/github/release/DBChoco/Muezzin.svg" />
+  </a>
+  <a href="https://aur.archlinux.org/packages/muezzin-bin" alt="AUR">
+        <img src="https://img.shields.io/aur/version/muezzin-bin" />
+  </a>
+  <a href="https://snapcraft.io/muezzin">
+    <img alt="muezzin" src="https://snapcraft.io/muezzin/badge.svg" />
+  </a>
 </p>
 
 
