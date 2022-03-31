@@ -7,6 +7,7 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
+    "dist": "electron-builder",
     "build": "electron-builder build --linux --win --publish never",
     "deploy": "electron-builder build --linux --win --publish always"
   },
