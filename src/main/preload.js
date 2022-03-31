@@ -7,6 +7,7 @@ const moment = require('moment')
 const adhan = require('adhan')
 const settings = require('../common/common.js')
 const language = require('../common/language.js')
+const shell = require('electron').shell
 
 contextBridge.exposeInMainWorld( 'api', {
     send: ( channel, data ) => ipcRenderer.invoke( channel, data ),
@@ -14,7 +15,6 @@ contextBridge.exposeInMainWorld( 'api', {
     coordinates: (lat, lon) => adhan.Coordinates(lat, lon),
     getClock: (format) => moment(new Date()).format(format),
     getTimes: (times,timezone, format) => moment(momentz(times).tz(timezone)).format(format),
-    
     getFromStore: (key, def) => ipcRenderer.invoke('getStoreValue', key, def),
     setToStore: (key, value) => ipcRenderer.invoke('setStoreValue', key , value),
     timeZoneGuess: () => momentz.tz.guess(),
@@ -22,6 +22,7 @@ contextBridge.exposeInMainWorld( 'api', {
     setTheme: (darkmode, css) => settings.toggleDarkMode(darkmode, css),
     getLanguage: (lang, value) => language.loadTrans(lang, value),
     getSunnah: (prayerTimes) => new adhan.SunnahTimes(prayerTimes),
-    getPrayerTimes: (coordinates, date, parameters) => new adhan.PrayerTimes(coordinates, date, parameters)
+    getPrayerTimes: (coordinates, date, parameters) => new adhan.PrayerTimes(coordinates, date, parameters),
+    openExternal: (link) => shell.openExternal(link)
 } )
 

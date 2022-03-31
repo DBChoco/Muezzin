@@ -1,7 +1,25 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow, ipcMain, Tray, Menu, Notification, nativeImage} = require('electron')
+const {app, BrowserWindow, ipcMain, Tray, Menu, Notification, nativeImage, net} = require('electron')
 const path = require('path')
-const {setUpdateNotification} = require('electron-update-notifier');
+const Store = require('electron-store');
+const store = new Store();
+const adhan = require('adhan')
+const momentz = require('moment-timezone')
+const language = require('../common/language.js')
+const AutoLaunch = require('auto-launch');
+var autoLauncher = new AutoLaunch({
+  name: "Muezzin", 
+  mac:{
+    useLaunchAgent: true
+  }
+});
+var lat, lon, calcmeth, madhab, hlr, pcr, shafaq, prayerTimes, adhanPath;
+var customValues, delay;
+var prayerTimes, datePrayerTimes, tomorrowPrayers;
+var adhanCheck, notifCheck, lang, startupSound;
+var langFajr, langDhuhr, langAsr, langMaghrib, langIsha, langAdhan, langNow;
+var adjustements;
+var updateInterval;
 
 let tray = null
 let mainWindow, mediaWindow;
@@ -104,6 +122,12 @@ app.whenReady().then(() => {
   ])
   tray.setToolTip('Muezzin')
   tray.setContextMenu(contextMenu)
+
+  checkFirstTime()
+  loadSettings();
+  setUpHandlers();
+  checkTime();  
+  setUpdates()
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common
@@ -113,23 +137,49 @@ app.on('window-all-closed', function () {
   if (process.platform !== 'darwin' && systray) app.quit()
 })
 
-const Store = require('electron-store');
-const store = new Store();
-const adhan = require('adhan')
-const momentz = require('moment-timezone')
-const language = require('../common/language.js')
-const AutoLaunch = require('auto-launch');
-var autoLauncher = new AutoLaunch({
-  name: "Muezzin", 
-  mac:{
-    useLaunchAgent: true
-  }
-});
+function setUpdates(){
+  setTimeout(function(){
+    getVersion()
+  }, 3000);
+  updateInterval = setInterval(function(){
+    getVersion()
+  }, 600000) //10 minutes
+}
 
-setUpdateNotification({
-  debug: true,
-  silent: true // Optional, notify when new version available, otherwise remain silent 
-})
+function getVersion(){
+  console.log("Looking for updates")
+  const request = net.request({
+    method: 'GET',
+    protocol: 'http:',
+    hostname: 'api.github.com',
+    path: '/repositories/459335904/releases/latest',
+    redirect: 'follow'
+  });
+  request.on('response', (response) => {
+    //console.log(`STATUS: ${response.statusCode}`);
+    //console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
+    response.on('data', (chunk) => {
+        if (app.getVersion() < JSON.parse(chunk).name){
+          mainWindow.webContents.send('update-available', [app.getVersion(), JSON.parse(chunk).name]);
+          clearInterval(updateInterval);
+        }
+    });
+  });
+  request.on('finish', () => {
+    //console.log('Request is Finished')
+  });
+  request.on('abort', () => {
+    console.log('Request is Aborted')
+  });
+  request.on('error', (error) => {
+    console.log(`ERROR: ${JSON.stringify(error)}`)
+  });
+  request.on('close', (error) => {
+    //console.log('Last Transaction has occured')
+  });
+  request.setHeader('Content-Type', 'application/json');
+  request.end();
+}
 
 function showNotification (message) {
   if (Notification.isSupported()){
@@ -138,18 +188,6 @@ function showNotification (message) {
     new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY, icon:"../ressources/images/icon.png" }).show()
   }
 }
-
-var lat, lon, calcmeth, madhab, hlr, pcr, shafaq, prayerTimes, adhanPath;
-var customValues, delay;
-var prayerTimes, datePrayerTimes, tomorrowPrayers;
-var adhanCheck, notifCheck, lang, startupSound;
-var langFajr, langDhuhr, langAsr, langMaghrib, langIsha, langAdhan, langNow;
-var adjustements;
-checkFirstTime()
-loadSettings();
-setUpHandlers();
-checkTime();
-
 
 /**
 * Checks for Athan time and current time, then if they are the same, it plays the Athan
