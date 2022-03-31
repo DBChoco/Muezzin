@@ -33,7 +33,6 @@ body{
 
 #timeLeft{
     font-size: 6vh;
-    margin-bottom: 2vh;
 }
 
 .grid-container {
@@ -109,7 +108,8 @@ body{
     width: fit-content;
     display: flex;
     align-items: center;
-    margin: auto;
+    margin: 3vh auto 5vh auto;
+
 }
 
 .form-range{
