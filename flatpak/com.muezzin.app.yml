@@ -6,7 +6,7 @@ base: org.electronjs.Electron2.BaseApp
 base-version: '21.08'
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.node14
-command: run.sh
+command: muezzin
 separate-locales: false
 finish-args:
   - --share=ipc
@@ -30,18 +30,19 @@ modules:
         npm_config_offline: 'true'
     subdir: main
     sources:
-      #- type: archive
-      #  url: https://github.com/flathub/muezzin/archive/1.0.1.tar.gz
-      #  sha256: a2feb3f1cf002a2e4e8900f718cc5c54db4ad174e48bfcfbddcd588c7b716d5b
-      - type: dir
-        path: ..
+      - type: archive
+        url: https://github.com/DBChoco/Muezzin/archive/refs/tags/v0.1.6.tar.gz
+        sha256: 6902c1ade233056cb309c386ad12fe5f463cf468268bfe691109effc504cf083
         dest: main
+
       - generated-sources.json
+
       # Wrapper to launch the app
       - type: script
         dest-filename: run.sh
         commands:
           - zypak-wrapper.sh /app/main/muezzin "$@"
+
     build-commands:
       # Install npm dependencies
       - npm install --offline
@@ -49,6 +50,7 @@ modules:
       # in package.json runs electron-builder
       - |
         . ../flatpak-node/electron-builder-arch-args.sh
+        jq '.build.linux.target="dir"' <<<$(<package.json) > package.json
         npm run dist -- $ELECTRON_BUILDER_ARCH_ARGS  --linux --dir
       # Bundle app and dependencies
       - cp -a dist/linux*unpacked /app/main
