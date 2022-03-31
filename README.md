@@ -21,7 +21,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/DBChoco/MuezzinPrayerTimes">
-    <img src="ressources/images/logo.png" alt="Logo" width="150" height="150">
+    <img src="ressources/images/icon.png" alt="Logo" width="150" height="150">
   </a>
 
   <h3 align="center">Muezzin - مؤذن</h3>
