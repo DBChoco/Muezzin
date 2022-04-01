@@ -521,7 +521,6 @@ function loadLanguage(lang){
   document.getElementById("shafaqW").innerText = window.api.getLanguage(lang, "abyad");
   document.getElementById("autoStartText").innerText = window.api.getLanguage(lang, "autoStart");
   document.getElementById("autoStartCheckText").innerText = window.api.getLanguage(lang, "startAtLaunch");
-  document.getElementById("copyright").innerText = window.api.getLanguage(lang, "copyright");
   document.getElementById("quote").innerText = window.api.getLanguage(lang, "quote");
   document.getElementById("source").innerText = window.api.getLanguage(lang, "source");
   document.getElementById("startUpSoundText").innerText = window.api.getLanguage(lang, "startUpSound");
