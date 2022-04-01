@@ -442,15 +442,18 @@ function loadLang(){
 }
 
 function setupButtonListeners(){
+  document.getElementById('playB').addEventListener("click", function(){
+    window.api.send("play");
+  })
+  document.getElementById('stopB').addEventListener("click", function(){
+    window.api.send("stop");
+  })
   document.getElementById('settingsWheel').addEventListener("click", function(){
     window.api.send("settingsO");
     window.location.href = "../settings/settings.html";
   })
-  document.getElementById('playB').addEventListener("click", function(){
-      window.api.send("play");
-  })
-  document.getElementById('stopB').addEventListener("click", function(){
-    window.api.send("stop");
+  document.getElementById('quranButton').addEventListener("click", function(){
+    window.location.href = "../quran/quran.html";
   })
 }
 
