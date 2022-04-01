@@ -6,16 +6,15 @@
   <summary>Islamic prayer times application</summary>
   <url type="homepage">https://heroicgameslauncher.com</url>
   <url type="bugtracker">https://github.com/DBChoco/Muezzin/issues</url>
-  <url type="reddit">https://www.reddit.com/r/Muezzin/</url>
+  <url type="contact">https://www.reddit.com/r/Muezzin/</url>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>MIT</project_license>
-  
   <description>
     <p>
       Islamic prayer times application that is highly customizable, free and open source.
     </p>
   </description>
-
+  <content_rating type="oars-1.0" />
   <launchable type="desktop-id">io.github.dbchoco.muezzin.desktop</launchable>
   <screenshots>
     <screenshot type="default">
@@ -32,7 +31,7 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="v0.1.7" date="31/03/2022">
+    <release version="v0.1.7" date="2022/31/03" timestamp="1648829972">
         <description>
             <p>General</p>
             <ul>
