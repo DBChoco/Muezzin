@@ -81,8 +81,14 @@ body{
     font-size: max(12px, 1.5vh);
 }
 
-#settingsWheel{
+#quranButton{
     margin-left: auto;
+    margin-right: 10px;
+    font-size: max(1.8vh, 15px);
+}
+
+#settingsWheel{
+    margin-left: 10px;
     margin-right: 10px;
     font-size: max(1.8vh, 15px);
 }

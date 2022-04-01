@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>io.github.muezzin</id>
+  <id>io.github.dbchoco.muezzin</id>
   
   <name>Muezzin</name>
   <summary>Islamic prayer times application</summary>
@@ -16,7 +16,7 @@
     </p>
   </description>
 
-  <launchable type="desktop-id">io.github.muezzin.desktop</launchable>
+  <launchable type="desktop-id">io.github.dbchoco.muezzin.desktop</launchable>
   <screenshots>
     <screenshot type="default">
       <caption>Main Screen - Light Mode</caption>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'; style-src 'self' 'unsafe-inline'">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../node_modules/bootstrap-dark-5/dist/js/darkmode.js"></script>
+    <link href="../../ressources/fonts/all.min.css" rel="stylesheet" >
+    <link href="quran.css" rel="stylesheet">
+    <script src="quran.js"></script>
+    <title>Muezzin</title>
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <h1>
+        Qur'an
+    </h1>
+
+    <div id="surahSelector">
+        <select class="form-control form-check-inline">
+            <option>Default select</option>
+          </select>
+    </div>
+
+  </body>
+  <footer class="mt-auto">
+    <button class="btn btn-dark" id="return">Return</button>
+  </footer>
+</html>
