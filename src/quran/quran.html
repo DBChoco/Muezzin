@@ -13,19 +13,37 @@
     <script src="quran.js"></script>
     <title>Muezzin</title>
   </head>
-  <body class="d-flex flex-column min-vh-100">
-    <h1>
-        Qur'an
+  <header>
+    <h1 id="title">
+      Qur'an
     </h1>
+  </header>
+  <body class="d-flex flex-column min-vh-100">
+    
 
-    <div id="surahSelector">
-        <select class="form-control form-check-inline">
-            <option>Default select</option>
+    <form id="surahSelector">
+      <div class="row">
+        <div class="col-md-auto">
+          <select class="form-control" id="chaptersList">
           </select>
+        </div>
+        <div class="col-md-auto">
+          <button type="button" id="stopB" class="btn btn-dark">
+            <i class="fa-solid fa-gears"></i>  Settings
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <div id="reader">
+
     </div>
 
   </body>
   <footer class="mt-auto">
-    <button class="btn btn-dark" id="return">Return</button>
+    <button class="btn btn-dark" id="return">
+      <i class="fa fa-arrow-circle-left"></i>  
+      Return
+    </button>
   </footer>
 </html>

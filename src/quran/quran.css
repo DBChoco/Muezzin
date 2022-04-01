@@ -1,0 +1,68 @@
+header{
+    text-align: center;
+}
+
+#title{
+    font-size: 8vh;
+    margin: 2vh 0 4vh 0;
+}
+
+#surahSelector{
+    padding-bottom: 3vh;
+}
+
+.row{
+    width: max-content;
+    margin: 0 auto 0 auto;
+}
+
+#reader{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+
+.verseContainer{
+    display: flex;
+    flex-direction: row;
+    width: 35vw;
+    padding-bottom: 3vh;
+    border-bottom: 2px solid;
+    border-top: 2px solid;
+    border-color: white;
+}
+
+.textContainer, .latinText{
+    width: 93%
+}
+
+.arabText{
+    text-align: right;
+    font-size: 30px;
+}
+
+.latinText{
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar{
+    width: fit-content;
+    margin-right: 20px;
+}
+
+.verse{
+
+    width: 50%;
+    height: max-content
+}
+
+footer{
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+  }
+
+#return{
+    margin: 0 20px 20px auto;
+}
