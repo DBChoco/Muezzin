@@ -133,15 +133,15 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- ROADMAP -->
 ### Roadmap
 
-- [ ] Add mosque mode (improved visibility from afar & delays to prayers)
+- [ ] Add mosque mode (improved visibility from afar & delays to prayers) (delayed)
   - [ ] Mosque interface with delays
   - [ ] Manual times
   - [ ] Custom text 
 - [ ] Add Qur'an reading page
 - [ ] Add Tasbih
-- [ ] Add icons to settings
+- [x] Add icons to settings
 - [ ] Multi-language Support
-    - [x] Urdu
+    - [ ] Turkish
 
 See the [open issues](https://github.com/DBChoco/MuezzinPrayerTimes/issues) for a full list of proposed features (and known issues).
 
