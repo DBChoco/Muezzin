@@ -133,11 +133,11 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- ROADMAP -->
 ### Roadmap
 
+- [ ] Add Qur'an reading page
 - [ ] Add mosque mode (improved visibility from afar & delays to prayers) (delayed)
   - [ ] Mosque interface with delays
   - [ ] Manual times
   - [ ] Custom text 
-- [ ] Add Qur'an reading page
 - [ ] Add Tasbih
 - [x] Add icons to settings
 - [ ] Multi-language Support
@@ -168,16 +168,25 @@ Same problem as the Windows installer
 You can either:
  <ul>
   <li><a href="https://github.com/DBChoco/MuezzinPrayerTimes/releases/latest"><strong>Download the .PACMAN file</strong></a> and install it through your favorite package manager</li>
-  <li>Install it thorugh the AUR package <a href="https://aur.archlinux.org/packages/muezzin-bin"><strong>muezzin-bin</strong></a> with yay -S muezzin-bin
+  <li>Install it thorugh the AUR package <a href="https://aur.archlinux.org/packages/muezzin-bin"><strong>muezzin-bin</strong></a> with 
   </li>
+  
+  `yay -S muezzin-bin`
+  
 </ul> 
 
 #### Debian based distributions
 You can download the <a href="https://github.com/DBChoco/MuezzinPrayerTimes/releases/latest"><strong>Download the .DEB file</strong></a> and install it through your favorite package manager
 
+`sudo apt install path/to/file.deb`
+
 #### Others
 For other distributions, on the <a href="https://github.com/DBChoco/MuezzinPrayerTimes/releases/latest"><strong>download page</strong></a> you can choose from:
  <ul>
+  <li>You can install it from the SnapStore with </li>
+  
+  `sudo snap install muezzin`
+  
   <li>The .APPIMAGE file, which you can run on any Linux distribution and add to your autorun script</li>
   <li>The .TAR.GZ file, which you can unarchive wherever you want and launch via the terminal</li>
 </ul> 
