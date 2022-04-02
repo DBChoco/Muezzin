@@ -19,19 +19,11 @@
     </h1>
   </header>
   <body class="d-flex flex-column min-vh-100">
-    
 
-    <form id="surahSelector">
-      <div class="row">
-        <div class="col-md-auto">
-          <select class="form-control" id="chaptersList">
-          </select>
-        </div>
-        <div class="col-md-auto">
-          <button type="button" id="stopB" class="btn btn-dark">
-            <i class="fa-solid fa-gears"></i>  Settings
-          </button>
-        </div>
+    <form >
+      <div id="surahSelector">
+        <select class="form-control" id="chaptersList">
+        </select>
       </div>
     </form>
 
@@ -40,10 +32,16 @@
     </div>
 
   </body>
-  <footer class="mt-auto">
-    <button class="btn btn-dark" id="return">
-      <i class="fa fa-arrow-circle-left"></i>  
-      Return
-    </button>
+  <footer class="mt-auto fixed-bottom">
+    <div id="buttonContainer">
+      <button class="btn btn-dark" id="settings">
+        <i class="fa-solid fa-gear"></i> 
+        Settings
+      </button>
+      <button class="btn btn-dark" id="return">
+        <i class="fa fa-arrow-circle-left"></i>  
+        Return
+      </button>
+    </div>
   </footer>
 </html>

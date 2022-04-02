@@ -8,24 +8,23 @@ header{
 }
 
 #surahSelector{
-    padding-bottom: 3vh;
-}
-
-.row{
     width: max-content;
     margin: 0 auto 0 auto;
+    padding-bottom: 3vh;
 }
 
 #reader{
     flex-direction: column;
     display: flex;
     align-items: center;
+    width: min(800px, 85vw);
+    margin: 0 auto 0 auto;
 }
 
 .verseContainer{
     display: flex;
     flex-direction: row;
-    width: 35vw;
+    width: 100%;
     padding-bottom: 3vh;
     border-bottom: 2px solid;
     border-top: 2px solid;
@@ -33,17 +32,31 @@ header{
 }
 
 .textContainer, .latinText{
-    width: 93%
+    width: 100%
+}
+
+.word{
+    padding: 5px 5px 5px 5px;
+}
+
+.wordLatin{
+    padding: 2px 2px 2px 2px;
 }
 
 .arabText{
     text-align: right;
     font-size: 30px;
+    margin: 30px;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
 }
 
 .latinText{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
 }
 
 .sidebar{
@@ -63,6 +76,13 @@ footer{
     align-items: center;
   }
 
-#return{
-    margin: 0 20px 20px auto;
+#buttonContainer{
+    margin: 0px 10px 10px auto;
+    display: flex;
+    flex-direction: row;
+}
+
+#settings, #return{
+    font-size: max(1.8vh, 15px);
+    margin-left: 20px;
 }
