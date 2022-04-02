@@ -43,6 +43,9 @@ function createWindow () {
     }
   })
 
+  //DEBUG
+  mainWindow.webContents.openDevTools()
+
   const isMac = process.platform === 'darwin'
   const template = [
     // { role: 'appMenu' }

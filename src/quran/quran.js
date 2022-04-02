@@ -1,13 +1,19 @@
 var lang = "en";
 var latin = new Boolean(true)
 var translation = new Boolean(true)
+var font, fontSize, wordByWord, wordTooltip, trans, audio;
 
 
 window.addEventListener('DOMContentLoaded', () => { 
+    buttonListeners();
+    loadSettings()
     loadQuranList();
-    //loadSurah()
+    //Make initial greeter when no Surahs are loaded
+    //Add settings
 })
 
+//Generates the div for 1 single verse.
+//Calls the functio to generate the arabText as well
 function generateVerse(number, arabText){
     let verseContainer = createDiv("verseContainer")
 
@@ -17,7 +23,8 @@ function generateVerse(number, arabText){
     var arabTextDiv = createDiv("arabText")
 
     surahNumberDiv.innerHTML = number;
-    arabTextDiv.innerHTML = arabText;
+
+    generateArabText(arabTextDiv, arabText)
 
     sidebarDiv.appendChild(surahNumberDiv)
     textContainerDiv.appendChild(arabTextDiv)
@@ -31,7 +38,20 @@ function generateVerse(number, arabText){
 }
 
 
+//Takes the div and the text, divides the text into divs and puts them into the mother div
+function generateArabText(arabTextDiv, arabText){
+    var arabWords = arabText.split(" ");
+    for (let word of arabWords){
+        wordDiv = document.createElement("div");
+        wordDiv.classList.add("word")
+        wordDiv.innerText = word;
+        arabTextDiv.appendChild(wordDiv)
+    }
+}
 
+
+//Loads the list of Surahs
+//TODO: Make it local.
 async function loadQuranList(){
     var chaptersList = document.getElementById("chaptersList")
     try{
@@ -40,45 +60,62 @@ async function loadQuranList(){
         .then((json) => {
             console.log(json)
             for (let chapter of json["chapters"]){
+                console.log("surah ola")
                 var option = document.createElement("option")
-                option.id = chapter["chapter"];
-                option.value = chapter["chapter"];
+                option.value = chapter["id"];
                 option.innerText = "[" +  chapter["id"] + "] " + chapter["name_simple"] + " - " + chapter["name_arabic"];
-                option.addEventListener("click", function(){
-                    loadSurah(chapter["id"])
-                })
+                
                 chaptersList.appendChild(option)
             }
+            chaptersList.addEventListener("change", function(){
+                loadSurah(chaptersList.options[chaptersList.selectedIndex].value)
+            })
         });
-    }catch(e){}
+    }catch(e){
+        console.error("Error while loading list of Surahs" + e)
+    }
 }   
 
+//When selecting a Surah, this is launched.
+//Calls the apis for the arabText, latins and translations and applies them.
 async function loadSurah(number){
+    console.log("Loading Surah")
     document.getElementById("reader").innerHTML = ""
+    var numberVerses = 0;
     try{
         response = await fetch('https://api.quran.com/api/v4/quran/verses/uthmani?chapter_number=' + number + '', {method: "GET"})
         .then(res => res.json())
         .then((json) => {
             console.log(json)  
             for (let verse of json["verses"]){
-
                 generateVerse(verse["verse_key"], verse["text_uthmani"])
+                numberVerses ++;
             }
         });
-    }catch(e){}
+    }catch(e){
+        console.error("Couldn't load the Surah: " + e)
+    }
 
+    var numberTranslated = 0;
+    var page = 1;
     if (latin || translation){
-        try{
-            response = await fetch('https://api.quran.com/api/v4/verses/by_chapter/' + number + '?language='+ lang + '&words=true&translations=131', {method: "GET"})
+        while (numberTranslated < numberVerses){
+            try{
+            response = await fetch('https://api.quran.com/api/v4/verses/by_chapter/' + number + '?language='+ trans["lang"] + 
+            '&words=true&translations=' + trans["trans"]  + '&page=' + page, {method: "GET"})
             .then(res => res.json())
             .then((json) => {
-                console.log(json)
                 for (let verse of json["verses"]){
                     addLatinText(verse)
                     addTranslation(verse)
+                    numberTranslated ++;
                 }
+                page++
             });
-        }catch(e){}
+            }catch(e){
+                console.error("Couldn't load the translation: " + e)
+            }
+        }
     }
 }
 
@@ -89,14 +126,16 @@ function addLatinText(verse){
     var latinTextDiv = createDiv("latinText")
     
     for (let word of verse["words"]){
-        var wordDiv = document.createElement("span")
+        var wordDiv = document.createElement("div")
         wordDiv.innerText = word["transliteration"]["text"]
+        wordDiv.classList.add("wordLatin")
         latinTextDiv.appendChild(wordDiv)
-        latinTextDiv.textContent += " "
     }
     textContainerDiv.appendChild(latinTextDiv) 
 }
 
+
+//Takes a verse and loads the translation to the textContainerDiv
 function addTranslation(verse){
     var textContainerDiv = document.getElementById("textContainer" + verse["verse_key"])
     var transTextDiv = createDiv("transText")
@@ -104,8 +143,50 @@ function addTranslation(verse){
     textContainerDiv.appendChild(transTextDiv)
 }
 
+
+//Creates a div with the class name = divClass
 function createDiv(divClass){
     var divv = document.createElement("div");
     divv.classList.add(divClass);
     return divv;
+}
+
+//Loads all the necessary settings
+async function loadSettings(){
+    lang = await window.api.getFromStore('lang', 'en')
+    //var font, fontSize, wordByWord, wordTooltip, trans, audio;
+    var quran = await window.api.getFromStore('quran', {
+        "font": "dont know yet",
+        "font-size": 24,
+        "wordByWord": {
+            "latin": new Boolean(true),
+            "trans": new Boolean(true)
+        },
+        "wordTooltip": {
+            "latin": new Boolean(true),
+            "trans": new Boolean(true)
+        },
+        "translation":{
+            "lang": "en",
+            "trans": 131
+        },
+        "audio": "dont know yet"
+    })
+    font = quran["font"]
+    fontSize = quran["font-size"]
+    wordByWord = quran["wordByWord"]
+    wordTooltip = quran["wordTooltip"]
+    trans = quran["translation"]
+    audio = quran["audio"]
+    console.log(trans)
+}
+
+function buttonListeners(){
+    document.getElementById("settings").addEventListener("click", function(){
+        window.location.assign("../settings/settings.html?page=quran");
+    })
+
+    document.getElementById("return").addEventListener("click", function(){
+        window.location.assign("../main/index.html");
+    })
 }
