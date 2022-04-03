@@ -29,6 +29,9 @@
         <button class="nav-link" id="v-pills-advanced-tab" data-bs-toggle="pill" data-bs-target="#v-pills-advanced" type="button" role="tab" aria-controls="v-pills-advanced" aria-selected="false">Advanced</button>
         <button class="nav-link" id="v-pills-adjustments-tab" data-bs-toggle="pill" data-bs-target="#v-pills-adjustments" type="button" role="tab" aria-controls="v-pills-adjustments" aria-selected="false">Adjustments</button>
         <!--<button class="nav-link" id="v-pills-mosque-tab" data-bs-toggle="pill" data-bs-target="#v-pills-mosque" type="button" role="tab" aria-controls="v-pills-mosque" aria-selected="false">Mosque mode</button> -->
+        <button class="nav-link" id="v-pills-quran-tab" data-bs-toggle="pill" data-bs-target="#v-pills-quran" type="button" role="tab" aria-controls="v-pills-quran" aria-selected="false">
+          Qur'an
+        </button>
       </div>
       <div class="tab-content" id="v-pills-tabContent">
 
@@ -168,7 +171,6 @@
                 </label>
                 <input id="latInput"  class="form-control" type="number" value="0.00" min="-90" max="90" step="0.1" maxlength="5"
                 placeholder="00.00"> 
-                
               </div>
                 <div class="grid-itemL grid-sub"> 
                 </div>
@@ -227,9 +229,9 @@
               <p class="h4" id="duaAfterText">Du'a after Adhan</p> 
             </div>
             <div class="grid-itemR"> 
-              <form >
+              <div class="grid-R-spacer">
                 <input class="form-check-input" type="checkbox" value="" id="duaCheck" checked>
-              </form>
+              </div>
             </div>
 
             <div class="grid-itemL"> 
@@ -255,10 +257,10 @@
               <p class="h4" id="themeText">Theme</p> 
             </div>
             <div class="grid-itemR"> 
-              <form >
-                  <label  class="form-check-label" for="darkModeCheck" id="darkModeText">Dark Mode</label>
-                  <input class="form-check-input" type="checkbox" value="" id="darkModeCheck" checked>
-              </form>
+              <div class="form-check grid-R-spacer">
+                <label  class="form-check-label" for="darkModeCheck" id="darkModeText">Enable Dark Mode</label>
+                <input class="form-check-input" type="checkbox" value="" id="darkModeCheck" checked>
+              </div>
             </div>
 
             <div class="grid-itemL"> 
@@ -439,7 +441,7 @@
                   <label class="form-check-label" for="fajrAdjInput" id="fajrAdjText">
                     Fajr Adjustments
                   </label>
-                  <input id="fajrAdjInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
+                  <input id="fajrAdjInput"  class="form-control shortInput" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
                   placeholder="00.00"> 
                 </div>
 
@@ -447,7 +449,7 @@
                   <label class="form-check-label" for="dhuhrAdjInput" id="dhuhrAdjText">
                     Dhuhr Adjustments
                   </label>
-                  <input id="dhuhrAdjInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
+                  <input id="dhuhrAdjInput"  class="form-control shortInput" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
                   placeholder="00.00"> 
                 </div>
 
@@ -455,7 +457,7 @@
                   <label class="form-check-label" for="asrAdjInput" id="asrAdjText">
                     Asr Adjustments
                   </label>
-                  <input id="asrAdjInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
+                  <input id="asrAdjInput"  class="form-control shortInput" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
                   placeholder="00.00"> 
                 </div>
 
@@ -463,7 +465,7 @@
                   <label class="form-check-label" for="maghribAdjInput" id="maghribAdjText">
                     Maghrib Adjustments
                   </label>
-                  <input id="maghribAdjInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
+                  <input id="maghribAdjInput"  class="form-control shortInput" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
                   placeholder="00.00"> 
                 </div>
               
@@ -471,7 +473,7 @@
                   <label class="form-check-label" for="ishaAdjInput" id="ishaAdjText">
                     Isha Adjustments
                   </label>
-                  <input id="ishaAdjInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
+                  <input id="ishaAdjInput"  class="form-control shortInput" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
                   placeholder="00.00"> 
                 </div>
               </form>
@@ -480,7 +482,7 @@
 
         </div>
 
-        <!--
+        <!-- Mosque Mode
         <div class="tab-pane fade" id="v-pills-mosque" role="tabpanel" aria-labelledby="v-pills-mosque-tab">  Mosque mode 
           <div class="grid-container">
             <div class="grid-itemL"> 
@@ -539,6 +541,60 @@
           </div>
         </div>-->
         
+        <div class="tab-pane fade" id="v-pills-quran" role="tabpanel" aria-labelledby="v-pills-quran-tab"> <!-- Qur'an -->
+          <div class="grid-container">
+
+            <div class="grid-itemL"> 
+              <p class="h4" id="quranText">Language</p> 
+            </div>
+            <div class="grid-itemR">
+              <div class="form-check grid-R-spacer">
+                <label class="form-check-label" for="quranLangCheck" id="quranLangCheckText">
+                  Different language from app
+                </label>
+                <input class="form-check-input" type="checkbox" id="quranLangCheck" unchecked>
+              </div>
+              <div class="form-check grid-R-spacer">
+                <form >
+                  <select class="form-select" id="langlist" name="Language">
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                    <option value="es">Español</option>
+                    <option value="it">Italiano</option>
+                    <option value="ar">عربي</option>
+                    <option value="de">Deutsch</option>
+                    <option value="nl">Nederlands</option>
+                    <option value="no">Norsk (bokmål)</option>
+                    <option value="sv">Svenska</option>
+                    <option value="da">Dansk</option>
+                    <option value="ur">Urdu</option>
+                  </select>
+                </form>
+              </div>
+            </div>
+
+            <div class="grid-itemL"> 
+              <p class="h4" id="quranText">Translation</p> 
+            </div>
+            <div class="grid-itemR">
+              <div class="form-check grid-R-spacer">
+                <label class="form-check-label" for="quranLangCheck" id="quranLangCheckText">
+                  Show translation
+                </label>
+                <input class="form-check-input" type="checkbox" id="quranLangCheck" unchecked>
+              </div>
+              <div class="form-check grid-R-spacer">
+                <label class="form-check-label" for="ishaAdjInput" id="ishaAdjText">
+                  Font Size
+                </label>
+                <input id="ishaAdjInput"  class="form-control shortInput" type="number" value="0" min="12" max="100" step="1" placeholder="20"> 
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
       </div>
     </div>
   </div>
