@@ -28,7 +28,6 @@ header{
     display: flex;
     flex-direction: row;
     width: 100%;
-    padding-bottom: 3vh;
     border-top: 2px solid;
 }
 
@@ -61,6 +60,10 @@ header{
     flex-wrap: wrap;
     margin-bottom: 15px;
     font-style: italic;
+}
+
+.transText{
+    margin-bottom: 20px;
 }
 
 .sidebar{
