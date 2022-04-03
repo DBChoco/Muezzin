@@ -30,6 +30,7 @@
         <button class="nav-link" id="v-pills-adjustments-tab" data-bs-toggle="pill" data-bs-target="#v-pills-adjustments" type="button" role="tab" aria-controls="v-pills-adjustments" aria-selected="false">Adjustments</button>
         <!--<button class="nav-link" id="v-pills-mosque-tab" data-bs-toggle="pill" data-bs-target="#v-pills-mosque" type="button" role="tab" aria-controls="v-pills-mosque" aria-selected="false">Mosque mode</button> -->
         <button class="nav-link" id="v-pills-quran-tab" data-bs-toggle="pill" data-bs-target="#v-pills-quran" type="button" role="tab" aria-controls="v-pills-quran" aria-selected="false">
+          <i class="fa-solid fa-book-quran"></i>
           Qur'an
         </button>
       </div>
@@ -384,22 +385,20 @@
                   <label class="form-check-label" for="fajrAngle" id="fajrAngleText">
                     Fajr Angle
                   </label>
-                  <input id="fajrAngle"  class="form-control" type="number" value="0.00" min="-90" max="90" step="0.1" maxlength="5"
+                  <input id="fajrAngle"  class="form-control shortInput" type="number" value="0.00" min="-90" max="90" step="0.1" maxlength="5"
                   placeholder="00.00"> 
       
                   <label class="form-check-label" for="maghribAngle" id="maghribAngleText">
                     Maghrib Angle
                   </label>
-                  <input id="maghribAngle"  class="form-control" type="number" value="0.00" min="-90" max="90" step="0.1" maxlength="5"
+                  <input id="maghribAngle"  class="form-control shortInput" type="number" value="0.00" min="-90" max="90" step="0.1" maxlength="5"
                   placeholder="00.00"> 
       
                   <label class="form-check-label" for="ishaAngle" id="ishaAngleText">
                     Isha Angle
                   </label>
-                  <input id="ishaAngle"  class="form-control" type="number" value="0.00" min="-90" max="90" step="0.1" maxlength="5"
+                  <input id="ishaAngle"  class="form-control shortInput" type="number" value="0.00" min="-90" max="90" step="0.1" maxlength="5"
                   placeholder="00.00"> 
-
-                  
                 </form>
             </div>
 
@@ -417,7 +416,7 @@
                   <label class="form-check-label" for="ishaAngle" id="delayFormText">
                     Delay (minutes)
                   </label>
-                  <input id="delayForm"  class="form-control" type="number" value="0" min="0" max="300" step="1" maxlength="3"
+                  <input id="delayForm"  class="form-control shortInput" type="number" value="0" min="0" max="300" step="1" maxlength="3"
                   placeholder="00"> 
                 </form>
             </div>
@@ -482,65 +481,6 @@
           </div>
 
         </div>
-
-        <!-- Mosque Mode
-        <div class="tab-pane fade" id="v-pills-mosque" role="tabpanel" aria-labelledby="v-pills-mosque-tab">  Mosque mode 
-          <div class="grid-container">
-            <div class="grid-itemL"> 
-              <p class="h4" id="mosqueModeText">Mosque mode</p> 
-            </div>
-            <div class="grid-itemR"> 
-              <form >
-                <div class="form-check grid-R-spacer">
-                  <label class="form-check-label" for="mosqueCheck" id="mosqueCheckText">
-                    Enable mosque mode
-                  </label>
-                  <input class="form-check-input" type="checkbox" id="mosqueCheck" unchecked>
-                </div>
-                
-                <div class="form-check grid-R-spacer">
-                  <label class="form-check-label" for="fajrdelayInput" id="fajrdelayText">
-                    Fajr delay
-                  </label>
-                  <input id="fajrdelayInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
-                  placeholder="00.00"> 
-                </div>
-
-                <div class="form-check grid-R-spacer">
-                  <label class="form-check-label" for="dhuhrdelayInput" id="dhuhrdelayText">
-                    Dhuhr delay
-                  </label>
-                  <input id="dhuhrdelayInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
-                  placeholder="00.00"> 
-                </div>
-
-                <div class="form-check grid-R-spacer">
-                  <label class="form-check-label" for="asrdelayInput" id="asrdelayText">
-                    Asr delay
-                  </label>
-                  <input id="asrdelayInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
-                  placeholder="00.00"> 
-                </div>
-
-                <div class="form-check grid-R-spacer">
-                  <label class="form-check-label" for="maghribdelayInput" id="maghribdelayText">
-                    Maghrib delay
-                  </label>
-                  <input id="maghribdelayInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
-                  placeholder="00.00"> 
-                </div>
-              
-                <div class="form-check grid-R-spacer">
-                  <label class="form-check-label" for="ishadelayInput" id="ishadelayText">
-                    Isha delay
-                  </label>
-                  <input id="ishadelayInput"  class="form-control" type="number" value="0" min="-90" max="90" step="1" maxlength="5"
-                  placeholder="00.00"> 
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>-->
         
         <div class="tab-pane fade" id="v-pills-quran" role="tabpanel" aria-labelledby="v-pills-quran-tab"> <!-- Qur'an -->
           <div class="grid-container">
@@ -569,8 +509,21 @@
                     <option value="sv">Svenska</option>
                     <option value="da">Dansk</option>
                     <option value="ur">Urdu</option>
+                    <option value="tr">Türk</option>
                   </select>
                 </form>
+              </div>
+            </div>
+
+            <div class="grid-itemL"> 
+              <p class="h4" id="quranText">Font</p> 
+            </div>
+            <div class="grid-itemR">
+              <div class="form-check grid-R-spacer">
+                <label class="form-check-label" for="ishaAdjInput" id="ishaAdjText">
+                  Font Size
+                </label>
+                <input id="ishaAdjInput"  class="form-control shortInput" type="number" value="20" min="12" max="100" step="1" placeholder="20"> 
               </div>
             </div>
 
@@ -584,13 +537,36 @@
                 </label>
                 <input class="form-check-input" type="checkbox" id="quranLangCheck" unchecked>
               </div>
+              <div class="form-check">
+                <label class="form-check-label" for="ishaAdjInput" id="ishaAdjText">
+                  Font Size
+                </label>
+                <input id="ishaAdjInput"  class="form-control shortInput" type="number" value="20" min="12" max="100" step="1" placeholder="20"> 
+              </div>
+            </div>
+
+            <div class="grid-itemL"> 
+              <p class="h4" id="quranText">Transliteration</p> 
+            </div>
+            <div class="grid-itemR">
+              <div class="form-check grid-R-spacer">
+                <label class="form-check-label" for="quranLangCheck" id="quranLangCheckText">
+                  Show transliteration
+                </label>
+                <input class="form-check-input" type="checkbox" id="quranLangCheck" unchecked>
+              </div>
+              
               <div class="form-check grid-R-spacer">
                 <label class="form-check-label" for="ishaAdjInput" id="ishaAdjText">
                   Font Size
                 </label>
-                <input id="ishaAdjInput"  class="form-control shortInput" type="number" value="0" min="12" max="100" step="1" placeholder="20"> 
+                <input id="ishaAdjInput"  class="form-control shortInput" type="number" value="20" min="12" max="100" step="1" placeholder="20"> 
               </div>
             </div>
+
+
+
+
           </div>
         </div>
 

@@ -12,10 +12,11 @@
 
 .grid-itemL {
   text-align: left;
+  margin-right: 30px;
 }
 
 .grid-itemR {
-    width: 90%;
+    width: fit-content;
     margin-left: auto;
     text-align: right;
     align-items: right;
@@ -24,7 +25,7 @@
 }
 
 .grid-R-spacer{
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 }
 
 .grid-itemR-S {
@@ -42,7 +43,7 @@
 
 #v-pills-tab{
   border-style:  none solid none none ;
-  border-width: 1px;
+  border-width: 2px;
   padding-right: 20px;
   font-size: 26px;
 }
@@ -88,7 +89,7 @@
 }
 
 #return{
-  font-size: 24px;
+  font-size: max(1.8vh, 15px);
   margin: 0px 10px 10px auto;
 }
 

@@ -1194,7 +1194,6 @@ var dict = {
         'download': 'ڈاؤن لوڈ کریں',
         'later': 'بعد میں'
     },
-},
  tr: {
         'settings': 'Ayarlar', //settingsTitle
         'language': 'Dil', //langText
@@ -1304,3 +1303,4 @@ var dict = {
         'download': 'İndir',
         'later': 'Sonra'
     },
+}

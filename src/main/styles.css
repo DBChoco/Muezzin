@@ -19,7 +19,7 @@ body{
 
 #clock{
     font-size: 10vh;
-    margin-top: 3vh;
+    margin-top: 4vh;
 }
 
 #title{
@@ -71,8 +71,7 @@ body{
 }
 
 .box{
-    margin: 2vh;
-    margin-bottom: auto;
+    margin: auto 0 auto 0;
     align-items: center;
 }
 
