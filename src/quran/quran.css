@@ -1,7 +1,8 @@
-@import url("../../ressources/fonts/arabic/fonts.css");;
+@import url("../../ressources/fonts/arabic/fonts.css");
 
 header{
     text-align: center;
+    align-items: center;
 }
 
 #title{
