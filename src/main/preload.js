@@ -1,7 +1,7 @@
 // All of the Node.js APIs are available in the preload process.
 // It has the same sandbox as a Chrome extension.
 
-const { contextBridge, ipcRenderer } = require('electron')
+const { contextBridge, ipcRenderer, app } = require('electron')
 const momentz = require('moment-timezone')
 const moment = require('moment')
 const adhan = require('adhan')
@@ -24,5 +24,5 @@ contextBridge.exposeInMainWorld( 'api', {
     getSunnah: (prayerTimes) => new adhan.SunnahTimes(prayerTimes),
     getPrayerTimes: (coordinates, date, parameters) => new adhan.PrayerTimes(coordinates, date, parameters),
     openExternal: (link) => shell.openExternal(link)
-} )
+})
 

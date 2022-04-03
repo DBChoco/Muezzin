@@ -4,3 +4,4 @@ electron-builder.yml
 dist
 flatpak/.flatpak-builder
 flatpak/build
+ressources/quran/downloads
