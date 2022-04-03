@@ -21,6 +21,7 @@ var adhanCheck, notifCheck, lang, startupSound;
 var langFajr, langDhuhr, langAsr, langMaghrib, langIsha, langAdhan, langNow;
 var adjustements;
 var updateInterval;
+var startup = true; // To check if the app just started or not when going back to the main page.
 
 let tray = null
 let mainWindow, mediaWindow;
@@ -334,7 +335,7 @@ async function loadSettings(){
   var autoStart = store.get('autoStart', true);
   var minStart = store.get('minStart', false);
   adjustements = store.get('adj', [false, 0,0,0,0,0]);
-  if (minStart){
+  if (minStart && startup){
     mainWindow.hide()
   }
   setAutoStart(autoStart)
@@ -530,6 +531,7 @@ async function setUpHandlers(){
   ipcMain.handle("settingsO", function(){
   })
   ipcMain.handle("settingsC", function(){
+    startup = false;
     loadSettings()
     calcPrayerTimes()
   })

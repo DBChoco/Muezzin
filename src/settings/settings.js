@@ -1,9 +1,8 @@
 var timeFormat, dateFormat, sec, language, adhanFile, bgImage;
+var lat,lon;
 
 window.addEventListener('DOMContentLoaded', () => { 
   loadSettings()
-
-  //initTooltips();
   setNumberLimit(document.getElementById("latInput"));
   setNumberLimit(document.getElementById("lonInput"));
   setTZlist();
@@ -13,58 +12,26 @@ window.addEventListener('DOMContentLoaded', () => {
   addLangListener()
 })
 
-//Saves the settings and sends them to store
+/**
+* Saves all settings to the store
+*/
 async function saveSettings(){
   getTimeDateFormat()
-  var lat = document.getElementById("latInput").value;
-  var lon = document.getElementById("lonInput").value;
-  var tz = document.getElementById("tzlist").value;
-  var calcmeth = document.getElementById("calcMethodList").value;
-  var madhab = document.getElementById("madhabList").value;
-  var hlr = document.getElementById("highLatitudeRuleList").value;
-  var pcr = document.getElementById("polarCircleResolutionList").value;
-  var shafaq = document.getElementById("shafaqList").value;
-  var lang = document.getElementById("langlist").value;
-  var darkMode = document.getElementById("darkModeCheck").checked;
-  var enableNotifs = document.getElementById("notifCheck").checked;
-  var enableAdhan = document.getElementById("adhanCheck").checked;
-  var systray = document.getElementById("systrayCheck").checked;
-  var startupSound = document.getElementById("startUpSound").checked;
-  var autoStart = document.getElementById("autoStartCheck").checked
-  var minStart = document.getElementById("minStartCheck").checked;
-  var motn = document.getElementById("MOTNCheck").checked;
-  var totn = document.getElementById("TOTNCheck").checked
-
+  //Values that might change too much should not be saved automaticaly (no saver)
+  if (lat != document.getElementById("latInput").value) await window.api.setToStore('latitude', lat);
+  if (lon != document.getElementById("lonInput").value) await window.api.setToStore('longitude', lon);
   await saveAdhan()
   await saveBgImage()
   await saveAdjustments()
-  await window.api.setToStore('latitude', lat);
-  await window.api.setToStore('longitude', lon);
-  await window.api.setToStore('timezone', tz);
-  await window.api.setToStore('calcmeth', calcmeth);
-  await window.api.setToStore('madhab', madhab);
-  await window.api.setToStore('hlr', hlr);
-  await window.api.setToStore('pcr', pcr);
-  await window.api.setToStore('shafaq', shafaq);
-  await window.api.setToStore('timeFormat', timeFormat)
-  await window.api.setToStore('dateFormat', dateFormat)
-  await window.api.setToStore('seconds', sec)
-  await window.api.setToStore('language', lang)
-  await window.api.setToStore('darkMode', darkMode)
-  await window.api.setToStore('notifCheck', enableNotifs)
-  await window.api.setToStore('adhanCheck', enableAdhan)
-  await window.api.setToStore('systray', systray)
-  await window.api.setToStore('startup', startupSound)
-  await window.api.setToStore('autoStart', autoStart)
-  await window.api.setToStore('minStart', minStart)
-  await window.api.setToStore('motnSunnah', motn)
-  await window.api.setToStore('totnSunnah', totn)
   await saveCustomSettings()
 }
 
+/**
+* Loads all the settings from the store
+*/
 async function loadSettings(){
-  var lat =   await window.api.getFromStore('latitude', 0.00);
-  var lon =   await window.api.getFromStore('longitude', 0.00);
+  lat = await window.api.getFromStore('latitude', 0.00);
+  lon = await window.api.getFromStore('longitude', 0.00);
   var tzVal =  await window.api.getFromStore('timezone', window.api.timeZoneGuess());
   var calcmethVal =  await window.api.getFromStore('calcmeth', 'MWL');
   var madhabVal =  await window.api.getFromStore('madhab', 'Shafi');
@@ -88,10 +55,23 @@ async function loadSettings(){
   await loadAdhan()
   await loadCustomSettings()
   await loadAdjustments()
-  var valueChecker = setInterval(function(){
+
+  //Checks if the values are defined then if so, adds the savers
+  //    Saver: ChangeListener that will save the value if it is changed.
+  var valueChecker = setInterval(
+    /**
+    * Waits for all values to load, then either
+    * 1) The value changes too much, thus we can't dynamicaly change it so it just sets the value to the UI
+    * 2) The loaded value is already handeled by another function, so the function is called
+    * 3) The value doesn't change too much, so a Saver is added
+    * A saver is an event listener that saved the value directly to the store without waiting.
+    */
+    async function addSavers(){
     if (calcmethVal != undefined){
       document.getElementById("latInput").value = lat
       document.getElementById("lonInput").value = lon
+
+      //Selects the loaded value from the lists
       selectFromList(document.getElementById("tzlist"), tzVal)
       selectFromList(document.getElementById("calcMethodList"), calcmethVal)
       selectFromList(document.getElementById("madhabList"), madhabVal)
@@ -99,15 +79,26 @@ async function loadSettings(){
       selectFromList(document.getElementById("polarCircleResolutionList"), pcrVal)
       selectFromList(document.getElementById("shafaqList"), shafaqVal)
       selectFromList(document.getElementById('langlist'), language)
-      document.getElementById("darkModeCheck").checked = darkMode;
-      document.getElementById("notifCheck").checked = notifCheck;
-      document.getElementById("adhanCheck").checked = adhanCheck;
-      document.getElementById("systrayCheck").checked = systray;
-      document.getElementById("startUpSound").checked = startupSound;
-      document.getElementById("autoStartCheck").checked = autoStart;
-      document.getElementById("minStartCheck").checked = minStart;
-      document.getElementById("MOTNCheck").checked = motn;
-      document.getElementById("TOTNCheck").checked = totn;
+
+      await addSaverValue(document.getElementById("tzlist"), tzVal, "timezone")
+      await addSaverValue(document.getElementById("calcMethodList"), calcmethVal, "calcmeth")
+      await addSaverValue(document.getElementById("madhabList"), madhabVal, "madhab")
+      await addSaverValue(document.getElementById("highLatitudeRuleList"), hlrVal, "hlr")
+      await addSaverValue(document.getElementById("polarCircleResolutionList"), pcrVal, "pcr")
+      await addSaverValue(document.getElementById("shafaqList"), shafaqVal, "shafaq")
+      await addSaverValue(document.getElementById("langlist"), language, "language")
+
+      await addSaverChecked(document.getElementById("darkModeCheck"), darkMode, 'darkMode')
+      await addSaverChecked(document.getElementById("notifCheck"), notifCheck, 'notifCheck');
+      await addSaverChecked(document.getElementById("adhanCheck"), adhanCheck, 'adhanCheck');
+      await addSaverChecked(document.getElementById("systrayCheck"), systray, 'ssytray');
+      await addSaverChecked(document.getElementById("startUpSound"), startupSound, 'startup');
+      await addSaverChecked(document.getElementById("autoStartCheck"), autoStart, 'autoStart');
+      await addSaverChecked(document.getElementById("minStartCheck"), minStart, 'minStart');
+      await addSaverChecked(document.getElementById("MOTNCheck"), motn, 'motnSunnah');
+      await addSaverChecked(document.getElementById("TOTNCheck"), totn, 'totnSunnah');
+      await addSaverChecked(document.getElementById("showSeconds"), sec, "seconds")
+
       window.api.setTheme(darkMode, "settings.css");
       setTimeDateFormat()
       clearInterval(valueChecker)
@@ -119,7 +110,42 @@ async function loadSettings(){
 }
 
 
-//Saves and bring you back to index.html when you click on the retrn button
+/**
+* Sets the element to the value and adds a listener
+* If the element changes, the value is directly sent to the store value (thanks to its name)
+*
+* @param element the UI element that gets the value and event listener.
+* @param value if this one is defined
+* @param name if this one is defined
+*/
+async function addSaverChecked(element, value, name){
+  element.checked = value;
+  element.addEventListener("change", async function(){
+    await window.api.setToStore(name, element.checked)
+    console.debug("Saved " + element.checked + " to store (from " + value + ")")
+  })
+}
+
+/**
+* Sets the element to the value and adds a listener
+* If the element changes, the value is directly sent to the store value (thanks to its name)
+*
+* @param element the UI element that gets the value and event listener. 
+* @param value if this one is defined
+* @param name if this one is defined
+*/
+async function addSaverValue(element, value, name){
+  element.value = value;
+  element.addEventListener("change", async function(){
+    await window.api.setToStore(name, element.value)
+    console.debug("Saved " + element.value + " to store (from " + value + ")")
+  })
+}
+
+
+/**
+* Saves and brings you back to index.html when you click on the retrn button (adds listener)
+*/
 async function returnButton(){
   var set = document.getElementById("return");
   set.onclick= async function(){
@@ -129,10 +155,12 @@ async function returnButton(){
   }
 }
 
-//Saves and bring you back to index.html when you press the "Escape" key
+/**
+* Saves and brings you back to index.html when you press the ESC key
+*/
 async function setKeyPress(){
   document.addEventListener('keydown', async function(key){
-    console.log(key.key)
+    console.debug("Pressed the :" + key.key + " key")
     if (key.key == "Escape"){
       await saveSettings()
       window.api.send("settingsC");
@@ -141,8 +169,9 @@ async function setKeyPress(){
   })
 }
 
-
-//Makes you unable to type out of bounds for the lat and lon fields
+/**
+ * Makes you unable to type out of bounds for the lat and lon fields
+ */
 function setNumberLimit(){
   var latInput = document.getElementById("latInput");
   var latOldValue = latInput.value;
@@ -173,7 +202,6 @@ function setNumberLimit(){
   });
 }
 
-
 /**
 * Loads all timezones, and adds them to the TZ list
 */
@@ -194,20 +222,11 @@ function setTZlist(){
 }
 
 
+
 /**
-* No idea, should delete it (it's disabled)
-*/
-function initTooltips(){ 
-  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl)
-  })
-}
-
-
-//Goes through the form/list and selects the val
+ * Goes through the form/list and selects the val
+ */
 function selectFromList(list, val){
-  console.log(val)
   list.childNodes.forEach(function(node){
     if (node.value == val){
       node.selected = true;
@@ -218,7 +237,6 @@ function selectFromList(list, val){
 
 //Looks at the checkboxes/radios and sets the variables according to the formats
 function getTimeDateFormat(){ 
-  sec = document.getElementById("showSeconds").checked
   if (document.getElementById("24hTimeFormat").checked){
     timeFormat = 24;
   }
@@ -263,8 +281,8 @@ function setTimeDateFormat(){
 /**
 * If val is defined, change the value of the element to @val
 *
-* @param element
-* @param val
+* @param element the element gets the value
+* @param val if this one is defined
 */
 function setSavedVal(element, val){
   if (val != undefined){
@@ -294,7 +312,7 @@ async function loadAdhan(){
 
   document.getElementById("customAdhanFile").addEventListener("change", function(){
     var file = document.getElementById("customAdhanFile").files[0].path;
-    console.log(file)
+    console.debug("Loaded: " + file)
   })
 
 
@@ -433,7 +451,6 @@ async function saveBgImage(){
   else{
     var file = document.getElementById("customBgImage").files
     if (file != undefined && file.length != 0){
-      console.log(file)
       await window.api.setToStore('bgImage', [true, file[0].path])
     }
     else{
@@ -637,7 +654,6 @@ async function saveCustomSettings(){
 //Loads the prayer times adjustements from the store and adds an event listener for the adjustements check box
 async function loadAdjustments(){
   var adjustements = await window.api.getFromStore('adj', [false, 0,0,0,0,0]);
-  console.log(adjustements)
   for (let i = 1; i <= 5; i++){
     console.log(adjustements[i])
     if (adjustements[i] == undefined){
