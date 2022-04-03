@@ -1,7 +1,5 @@
-var lang = "en";
-var latin = new Boolean(true)
-var translation = new Boolean(true)
-var font, fontSize, wordByWord, wordTooltip, trans, audio;
+var lang;
+var quran;
 
 window.addEventListener('DOMContentLoaded', () => { 
     loadSettings()
@@ -60,12 +58,10 @@ async function loadQuranList(){
 
     var chaptersList = document.getElementById("chaptersList")
     try{
-        response = await fetch('https://api.quran.com/api/v4/chapters?language=' + lang , {method: "GET"})
+        response = await fetch('../../ressources/quran/chapters.json')
         .then(res => res.json())
         .then((json) => {
-            console.log(json)
             for (let chapter of json["chapters"]){
-                console.log("surah ola")
                 var option = document.createElement("option")
                 option.value = chapter["id"];
                 option.innerText = "[" +  chapter["id"] + "] " + chapter["name_simple"] + " - " + chapter["name_arabic"];
@@ -84,14 +80,14 @@ async function loadQuranList(){
 //When selecting a Surah, this is launched.
 //Calls the apis for the arabText, latins and translations and applies them.
 async function loadSurah(number){
-    console.log("Loading Surah")
+    console.debug("Loading Surah n°" + number)
     document.getElementById("reader").innerHTML = ""
     var numberVerses = 0;
     try{
         response = await fetch('https://api.quran.com/api/v4/quran/verses/uthmani?chapter_number=' + number + '', {method: "GET"})
         .then(res => res.json())
         .then((json) => {
-            console.log(json)  
+            console.debug(json)  
             for (let verse of json["verses"]){
                 generateVerse(verse["verse_key"], verse["text_uthmani"])
                 numberVerses ++;
@@ -103,11 +99,11 @@ async function loadSurah(number){
 
     var numberTranslated = 0;
     var page = 1;
-    if (latin || translation){
+    if (quran.transliteration.show || quran.translation.show){
         while (numberTranslated < numberVerses){
             try{
-            response = await fetch('https://api.quran.com/api/v4/verses/by_chapter/' + number + '?language='+ trans[lang] + 
-            '&words=true&translations=' + trans[trans]  + '&page=' + page, {method: "GET"})
+            response = await fetch('https://api.quran.com/api/v4/verses/by_chapter/' + number + '?language='+ quran.translation.lang + 
+            '&words=true&translations=' + quran.translation.trans  + '&page=' + page, {method: "GET"})
             .then(res => res.json())
             .then((json) => {
                 for (let verse of json["verses"]){
@@ -159,30 +155,26 @@ function createDiv(divClass){
 //Loads all the necessary settings
 async function loadSettings(){
     lang = await window.api.getFromStore('lang', 'en')
-    //var font, fontSize, wordByWord, wordTooltip, trans, audio;
-    var quran = await window.api.getFromStore('quran', {
-        font: "dont know yet",
+    
+    quran = await window.api.getFromStore('quran', {
         fontsize: 24,
-        wordByWord: {
-            latin: new Boolean(true),
-            trans: new Boolean(true)
-        },
-        wordTooltip: {
-            latin: new Boolean(true),
-            trans: new Boolean(true)
-        },
         translation:{
-            lang: en,
+            show: true,
+            lang: {
+              enabled: false,
+              lang: "fr"
+            },
             trans: 131,
+            fontsize: 14
         },
-        audio: "dont know yet"
+        transliteration:{
+            show: true,
+            fontsize: 14
+        },
     })
-    font = quran[font]
-    fontSize = quran[font-size]
-    wordByWord = quran[wordByWord]
-    wordTooltip = quran[wordTooltip]
-    trans = quran[translation]
-    audio = quran[audio]
+
+    var darkmode = await window.api.getFromStore('darkMode', false)
+    window.api.setTheme(darkmode, "quran.css");
 }
 
 function buttonListeners(){
