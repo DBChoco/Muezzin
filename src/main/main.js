@@ -143,6 +143,9 @@ function createWindow () {
   
   const menu = Menu.buildFromTemplate(template)
   Menu.setApplicationMenu(menu)
+  mainWindow.setMenuBarVisibility(false)
+  mainWindow.setAutoHideMenuBar(true)
+  
   
   // and load the index.html of the app.
   mainWindow.loadFile('src/main/index.html')
