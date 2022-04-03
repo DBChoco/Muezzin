@@ -3,10 +3,9 @@ var latin = new Boolean(true)
 var translation = new Boolean(true)
 var font, fontSize, wordByWord, wordTooltip, trans, audio;
 
-
 window.addEventListener('DOMContentLoaded', () => { 
-    buttonListeners();
     loadSettings()
+    buttonListeners();
     loadQuranList();
     //Make initial greeter when no Surahs are loaded
     //Add settings
@@ -18,15 +17,15 @@ function generateVerse(number, arabText){
     let verseContainer = createDiv("verseContainer")
 
     var sidebarDiv = createDiv("sidebar")
-    var surahNumberDiv = createDiv("surahNumber")
+    var verseNumberDiv = createDiv("verseNumber")
     var textContainerDiv = createDiv("textContainer")
     var arabTextDiv = createDiv("arabText")
 
-    surahNumberDiv.innerHTML = number;
+    verseNumberDiv.innerHTML = number;
 
-    generateArabText(arabTextDiv, arabText)
+    generateArabText(arabTextDiv, arabText, number.split(":")[1])
 
-    sidebarDiv.appendChild(surahNumberDiv)
+    sidebarDiv.appendChild(verseNumberDiv)
     textContainerDiv.appendChild(arabTextDiv)
 
     textContainerDiv.id = "textContainer" + number
@@ -39,7 +38,7 @@ function generateVerse(number, arabText){
 
 
 //Takes the div and the text, divides the text into divs and puts them into the mother div
-function generateArabText(arabTextDiv, arabText){
+function generateArabText(arabTextDiv, arabText, verseNumber){
     var arabWords = arabText.split(" ");
     for (let word of arabWords){
         wordDiv = document.createElement("div");
@@ -47,15 +46,21 @@ function generateArabText(arabTextDiv, arabText){
         wordDiv.innerText = word;
         arabTextDiv.appendChild(wordDiv)
     }
+    wordDiv = document.createElement("div");
+    wordDiv.classList.add("word")
+    wordDiv.innerText = new Intl.NumberFormat('ar-SA').format(verseNumber)
+    arabTextDiv.appendChild(wordDiv)
 }
 
 
 //Loads the list of Surahs
 //TODO: Make it local.
 async function loadQuranList(){
+
+
     var chaptersList = document.getElementById("chaptersList")
     try{
-        response = await fetch('https://api.quran.com/api/v4/chapters?language=en', {method: "GET"})
+        response = await fetch('https://api.quran.com/api/v4/chapters?language=' + lang , {method: "GET"})
         .then(res => res.json())
         .then((json) => {
             console.log(json)
@@ -189,4 +194,25 @@ function buttonListeners(){
     document.getElementById("return").addEventListener("click", function(){
         window.location.assign("../main/index.html");
     })
+}
+
+
+//Does not work yet, I'll have to work on this one.
+function downloadOrFetch(link, path, filename){
+    var absolutePath = appDataPath + path
+    var file = new File(absolutePath + filename)
+
+    if (file.exists()){
+        console.log("yes")
+    }
+
+    else{
+        window.api.send("download", {
+        url: link,
+        properties: {
+            directory: absolutePath,
+            filename: filename
+            }
+        });
+    }
 }

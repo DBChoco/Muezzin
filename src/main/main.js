@@ -6,6 +6,7 @@ const store = new Store();
 const adhan = require('adhan')
 const momentz = require('moment-timezone')
 const language = require('../common/language.js')
+const download = require('electron-dl')
 const AutoLaunch = require('auto-launch');
 var autoLauncher = new AutoLaunch({
   name: "Muezzin", 
@@ -216,6 +217,9 @@ app.whenReady().then(() => {
   ])
   tray.setToolTip('Muezzin')
   tray.setContextMenu(contextMenu)
+  tray.addListener("double-click", function(){
+    mainWindow.show();
+  })
 
   checkFirstTime()
   loadSettings();
@@ -533,6 +537,12 @@ async function setUpHandlers(){
   ipcMain.handle("startup-request", function(){
     mediaWindow.webContents.send('startup-reply', startupSound);
   })
+
+  //Quran Handlers
+  ipcMain.on("download", (event, info) => {
+    download(BrowserWindow.getFocusedWindow(), info.url, info.properties)
+        .then(dl => mainWindow.webContents.send("download complete", dl.getSavePath()));
+  });
 }
 
 

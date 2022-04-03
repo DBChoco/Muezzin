@@ -1,0 +1,34 @@
+/*
+Source: https://fonts.qurancomplex.gov.sa/ & https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/fonts.json
+*/
+
+@font-face {
+    font-family: arabic-digital-regular;
+    src: url(KFGQPC\ AnRegular.ttf);
+}
+
+@font-face {
+    font-family: arabic-digital-light;
+    src: url(KFGQPC\ AnLight.ttf);
+}
+
+@font-face {
+    font-family: arabic-regular;
+    src: url(KSARegular.ttf);
+}
+
+@font-face {
+    font-family: arabic-regular-bold;
+    src: url(KSARegular_B.ttf);
+}
+
+@font-face {
+    font-family: arabic-symbols;
+    src: url(Symbols1_Ver02.otf);
+}
+
+@font-face {
+    font-family: arabic;
+    src: url(hafs-uthmanic-v14-full-org.ttf);
+}
+

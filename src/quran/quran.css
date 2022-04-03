@@ -1,3 +1,5 @@
+@import url("../../ressources/fonts/arabic/fonts.css");;
+
 header{
     text-align: center;
 }
@@ -26,9 +28,8 @@ header{
     flex-direction: row;
     width: 100%;
     padding-bottom: 3vh;
-    border-bottom: 2px solid;
     border-top: 2px solid;
-    border-color: white;
+    border-color: black;
 }
 
 .textContainer, .latinText{
@@ -36,11 +37,11 @@ header{
 }
 
 .word{
-    padding: 5px 5px 5px 5px;
+    padding: 5px 0px 5px 5px;
 }
 
 .wordLatin{
-    padding: 2px 2px 2px 2px;
+    padding: 2px 2px 2px 0px;
 }
 
 .arabText{
@@ -50,6 +51,8 @@ header{
     display: flex;
     flex-direction: row-reverse;
     flex-wrap: wrap;
+    font-family: arabic;
+    font-size: 42px;
 }
 
 .latinText{
@@ -57,15 +60,21 @@ header{
     flex-direction: row;
     flex-wrap: wrap;
     margin-bottom: 15px;
+    font-style: italic;
 }
 
 .sidebar{
     width: fit-content;
     margin-right: 20px;
+    align-items: center;
+}
+
+.verseNumber{
+    font-weight: bold;
+    margin: 10px;
 }
 
 .verse{
-
     width: 50%;
     height: max-content
 }
