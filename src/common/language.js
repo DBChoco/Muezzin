@@ -1194,4 +1194,113 @@ var dict = {
         'download': 'ڈاؤن لوڈ کریں',
         'later': 'بعد میں'
     },
-}
+},
+ tr: {
+        'settings': 'Ayarlar', //settingsTitle
+        'language': 'Dil', //langText
+        'timeformat': 'Zaman biçimi', //tfText
+        '24hour': '24 Saat', //24hTimeFormatText
+        '12hour': '12 Saat', //12hTimeFormatText
+        'showSseconds': 'Saniyeleri göster', //showSecondsText
+        'dateFormat': 'Tarih formatı', //dfText
+        'dateFormat1': 'GG/AA/YYYY', //id="df1Text"
+        'dateFormat2': 'AA/GG/YYYY', //id="df2Text"
+        'dateFormat3': 'YYYY/AA/GG', //id="df3Text"
+        'notifications': 'Bildirimler', //notifText
+        'notifCheck': 'Bildirimleri Aç', //notifCheckText
+        'coordinates': 'Koordinatlar', //coordinatesText
+        'latitude': 'Paralel', //latText
+        'longitude': 'Meridyen', //lonText
+        'timezone': 'Zaman Dilimi', // tzText
+        'adhan': 'Ezan', //adhanText and others in main
+        'adhanCheck': 'Ezanı Aç', //adhanCheckText
+        'AdhanMecca': 'Mekke Ezanı', //adhanMeccaText //Traduire juste Mecca
+        'adhanAqsa': 'Aksa Ezanı', //adhanAqsaText
+        'customAdhan': 'Kendi Seçimin Ezan', //customAdhanText
+        'duaAfterAdhan': "Ezan Sonrası Dua", //duaAfterText
+        'theme': 'Tema', //themeText
+        'darkMode': 'Gece Modu', //darkModeText
+        'bgImage': 'Arkaplan Resmi', //bgImageText
+        'bgImageCheck': 'Arkaplan Resmini Etkinleştir', //bgImageCheckText
+        'calcMethods': 'Hesaplama Metodları', //calcMethodsText
+        'mwl': 'Dünya İslam Birliği', //MWL
+        'egyptian': 'Mısır', //Egyptian
+        'karachi': 'Karaçi', //Karachi
+        'uaq': "Ümmü'l-Kurra", //UAQ
+        'dubai': 'Dubai', //Dubai
+        'qatar': 'Katar', //Qatar
+        'kuwait': 'Kuveyt', //Kuwait
+        'mc': 'Moonsighting Committee', //MC //pas traduire ça
+        'singapore': 'Singapur', //Singapore
+        'turkey': 'Türkiye', //Turkey
+        'tehran': 'Tahran', //Tehran
+        'isna': 'Isna (Kuzey Amerika)', //ISNA
+        'madhab': 'Mezhep', //MadhabText
+        'shafi': 'Şafi', //shafi
+        'hanafi': 'Hanefi', //Hanafi
+        'hlr': 'Yüksek Enlem Kuralı', //hlrText
+        'motn': 'Gecenin Ortası', //MOTN
+        'sotn': 'Gecenin Yedide Biri', //SOTN
+        'ta': 'Şafak Açısı', //TA
+        'pcr': 'Kutup Civarı ', //pcrText
+        'cc': 'En Yakın Şehir', //CC
+        'cd': 'En Yakın Tarih', //CD
+        'und': 'Hesaplama', //UND
+        'shafaq': 'Şafak', //ShafaqText
+        'general': 'Genel', //shafaqG
+        'ahmer': 'Şafak-ı Ahmer', //shafaqR
+        'abyad': 'Şafak-ı Ebyaz', //shafaqW
+        'return': 'Geri Dön', //return
+        'general': 'Genel', //v-pills-general-tab
+        'location': 'Mekân', //v-pills-location-tab
+        'audio': 'Ses', //v-pills-audio-tab
+        'appearance': 'Görünüm', //v-pills-appearance-tab
+        'advanced': 'Gelişmiş', //v-pills-advanced-tab
+        'muezzin': 'Muezzin',
+        'autoStart': 'Kendinden Başlama', //autoStartText
+        'startAtLaunch': 'Açılışta Başla', //autoStartCheckText
+        'copyright': 'Telif Hakkı 2022, Muezzin, Tüm Hakları Saklıdır.', //copyright
+        'quote': "Çünkü namaz, mü'minlere vakitli olarak farz kılınmıştır.", //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'source': "Nisa Suresi 103. ayet", //source
+        'fajr': 'İmsak',
+        'sunrise': 'Güneş',
+        'dhuhr': 'Öğle',
+        'asr': 'İkindi',
+        'maghrib': 'Akşam',
+        'isha': 'Yatsı',
+        'now': 'Şu an',
+        'timeUntil': 'Geriye Kalan',
+        'startUpSound': 'Başlama Sesi', //startUpSoundText
+        'playSound': 'Başlangıçta Ses Çal', //startUpSoundText2
+        'sysTray': 'Bildirim Alanı', //systrayText
+        'minToTray': 'Bildirim Alanına Küçült', //systrayCheckText
+        'customSettings': 'Özel Ayarlar', //customSettText
+        'enableCS': 'Özel Hesaplama Ayarlarını Etkinleştir', //enableCalcText
+        'fAngle': 'İmsak Açısı', //fajrAngleText
+        'mAngle': 'Akşam Açısı', //maghribAngleText
+        'iAngle': 'Yatsı Açısı', //ishaAngleText
+        'delayAfterM': 'Akşam Sonrası Bekleme', //delayText
+        'delayMin': 'Bekleme Miktarı (dk.)', //delayFormText
+        'france': 'Fransa', //France12 15 & 18
+        'russia': 'Rusya', //Russia
+        'gulf': 'Körfez Ülkeleri', //Gulf
+        'preferences': 'Ayarlar', //menu label
+        'resetSettings': 'Ayarları Sıfırla', //menu label
+        'adjustements': 'Uyarlamalar', //adjustmentsText
+        'here': 'Buradan',// I lack the context for this one
+        'enableAdj': 'Uyarlamaları Etkinleştir', //adjCheckText
+        'fajrAdj': 'İmsak Uyarlamaları', //fajrAdjText
+        'dhuhrAdj': 'Öğle Uyarlamaları', //fajrAdjText
+        'asrAdj': 'İkindi Uyarlamaları', //fajrAdjText
+        'maghribAdj': 'Akşam Uyarlamaları', //fajrAdjText
+        'ishaAdj': 'Yatsı Uyarlamaları', //fajrAdjText
+        'showSunnah': 'Sünnet Zamanlarını Göster', //sunnahTimesText
+        'motn': 'Gecenin Ortası',  //MOTNCheckText
+        'totn': 'Gecenin Üçte Biri', //TOTNCheckText
+        'minStart': 'Küçültülmüş Olarak Başla', //minStartCheckText
+        'updateAvailable': 'Yeni Güncelleme', 
+        'version': 'Versiyon',
+        'available': "GitHub'tan indirilmeye hazırdır.",
+        'download': 'İndir',
+        'later': 'Sonra'
+    },
