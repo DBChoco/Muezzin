@@ -106,8 +106,8 @@ async function loadSurah(number){
     if (latin || translation){
         while (numberTranslated < numberVerses){
             try{
-            response = await fetch('https://api.quran.com/api/v4/verses/by_chapter/' + number + '?language='+ trans["lang"] + 
-            '&words=true&translations=' + trans["trans"]  + '&page=' + page, {method: "GET"})
+            response = await fetch('https://api.quran.com/api/v4/verses/by_chapter/' + number + '?language='+ trans[lang] + 
+            '&words=true&translations=' + trans[trans]  + '&page=' + page, {method: "GET"})
             .then(res => res.json())
             .then((json) => {
                 for (let verse of json["verses"]){
@@ -161,29 +161,28 @@ async function loadSettings(){
     lang = await window.api.getFromStore('lang', 'en')
     //var font, fontSize, wordByWord, wordTooltip, trans, audio;
     var quran = await window.api.getFromStore('quran', {
-        "font": "dont know yet",
-        "font-size": 24,
-        "wordByWord": {
-            "latin": new Boolean(true),
-            "trans": new Boolean(true)
+        font: "dont know yet",
+        fontsize: 24,
+        wordByWord: {
+            latin: new Boolean(true),
+            trans: new Boolean(true)
         },
-        "wordTooltip": {
-            "latin": new Boolean(true),
-            "trans": new Boolean(true)
+        wordTooltip: {
+            latin: new Boolean(true),
+            trans: new Boolean(true)
         },
-        "translation":{
-            "lang": "en",
-            "trans": 131
+        translation:{
+            lang: en,
+            trans: 131,
         },
-        "audio": "dont know yet"
+        audio: "dont know yet"
     })
-    font = quran["font"]
-    fontSize = quran["font-size"]
-    wordByWord = quran["wordByWord"]
-    wordTooltip = quran["wordTooltip"]
-    trans = quran["translation"]
-    audio = quran["audio"]
-    console.log(trans)
+    font = quran[font]
+    fontSize = quran[font-size]
+    wordByWord = quran[wordByWord]
+    wordTooltip = quran[wordTooltip]
+    trans = quran[translation]
+    audio = quran[audio]
 }
 
 function buttonListeners(){

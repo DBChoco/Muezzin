@@ -28,7 +28,6 @@
         <button class="nav-link" id="v-pills-appearance-tab" data-bs-toggle="pill" data-bs-target="#v-pills-appearance" type="button" role="tab" aria-controls="v-pills-appearance" aria-selected="false">Appearance</button>
         <button class="nav-link" id="v-pills-advanced-tab" data-bs-toggle="pill" data-bs-target="#v-pills-advanced" type="button" role="tab" aria-controls="v-pills-advanced" aria-selected="false">Advanced</button>
         <button class="nav-link" id="v-pills-adjustments-tab" data-bs-toggle="pill" data-bs-target="#v-pills-adjustments" type="button" role="tab" aria-controls="v-pills-adjustments" aria-selected="false">Adjustments</button>
-        <!--<button class="nav-link" id="v-pills-mosque-tab" data-bs-toggle="pill" data-bs-target="#v-pills-mosque" type="button" role="tab" aria-controls="v-pills-mosque" aria-selected="false">Mosque mode</button> -->
         <button class="nav-link" id="v-pills-quran-tab" data-bs-toggle="pill" data-bs-target="#v-pills-quran" type="button" role="tab" aria-controls="v-pills-quran" aria-selected="false">
           <i class="fa-solid fa-book-quran"></i>
           Qur'an
@@ -55,7 +54,7 @@
                   <option value="sv">Svenska</option>
                   <option value="da">Dansk</option>
                   <option value="ur">Urdu</option>
-                  <option value="tr">Türk</option>
+                  <option value="tr">Türkçe</option>
                 </select>
               </form>
             </div>
@@ -231,7 +230,10 @@
               <p class="h4" id="duaAfterText">Du'a after Adhan</p> 
             </div>
             <div class="grid-itemR"> 
-              <div class="grid-R-spacer">
+              <div class="gform-check grid-R-spacer">
+                <label class="form-check-label" for="duaCheck" id="duaCheckText">
+                  Play Du'a after Adhan
+                </label>
                 <input class="form-check-input" type="checkbox" value="" id="duaCheck" checked>
               </div>
             </div>
@@ -486,87 +488,74 @@
           <div class="grid-container">
 
             <div class="grid-itemL"> 
-              <p class="h4" id="quranText">Language</p> 
+              <p class="h4" id="quranFontText">Font</p>
             </div>
             <div class="grid-itemR">
               <div class="form-check grid-R-spacer">
+                <label class="form-check-label" for="quranFontSize" id="quranFontSizeText">
+                  Font Size
+                </label>
+                <input id="quranFontSize"  class="form-control shortInput" type="number" value="20" min="12" max="100" step="1" placeholder="20"> 
+              </div>
+            </div>
+
+            <div class="grid-itemL"> 
+              <p class="h4" id="translationText">Translation</p> 
+            </div>
+            <div class="grid-itemR">
+              <div class=" grid-R-spacer">
+                <input class="form-check-input" type="checkbox" id="showTranslationCheck" checked>
+                <label class="form-check-label" for="showTranslationCheck" id="showTranslationCheckText">
+                  Show translation
+                </label>
+              </div>
+
+              <div class="grid-R-spacer">
+                <input class="form-check-input" type="checkbox" id="quranLangCheck" unchecked>
                 <label class="form-check-label" for="quranLangCheck" id="quranLangCheckText">
                   Different language from app
                 </label>
-                <input class="form-check-input" type="checkbox" id="quranLangCheck" unchecked>
               </div>
               <div class="form-check grid-R-spacer">
                 <form >
-                  <select class="form-select" id="langlist" name="Language">
-                    <option value="en">English</option>
-                    <option value="fr">Français</option>
-                    <option value="es">Español</option>
-                    <option value="it">Italiano</option>
-                    <option value="ar">عربي</option>
-                    <option value="de">Deutsch</option>
-                    <option value="nl">Nederlands</option>
-                    <option value="no">Norsk (bokmål)</option>
-                    <option value="sv">Svenska</option>
-                    <option value="da">Dansk</option>
-                    <option value="ur">Urdu</option>
-                    <option value="tr">Türk</option>
+                  <select class="form-select" id="quranLangList" name="quranLanguage">
                   </select>
                 </form>
               </div>
-            </div>
 
-            <div class="grid-itemL"> 
-              <p class="h4" id="quranText">Font</p> 
-            </div>
-            <div class="grid-itemR">
               <div class="form-check grid-R-spacer">
-                <label class="form-check-label" for="ishaAdjInput" id="ishaAdjText">
-                  Font Size
-                </label>
-                <input id="ishaAdjInput"  class="form-control shortInput" type="number" value="20" min="12" max="100" step="1" placeholder="20"> 
+                <form >
+                  <select class="form-select" id="translationList" name="translationList">
+                  </select>
+                </form>
               </div>
-            </div>
 
-            <div class="grid-itemL"> 
-              <p class="h4" id="quranText">Translation</p> 
-            </div>
-            <div class="grid-itemR">
-              <div class="form-check grid-R-spacer">
-                <label class="form-check-label" for="quranLangCheck" id="quranLangCheckText">
-                  Show translation
-                </label>
-                <input class="form-check-input" type="checkbox" id="quranLangCheck" unchecked>
-              </div>
               <div class="form-check">
-                <label class="form-check-label" for="ishaAdjInput" id="ishaAdjText">
+                <label class="form-check-label" for="translationFontSize" id="translationFontSizeText">
                   Font Size
                 </label>
-                <input id="ishaAdjInput"  class="form-control shortInput" type="number" value="20" min="12" max="100" step="1" placeholder="20"> 
+                <input id="translationFontSize"  class="form-control shortInput" type="number" value="20" min="12" max="100" step="1" placeholder="20"> 
               </div>
             </div>
 
             <div class="grid-itemL"> 
-              <p class="h4" id="quranText">Transliteration</p> 
+              <p class="h4" id="transliterationText">Transliteration</p> 
             </div>
             <div class="grid-itemR">
               <div class="form-check grid-R-spacer">
-                <label class="form-check-label" for="quranLangCheck" id="quranLangCheckText">
+                <label class="form-check-label" for="showTransliterationCheck" id="showTransliterationCheckText">
                   Show transliteration
                 </label>
-                <input class="form-check-input" type="checkbox" id="quranLangCheck" unchecked>
+                <input class="form-check-input" type="checkbox" id="showTransliterationCheck" checked>
               </div>
               
               <div class="form-check grid-R-spacer">
-                <label class="form-check-label" for="ishaAdjInput" id="ishaAdjText">
+                <label class="form-check-label" for="TransliterationFontSize" id="TransliterationFontSizeText">
                   Font Size
                 </label>
-                <input id="ishaAdjInput"  class="form-control shortInput" type="number" value="20" min="12" max="100" step="1" placeholder="20"> 
+                <input id="TransliterationFontSize"  class="form-control shortInput" type="number" value="20" min="12" max="100" step="1" placeholder="20"> 
               </div>
             </div>
-
-
-
-
           </div>
         </div>
 

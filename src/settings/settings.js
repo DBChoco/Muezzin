@@ -24,6 +24,7 @@ async function saveSettings(){
   await saveBgImage()
   await saveAdjustments()
   await saveCustomSettings()
+  await saveQuran()
 }
 
 /**
@@ -55,6 +56,7 @@ async function loadSettings(){
   await loadAdhan()
   await loadCustomSettings()
   await loadAdjustments()
+  await loadQuranSettings()
 
   //Checks if the values are defined then if so, adds the savers
   //    Saver: ChangeListener that will save the value if it is changed.
@@ -160,7 +162,7 @@ async function returnButton(){
 */
 async function setKeyPress(){
   document.addEventListener('keydown', async function(key){
-    console.debug("Pressed the :" + key.key + " key")
+    console.debug("Pressed the: " + key.key + " key")
     if (key.key == "Escape"){
       await saveSettings()
       window.api.send("settingsC");
@@ -232,6 +234,7 @@ function selectFromList(list, val){
       node.selected = true;
     }
   });
+
 }
 
 
@@ -655,10 +658,8 @@ async function saveCustomSettings(){
 async function loadAdjustments(){
   var adjustements = await window.api.getFromStore('adj', [false, 0,0,0,0,0]);
   for (let i = 1; i <= 5; i++){
-    console.log(adjustements[i])
     if (adjustements[i] == undefined){
       adjustements[i] = 0;
-      console.log(adjustements[i])
     }
   }
   document.getElementById("adjCheck").checked = adjustements[0];
@@ -742,5 +743,156 @@ async function saveMosqueMode(){
   var mosqueMode = [mosqueCheck, Math.round(fajrdelay),Math.round(dhuhrdelay),Math.round(asrdelay),Math.round(maghribrdelay),Math.round(ishadelay)]
   
   await window.api.setToStore('mosque', mosqueMode);
+}
+
+
+/**
+* Loads all elements related to the Quran reader
+*/
+async function loadQuranSettings(){
+  let quranFontsize = document.getElementById("quranFontSize")
+  let showTranslationDiv = document.getElementById("showTranslationCheck")
+  let diffLangDiv = document.getElementById("quranLangCheck")
+  let quranLangListDiv = document.getElementById("quranLangList")
+  let transListDiv = document.getElementById("translationList")
+  let transFontSizeDiv = document.getElementById("translationFontSize")
+  let showTransliterationDiv = document.getElementById("showTransliterationCheck")
+  let transliFontSizeDiv = document.getElementById("TransliterationFontSize")
+
+  let quran = await window.api.getFromStore('quran', {
+    fontsize: 24,
+    translation:{
+        show: true,
+        lang: {
+          enabled: false,
+          lang: "fr"
+        },
+        trans: 131,
+        fontsize: 14
+    },
+    transliteration:{
+        show: true,
+        fontsize: 14
+    },
+  })
+
+  loadTranslationList()
+  loadLanguageList()
+  
+
+  quranFontsize.value = quran.fontsize;
+  showTranslationDiv.checked = quran.translation.show;
+  diffLangDiv.checked = quran.translation.lang.enabled;
+  //quranLangListDiv = document.getElementById("quranLangList")
+  //transListDiv = document.getElementById("translationList")
+  transFontSizeDiv.value = quran.translation.fontsize;
+  showTransliterationDiv.checked = quran.transliteration.show;
+  transliFontSizeDiv.value = quran.transliteration.fontsize;
+
+  quranDisableListeners()
+
+
+   /**
+  * Loads the list of languages from a downloaded JSON and fill an inputList
+  */
+  function loadLanguageList(){
+    fetch('../../ressources/quran/languages.json')
+    .then(reponse => reponse.json())
+    .then(json => {
+      for (transLang of json["languages"]){
+        var option = document.createElement("option")
+        option.dataset.language_name = (transLang["translated_name"]["name"]).toLowerCase()
+        option.value = transLang["iso_code"]
+        option.innerText = transLang["native_name"] != "" ? transLang["native_name"] : transLang["name"]
+        if (option.value == quran.translation.lang.lang) option.selected = true;
+        quranLangListDiv.appendChild(option)
+      }
+      hideTranslations()
+    })
+    quranLangListDiv.addEventListener("change", function(){
+      hideTranslations()
+    })
+  }
+
+  /**
+  * Loads the list of translation from a downloaded JSON and fill an inputList
+  */
+  function loadTranslationList(){
+    fetch('../../ressources/quran/translations.json')
+    .then(reponse => reponse.json())
+    .then(json => {
+      for (translation of json["translations"]){
+        var option = document.createElement("option")
+        option.dataset.lang = translation["language_name"]
+        option.value = translation["id"]
+        option.innerText = translation["name"]
+        if (option.value == quran.translation.trans) option.selected = true;
+        transListDiv.appendChild(option)
+      }
+    })
+    transListDiv.addEventListener("change", function(){
+      quran.translation.trans = transListDiv.options[transListDiv.selectedIndex].value;
+      console.log(quran.translation.trans)
+    })
+  }
+
+  /**
+  * Adds listeners to disable some inputs
+  */
+  function quranDisableListeners(){
+    showTranslationDiv.addEventListener("change", function(){
+      diffLangDiv.disabled = !showTranslationDiv.checked;
+      quranLangListDiv.disabled = !showTranslationDiv.checked || !diffLangDiv.checked;
+      transListDiv.disabled = !showTranslationDiv.checked;
+      transFontSizeDiv.disabled = !showTranslationDiv.checked;
+    })
+    diffLangDiv.addEventListener("change", function(){
+      quranLangListDiv.disabled = !diffLangDiv.checked
+    })
+    diffLangDiv.disabled = !showTranslationDiv.checked;
+    quranLangListDiv.disabled = !showTranslationDiv.checked || !diffLangDiv.checked;
+    transListDiv.disabled = !showTranslationDiv.checked;
+    transFontSizeDiv.disabled = !showTranslationDiv.checked;
+    
+    showTransliterationDiv.addEventListener("change", function(){
+      transliFontSizeDiv.disabled = !showTransliterationDiv.checked
+    })
+    transliFontSizeDiv.disabled = !showTransliterationDiv.checked
+  }
+
+  /**
+  * Checks the selected language and hides translations that are not in that language
+  */
+  function hideTranslations(){
+    var selectedOne = false;
+    let selectedLang = quranLangListDiv.options[quranLangListDiv.selectedIndex].dataset.language_name
+    for (translation of transListDiv){
+      translation.dataset.lang == selectedLang ? translation.style.display = "block" :  translation.style.display = "none" 
+      if ((translation.value == quran.translation.trans || !selectedOne) && translation.style.display == "block"){
+        translation.selected = true;
+        selectedOne = true;
+      }
+    }
+  }
+}
+
+async function saveQuran(){
+  let quran = {
+    fontsize: document.getElementById("quranFontSize").value,
+    translation:{
+        show: document.getElementById("showTranslationCheck").checked,
+        lang: {
+          enabled: document.getElementById("quranLangCheck").checked,
+          lang: document.getElementById("quranLangList").options[document.getElementById("quranLangList").selectedIndex].value
+        },
+        trans: document.getElementById("translationList").options[document.getElementById("translationList").selectedIndex].value,
+        fontsize: document.getElementById("translationFontSize").value
+    },
+    transliteration:{
+        show: document.getElementById("showTransliterationCheck").checked,
+        fontsize: document.getElementById("TransliterationFontSize").value
+    },
+  }
+  await window.api.setToStore("quran", quran)
 }
 
