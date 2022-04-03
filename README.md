@@ -95,10 +95,10 @@
   <img src="screenshots/darkMode.png" alt="screenshot1" width="70%">
 </div>
 
-We may all be familiar with Muslim Pro on our smartphones, but as someone who doesn't use my phone much, I wanted an app to help me keep track of prayer times without having to go on my smartphone, I wanted an app that was higly customizable and would let me choose <strong> my own </strong> Adhan and theme. And Alhamdoulillah after a few weeks of hard work, I did just that.
+We may all be familiar with Muslim Pro on our smartphones, but as someone who doesn't use my phone much, I wanted an app to help me keep track of prayer times without having to go on my smartphone, I wanted an app that was highly customizable and would let me choose <strong> my own </strong> Adhan and theme. And Alhamdoulillah after a few weeks of hard work, I did just that.
 
 On Muezzin you can choose to play an Adhan or not, you can import your own audio file; you can also chose to have a background or not, and import your own.
-Currently we support 10, and if you want us to add one more, you can submit a report  <a href="https://github.com/DBChoco/MuezzinPrayerTimes/issues">here</a>
+Currently we support 10 languages (and growing), and if you want us to add one more, you can submit a report  <a href="https://github.com/DBChoco/MuezzinPrayerTimes/issues">here</a>
 
 <div align="center">
   <img src="screenshots/settingsDark.png" alt="screenshot1" width="70%">
@@ -119,8 +119,6 @@ Currently we support 10, and if you want us to add one more, you can submit a re
 * Urdu
 
 ### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
 * [Electron](https://www.electronjs.org/)
 * [Bootstrap](https://getbootstrap.com)
@@ -199,7 +197,10 @@ For other distributions, on the <a href="https://github.com/DBChoco/MuezzinPraye
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+
+If you noticed a translation error or want to add a language yourself, feel free to contact me!
+
+**Don't forget to give the project a star! Thanks again!**
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
