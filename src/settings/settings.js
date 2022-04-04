@@ -801,8 +801,12 @@ async function loadQuranSettings(){
         loadDefaultLang()
       }
     })
-
-
+    document.getElementById("langlist").addEventListener("change",function(){
+      if (!diffLangDiv.checked){
+        console.log("YES")
+        loadDefaultLang()
+      }
+    })
   }
 
   /**
@@ -823,9 +827,6 @@ async function loadQuranSettings(){
             hideTranslations()
       }
     }
-    
-
-
   }
 
   /**
