@@ -10,6 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
   addThemeListener()
   setKeyPress();
   addLangListener()
+  loadQueryString()
 })
 
 /**
@@ -876,3 +877,10 @@ async function saveQuran(){
   await window.api.setToStore("quran", quran)
 }
 
+function loadQueryString(){
+  const queryString = window.location.search;
+  if (queryString == "?page=quran"){
+    var quranTab = new bootstrap.Tab(document.getElementById("v-pills-quran-tab"))
+    quranTab.show();
+  }
+}

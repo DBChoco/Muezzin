@@ -197,7 +197,6 @@ function buttonListeners(){
     })
 }
 
-
 //Does not work yet, I'll have to work on this one.
 function downloadOrFetch(link, path, filename){
     var absolutePath = appDataPath + path
