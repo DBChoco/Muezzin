@@ -38,7 +38,7 @@ function createWindow () {
   })
 
   //DEBUG
-  mainWindow.webContents.openDevTools()
+  //mainWindow.webContents.openDevTools()
 
   const isMac = process.platform === 'darwin'
   const template = [

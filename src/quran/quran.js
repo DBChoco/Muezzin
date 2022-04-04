@@ -107,8 +107,12 @@ async function loadSurah(number){
             .then(res => res.json())
             .then((json) => {
                 for (let verse of json["verses"]){
-                    addLatinText(verse)
-                    addTranslation(verse)
+                    if (quran.transliteration.show){
+                        addLatinText(verse)
+                    }
+                    if (quran.translation.show){
+                        addTranslation(verse)
+                    }
                     numberTranslated ++;
                 }
                 page++
