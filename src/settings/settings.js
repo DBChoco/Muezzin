@@ -1,5 +1,6 @@
 var timeFormat, dateFormat, sec, language, adhanFile, bgImage;
 var lat,lon;
+var fromQuran = false;
 
 window.addEventListener('DOMContentLoaded', () => { 
   loadSettings()
@@ -141,7 +142,12 @@ async function returnButton(){
   set.onclick= async function(){
     await saveSettings()
     window.api.send("settingsC");
-    window.location.assign("../main/index.html");
+    if (!fromQuran){
+      window.location.assign("../main/index.html");
+    }
+    else{
+      window.location.assign("../quran/quran.html");
+    }
   }
 }
 
@@ -893,5 +899,6 @@ function loadQueryString(){
   if (queryString == "?page=quran"){
     var quranTab = new bootstrap.Tab(document.getElementById("v-pills-quran-tab"))
     quranTab.show();
+    fromQuran = true;
   }
 }

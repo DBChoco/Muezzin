@@ -487,6 +487,12 @@ function setupSunnah(){
         element.style.display = "none"
       }
     }
+    if (totnCheck || motn){
+      document.getElementById("clock").style.marginTop = "1vh"
+    }
+    else{
+      document.getElementById("clock").style.marginTop = "4vh"
+    }
   }
 }
 
