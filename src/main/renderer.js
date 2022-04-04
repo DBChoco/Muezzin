@@ -12,7 +12,7 @@ var prayerTimes, calPrayers, tommorowPrayers, sunnahTimes;
 var datePick, progressBar, volume;
 var loadedUI = false;
 var langFajr, langSunrise, langDhuhr, langMaghrib, langIsha, langAdhan, langNow, langTimeUntil;
-var motnCheck, totnCheck, motnCheckOG, totnCheckOG;
+var motnCheck, totnCheck, motnCheckOG, totnCheckOG, totn, motn;
 
 var loaded = true;
 var event1 = new Event('loadedSettings')
@@ -125,10 +125,10 @@ function loadPrayers(){
     document.getElementById("maghribTime").innerText = window.api.getTimes(calPrayers.maghrib,timezone, shortTimeFormat);
     document.getElementById("ishaTime").innerText = window.api.getTimes(calPrayers.isha,timezone, shortTimeFormat);
     if (totnCheck){
-      document.getElementById("totnTime").innerText = window.api.getTimes(totn,timezone, shortTimeFormat);
+      document.getElementById("totnTime").innerText = window.api.getTimes(totn, timezone, shortTimeFormat);
     }
     if (motnCheck){
-      document.getElementById("motnTime").innerText = window.api.getTimes(motn,timezone, shortTimeFormat);
+      document.getElementById("motnTime").innerText = window.api.getTimes(motn, timezone, shortTimeFormat);
     }
   }
 }
@@ -145,15 +145,17 @@ async function loadSettings(){
     pcr = await window.api.getFromStore('pcr', "CC" );
     shafaq = await window.api.getFromStore('shafaq', "shafaqG");
     lang = await window.api.getFromStore('language', "en");
-    loadLang()
+    
     volume = await window.api.getFromStore('volume', 50)
     darkmode = await window.api.getFromStore('darkMode', false)
     window.api.setTheme(darkmode, "styles.css");
-    await hidePlayer()
-    await loadTimeDateFormat()
     motnCheck = await window.api.getFromStore('motnSunnah', false); 
     totnCheck = await window.api.getFromStore('totnSunnah', false); 
     motnCheckOG = motnCheck; totnCheckOG = totnCheck;
+    
+    loadLang()
+    await hidePlayer()
+    await loadTimeDateFormat()
     window.dispatchEvent(event1)
 }
 
@@ -494,6 +496,9 @@ function calculateSunnah(){
   //totn = intToHour(msToTime(prayerTimes.maghrib.getTime() +  nightDuration * (2 / 3);
   motn = new Date(prayerTimes.maghrib.getTime() +  nightDuration / 2);
   totn = new Date(prayerTimes.maghrib.getTime() +  nightDuration * (2 / 3));
+  if (motnCheck || totnCheck){
+    loadPrayers()
+  }
 }
 
 function setupUpdateModal(){

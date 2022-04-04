@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
 * Saves all settings to the store
 */
 async function saveSettings(){
-  getTimeDateFormat()
+  await saveTimeDateFormat()
   //Values that might change too much should not be saved automaticaly (no saver)
   if (lat != document.getElementById("latInput").value) await window.api.setToStore('latitude', lat);
   if (lon != document.getElementById("lonInput").value) await window.api.setToStore('longitude', lon);
@@ -82,7 +82,7 @@ async function loadSettings(){
   await addSaverChecked(document.getElementById("darkModeCheck"), darkMode, 'darkMode')
   await addSaverChecked(document.getElementById("notifCheck"), notifCheck, 'notifCheck');
   await addSaverChecked(document.getElementById("adhanCheck"), adhanCheck, 'adhanCheck');
-  await addSaverChecked(document.getElementById("systrayCheck"), systray, 'ssytray');
+  await addSaverChecked(document.getElementById("systrayCheck"), systray, 'systray');
   await addSaverChecked(document.getElementById("startUpSound"), startupSound, 'startup');
   await addSaverChecked(document.getElementById("autoStartCheck"), autoStart, 'autoStart');
   await addSaverChecked(document.getElementById("minStartCheck"), minStart, 'minStart');
@@ -227,7 +227,7 @@ function selectFromList(list, val){
 
 
 //Looks at the checkboxes/radios and sets the variables according to the formats
-function getTimeDateFormat(){ 
+async function saveTimeDateFormat(){ 
   if (document.getElementById("24hTimeFormat").checked){
     timeFormat = 24;
   }
@@ -243,6 +243,8 @@ function getTimeDateFormat(){
   else{
     dateFormat = "YYYY/MM/DD"
   }
+  await window.api.setToStore('timeFormat', timeFormat);
+  await window.api.setToStore('dateFormat', dateFormat);
 }
 
 
