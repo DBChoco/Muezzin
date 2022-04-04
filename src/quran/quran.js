@@ -56,8 +56,6 @@ function generateArabText(arabTextDiv, arabText, verseNumber){
 //Loads the list of Surahs
 //TODO: Make it local.
 async function loadQuranList(){
-
-
     var chaptersList = document.getElementById("chaptersList")
     try{
         response = await fetch('../../ressources/quran/chapters.json')
