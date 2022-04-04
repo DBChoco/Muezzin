@@ -56,59 +56,46 @@ async function loadSettings(){
   await loadAdhan()
   await loadCustomSettings()
   await loadAdjustments()
+
+
+  document.getElementById("latInput").value = lat
+  document.getElementById("lonInput").value = lon
+
+  //Selects the loaded value from the lists
+  selectFromList(document.getElementById('langlist'), language)
+  selectFromList(document.getElementById("tzlist"), tzVal)
+  selectFromList(document.getElementById("calcMethodList"), calcmethVal)
+  selectFromList(document.getElementById("madhabList"), madhabVal)
+  selectFromList(document.getElementById("highLatitudeRuleList"), hlrVal)
+  selectFromList(document.getElementById("polarCircleResolutionList"), pcrVal)
+  selectFromList(document.getElementById("shafaqList"), shafaqVal)
+  
+  await addSaverValue(document.getElementById("tzlist"), tzVal, "timezone")
+  await addSaverValue(document.getElementById("calcMethodList"), calcmethVal, "calcmeth")
+  await addSaverValue(document.getElementById("madhabList"), madhabVal, "madhab")
+  await addSaverValue(document.getElementById("highLatitudeRuleList"), hlrVal, "hlr")
+  await addSaverValue(document.getElementById("polarCircleResolutionList"), pcrVal, "pcr")
+  await addSaverValue(document.getElementById("shafaqList"), shafaqVal, "shafaq")
+  await addSaverValue(document.getElementById("langlist"), language, "language")
+
+  await addSaverChecked(document.getElementById("darkModeCheck"), darkMode, 'darkMode')
+  await addSaverChecked(document.getElementById("notifCheck"), notifCheck, 'notifCheck');
+  await addSaverChecked(document.getElementById("adhanCheck"), adhanCheck, 'adhanCheck');
+  await addSaverChecked(document.getElementById("systrayCheck"), systray, 'ssytray');
+  await addSaverChecked(document.getElementById("startUpSound"), startupSound, 'startup');
+  await addSaverChecked(document.getElementById("autoStartCheck"), autoStart, 'autoStart');
+  await addSaverChecked(document.getElementById("minStartCheck"), minStart, 'minStart');
+  await addSaverChecked(document.getElementById("MOTNCheck"), motn, 'motnSunnah');
+  await addSaverChecked(document.getElementById("TOTNCheck"), totn, 'totnSunnah');
+  await addSaverChecked(document.getElementById("showSeconds"), sec, "seconds")
+
+  window.api.setTheme(darkMode, "settings.css");
+  setTimeDateFormat()
+  disableAdhanListener()
+  loadLanguage(language)
+  loadBgImage()
+
   await loadQuranSettings()
-
-  //Checks if the values are defined then if so, adds the savers
-  //    Saver: ChangeListener that will save the value if it is changed.
-  var valueChecker = setInterval(
-    /**
-    * Waits for all values to load, then either
-    * 1) The value changes too much, thus we can't dynamicaly change it so it just sets the value to the UI
-    * 2) The loaded value is already handeled by another function, so the function is called
-    * 3) The value doesn't change too much, so a Saver is added
-    * A saver is an event listener that saved the value directly to the store without waiting.
-    */
-    async function addSavers(){
-    if (calcmethVal != undefined){
-      document.getElementById("latInput").value = lat
-      document.getElementById("lonInput").value = lon
-
-      //Selects the loaded value from the lists
-      selectFromList(document.getElementById("tzlist"), tzVal)
-      selectFromList(document.getElementById("calcMethodList"), calcmethVal)
-      selectFromList(document.getElementById("madhabList"), madhabVal)
-      selectFromList(document.getElementById("highLatitudeRuleList"), hlrVal)
-      selectFromList(document.getElementById("polarCircleResolutionList"), pcrVal)
-      selectFromList(document.getElementById("shafaqList"), shafaqVal)
-      selectFromList(document.getElementById('langlist'), language)
-
-      await addSaverValue(document.getElementById("tzlist"), tzVal, "timezone")
-      await addSaverValue(document.getElementById("calcMethodList"), calcmethVal, "calcmeth")
-      await addSaverValue(document.getElementById("madhabList"), madhabVal, "madhab")
-      await addSaverValue(document.getElementById("highLatitudeRuleList"), hlrVal, "hlr")
-      await addSaverValue(document.getElementById("polarCircleResolutionList"), pcrVal, "pcr")
-      await addSaverValue(document.getElementById("shafaqList"), shafaqVal, "shafaq")
-      await addSaverValue(document.getElementById("langlist"), language, "language")
-
-      await addSaverChecked(document.getElementById("darkModeCheck"), darkMode, 'darkMode')
-      await addSaverChecked(document.getElementById("notifCheck"), notifCheck, 'notifCheck');
-      await addSaverChecked(document.getElementById("adhanCheck"), adhanCheck, 'adhanCheck');
-      await addSaverChecked(document.getElementById("systrayCheck"), systray, 'ssytray');
-      await addSaverChecked(document.getElementById("startUpSound"), startupSound, 'startup');
-      await addSaverChecked(document.getElementById("autoStartCheck"), autoStart, 'autoStart');
-      await addSaverChecked(document.getElementById("minStartCheck"), minStart, 'minStart');
-      await addSaverChecked(document.getElementById("MOTNCheck"), motn, 'motnSunnah');
-      await addSaverChecked(document.getElementById("TOTNCheck"), totn, 'totnSunnah');
-      await addSaverChecked(document.getElementById("showSeconds"), sec, "seconds")
-
-      window.api.setTheme(darkMode, "settings.css");
-      setTimeDateFormat()
-      clearInterval(valueChecker)
-      disableAdhanListener()
-      loadLanguage(language)
-      loadBgImage()
-    }
-  }, 100)
 }
 
 
@@ -760,12 +747,12 @@ async function loadQuranSettings(){
   let transliFontSizeDiv = document.getElementById("TransliterationFontSize")
 
   let quran = await window.api.getFromStore('quran', {
-    fontsize: 24,
+    fontsize: 42,
     translation:{
         show: true,
         lang: {
           enabled: false,
-          lang: "fr"
+          lang: "en"
         },
         trans: 131,
         fontsize: 14
@@ -778,13 +765,10 @@ async function loadQuranSettings(){
 
   loadTranslationList()
   loadLanguageList()
-  
 
   quranFontsize.value = quran.fontsize;
   showTranslationDiv.checked = quran.translation.show;
   diffLangDiv.checked = quran.translation.lang.enabled;
-  //quranLangListDiv = document.getElementById("quranLangList")
-  //transListDiv = document.getElementById("translationList")
   transFontSizeDiv.value = quran.translation.fontsize;
   showTransliterationDiv.checked = quran.transliteration.show;
   transliFontSizeDiv.value = quran.transliteration.fontsize;
@@ -804,14 +788,44 @@ async function loadQuranSettings(){
         option.dataset.language_name = (transLang["translated_name"]["name"]).toLowerCase()
         option.value = transLang["iso_code"]
         option.innerText = transLang["native_name"] != "" ? transLang["native_name"] : transLang["name"]
-        if (option.value == quran.translation.lang.lang) option.selected = true;
+        
         quranLangListDiv.appendChild(option)
       }
-      hideTranslations()
+      loadDefaultLang()
     })
     quranLangListDiv.addEventListener("change", function(){
       hideTranslations()
     })
+    diffLangDiv.addEventListener("change", function(){
+      if (!diffLangDiv.checked){
+        loadDefaultLang()
+      }
+    })
+
+
+  }
+
+  /**
+  * This function is called when "Different languages from app" is disabled, it loads the default value (selected general) and changes it and the translation list
+  */
+  function loadDefaultLang(language = undefined){
+    if (language != undefined){
+      if ((language.value == quran.translation.lang.lang && diffLangDiv.checked) || 
+          (!diffLangDiv.checked && language.value == document.getElementById("langlist").options[document.getElementById("langlist").selectedIndex].value)) 
+          language.selected = true;
+          hideTranslations()
+    }
+    else{
+      for (let language of quranLangListDiv){
+        if ((language.value == quran.translation.lang.lang && diffLangDiv.checked) || 
+            (!diffLangDiv.checked && language.value == document.getElementById("langlist").options[document.getElementById("langlist").selectedIndex].value)) 
+            language.selected = true;
+            hideTranslations()
+      }
+    }
+    
+
+
   }
 
   /**

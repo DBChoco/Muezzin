@@ -48,6 +48,8 @@ function generateArabText(arabTextDiv, arabText, verseNumber){
     wordDiv.classList.add("word")
     wordDiv.innerText = new Intl.NumberFormat('ar-SA').format(verseNumber)
     arabTextDiv.appendChild(wordDiv)
+    arabTextDiv.style.fontSize = quran.fontsize +"px";
+    console.log(quran.fontsize)
 }
 
 
@@ -128,11 +130,12 @@ function addLatinText(verse){
     
     for (let word of verse["words"]){
         var wordDiv = document.createElement("div")
-        wordDiv.innerText = word["transliteration"]["text"]
         wordDiv.classList.add("wordLatin")
+        wordDiv.innerText = word["transliteration"]["text"]
         latinTextDiv.appendChild(wordDiv)
     }
-    textContainerDiv.appendChild(latinTextDiv) 
+    latinTextDiv.style.fontSize = quran.transliteration.fontsize + "px";
+    textContainerDiv.appendChild(latinTextDiv)
 }
 
 
@@ -141,6 +144,8 @@ function addTranslation(verse){
     var textContainerDiv = document.getElementById("textContainer" + verse["verse_key"])
     var transTextDiv = createDiv("transText")
     transTextDiv.innerHTML = verse["translations"][0]["text"]
+    transTextDiv.style.fontSize = quran.translation.fontsize + "px";
+    console.log(quran.translation.fontsize + +"px")
     textContainerDiv.appendChild(transTextDiv)
 }
 
@@ -157,12 +162,12 @@ async function loadSettings(){
     lang = await window.api.getFromStore('lang', 'en')
     
     quran = await window.api.getFromStore('quran', {
-        fontsize: 24,
+        fontsize: 42,
         translation:{
             show: true,
             lang: {
               enabled: false,
-              lang: "fr"
+              lang: "en"
             },
             trans: 131,
             fontsize: 14

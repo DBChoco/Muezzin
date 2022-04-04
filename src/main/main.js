@@ -152,10 +152,10 @@ function createWindow () {
 
   mainWindow.maximize();
 
-  /*mainWindow.on('minimize',function(event){
+  mainWindow.on('minimize',function(event){
     event.preventDefault();
     mainWindow.hide();
-  });*/
+  });
 
   mainWindow.on('close', function (event) {
     if(!app.isQuiting && systray){
