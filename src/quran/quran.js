@@ -159,7 +159,8 @@ function createDiv(divClass){
 
 //Loads all the necessary settings
 async function loadSettings(){
-    lang = await window.api.getFromStore('lang', 'en')
+    lang = await window.api.getFromStore('language', 'en')
+    translate()
     
     quran = await window.api.getFromStore('quran', {
         fontsize: 42,
@@ -189,6 +190,10 @@ function buttonListeners(){
 
     document.getElementById("return").addEventListener("click", function(){
         window.location.assign("../main/index.html");
+    }) 
+
+    document.getElementById("toTheTop").addEventListener("click", function(){
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     })
 }
 
@@ -211,4 +216,10 @@ function downloadOrFetch(link, path, filename){
             }
         });
     }
+}
+
+function translate(){
+    document.getElementById("title").innerHTML = window.api.getLanguage(lang, "quran");
+    document.getElementById("settings").innerHTML = '<i class="fa-solid fa-gear"></i>  ' + window.api.getLanguage(lang, "settings");
+    document.getElementById("return").innerHTML = '<i class="fa fa-arrow-circle-left"></i>    ' + window.api.getLanguage(lang, "return");
 }

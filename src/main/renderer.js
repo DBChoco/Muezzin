@@ -20,8 +20,7 @@ var event2 = new Event('loadedUI')
 loadHandles()
 loadSettings()
 
-window.api.send('prayers', "Send me the times please");
-
+window.api.send('prayers');
 
 
 window.addEventListener('loadedSettings', () => { 
@@ -110,7 +109,7 @@ function loadCalendar(){
       return local.toJSON().slice(0,10);
     });
     datePick.value = new Date().toDateInputValue();
-    window.api.send('date-request', datePick.value);
+    //window.api.send('date-request', datePick.value);
     datePick.addEventListener('change', function(){
         window.api.send('date-request', datePick.value);
     })
@@ -118,6 +117,9 @@ function loadCalendar(){
 
 //Load all the prayers of the day and shows them on the screen
 function loadPrayers(){
+  if (datePick.value == new Date().toDateInputValue()){
+    calPrayers = prayerTimes
+  }
   if (timezone != undefined && calPrayers != undefined){
     document.getElementById("fajrTime").innerText = window.api.getTimes(calPrayers.fajr,timezone, shortTimeFormat);
     document.getElementById("sunriseTime").innerText = window.api.getTimes(calPrayers.sunrise,timezone, shortTimeFormat);
@@ -131,7 +133,6 @@ function loadPrayers(){
     if (motnCheck){
       document.getElementById("motnTime").innerText = window.api.getTimes(motn,timezone, shortTimeFormat);
     }
-    
   }
 }
 
@@ -439,6 +440,7 @@ function loadLang(){
   document.getElementById('settingsWheel').innerHTML = '<i class="fa fa-cog" aria-hidden="true"></i>  ' +  window.api.getLanguage(lang, 'settings')
   document.getElementById('motn').innerText = window.api.getLanguage(lang, 'motn')
   document.getElementById('totn').innerText = window.api.getLanguage(lang, 'totn')
+  document.getElementById('quranButton').innerHTML = '<i class="fa-solid fa-book-quran"></i>  ' + window.api.getLanguage(lang, 'quran')
 }
 
 function setupButtonListeners(){

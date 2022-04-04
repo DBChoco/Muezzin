@@ -112,7 +112,15 @@ var dict = {
         'version': 'Version',
         'available': 'is available for download on GitHub',
         'download': 'Download',
-        'later': 'Later'
+        'later': 'Later',
+        'quran': "Qur'an",
+        'font': 'Font',
+        'fontsize': 'Font size',
+        'translation': 'Translation',
+        'showTrans': 'Show translation',
+        'diffLang': 'Different language from app',
+        'transliteration': 'Transliteration',
+        'showTransliteration': 'Show transliteration'
     },
     fr: {
         'settings': 'Options', //settingsTitle
@@ -215,12 +223,20 @@ var dict = {
         'showSunnah': 'Montrer les temps de Sunnah', //sunnahTimesText
         'motn': 'Millieu de la nuit',  //MOTNCheckText
         'totn': 'Tiers de la nuit', //TOTNCheckText
-        'minStart': 'Commencé minimisé', //minStartCheckText
+        'minStart': 'Commencer minimisé', //minStartCheckText
         'updateAvailable': 'Mise à jour disponible', 
         'version': 'Version',
         'available': 'est disponible au téléchargement sur GitHub',
         'download': 'Télécharger',
-        'later': 'Plus tard'
+        'later': 'Plus tard',
+        'quran': "Coran",
+        'font': "Police d'écriture",
+        'fontsize': "Taille de la police d'écriture",
+        'translation': 'Traduction',
+        'showTrans': 'Montrer la traduction',
+        'diffLang': "Différente langue que l'application",
+        'transliteration': 'Translitération',
+        'showTransliteration': 'Montrer la translitération'
     },
     es: {
         'settings': 'Ajustes', //settingsTitle
@@ -328,7 +344,15 @@ var dict = {
         'version': 'Versión',
         'available': 'está disponible para descargar en GitHub',
         'download': 'Descargar',
-        'later': 'Luego'
+        'later': 'Luego',
+        'quran': "Corán",
+        'font': 'Tipo de letra',
+        'fontsize': 'Tamaño de letra',
+        'translation': 'Traducción',
+        'showTrans': 'Mostrar traducción',
+        'diffLang': 'Diferente idioma de la aplicación',
+        'transliteration': 'Transliteración',
+        'showTransliteration': 'Mostrar transliteración'
     },
     ar: {
         'settings': 'الإعدادات', //settingsTitle
@@ -436,7 +460,15 @@ var dict = {
         'version': 'الإصدار',
         'available': 'متاح للتحميل على جيثب',
         'download': 'تحميل',
-        'later': 'فيما بعد'
+        'later': 'فيما بعد',
+        'quran': "القرآن",
+        'font': 'الخط',
+        'fontsize': 'حجم الخط',
+        'translation': 'ترجمة',
+        'showTrans': 'إظهار الترجمة',
+        'diffLang': 'لغة مختلفة عن التطبيق',
+        'transliteration': 'التحويل الصوتي',
+        'showTransliteration': 'إظهار التحويل الصوتي'
     },
     it: {
         'settings': 'Impostazioni', //settingsTitle
@@ -544,7 +576,15 @@ var dict = {
         'version': 'Versione',
         'available': 'è disponibile per il download su GitHub',
         'download': 'Scaricare',
-        'later': 'Più tardi'
+        'later': 'Più tardi',
+        'quran': "Corano",
+        'font': 'Carattere',
+        'fontsize': 'Dimensione del carattere',
+        'translation': 'Traduzione',
+        'showTrans': 'Mostra traduzione',
+        'diffLang': "Linguaggio diverso dall'applicazione",
+        'transliteration': 'Traslitterazione',
+        'showTransliteration': 'Mostra traslitterazione'
     },
     de: {
         'settings': 'Einstellungen', //settingsTitle
@@ -652,7 +692,15 @@ var dict = {
         'version': 'Ausführung',
         'available': 'ist zum Download auf Github verfügbar',
         'download': 'Herunterladen',
-        'later': 'Später'
+        'later': 'Später',
+        'quran': "Koran",
+        'font': 'Schriftart',
+        'fontsize': 'Schriftgröße',
+        'translation': 'Übersetzung',
+        'showTrans': 'Übersetzung anzeigen',
+        'diffLang': 'Andere Sprache als Anwendung',
+        'transliteration': 'Transliteration',
+        'showTransliteration': 'Transliteration anzeigen '
     },
     nl: {
         'settings': 'Instellingen', //settingsTitle
@@ -760,7 +808,15 @@ var dict = {
         'version': 'Versie',
         'available': 'is beschikbaar om te downloaden op GitHub',
         'download': 'Gedownload',
-        'later': 'Later'
+        'later': 'Later',
+        'quran': "Koran",
+        'font': 'Lettertype',
+        'fontsize': 'Lettertypegrootte',
+        'translation': 'Vertaling',
+        'showTrans': 'Vertaling weergeven',
+        'diffLang': 'Andere taal dan applicatie',
+        'transliteration': 'Transliteratie',
+        'showTransliteration': 'Transliteratie weergeven'
     },
     sv: {
         'settings': 'Inställningar', //settingsTitle
@@ -868,7 +924,15 @@ var dict = {
         'version': 'Version',
         'available': 'är tillgänglig för nedladdning på GitHub',
         'download': 'Ladda ner',
-        'later': 'Senare '
+        'later': 'Senare ',
+        'quran': "Koranen",
+        'font': 'Font',
+        'fontsize': 'Textstorlek',
+        'translation': 'Översättning',
+        'showTrans': 'Visa översättning',
+        'diffLang': 'Annat språk än applikationen',
+        'transliteration': 'Translitterering',
+        'showTransliteration': 'Visa translitterering '
     },
     no: {
         'settings': 'Innstillinger', //settingsTitle
@@ -976,7 +1040,15 @@ var dict = {
         'version': 'Versjon',
         'available': 'er tilgjengelig for nedlasting på GitHub',
         'download': 'Nedlasting',
-        'later': 'Seinere'
+        'later': 'Seinere',
+        'quran': "Koranen",
+        'font': 'Font',
+        'fontsize': 'Skriftstørrelse',
+        'translation': 'Oversettelse',
+        'showTrans': 'Vis oversettelse',
+        'diffLang': 'Ulikt språk fra applikasjonen',
+        'transliteration': 'Translitterasjon',
+        'showTransliteration': 'Vis translitterasjon '
     },
     da: {
         'settings': 'Indstillinger', //settingsTitle
@@ -1084,7 +1156,15 @@ var dict = {
         'version': 'Version',
         'available': 'er tilgængelig til download på Github',
         'download': 'Hent',
-        'later': 'Senere'
+        'later': 'Senere',
+        'quran': "Koranen",
+        'font': 'Skrifttype',
+        'fontsize': 'Skriftstørrelse',
+        'translation': 'Oversættelse',
+        'showTrans': 'Vis oversættelse',
+        'diffLang': 'Forskelligt sprog end applikationen',
+        'transliteration': 'Translitteration',
+        'showTransliteration': 'Vis translitteration '
     },
     ur: {
         'settings': 'ترتیبات', //settingsTitle
@@ -1192,7 +1272,15 @@ var dict = {
         'version': 'ورژن',
         'available': 'GitHub پر ڈاؤن لوڈ کے لئے دستیاب ہے',
         'download': 'ڈاؤن لوڈ کریں',
-        'later': 'بعد میں'
+        'later': 'بعد میں',
+        'quran': "قرآن",
+        'font': 'فونٹ',
+        'fontsize': 'حرف کا سائز',
+        'translation': 'ترجمہ',
+        'showTrans': 'ترجمہ دکھائیں۔',
+        'diffLang': 'درخواست سے مختلف زبان',
+        'transliteration': 'نقل حرفی',
+        'showTransliteration': 'نقل حرفی دکھائیں۔ '
     },
  tr: {
         'settings': 'Ayarlar', //settingsTitle
@@ -1301,6 +1389,14 @@ var dict = {
         'version': 'Versiyon',
         'available': "GitHub'tan indirilmeye hazırdır.",
         'download': 'İndir',
-        'later': 'Sonra'
+        'later': 'Sonra',
+        'quran': "Kuran",
+        'font': 'Yazı tipi',
+        'fontsize': 'Yazı Boyutu',
+        'translation': 'Tercüme',
+        'showTrans': 'Tercümeyi göster',
+        'diffLang': 'Uygulamadan farklı dil',
+        'transliteration': 'Harf çevirisi',
+        'showTransliteration': 'Harf çevirisini göster'
     },
 }

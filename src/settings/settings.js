@@ -469,6 +469,7 @@ function loadLanguage(lang){
   document.getElementById("v-pills-appearance-tab").innerHTML = '<i class="fa-solid fa-palette"></i>  ' +  window.api.getLanguage(lang, "appearance");
   document.getElementById("v-pills-advanced-tab").innerHTML = '<i class="fa-solid fa-sliders"></i>  ' + window.api.getLanguage(lang, "advanced");
   document.getElementById("v-pills-adjustments-tab").innerHTML = '<i class="fa-solid fa-clock"></i>  ' + window.api.getLanguage(lang, "adjustements");
+  document.getElementById("v-pills-quran-tab").innerHTML = '<i class="fa-solid fa-book-quran"></i>  ' + window.api.getLanguage(lang, "quran");
 
   document.getElementById("return").innerHTML = '<i class="fa fa-arrow-circle-left"></i>  ' + window.api.getLanguage(lang, "return");
 
@@ -560,6 +561,16 @@ function loadLanguage(lang){
   document.getElementById("minStartCheckText").innerText = window.api.getLanguage(lang, "minStart");
   document.getElementById("adhanMecca").innerHTML = window.api.getLanguage(lang, "AdhanMecca");
   document.getElementById("adhanAqsa").innerHTML  = window.api.getLanguage(lang, "adhanAqsa");
+
+  document.getElementById("quranFontText").innerHTML  = window.api.getLanguage(lang, "font");
+  document.getElementById("quranFontSizeText").innerHTML  = window.api.getLanguage(lang, "fontsize");
+  document.getElementById("translationText").innerHTML  = window.api.getLanguage(lang, "translation");
+  document.getElementById("showTranslationCheckText").innerHTML  = window.api.getLanguage(lang, "showTrans");
+  document.getElementById("quranLangCheckText").innerHTML  = window.api.getLanguage(lang, "diffLang");
+  document.getElementById("translationFontSizeText").innerHTML  = window.api.getLanguage(lang, "fontsize");
+  document.getElementById("transliterationText").innerHTML  = window.api.getLanguage(lang, "transliteration");
+  document.getElementById("showTransliterationCheckText").innerHTML  = window.api.getLanguage(lang, "showTransliteration");
+  document.getElementById("transliterationFontSizeText").innerHTML  = window.api.getLanguage(lang, "fontsize");
 }
 
 
@@ -687,52 +698,6 @@ async function saveAdjustments(){
 }
 
 
-//Loads the prayer times mosqueMode from the store and adds an event listener for the mosqueMode check box
-async function loaddelayustments(){
-  var mosqueMode = await window.api.getFromStore('mosque', [false, 0,0,0,0,0]);
-  for (let i = 1; i <= 5; i++){
-    if (mosqueMode[i] == undefined){
-      mosqueMode[i] = 0;
-    }
-  }
-  document.getElementById("delayCheck").checked = mosqueMode[0];
-  document.getElementById("fajrdelayInput").value = mosqueMode[1];
-  document.getElementById("dhuhrdelayInput").value = mosqueMode[2];
-  document.getElementById("asrdelayInput").value = mosqueMode[3];
-  document.getElementById("maghribdelayInput").value = mosqueMode[4];
-  document.getElementById("ishadelayInput").value = mosqueMode[5];
-
-  enableMosque(document.getElementById("delayCheck").checked)
-  
-  document.getElementById("delayCheck").addEventListener("change", function(){
-    enableMosque(document.getElementById("delayCheck").checked)
-  })
-
-  function enableMosque(boolean){
-    document.getElementById("fajrdelayInput").disabled = !boolean;
-    document.getElementById("dhuhrdelayInput").disabled = !boolean;
-    document.getElementById("asrdelayInput").disabled = !boolean;
-    document.getElementById("maghribdelayInput").disabled = !boolean;
-    document.getElementById("ishadelayInput").disabled = !boolean;
-    document.getElementById("adhanCheck").disabled = !boolean;
-    adhanCheck
-  }
-}
-
-async function saveMosqueMode(){
-  var mosqueCheck = document.getElementById("mosqueCheck").checked;  
-  var fajrdelay = document.getElementById("fajrdelayInput").value;
-  var dhuhrdelay = document.getElementById("dhuhrdelayInput").value;
-  var asrdelay = document.getElementById("asrdelayInput").value;
-  var maghribrdelay = document.getElementById("maghribdelayInput").value;
-  var ishadelay = document.getElementById("ishadelayInput").value;
-
-  var mosqueMode = [mosqueCheck, Math.round(fajrdelay),Math.round(dhuhrdelay),Math.round(asrdelay),Math.round(maghribrdelay),Math.round(ishadelay)]
-  
-  await window.api.setToStore('mosque', mosqueMode);
-}
-
-
 /**
 * Loads all elements related to the Quran reader
 */
@@ -744,7 +709,7 @@ async function loadQuranSettings(){
   let transListDiv = document.getElementById("translationList")
   let transFontSizeDiv = document.getElementById("translationFontSize")
   let showTransliterationDiv = document.getElementById("showTransliterationCheck")
-  let transliFontSizeDiv = document.getElementById("TransliterationFontSize")
+  let transliFontSizeDiv = document.getElementById("transliterationFontSize")
 
   let quran = await window.api.getFromStore('quran', {
     fontsize: 42,
@@ -905,7 +870,7 @@ async function saveQuran(){
     },
     transliteration:{
         show: document.getElementById("showTransliterationCheck").checked,
-        fontsize: document.getElementById("TransliterationFontSize").value
+        fontsize: document.getElementById("transliterationFontSize").value
     },
   }
   await window.api.setToStore("quran", quran)

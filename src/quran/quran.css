@@ -98,3 +98,10 @@ footer{
     font-size: max(1.8vh, 15px);
     margin-left: 20px;
 }
+
+.bismillah{
+    font-family: arabic-symbols;
+    font-size: 22vmin;
+    pointer-events: none;
+    user-select: none;
+}

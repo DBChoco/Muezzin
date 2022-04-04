@@ -230,7 +230,10 @@ app.whenReady().then(() => {
   setUpHandlers();
   checkTime();  
   setUpdates()
+
 })
+
+
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
@@ -505,14 +508,17 @@ async function setUpHandlers(){
     return store.set(key, value);
   });
   ipcMain.handle('prayers',  (event, message)  => {
+    console.log("Requesting prayer times for today")
     waitFor(lat, calcPrayerTimes())
     event.sender.send('prayersReply', prayerTimes)
   });
   ipcMain.handle('date-request',  (event, message)  => {
+    console.log("Requesting prayer times for " + message)
     waitFor(lat, datePrayerTimes = calcPrayerTimes(new Date(message)));
     event.sender.send('date-reply', datePrayerTimes)
   });
   ipcMain.handle('tomorrow-request',  (event, message)  => {
+    console.log("Requesting prayer times for " + message.toDateString())
     waitFor(lat, tomorrowPrayers = calcPrayerTimes(message))
     event.sender.send('tomorrow-reply', tomorrowPrayers)
   });
@@ -536,7 +542,7 @@ async function setUpHandlers(){
   ipcMain.handle("settingsC", function(){
     startup = false;
     loadSettings()
-    calcPrayerTimes()
+    //calcPrayerTimes()
   })
 
   ipcMain.handle("startup-request", function(){
