@@ -445,7 +445,16 @@ async function saveBgImage(){
       await window.api.setToStore('bgImage', [true, file[0].path])
     }
     else{
-      await window.api.setToStore('bgImage', [true, bgImage[1]])
+      let darkmode = document.getElementById("darkModeCheck").checked
+      if (darkmode && bgImage[1] == '../../ressources/images/bgImage.jpg'){
+        await window.api.setToStore('bgImage', [true, '../../ressources/images/bgImage_dark.avif'])
+      }
+      else if (!darkmode && bgImage[1] == '../../ressources/images/bgImage_dark.avif'){
+        await window.api.setToStore('bgImage', [true, '../../ressources/images/bgImage.jpg'])
+      }
+      else{
+        await window.api.setToStore('bgImage', [true, bgImage[1]])
+      }
     }
   }
 }

@@ -489,8 +489,9 @@ function calcPrayerTimes(date = new Date()){
     params.adjustments.isha = adjustements[5]
   }
 
-  prayerTimes = new adhan.PrayerTimes(coordinates, date, params);
-  return prayerTimes;
+  let calculatedTimes = new adhan.PrayerTimes(coordinates, date, params);
+
+  return calculatedTimes;
 }
 
 
@@ -509,7 +510,10 @@ async function setUpHandlers(){
   });
   ipcMain.handle('prayers',  (event, message)  => {
     console.log("Requesting prayer times for today")
-    waitFor(lat, calcPrayerTimes())
+    if (prayerTimes != undefined){
+      console.log(prayerTimes.date.getDate() + " " +  (new Date).getDate())
+    }
+    waitFor(lat, prayerTimes = calcPrayerTimes())
     event.sender.send('prayersReply', prayerTimes)
   });
   ipcMain.handle('date-request',  (event, message)  => {

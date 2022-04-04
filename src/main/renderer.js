@@ -389,7 +389,6 @@ async function hidePlayer(){
 async function loadBackgroundImage(){
   var bgImage = await window.api.getFromStore('bgImage', [true, '../../ressources/images/bgImage.jpg'])
   if (bgImage[0]){
-    
     document.body.style.backgroundImage = "url('" + bgImage[1] + "')"; 
   }
   else{
