@@ -24,27 +24,29 @@ window.api.send('prayers');
 
 
 window.addEventListener('loadedSettings', () => { 
-    datePick = document.getElementById('calendar');
-    progressBar  = document.getElementById('progress-bar')
-    progressBar.style.width = "0%"
-    getTomorrowPrayers()
-    loadClock();
-    loadHijriDate();
-    loadCalendar()
-    loadPrayers()
-    volumeSlider()
-    loadBackgroundImage()
-    setKeyPress()
-    setupButtonListeners()
-    setupUpdateModal()
-    
-    const interval = setInterval(function() {
-      loadClock()
-      loadNextPrayer()
-      if ((new Date).getMinutes == 0 && (new Date).getSeconds == 0){
-        loadSettings()
-      }
-    }, 1000)
+  datePick = document.getElementById('calendar');
+  progressBar  = document.getElementById('progress-bar')
+  progressBar.style.width = "0%"
+  getTomorrowPrayers()
+  loadClock();
+  loadHijriDate();
+  loadCalendar()
+  loadPrayers()
+  volumeSlider()
+  loadBackgroundImage()
+  setKeyPress()
+  setupButtonListeners()
+  setupUpdateModal()
+  
+  const interval = setInterval(function() {
+    loadClock()
+    loadNextPrayer()
+    if ((new Date).getHours() == 0 && (new Date).getMinutes() == 0){
+      loadCalendar()
+      loadPrayers()
+      getTomorrowPrayers()
+    }
+  }, 1000)
 })
 
 window.addEventListener('loadedUI', () => { 
