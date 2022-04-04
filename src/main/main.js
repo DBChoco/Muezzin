@@ -14,14 +14,6 @@ var autoLauncher = new AutoLaunch({
     useLaunchAgent: true
   }
 });
-var lat, lon, calcmeth, madhab, hlr, pcr, shafaq, prayerTimes, adhanPath;
-var customValues, delay;
-var prayerTimes, datePrayerTimes, tomorrowPrayers;
-var adhanCheck, notifCheck, lang, startupSound;
-var langFajr, langDhuhr, langAsr, langMaghrib, langIsha, langAdhan, langNow;
-var adjustements;
-var updateInterval;
-var startup = true; // To check if the app just started or not when going back to the main page.
 
 let tray = null
 let mainWindow, mediaWindow;
@@ -230,9 +222,18 @@ app.whenReady().then(() => {
   setUpHandlers();
   checkTime();  
   setUpdates()
-
 })
 
+
+var lat, lon, calcmeth, madhab, hlr, pcr, shafaq, prayerTimes, adhanPath;
+var customValues, delay;
+var prayerTimes, datePrayerTimes, tomorrowPrayers;
+var adhanCheck, notifCheck, lang, startupSound;
+var langFajr, langDhuhr, langAsr, langMaghrib, langIsha, langAdhan, langNow;
+var adjustements;
+var updateInterval;
+var startup = true; // To check if the app just started or not when going back to the main page.
+var today = new Date
 
 
 // Quit when all windows are closed, except on macOS. There, it's common
@@ -314,6 +315,11 @@ function checkTime(){
         }
     } 
   }, 1000)
+  setInterval(function(){
+    if (today.getDate != (new Date).getDate){
+      mainWindow.webContents.send('update');
+    }
+  }, 900000)
 }
 
 
@@ -338,9 +344,9 @@ async function loadSettings(){
   startupSound = await store.get('startup', false);
   customValues = await store.get('customSettings', [false, 0,0,0]);
   delay = await store.get('delay', [false, 0]);
-  var autoStart = store.get('autoStart', true);
-  var minStart = store.get('minStart', false);
-  adjustements = store.get('adj', [false, 0,0,0,0,0]);
+  var autoStart = await store.get('autoStart', true);
+  var minStart = await store.get('minStart', false);
+  adjustements = await store.get('adj', [false, 0,0,0,0,0]);
   if (minStart && startup){
     mainWindow.hide()
   }
@@ -508,11 +514,9 @@ async function setUpHandlers(){
   ipcMain.handle('setStoreValue', (event, key, value) => {
     return store.set(key, value);
   });
+
   ipcMain.handle('prayers',  (event, message)  => {
     console.log("Requesting prayer times for today")
-    if (prayerTimes != undefined){
-      console.log(prayerTimes.date.getDate() + " " +  (new Date).getDate())
-    }
     waitFor(lat, prayerTimes = calcPrayerTimes())
     event.sender.send('prayersReply', prayerTimes)
   });
@@ -685,7 +689,7 @@ function checkFirstTime(){
       store.set('latitude', json["latitude"])
       store.set('longitude', json["longitude"])
       store.set('timezone', json["time_zone"]["name"])
-      loadSettings()
+      //loadSettings()
       mainWindow.webContents.send('update');
     }
   }

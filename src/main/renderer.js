@@ -41,11 +41,6 @@ window.addEventListener('loadedSettings', () => {
   const interval = setInterval(function() {
     loadClock()
     loadNextPrayer()
-    if ((new Date).getHours() == 0 && (new Date).getMinutes() == 0){
-      loadCalendar()
-      loadPrayers()
-      getTomorrowPrayers()
-    }
   }, 1000)
 })
 
