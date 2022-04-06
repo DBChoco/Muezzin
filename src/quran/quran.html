@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'; style-src 'self' 'unsafe-inline'">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../node_modules/bootstrap-dark-5/dist/css/bootstrap-night.min.css" rel="stylesheet" >
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link href="../../ressources/fonts/FontAwesome/all.min.css" rel="stylesheet" >
+    <link href="quran.css" rel="stylesheet">
+    <script src="quran.js"></script>
+    <title>Muezzin</title>
+  </head>
+  <header>
+    <h1 id="title">
+      Qur'an
+    </h1>
+  </header>
+  <body class="d-flex flex-column min-vh-100">
+
+
+      <div id="surahSelector">
+
+        <button class="btn btn-dark quranButton" id="previousSurah">
+          Previous Surah
+        </button>
+
+        <select class="form-control" id="chaptersList">
+        </select>
+
+        <button class="btn btn-dark quranButton" id="nextSurah">
+          Next Surah
+        </button>
+
+      </div>
+
+
+    <div id="reader">
+      <div class="bismillah">
+        U
+      </div>
+    </div>
+
+  </body>
+  <footer class="mt-auto fixed-bottom">
+    <div id="buttonContainer">
+      <button class="btn btn-dark" id="toTheTop">
+        <i class="fa-solid fa-angles-up"></i>
+      </button>
+      <button class="btn btn-dark" id="settings">
+        <i class="fa-solid fa-gear"></i> 
+        Settings
+      </button>
+      <button class="btn btn-dark" id="return">
+        <i class="fa fa-arrow-circle-left"></i>  
+        Return
+      </button>
+    </div>
+  </footer>
+</html>

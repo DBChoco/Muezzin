@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+
+<html>
+  
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'; style-src 'self' 'unsafe-inline'">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../node_modules/bootstrap-dark-5/dist/css/bootstrap-night.min.css" rel="stylesheet" >
+    <link href="../../ressources/fonts/FontAwesome/all.min.css" rel="stylesheet" >
+    <link href="../../ressources/fonts/weather-icons/css/weather-icons.css" rel="stylesheet" >
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link href="styles.css" rel="stylesheet">
+    <title>Muezzin</title>
+  </head>
+
+  <div class="center" id="loader">
+      <div>
+        <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status"></div>
+        <strong>
+          <h1>
+            Muezzin
+          </h1>
+        </strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateModalLabel">Update</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="modalClose"></button>
+        </div>
+        <div class="modal-body" id="modalBody">
+          X
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="modalButton1">Download</button>
+          <button type="button" class="btn btn-secondary" id="modalButton2">Later</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header>
+
+    <h1 id="title">Muezzin</h1>
+    
+    <div id="weatherContainer">
+      <div id="weatherTemp"> </div>
+    </div>
+      
+  </header>
+  <body class="d-flex flex-column min-vh-100">
+    
+    <div id="mainContainer">
+      <div id="main" class="d-flex flex-column">
+        <h1 class="shader" id="clock">00:00</h1>
+        <h3 class="shader" id="dateLoc">Date today - Location</h3>
+        <h1 class="shader" id="timeLeft">Time until XYZ prayer: 00:00</h1>
+      </div>
+    </div>
+    
+
+    <div id="boxContainer">
+      <div class="box" id="box">
+        <div class="grid-container shader" id="prayerGrid">
+          <div class="grid-item left grid-top" id="fajr"> Fajr </div>
+          <div class="grid-item right grid-top" id="fajrTime"> 00:00 </div>
+          <div class="grid-item left" id="sunrise"> Sunrise </div>  
+          <div class="grid-item right" id="sunriseTime"> 00:00 </div>
+          <div class="grid-item left" id="dhuhr"> Duhr </div>
+          <div class="grid-item right" id="dhuhrTime"> 00:00 </div>
+          <div class="grid-item left" id="asr"> Asr </div>
+          <div class="grid-item right" id="asrTime"> 00:00 </div>
+          <div class="grid-item left" id="maghrib"> Maghrib </div>
+          <div class="grid-item right" id="maghribTime"> 00:00 </div>
+          <div class="grid-item left grid-bottom" id="isha"> Isha </div>
+          <div class="grid-item right grid-bottom" id="ishaTime"> 00:00 </div>
+          <div class="grid-item left motn" id="motn"> Middle of the night </div>
+          <div class="grid-item right motn" id="motnTime"> 00:00 </div>
+          <div class="grid-item left totn" id="totn"> Third of the night </div>
+          <div class="grid-item right totn" id="totnTime"> 00:00 </div>
+        </div>
+        <div class="box-bottom">
+          <input data-provide="datepicker" type="date" id="calendar" name="calendar">
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- You can also require other files to run in this process -->
+    <script src="renderer.js"></script>
+  </body>
+  <footer class="mt-auto" >
+    <div id="footer" >
+      <div id="upperPart">
+        <div id="audioControls">
+          <button type="button" id="stopB" class="btn btn-dark"><i class="fa fa-stop"></i></button>
+          <button type="button" id="playB" class="btn btn-dark"><i class="fa fa-play"></i></button>
+          <div id="volume">
+            <i class="fa fa-volume-down"></i>
+            <input type="range" class="form-range" id="volSlider">
+            <i class="fa fa-volume-up"></i>
+          </div>
+        </div>
+        <div id="buttons">
+          <button href="../quran/quran.html" id="quranButton" class="btn btn-dark">
+            <i class="fa-solid fa-book-quran"></i>
+            Qur'an
+          </button>
+          <button href="../settings/settings.html" id="settingsWheel" class="btn btn-dark">
+            Settings
+          </button>
+        </div>
+        
+      </div>
+    </div>
+  </footer>
+</html>

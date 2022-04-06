@@ -1,0 +1,124 @@
+@import url("../../ressources/fonts/arabic/fonts.css");
+
+header{
+    text-align: center;
+    align-items: center;
+}
+
+#title{
+    font-size: 8vh;
+    margin: 2vh 0 4vh 0;
+}
+
+#surahSelector{
+    width: max-content;
+    margin: 0 auto 0 auto;
+    padding-bottom: 3vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.quranButton{
+    display: flex;
+    white-space: nowrap;
+    margin: 0 20px 0 20px;
+}
+
+#reader{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    width: min(800px, 85vw);
+    margin: 0 auto 0 auto;
+}
+
+.verseContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-top: 2px solid;
+}
+
+.textContainer, .latinText{
+    width: 100%
+}
+
+.word{
+    padding: 5px 0px 5px 5px;
+}
+
+.wordLatin{
+    padding: 2px 2px 2px 0px;
+}
+
+.arabText{
+    text-align: right;
+    font-size: 30px;
+    margin: 30px;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    font-family: arabic;
+    font-size: 42px;
+}
+
+.arabicWord{
+    font-family: arabic;
+    font-size: 42px;
+}
+
+.latinText{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.transText{
+    margin-bottom: 20px;
+}
+
+.sidebar{
+    width: fit-content;
+    margin-right: 20px;
+    align-items: center;
+}
+
+.verseNumber{
+    font-weight: bold;
+    margin: 10px;
+}
+
+.verse{
+    width: 50%;
+    height: max-content
+}
+
+footer{
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+  }
+
+#buttonContainer{
+    margin: 0px 10px 10px auto;
+    display: flex;
+    flex-direction: row;
+}
+
+#settings, #return{
+    font-size: max(1.8vh, 15px);
+    margin-left: 20px;
+}
+
+.bismillah{
+    font-family: arabic-symbols;
+    font-size: 22vmin;
+    pointer-events: none;
+    user-select: none;
+}
+
+.btn-light, .btn-light:hover{
+    color: #212121;
+}

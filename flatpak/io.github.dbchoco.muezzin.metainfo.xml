@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.dbchoco.muezzin</id>
+  
+  <name>Muezzin</name>
+  <summary>Islamic prayer times application</summary>
+  <url type="homepage">https://github.com/DBChoco/Muezzin</url>
+  <url type="bugtracker">https://github.com/DBChoco/Muezzin/issues</url>
+  <url type="contact">https://www.reddit.com/r/Muezzin/</url>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <description>
+    <p>
+      Islamic prayer times (Adhan) and Qur'an application that is highly customizable, free and open source.
+      Muezzin supports many languages, advanced prayer options and many more.
+      
+      Keywords: Athan, Adhan, Azan, Islam, Muslim, Prayers, times, Muezzin, Salah, Salat, Namaz, Islamic, Hijri, Quran, Qur'an, Koran.
+    </p>
+  </description>
+  <content_rating type="oars-1.0" />
+  <launchable type="desktop-id">io.github.dbchoco.muezzin.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <caption>Main Screen - Light Mode</caption>
+      <image>https://github.com/DBChoco/Muezzin/blob/master/screenshots/lightMode.png?raw=true</image>
+    </screenshot>
+    <screenshot>
+      <caption>Main Screen - Dark Mode</caption>
+      <image>https://github.com/DBChoco/Muezzin/blob/master/screenshots/darkMode.png?raw=true</image>
+    </screenshot>
+    <screenshot>
+      <caption>Settings Screen</caption>
+      <image>https://github.com/DBChoco/Muezzin/blob/master/screenshots/settingsDark.png?raw=true</image>
+    </screenshot>
+  </screenshots>
+  <releases>
+    <release version="v0.2.0" date="2022-04-04">
+        <description>
+            <p>General</p>
+            <ul>
+                <li>Added Qur'an reader with translations and transliterations.</li>
+                <li>You can now double-click on the system tray (Windows and macOS).</li>
+                <li>There is now a default background image for dark mode.</li>
+                <li>Added Turkish (thanks to @emrergin).</li>
+                <li>Menu bar is now hidden by default (press ALT to reveal it).</li>
+            </ul>
+            <p>BugFixes</p>
+            <ul>
+                <li>Fixed a few visual elements.</li>
+                <li>Fixed a few things in the main.js and renderer.js.</li>
+            </ul>
+        </description>
+      </release>
+  </releases>
+</component>

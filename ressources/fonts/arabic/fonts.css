@@ -1,0 +1,14 @@
+/*
+Source: https://fonts.qurancomplex.gov.sa/ & https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/fonts.json
+*/
+
+@font-face {
+    font-family: arabic-symbols;
+    src: url(Basmalah\ Ver01.otf);
+}
+
+@font-face {
+    font-family: arabic;
+    src: url(hafs-uthmanic-v14-full-org.ttf);
+}
+

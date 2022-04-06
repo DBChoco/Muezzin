@@ -1,0 +1,6 @@
+node_modules
+.vscode
+dist
+flatpak/.flatpak-builder
+flatpak/build
+ressources/quran/downloads

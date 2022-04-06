@@ -1,0 +1,161 @@
+/* styles.css */
+header{
+    display: flex;
+    flex-direction: row;
+}
+
+
+body{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center; 
+}
+
+.shader{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#main{
+    align-items: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#clock{
+    font-size: 10vh;
+    margin-top: 4vh;
+}
+
+#title{
+    font-size: 3vh;
+    margin: 5px 0 0 5px;
+}
+
+
+#weatherContainer{
+    font-size: 3vh;
+    margin: 0px 10px 0 auto;
+    
+}
+
+#dateLoc{
+    font-size: 3vh;
+    margin-bottom: 5vh;
+}
+
+#timeLeft{
+    font-size: 6vh;
+}
+
+.grid-container {
+    margin: auto;
+    margin-bottom: 1vh;
+    display: grid;
+    grid-template-columns:  auto auto;
+    width: 48vh;
+}
+
+.grid-item {
+    border-top: 1px solid ;
+    border-bottom: 1px solid;
+    padding: 5px;
+    font-size: 3vh;
+    text-align: center;
+}
+
+.grid-top{
+    border-top: 2px solid;
+}
+.grid-bottom{
+    border-bottom: 2px solid;
+}
+
+.left{
+    text-align: left;
+}
+
+.right{
+    text-align: right;
+}
+
+.box-bottom{
+    text-align: center;
+}
+
+.box{
+    margin: auto 0 auto 0;
+    align-items: center;
+}
+
+#calendar{
+    height: max(25px, 3vh);
+    font-size: max(12px, 1.5vh);
+}
+
+#buttons{
+    margin-left: auto;
+}
+
+#settingsWheel , #quranButton{
+    margin: 10px;
+    font-size: max(1.8vh, 15px);
+}
+
+#stopB, #playB{
+    margin: 10px;
+    font-size: max(1.5vh, 15px);
+}
+
+#volume{
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    font-size: x-large;
+}
+
+#mainContainer{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    margin: 3vh auto 5vh auto;
+
+}
+
+.form-range{
+    width: 100px;
+    align-content: center;
+}
+
+#audioControls, #upperPart{
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+}
+
+#volSlider{
+    margin: 0px 10px 0px 10px;
+}
+
+.center{
+    position: absolute; 
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: #212121;
+    display: -webkit-flexbox;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.btn-light, .btn-light:hover{
+    color: #212121;
+}
