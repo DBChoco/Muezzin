@@ -625,7 +625,7 @@ async function setupWeather(){
         system = "metric"
     }
     getWeather(units, system);
-    //setInterval(await getWeather(units, system), 900000) // 15min
+    setInterval(await getWeather(units, system), 900000) // 15min
   }
 }
 
