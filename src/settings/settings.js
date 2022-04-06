@@ -22,6 +22,27 @@ async function saveSettings(){
   //Values that might change too much should not be saved automaticaly (no saver)
   if (lat != document.getElementById("latInput").value) await window.api.setToStore('latitude', lat);
   if (lon != document.getElementById("lonInput").value) await window.api.setToStore('longitude', lon);
+
+  await window.api.setToStore("calculationMethod.calcMethod", document.getElementById("calcMethodList").value)
+  await window.api.setToStore("calculationMethod.madhab", document.getElementById("madhabList").value)
+  await window.api.setToStore("calculationMethod.hlr", document.getElementById("highLatitudeRuleList").value)
+  await window.api.setToStore("calculationMethod.pcr", document.getElementById("polarCircleResolutionList").value)
+  await window.api.setToStore("calculationMethod.shafaq", document.getElementById("shafaqList").value)
+  await window.api.setToStore("language", document.getElementById("langlist").value)
+  await window.api.setToStore("weather.units", document.getElementById("unitList").value)
+  await window.api.setToStore('darkMode', document.getElementById("darkModeCheck").checked)
+  await window.api.setToStore('settings.notifCheck', document.getElementById("notifCheck").checked)
+  await window.api.setToStore('settings.adhanCheck', document.getElementById("adhanCheck").checked)
+  await window.api.setToStore('settings.systray', document.getElementById("systrayCheck").checked)
+  await window.api.setToStore('settings.startupSound', document.getElementById("startUpSound").checked)
+  await window.api.setToStore('settings.autoStart', document.getElementById("autoStartCheck").checked)
+  await window.api.setToStore('settings.minStart', document.getElementById("minStartCheck").checked)
+  await window.api.setToStore('sunnahTimes.motn', document.getElementById("MOTNCheck").checked)
+  await window.api.setToStore("sunnahTimes.totn", document.getElementById("TOTNCheck").checked)
+  await window.api.setToStore("timeDisplay.showSeconds", document.getElementById("showSeconds").checked)
+  await window.api.setToStore("weather.enabled", document.getElementById("weatherCheck").checked)
+
+
   await saveAdhan()
   await saveBgImage()
   await saveAdjustments()
@@ -88,27 +109,27 @@ async function loadSettings(){
   selectFromList(document.getElementById("polarCircleResolutionList"), calculationMethod.pcr)
   selectFromList(document.getElementById("shafaqList"), calculationMethod.shafaq)
   
-  await addSaverValue(document.getElementById("tzlist"), tzVal, "timezone")
-  await addSaverValue(document.getElementById("calcMethodList"), calculationMethod.calcMethod, "calculationMethod.calcMethod")
-  await addSaverValue(document.getElementById("madhabList"), calculationMethod.madhab, "calculationMethod.madhab")
-  await addSaverValue(document.getElementById("highLatitudeRuleList"), calculationMethod.hlr, "calculationMethod.hlr")
-  await addSaverValue(document.getElementById("polarCircleResolutionList"), calculationMethod.pcr, "calculationMethod.pcr")
-  await addSaverValue(document.getElementById("shafaqList"), calculationMethod.shafaq, "calculationMethod.shafaq")
+  document.getElementById("tzlist").value =  tzVal;
+  document.getElementById("calcMethodList").value =  calculationMethod.calcMethod;
+  document.getElementById("madhabList").value =  calculationMethod.madhab;
+  document.getElementById("highLatitudeRuleList").value =  calculationMethod.hlr;
+  document.getElementById("polarCircleResolutionList").value =  calculationMethod.pcr;
+  document.getElementById("shafaqList").value =  calculationMethod.shafaq;
 
-  await addSaverValue(document.getElementById("langlist"), language, "language")
-  await addSaverValue(document.getElementById("unitList"), weather.units, "weather.units")
+  document.getElementById("langlist").value = language;
+  document.getElementById("unitList").value = weather.units;
 
-  await addSaverChecked(document.getElementById("darkModeCheck"), darkMode, 'darkMode')
-  await addSaverChecked(document.getElementById("notifCheck"), settings.notifCheck, 'settings.notifCheck');
-  await addSaverChecked(document.getElementById("adhanCheck"), settings.adhanCheck, 'settings.adhanCheck');
-  await addSaverChecked(document.getElementById("systrayCheck"), settings.systray, 'settings.systray');
-  await addSaverChecked(document.getElementById("startUpSound"), settings.startupSound, 'settings.startupSound');
-  await addSaverChecked(document.getElementById("autoStartCheck"), settings.autoStart, 'settings.autoStart');
-  await addSaverChecked(document.getElementById("minStartCheck"), settings.minStart, 'settings.minStart');
-  await addSaverChecked(document.getElementById("MOTNCheck"), sunnahTimes.motn, 'sunnahTimes.motn');
-  await addSaverChecked(document.getElementById("TOTNCheck"), sunnahTimes.totn, 'sunnahTimes.totn');
-  await addSaverChecked(document.getElementById("showSeconds"), timeDisplay.showSeconds, "timeDisplay.showSeconds")
-  await addSaverChecked(document.getElementById("weatherCheck"), weather.enabled, "weather.enabled")
+  document.getElementById("darkModeCheck").checked = darkMode
+  document.getElementById("notifCheck").checked = settings.notifCheck
+  document.getElementById("adhanCheck").checked = settings.adhanCheck
+  document.getElementById("systrayCheck").checked = settings.systray
+  document.getElementById("startUpSound").checked = settings.startupSound
+  document.getElementById("autoStartCheck").checked = settings.autoStart
+  document.getElementById("minStartCheck").checked = settings.minStart
+  document.getElementById("MOTNCheck").checked = sunnahTimes.motn
+  document.getElementById("TOTNCheck").checked = sunnahTimes.totn
+  document.getElementById("showSeconds").checked = timeDisplay.showSeconds
+  document.getElementById("weatherCheck").checked = weather.enabled
 
   window.api.setTheme(darkMode, "settings.css");
   setTimeDateFormat()
@@ -308,7 +329,7 @@ function setTimeDateFormat(){
 
     if(timeDisplay.dateFormat == "DD/MM/YYYY"){
       document.getElementById("dateFormat1").checked = true;
-    }else if ( dateFormat == "MM/DD/YYYY"){
+    }else if ( timeDisplay.dateFormat == "MM/DD/YYYY"){
       document.getElementById("dateFormat2").checked = true;
     }else{
       document.getElementById("dateFormat3").checked = true;
@@ -533,7 +554,7 @@ function loadLanguage(lang){
 
   document.getElementById("langText").innerText = window.api.getLanguage(lang, "language");
   document.getElementById("settingsTitle").innerText = window.api.getLanguage(lang, "settings");
-  document.getElementById("tfText").innerText = window.api.getLanguage(lang, "timeDisplay");
+  document.getElementById("tfText").innerText = window.api.getLanguage(lang, "timeformat");
   document.getElementById("24hTimeFormatText").innerText = window.api.getLanguage(lang, "24hour");
   document.getElementById("12hTimeFormatText").innerText = window.api.getLanguage(lang, "12hour");
   document.getElementById("showSecondsText").innerText = window.api.getLanguage(lang, "showSseconds");

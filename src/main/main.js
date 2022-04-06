@@ -180,7 +180,6 @@ function createWindow () {
   mediaWindow.loadFile('src/mediaPlayer/mediaPlayer.html');
 }
 
-
 app.on('before-quit', function () {
   app.isQuiting = true;
 });
@@ -773,7 +772,10 @@ function checkFirstTime(){
       }
     }
   }
-
+  store.set("calculationMethod.madhab", 'Shafi')
+  store.set("calculationMethod.hlr", 'TA')
+  store.set("calculationMethod.pcr", 'CC')
+  store.set("calculationMethod.shafaq", 'shafaqG')
 }
 
 

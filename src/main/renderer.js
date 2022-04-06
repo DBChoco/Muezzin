@@ -40,8 +40,9 @@ window.addEventListener('loadedSettings', () => {
   setKeyPress()
   setupButtonListeners()
   setupUpdateModal()
+  
   setupWeather()
-
+  
   const interval = setInterval(function() {
     loadClock()
     loadNextPrayer()
@@ -204,6 +205,7 @@ async function loadSettings(){
       enabled: true,
       unit: "C"
     })
+
     loadLang()
     await hidePlayer()
     await loadClockDisplay()
@@ -622,8 +624,8 @@ async function setupWeather(){
         units = "°C"
         system = "metric"
     }
-    await getWeather(units, system);
-    setInterval(await getWeather(units, system), 900000) // 15min
+    getWeather(units, system);
+    //setInterval(await getWeather(units, system), 900000) // 15min
   }
 }
 
@@ -637,7 +639,6 @@ async function getWeather(units, system){
     response = await fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&units=' + system + '&appid=d8c0aa0e61cf524575a92e44d457ded7', {method: "GET"})
     .then(res => res.json())
     .then((json) => {
-      console.debug("Loading weather")
       let time
       json["weather"][0]["icon"].charAt(json["weather"][0]["icon"].length - 1) == 'd' ? time = "day" : time = "night"
       
@@ -653,21 +654,6 @@ async function getWeather(units, system){
  * @param {String} time Day or night
  * @returns An HTML string which contains a weather icon
  */
-async function setupWeather(){
-  try{
-    response = await fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&lang=' + lang + '&units=metric' + '&appid=d8c0aa0e61cf524575a92e44d457ded7', {method: "GET"})
-    .then(res => res.json())
-    .then((json) => {
-      let time
-      json["weather"][0]["icon"].charAt(json["weather"][0]["icon"].length - 1) == 'd' ? time = "day" : time = "night"
-      document.getElementById("weatherTemp").innerHTML = loadWeatherIcon(json["weather"][0]["id"], time) + " " + Math.round(json["main"]["temp"]) + "°C"
-    });
-  }catch(e){
-      console.error("Error while loading weather => " + e)
-  }
-}
-
-
 function loadWeatherIcon(weather, time = "day"){
   if (weather == 210 || weather == 211 || weather == 212 || weather == 221) return '<i class="wi wi-lightning"></i>'
   else if (weather >= 200 && weather <= 232) return '<i class="wi wi-storm-showers"></i>'
