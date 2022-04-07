@@ -1,6 +1,6 @@
 {
   "name": "muezzin",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Prayer Time Caller",
   "main": "src/main/main.js",
   "scripts": {
@@ -18,7 +18,7 @@
   },
   "keywords": [],
   "author": "DBChoco <dbchoco.muezzin@gmail.com>",
-  "license": "CC0-1.0",
+  "license": "MIT",
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.63",
     "@electron-forge/maker-deb": "^6.0.0-beta.63",
