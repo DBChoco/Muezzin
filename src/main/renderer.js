@@ -86,9 +86,9 @@ function changeclockDisplay(date, timeformat){
     }
     else{
       if (timeformat[6] == 's'){
-        return show0(date.getHours() - 12) + ":" + show0(date.getMinutes()) + ":" + show0(date.getSeconds()) + ' PM'
+        return show0(date.getHours()%12 == 0 ? 12 : date.getHours()%12) + ":" + show0(date.getMinutes()) + ":" + show0(date.getSeconds()) + ' PM'
       }
-      return show0(date.getHours() - 12) + ":" + show0(date.getMinutes()) + ' PM'
+      return show0(date.getHours()%12 == 0 ? 12 : date.getHours()%12) + ":" + show0(date.getMinutes()) + ' PM'
     }
   }
 
@@ -214,37 +214,6 @@ async function loadSettings(){
     await loadClockDisplay()
     window.dispatchEvent(event1)
 }
-
-//Calculates time left until #prayer
-function timeUntilPrayer(prayer){
-    var now = new Date();
-    if (prayer === src_Prayer.Fajr) {
-      if (now.getHours() < 12){
-        return this.msToTime(this.fajr - now);
-      }
-      else{
-        now.getHours()
-        const today = new Date();
-        const tomorrow = new Date();
-        tomorrow.setDate(today.getDate() + 1);
-        let tommorowPrayer = new PrayerTimes_PrayerTimes(this.coordinates, tomorrow, this.calculationParameters)
-        return this.msToTime(tommorowPrayer.fajr - now)
-      }
-    } else if (prayer === src_Prayer.Sunrise) {
-      return this.msToTime(this.sunrise - now);
-    } else if (prayer === src_Prayer.Dhuhr) {
-      return this.msToTime(this.dhuhr - now);
-    } else if (prayer === src_Prayer.asr) {
-      return this.msToTime(this.asr - now);
-    } else if (prayer === src_Prayer.maghrib) {
-      return this.msToTime(this.maghrib - now);
-    } else if (prayer === src_Prayer.isha) {
-      return this.msToTime(this.isha - now);
-    }
-    else {
-      return null;
-    }
-  }
 
 //Loads the next prayers text: Prayer X in Y time;
 function loadNextPrayer(){

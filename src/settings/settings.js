@@ -20,9 +20,9 @@ window.addEventListener('DOMContentLoaded', () => {
 async function saveSettings(){
   await saveTimeDateFormat()
   //Values that might change too much should not be saved automaticaly (no saver)
-  if (lat != document.getElementById("latInput").value) await window.api.setToStore('latitude', lat);
-  if (lon != document.getElementById("lonInput").value) await window.api.setToStore('longitude', lon);
-
+  await window.api.setToStore('latitude', document.getElementById("latInput").value);
+  await window.api.setToStore('longitude', document.getElementById("lonInput").value);
+  await window.api.setToStore("timezone", document.getElementById("tzlist").value)
   await window.api.setToStore("calculationMethod.calcMethod", document.getElementById("calcMethodList").value)
   await window.api.setToStore("calculationMethod.madhab", document.getElementById("madhabList").value)
   await window.api.setToStore("calculationMethod.hlr", document.getElementById("highLatitudeRuleList").value)

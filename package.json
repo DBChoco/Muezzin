@@ -29,6 +29,7 @@
     "electron-builder": "^22.14.13"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.5",
     "adhan": "^4.3.1",
     "auto-launch": "^5.0.5",
     "bootstrap": "^5.1.3",
