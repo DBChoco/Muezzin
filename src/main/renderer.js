@@ -47,6 +47,9 @@ window.addEventListener('loadedSettings', () => {
     loadClock()
     loadNextPrayer()
   }, 1000)
+
+  window.api.send('loadedUI');
+
 })
 
 window.addEventListener('loadedUI', () => { 
@@ -625,7 +628,9 @@ async function setupWeather(){
         system = "metric"
     }
     getWeather(units, system);
-    setInterval(await getWeather(units, system), 900000) // 15min
+    setInterval(function(){
+      getWeather(units, system)
+    }, 900000) // 15min
   }
 }
 

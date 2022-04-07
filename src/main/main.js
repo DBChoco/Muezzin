@@ -221,10 +221,10 @@ app.whenReady().then(() => {
   })
 
   checkFirstTime()
+  loadOldSettings()
   loadSettings();
   setUpHandlers();
   checkTime();  
-  setUpdates()
 })
 
 
@@ -365,8 +365,8 @@ async function loadSettings(){
   if (settings.minStart && startup){
     mainWindow.hide()
   }
-  setAutoStart(settings.autoStart)
 
+  setAutoStart(settings.autoStart)
 }
 
 
@@ -547,6 +547,13 @@ async function setUpHandlers(){
     event.sender.send('tomorrow-reply', tomorrowPrayers)
   });
 
+  ipcMain.handle("loadedUI", function(){
+    if (startup){
+      setUpdates()
+    }
+  })
+
+
   //Media Handlers
   ipcMain.handle('play',  (event, message)  => {
     mediaWindow.webContents.send('play', adhanPath);
@@ -572,6 +579,8 @@ async function setUpHandlers(){
   ipcMain.handle("startup-request", function(){
     mediaWindow.webContents.send('startup-reply', settings.startupSound);
   })
+
+
 }
 
 
@@ -809,5 +818,36 @@ function setAutoStart(autoStart){
         throw error
       }
     }
+  }
+}
+
+function loadOldSettings(){
+  if (store.has('calcmeth') && !store.has("calculationMethod")){
+    var calcMethod = document.getElementById("calcMethodList").value;
+    var madhab = document.getElementById("madhabList").value;
+    var hlr = document.getElementById("highLatitudeRuleList").value;
+    var pcr = document.getElementById("polarCircleResolutionList").value;
+    var shafaq = document.getElementById("shafaqList").value;
+    var notifCheck = document.getElementById("notifCheck").checked;
+    var adhanCheck = document.getElementById("adhanCheck").checked;
+    var systray = document.getElementById("systrayCheck").checked;
+    var startupSound = document.getElementById("startUpSound").checked;
+    var autoStart = document.getElementById("autoStartCheck").checked
+    var minStart = document.getElementById("minStartCheck").checked;
+    store.set("calculationMethod", {
+      calcMethod: calcMethod,
+      madhab: madhab,
+      hlr: hlr,
+      pcr: pcr,
+      shafaq: shafaq
+    })
+    store.set("settings", {
+      startupSound: startupSound,
+      notifCheck: notifCheck,
+      systray: systray,
+      adhanCheck: adhanCheck,
+      autoStart: autoStart,
+      minStart: minStart
+    })
   }
 }
