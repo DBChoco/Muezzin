@@ -33,8 +33,11 @@
     "auto-launch": "^5.0.5",
     "bootstrap": "^5.1.3",
     "bootstrap-dark-5": "^1.1.3",
+    "electron-dl": "^3.3.0",
     "electron-store": "^8.0.1",
-    "ip-geolocation-api-javascript-sdk": "^1.0.7"
+    "ip-geolocation-api-javascript-sdk": "^1.0.7",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.34"
   },
   "build": {
     "appId": "com.muezzin.app",
