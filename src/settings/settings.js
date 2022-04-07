@@ -132,6 +132,7 @@ async function loadSettings(){
   document.getElementById("weatherCheck").checked = weather.enabled
 
   window.api.setTheme(darkMode, "settings.css");
+  addChangeListeners()
   setTimeDateFormat()
   disableAdhanListener()
   loadLanguage(language)
@@ -970,4 +971,14 @@ function loadQueryString(){
     quranTab.show();
     fromQuran = true;
   }
+}
+
+function addChangeListeners(){
+  let weatherCheck = document.getElementById("weatherCheck")
+  let unitList = document.getElementById("unitList");
+
+  unitList.disabled = !weatherCheck.checked;
+  weatherCheck.addEventListener("change", function(){
+    unitList.disabled = !weatherCheck.checked;
+  })
 }
