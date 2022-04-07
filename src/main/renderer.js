@@ -29,6 +29,7 @@ window.api.send('prayers');
 
 
 window.addEventListener('loadedSettings', () => { 
+  convertPrayerTimes()
   datePick = document.getElementById('calendar');
   getTomorrowPrayers()
   loadClock();
@@ -40,21 +41,18 @@ window.addEventListener('loadedSettings', () => {
   setKeyPress()
   setupButtonListeners()
   setupUpdateModal()
-  
   setupWeather()
   
   const interval = setInterval(function() {
     loadClock()
     loadNextPrayer()
   }, 1000)
-
-  window.api.send('loadedUI');
-
 })
 
 window.addEventListener('loadedUI', () => { 
   loadedUI = true;
   hideLoader()
+  window.api.send('loadedUI');
 })
 
 
@@ -167,12 +165,12 @@ function loadPrayers(){
     calPrayers = prayerTimes
   }
   if (calPrayers != undefined){
-    document.getElementById("fajrTime").innerText = changeclockDisplay(convertTZ(calPrayers.fajr, timezone), shortTimeFormat);
-    document.getElementById("sunriseTime").innerText = changeclockDisplay(convertTZ(calPrayers.sunrise, timezone), shortTimeFormat);
-    document.getElementById("dhuhrTime").innerText = changeclockDisplay(convertTZ(calPrayers.dhuhr, timezone), shortTimeFormat);
-    document.getElementById("asrTime").innerText = changeclockDisplay(convertTZ(calPrayers.asr, timezone), shortTimeFormat);
-    document.getElementById("maghribTime").innerText = changeclockDisplay(convertTZ(calPrayers.maghrib, timezone), shortTimeFormat);
-    document.getElementById("ishaTime").innerText = changeclockDisplay(convertTZ(calPrayers.isha, timezone), shortTimeFormat);
+    document.getElementById("fajrTime").innerText = changeclockDisplay(calPrayers.fajr, shortTimeFormat);
+    document.getElementById("sunriseTime").innerText = changeclockDisplay(calPrayers.sunrise, shortTimeFormat);
+    document.getElementById("dhuhrTime").innerText = changeclockDisplay(calPrayers.dhuhr, shortTimeFormat);
+    document.getElementById("asrTime").innerText = changeclockDisplay(calPrayers.asr, shortTimeFormat);
+    document.getElementById("maghribTime").innerText = changeclockDisplay(calPrayers.maghrib, shortTimeFormat);
+    document.getElementById("ishaTime").innerText = changeclockDisplay(calPrayers.isha, shortTimeFormat);
     if (sunnahTimes.totn && totn != undefined){
       document.getElementById("totnTime").innerText = changeclockDisplay(convertTZ(totn, timezone), shortTimeFormat);
     }
@@ -182,8 +180,8 @@ function loadPrayers(){
   }
 }
 
-function convertTZ(date, tzString) {
-  return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));   
+function convertTZ(date, timezone) {
+  return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: timezone}));   
 }
 
 //Checks the store for saved settings, or gets default values
@@ -230,10 +228,10 @@ function loadNextPrayer(){
             var time = timeUntilPrayer(prayers[1])
             document.getElementById("timeLeft").innerText = langTimeUntil + " " + prayers[3] + ": " + intToHour(time);
         }   
-        if (!loadedUI){
-          window.dispatchEvent(event2)
-        }
     } 
+    if (!loadedUI){
+      window.dispatchEvent(event2)
+    }
 }
 
 function nextPrayer(){
@@ -292,6 +290,8 @@ function timeUntilPrayer(prayer) {
   }
 }
 
+
+
 function msToTime(duration){ //https://stackoverflow.com/questions/19700283/how-to-convert-time-in-milliseconds-to-hours-min-sec-format-in-javascript
   var seconds = Math.floor((duration / 1000) % 60) + 1,
     minutes = Math.floor((duration / (1000 * 60)) % 60),
@@ -306,12 +306,16 @@ function msToTime(duration){ //https://stackoverflow.com/questions/19700283/how-
   return res;
 }
 
+
+
 function getTomorrowPrayers(){
     const today = new Date();
     const tomorrow = new Date();
     tomorrow.setDate(today.getDate() + 1);
     window.api.send('tomorrow-request', tomorrow);
 }
+
+
 
 function intToHour(time){
     var hours = time[0];
@@ -328,6 +332,20 @@ function intToHour(time){
     }
 }
 
+
+/**
+ * Converts PrayerTimes to the saved timezone.
+ */
+function convertPrayerTimes(prayers = prayerTimes){
+  prayers.fajr = convertTZ(prayers.fajr, timezone)
+  prayers.sunrise = convertTZ(prayers.sunrise, timezone)
+  prayers.dhuhr = convertTZ(prayers.dhuhr, timezone)
+  prayers.asr = convertTZ(prayers.asr, timezone)
+  prayers.maghrib = convertTZ(prayers.maghrib, timezone)
+  prayers.isha = convertTZ(prayers.isha, timezone)
+}
+
+
 function loadHandles(){
   window.api.handle('date-reply', msg => {
     calPrayers = msg;
@@ -340,15 +358,17 @@ function loadHandles(){
         sunnahTimes.motn = false;
         sunnahTimes.totn = false;
       }
+      convertPrayerTimes(calPrayers)
       setupSunnah();
       loadPrayers();
     }
   })
+
   window.api.handle('prayersReply', msg => {
     prayerTimes = msg
-    
     nextPrayer()
   })
+
   window.api.handle('tomorrow-reply', msg => {
     tommorowPrayers = msg
     setupSunnah()

@@ -47,7 +47,7 @@
       }
     ],
     "win": {
-      "icon": "ressources/images/icon.ico",
+      "icon": "ressources/images/icon-256x256.ico",
       "target": "nsis"
     },
     "linux": {
