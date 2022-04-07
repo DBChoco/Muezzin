@@ -48,12 +48,6 @@ modules:
         commands:
           - zypak-wrapper.sh /app/bin/muezzin/muezzin "$@"
 
-    
-       
-
-
-
-
   - name: platform-bootstrap
     buildsystem: simple
     build-commands:
