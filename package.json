@@ -1,6 +1,6 @@
 {
   "name": "muezzin",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Prayer Time Caller",
   "main": "src/main/main.js",
   "scripts": {
@@ -17,8 +17,8 @@
     "url": "git+https://github.com/DBChoco/Muezzin.git"
   },
   "keywords": [],
-  "author": "DBChoco <smuky2k@gmail.com>",
-  "license": "CC0-1.0",
+  "author": "DBChoco <dbchoco.muezzin@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.63",
     "@electron-forge/maker-deb": "^6.0.0-beta.63",
@@ -37,7 +37,7 @@
     "ip-geolocation-api-javascript-sdk": "^1.0.7"
   },
   "build": {
-    "appId": "com.muezzin.app",
+    "appId": "io.github.dbchoco.muezzin",
     "publish": [
       {
         "provider": "github",
@@ -46,7 +46,7 @@
       }
     ],
     "win": {
-      "icon": "ressources/images/icon.ico",
+      "icon": "ressources/images/icon-256x256.ico",
       "target": "nsis"
     },
     "linux": {
@@ -56,8 +56,7 @@
         "AppImage",
         "snap",
         "tar.gz",
-        "pacman",
-        "deb"
+        "pacman"
       ]
     },
     "mac": {
