@@ -34,20 +34,22 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="v0.2.0" date="2022-04-04">
+    <release version="v0.2.1" date="2022-07-04">
         <description>
             <p>General</p>
             <ul>
-                <li>Added Qur'an reader with translations and transliterations.</li>
-                <li>You can now double-click on the system tray (Windows and macOS).</li>
-                <li>There is now a default background image for dark mode.</li>
-                <li>Added Turkish (thanks to @emrergin).</li>
-                <li>Menu bar is now hidden by default (press ALT to reveal it).</li>
+                <li>Small weather widget added.</li>
+                <li>Added previous/next buttons in the Qur'an reader.</li>
+                <li>Removed necessary modules => loading speeds improved</li>
+                <li>Notifications now contain the Muezzin logo.</li>
+                <li>Almost complete remake of the settings variables (for a better code), you might have to set a few settings.</li>
             </ul>
             <p>BugFixes</p>
             <ul>
-                <li>Fixed a few visual elements.</li>
-                <li>Fixed a few things in the main.js and renderer.js.</li>
+                <li>Arabic fonts for Qur'an reader are loaded before the text now, no flickering.</li>
+                <li>Timezone changes now affect the whole program, not only the time tables.</li>
+                <li>Only looking for updates when UI has finished loading.</li>
+                <li>HOTFIX: Removed deprecated calculation methods.</li>
             </ul>
         </description>
       </release>
