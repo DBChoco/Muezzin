@@ -105,7 +105,7 @@ body{
 
 #stopB, #playB{
     margin: 10px;
-    font-size: max(1.5vh, 15px);
+    font-size: max(1.5vh, 14px);
 }
 
 #volume{
@@ -115,12 +115,15 @@ body{
     font-size: x-large;
 }
 
+.fa-volume-down, .fa-volume-up{
+    font-size: max(2vh, 20px);
+}
+
 #mainContainer{
     width: fit-content;
     display: flex;
     align-items: center;
     margin: 3vh auto 5vh auto;
-
 }
 
 .form-range{

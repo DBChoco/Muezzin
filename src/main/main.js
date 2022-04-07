@@ -317,9 +317,9 @@ function checkTime(){
     var prayers = nextPrayer();
     if (prayers != undefined && prayers[0] != undefined && (settings.adhanCheck || settings.notifCheck)){
         var timeUntilCurrentPrayer = timeUntilPrayer(prayers[0])
-        //console.log(timeUntilCurrentPrayer)
+        //var timeUntilNextPrayer = timeUntilPrayer(prayers[1]) // Shows prayer times in console.
+        //console.debug("Time until next prayer: " + show0(timeUntilNextPrayer[0]) + ":" + show0(timeUntilNextPrayer[1]) + ":" + show0(timeUntilNextPrayer[2]))
         if(timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] == -1 && timeUntilCurrentPrayer[2] == 0){ //-1 because math.floor
-          //if(timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] == -26 && timeUntilCurrentPrayer[2] == 0){ //TESTING
           if (settings.adhanCheck){
             mediaWindow.webContents.send('play', adhanPath);
           }
@@ -336,6 +336,15 @@ function checkTime(){
   }, 900000)
 }
 
+/**
+   * @param {Int} number 
+   * @returns A string of the  0 + number if it is < than 12 
+   */
+ function show0(number){
+  let res
+  number < 10 ? res = "0" + number.toString() : res = number.toString()
+  return res
+}
 
 /**
 * Loads all required variables from the store
@@ -521,10 +530,25 @@ function calcPrayerTimes(date = new Date()){
   }
 
   let calculatedTimes = new adhan.PrayerTimes(coordinates, date, params);
-
+  convertPrayerTimes(calculatedTimes)
   return calculatedTimes;
 }
 
+/**
+ * Converts PrayerTimes to the saved timezone.
+ */
+ function convertPrayerTimes(prayers = prayerTimes){
+  prayers.fajr = convertTZ(prayers.fajr, timezone)
+  prayers.sunrise = convertTZ(prayers.sunrise, timezone)
+  prayers.dhuhr = convertTZ(prayers.dhuhr, timezone)
+  prayers.asr = convertTZ(prayers.asr, timezone)
+  prayers.maghrib = convertTZ(prayers.maghrib, timezone)
+  prayers.isha = convertTZ(prayers.isha, timezone)
+}
+
+function convertTZ(date, timezone) {
+  return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: timezone}));   
+}
 
 //Sets up all the IPC handlers for communication with renderers
 async function setUpHandlers(){

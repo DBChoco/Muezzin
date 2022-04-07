@@ -29,7 +29,6 @@ window.api.send('prayers');
 
 
 window.addEventListener('loadedSettings', () => { 
-  convertPrayerTimes()
   datePick = document.getElementById('calendar');
   getTomorrowPrayers()
   loadClock();
@@ -172,17 +171,15 @@ function loadPrayers(){
     document.getElementById("maghribTime").innerText = changeclockDisplay(calPrayers.maghrib, shortTimeFormat);
     document.getElementById("ishaTime").innerText = changeclockDisplay(calPrayers.isha, shortTimeFormat);
     if (sunnahTimes.totn && totn != undefined){
-      document.getElementById("totnTime").innerText = changeclockDisplay(convertTZ(totn, timezone), shortTimeFormat);
+      document.getElementById("totnTime").innerText = changeclockDisplay(totn, shortTimeFormat);
     }
     if (sunnahTimes.motn && motn != undefined){
-      document.getElementById("motnTime").innerText = changeclockDisplay(convertTZ(motn, timezone), shortTimeFormat);
+      document.getElementById("motnTime").innerText = changeclockDisplay(motn, shortTimeFormat);
     }
   }
 }
 
-function convertTZ(date, timezone) {
-  return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: timezone}));   
-}
+
 
 //Checks the store for saved settings, or gets default values
 async function loadSettings(){
@@ -333,19 +330,6 @@ function intToHour(time){
 }
 
 
-/**
- * Converts PrayerTimes to the saved timezone.
- */
-function convertPrayerTimes(prayers = prayerTimes){
-  prayers.fajr = convertTZ(prayers.fajr, timezone)
-  prayers.sunrise = convertTZ(prayers.sunrise, timezone)
-  prayers.dhuhr = convertTZ(prayers.dhuhr, timezone)
-  prayers.asr = convertTZ(prayers.asr, timezone)
-  prayers.maghrib = convertTZ(prayers.maghrib, timezone)
-  prayers.isha = convertTZ(prayers.isha, timezone)
-}
-
-
 function loadHandles(){
   window.api.handle('date-reply', msg => {
     calPrayers = msg;
@@ -358,7 +342,6 @@ function loadHandles(){
         sunnahTimes.motn = false;
         sunnahTimes.totn = false;
       }
-      convertPrayerTimes(calPrayers)
       setupSunnah();
       loadPrayers();
     }
