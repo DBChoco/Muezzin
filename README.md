@@ -114,7 +114,7 @@ Currently we support 10 languages (and growing), and if you want us to add one m
   <img src="screenshots/settingsDark.png" alt="screenshot1" width="70%">
 </div>
 
-The app also contains a Qur'an reader that is able to translations and transliterations. It supports many languages and you can expect many improvements  in the future inshaAllah.
+The app also contains a Qur'an reader that is able to show translations and transliterations. It supports many languages and you can expect many improvements  in the future inshaAllah.
 
 
 <div align="center">
@@ -144,8 +144,9 @@ The app also contains a Qur'an reader that is able to translations and translite
 * [Bootstrap-dark-5](https://vinorodrigues.github.io/bootstrap-dark-5/)
 * [adhan-js](https://github.com/batoulapps/adhan-js)
 * [FontAwesome](https://fontawesome.com/)
-* [Moment & Moment-timezone](https://momentjs.com/)
 * [Quran.com API](https://quran.api-docs.io)
+* [OpenWeather](https://openweathermap.org/)
+* [Weather Icons](https://github.com/erikflowers/weather-icons)
 * Many electron modules
 
 <!-- ROADMAP -->
@@ -158,10 +159,13 @@ The app also contains a Qur'an reader that is able to translations and translite
   - [ ] Manual times
   - [ ] Custom text 
 - [ ] Add Tasbih
-- [ ] Add weather widget
+- [x] Add weather widget
 - [x] Add icons to settings
 - [ ] Multi-language Support
-    - [ ] Turkish
+    - [x] Turkish
+    - [ ] Russian
+    - [ ] Indonesian
+    - [ ] NEED TRANSLATORS ! 
 
 See the [open issues](https://github.com/DBChoco/MuezzinPrayerTimes/issues) for a full list of proposed features (and known issues).
 
@@ -241,9 +245,11 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Project Link: [https://github.com/DBChoco/Muezzin](https://github.com/your_username/repo_name)
+[Project Link](https://github.com/DBChoco/Muezzin)
 
-Discord: [Official Discord server](https://discord.gg/cpF9TTstN5) 
+[Official Discord server](https://discord.gg/cpF9TTstN5) 
+
+[Email](emailto:dbchoco.muezzin@gmail.com) 
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
