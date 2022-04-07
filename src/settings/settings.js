@@ -574,6 +574,7 @@ function loadLanguage(lang){
   //document.getElementById("adhanAqsaText").innerText = window.api.getLanguage(lang, "adhanAqsa");
   document.getElementById("customAdhanText").innerText = window.api.getLanguage(lang, "customAdhan");
   document.getElementById("duaAfterText").innerText = window.api.getLanguage(lang, "duaAfterAdhan");
+  document.getElementById("duaCheckText").innerHTML  = window.api.getLanguage(lang, "playDua");
   document.getElementById("themeText").innerText = window.api.getLanguage(lang, "theme");
   document.getElementById("darkModeText").innerText = window.api.getLanguage(lang, "darkMode");
   document.getElementById("bgImageText").innerText = window.api.getLanguage(lang, "bgImage");
@@ -650,6 +651,13 @@ function loadLanguage(lang){
   document.getElementById("transliterationText").innerHTML  = window.api.getLanguage(lang, "transliteration");
   document.getElementById("showTransliterationCheckText").innerHTML  = window.api.getLanguage(lang, "showTransliteration");
   document.getElementById("transliterationFontSizeText").innerHTML  = window.api.getLanguage(lang, "fontsize");
+
+  document.getElementById("weatherText").innerHTML  = window.api.getLanguage(lang, "weather");
+  document.getElementById("weatherCheckText").innerHTML  = window.api.getLanguage(lang, "showWeather");
+  document.getElementById("unitListText").innerHTML  = window.api.getLanguage(lang, "units");
+  document.getElementById("celsius").innerHTML  = window.api.getLanguage(lang, "celsius");
+  document.getElementById("kelvin").innerHTML  = window.api.getLanguage(lang, "kelvin");
+  document.getElementById("fahrenheit").innerHTML  = window.api.getLanguage(lang, "fahrenheit");  
 }
 
 

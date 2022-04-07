@@ -129,6 +129,7 @@ var dict = {
         'celsius': 'Celsius',
         'kelvin': 'Kelvin',
         'fahrenheit': 'Fahrenheit',
+        'playDua': "Play Du'a after Adhan",
     },
     fr: {
         'settings': 'Options', //settingsTitle
@@ -253,6 +254,7 @@ var dict = {
         'celsius': 'Celsius',
         'kelvin': 'Kelvin',
         'fahrenheit': 'Fahrenheit',
+        'playDua': "Lancer Dua après Adhan",
     },
     es: {
         'settings': 'Ajustes', //settingsTitle
@@ -377,6 +379,7 @@ var dict = {
         'celsius': 'Celsius',
         'kelvin': 'Kelvin',
         'fahrenheit': 'Fahrenheit',
+        'playDua': "Lanzar Du'a después de Adhan",
     },
     ar: {
         'settings': 'الإعدادات', //settingsTitle
@@ -494,13 +497,14 @@ var dict = {
         'transliteration': 'التحويل الصوتي',
         'showTransliteration': 'إظهار التحويل الصوتي',
         'previous': 'السورة السابقة',
-        'next': 'السورة التالية',
+        'next': 'السورة القادمة',
         'weather': 'الطقس',
         'showWeather': 'عرض الطقس',
         'units': 'الوحدات',
         'celsius': 'درجة مئوية',
         'kelvin': 'كيلفن',
         'fahrenheit': 'فهرنهايت',
+        'playDua': "لعب الدعاء بعد الأذان",
     },
     it: {
         'settings': 'Impostazioni', //settingsTitle
@@ -625,6 +629,7 @@ var dict = {
         'celsius': 'Centigrado',
         'kelvin': 'Kelvin',
         'fahrenheit': 'Fahrenheit',
+        'playDua': "Dua after the Adhan",
     },
     de: {
         'settings': 'Einstellungen', //settingsTitle
@@ -749,6 +754,7 @@ var dict = {
         'celsius': 'Celsius',
         'kelvin': 'Kelvin',
         'fahrenheit': 'Fahrenheit',
+        'playDua': "Dua nach dem Adhan",
     },
     nl: {
         'settings': 'Instellingen', //settingsTitle
@@ -873,6 +879,7 @@ var dict = {
         'celsius': 'Celsius',
         'kelvin': 'Kelvin',
         'fahrenheit': 'Fahrenheit',
+        'playDua': "Dua na de Adhan",
     },
     sv: {
         'settings': 'Inställningar', //settingsTitle
@@ -997,6 +1004,7 @@ var dict = {
         'celsius': 'celsius',
         'kelvin': 'Kelvin',
         'fahrenheit': 'Fahrenheit',
+        'playDua': "Dua Efter Adhan",
     },
     no: {
         'settings': 'Innstillinger', //settingsTitle
@@ -1121,6 +1129,7 @@ var dict = {
         'celsius': 'Celsius',
         'kelvin': 'Kelvin',
         'fahrenheit': 'Fahrenheit',
+        'playDua': "Dua etter Adhan",
     },
     da: {
         'settings': 'Indstillinger', //settingsTitle
@@ -1245,6 +1254,7 @@ var dict = {
         'celsius': 'Celsius',
         'kelvin': 'Kelvin',
         'fahrenheit': 'Fahrenheit',
+        'playDua': "Dua Efter Adhan",
     },
     ur: {
         'settings': 'ترتیبات', //settingsTitle
@@ -1369,6 +1379,7 @@ var dict = {
         'celsius': 'سیلسیس',
         'kelvin': 'کیلون',
         'fahrenheit': 'فارن ہائیٹ',
+        'playDua': "دعا کے بعد غسل",
     },
  tr: {
         'settings': 'Ayarlar', //settingsTitle
@@ -1494,5 +1505,6 @@ var dict = {
         'celsius': 'Celsius',
         'kelvin': 'Kelvin',
         'fahrenheit': 'Fahrenheit',
+        'playDua': "Adhan'dan sonra dua oyna",
     },
 }

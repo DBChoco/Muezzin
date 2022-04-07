@@ -224,6 +224,8 @@ function translate(){
     document.getElementById("title").innerHTML = window.api.getLanguage(lang, "quran");
     document.getElementById("settings").innerHTML = '<i class="fa-solid fa-gear"></i>  ' + window.api.getLanguage(lang, "settings");
     document.getElementById("return").innerHTML = '<i class="fa fa-arrow-circle-left"></i>    ' + window.api.getLanguage(lang, "return");
+    document.getElementById("previousSurah").innerHTML = window.api.getLanguage(lang, "previous");
+    document.getElementById("nextSurah").innerHTML = window.api.getLanguage(lang, "next");
 }
 
 function setupPreviousNextButtons(){
