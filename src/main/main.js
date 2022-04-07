@@ -258,6 +258,7 @@ function setUpdates(){
 }
 
 function getVersion(){
+  showNotification(language.loadTrans(lang, 'updateAvailable'))
   console.log("Looking for updates")
   const request = net.request({
     method: 'GET',
@@ -272,6 +273,7 @@ function getVersion(){
     response.on('data', (chunk) => {
         if (app.getVersion() < JSON.parse(chunk).name){
           mainWindow.webContents.send('update-available', [app.getVersion(), JSON.parse(chunk).name]);
+          showNotification(language.loadTrans(lang, 'updateAvailable'))
           clearInterval(updateInterval);
         }
     });
@@ -292,11 +294,16 @@ function getVersion(){
   request.end();
 }
 
+/**
+ * Shows a notification with the msg
+ * @param {String} message 
+ */
 function showNotification (message) {
   if (Notification.isSupported()){
-    const NOTIFICATION_TITLE = 'Muezzin'
-    const NOTIFICATION_BODY = message
-    new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY, icon:"../ressources/images/icon.png" }).show()
+    let NOTIFICATION_TITLE = 'Muezzin'
+    let NOTIFICATION_BODY = message
+    let NOTIFICATION_ICON = process.platform == "win32" ? path.join(__dirname, '../../ressources/images/icon.ico') : path.join(__dirname, '../../ressources/images/icon.png')
+    new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY, icon:NOTIFICATION_ICON }).show()
   }
 }
 
