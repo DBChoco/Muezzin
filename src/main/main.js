@@ -249,16 +249,18 @@ app.on('window-all-closed', function () {
 })
 
 function setUpdates(){
-  setTimeout(function(){
-    getVersion()
-  }, 3000);
-  updateInterval = setInterval(function(){
-    getVersion()
-  }, 600000) //10 minutes
+  if (updateInterval == undefined){
+    setTimeout(function(){
+      getVersion()
+    }, 3000);
+    updateInterval = setInterval(function(){
+      getVersion()
+    }, 900000) //15 minutes
+  }
+  
 }
 
 function getVersion(){
-  showNotification(language.loadTrans(lang, 'updateAvailable'))
   console.log("Looking for updates")
   const request = net.request({
     method: 'GET',

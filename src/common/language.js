@@ -120,7 +120,15 @@ var dict = {
         'showTrans': 'Show translation',
         'diffLang': 'Different language from app',
         'transliteration': 'Transliteration',
-        'showTransliteration': 'Show transliteration'
+        'showTransliteration': 'Show transliteration',
+        'previous': 'Previous Surah',
+        'next': 'Next Surah',
+        'weather': 'Weather',
+        'showWeather': 'Show weather',
+        'units': 'Units',
+        'celsius': 'Celsius',
+        'kelvin': 'Kelvin',
+        'fahrenheit': 'Fahrenheit',
     },
     fr: {
         'settings': 'Options', //settingsTitle
@@ -236,7 +244,15 @@ var dict = {
         'showTrans': 'Montrer la traduction',
         'diffLang': "Différente langue que l'application",
         'transliteration': 'Translitération',
-        'showTransliteration': 'Montrer la translitération'
+        'showTransliteration': 'Montrer la translitération',
+        'previous': 'Sourate précédente',
+        'next': 'Sourate suivante',
+        'weather': 'Météo',
+        'showWeather': 'Afficher la météo',
+        'units': 'Unités',
+        'celsius': 'Celsius',
+        'kelvin': 'Kelvin',
+        'fahrenheit': 'Fahrenheit',
     },
     es: {
         'settings': 'Ajustes', //settingsTitle
@@ -352,7 +368,15 @@ var dict = {
         'showTrans': 'Mostrar traducción',
         'diffLang': 'Diferente idioma de la aplicación',
         'transliteration': 'Transliteración',
-        'showTransliteration': 'Mostrar transliteración'
+        'showTransliteration': 'Mostrar transliteración',
+        'previous': 'Sura anterior',
+        'next': 'Siguiente sura',
+        'weather': 'Clima',
+        'showWeather': 'Mostrar el clima',
+        'units': 'Unidades',
+        'celsius': 'Celsius',
+        'kelvin': 'Kelvin',
+        'fahrenheit': 'Fahrenheit',
     },
     ar: {
         'settings': 'الإعدادات', //settingsTitle
@@ -468,7 +492,15 @@ var dict = {
         'showTrans': 'إظهار الترجمة',
         'diffLang': 'لغة مختلفة عن التطبيق',
         'transliteration': 'التحويل الصوتي',
-        'showTransliteration': 'إظهار التحويل الصوتي'
+        'showTransliteration': 'إظهار التحويل الصوتي',
+        'previous': 'السورة السابقة',
+        'next': 'السورة التالية',
+        'weather': 'الطقس',
+        'showWeather': 'عرض الطقس',
+        'units': 'الوحدات',
+        'celsius': 'درجة مئوية',
+        'kelvin': 'كيلفن',
+        'fahrenheit': 'فهرنهايت',
     },
     it: {
         'settings': 'Impostazioni', //settingsTitle
@@ -584,7 +616,15 @@ var dict = {
         'showTrans': 'Mostra traduzione',
         'diffLang': "Linguaggio diverso dall'applicazione",
         'transliteration': 'Traslitterazione',
-        'showTransliteration': 'Mostra traslitterazione'
+        'showTransliteration': 'Mostra traslitterazione',
+        'previous': 'Sura precedente',
+        'next': 'Prossima Sura',
+        'weather': 'Meteo',
+        'showWeather': 'Mostra il meteo',
+        'units': 'Unità',
+        'celsius': 'Centigrado',
+        'kelvin': 'Kelvin',
+        'fahrenheit': 'Fahrenheit',
     },
     de: {
         'settings': 'Einstellungen', //settingsTitle
@@ -700,7 +740,15 @@ var dict = {
         'showTrans': 'Übersetzung anzeigen',
         'diffLang': 'Andere Sprache als Anwendung',
         'transliteration': 'Transliteration',
-        'showTransliteration': 'Transliteration anzeigen '
+        'showTransliteration': 'Transliteration anzeigen ',
+        'previous': 'Vorherige Sure',
+        'next': 'Nächste Sure',
+        'weather': 'Wetter',
+        'showWeather': 'Wetter anzeigen',
+        'units': 'Einheiten',
+        'celsius': 'Celsius',
+        'kelvin': 'Kelvin',
+        'fahrenheit': 'Fahrenheit',
     },
     nl: {
         'settings': 'Instellingen', //settingsTitle
@@ -816,7 +864,15 @@ var dict = {
         'showTrans': 'Vertaling weergeven',
         'diffLang': 'Andere taal dan applicatie',
         'transliteration': 'Transliteratie',
-        'showTransliteration': 'Transliteratie weergeven'
+        'showTransliteration': 'Transliteratie weergeven',
+        'previous': 'Vorige soera',
+        'next': 'Volgende soera',
+        'weather': 'Weer',
+        'showWeather': 'Toon weer',
+        'units': 'Eenheden',
+        'celsius': 'Celsius',
+        'kelvin': 'Kelvin',
+        'fahrenheit': 'Fahrenheit',
     },
     sv: {
         'settings': 'Inställningar', //settingsTitle
@@ -932,7 +988,15 @@ var dict = {
         'showTrans': 'Visa översättning',
         'diffLang': 'Annat språk än applikationen',
         'transliteration': 'Translitterering',
-        'showTransliteration': 'Visa translitterering '
+        'showTransliteration': 'Visa translitterering ',
+        'previous': 'Föregående Surah',
+        'next': 'Nästa Surah',
+        'weather': 'Väder',
+        'showWeather': 'Visa väder',
+        'units': 'Enheter',
+        'celsius': 'celsius',
+        'kelvin': 'Kelvin',
+        'fahrenheit': 'Fahrenheit',
     },
     no: {
         'settings': 'Innstillinger', //settingsTitle
@@ -1048,7 +1112,15 @@ var dict = {
         'showTrans': 'Vis oversettelse',
         'diffLang': 'Ulikt språk fra applikasjonen',
         'transliteration': 'Translitterasjon',
-        'showTransliteration': 'Vis translitterasjon '
+        'showTransliteration': 'Vis translitterasjon ',
+        'previous': 'Forrige Surah',
+        'next': 'Neste Surah',
+        'weather': 'Vær',
+        'showWeather': 'Vis vær',
+        'units': 'Enheter',
+        'celsius': 'Celsius',
+        'kelvin': 'Kelvin',
+        'fahrenheit': 'Fahrenheit',
     },
     da: {
         'settings': 'Indstillinger', //settingsTitle
@@ -1164,7 +1236,15 @@ var dict = {
         'showTrans': 'Vis oversættelse',
         'diffLang': 'Forskelligt sprog end applikationen',
         'transliteration': 'Translitteration',
-        'showTransliteration': 'Vis translitteration '
+        'showTransliteration': 'Vis translitteration ',
+        'previous': 'Forrige Surah',
+        'next': 'Næste Surah',
+        'weather': 'Vejr',
+        'showWeather': 'Vis vejr',
+        'units': 'Enheder',
+        'celsius': 'Celsius',
+        'kelvin': 'Kelvin',
+        'fahrenheit': 'Fahrenheit',
     },
     ur: {
         'settings': 'ترتیبات', //settingsTitle
@@ -1277,10 +1357,18 @@ var dict = {
         'font': 'فونٹ',
         'fontsize': 'حرف کا سائز',
         'translation': 'ترجمہ',
-        'showTrans': 'ترجمہ دکھائیں۔',
+        'showTrans': 'ترجمہ دکھائیں',
         'diffLang': 'درخواست سے مختلف زبان',
         'transliteration': 'نقل حرفی',
-        'showTransliteration': 'نقل حرفی دکھائیں۔ '
+        'showTransliteration': 'نقل حرفی دکھائیں',
+        'previous': 'پچھلی سورہ',
+        'next': 'اگلی سورہ',
+        'weather': 'موسم',
+        'showWeather': 'موسم دکھائیں',
+        'units': 'یونٹس',
+        'celsius': 'سیلسیس',
+        'kelvin': 'کیلون',
+        'fahrenheit': 'فارن ہائیٹ',
     },
  tr: {
         'settings': 'Ayarlar', //settingsTitle
@@ -1397,6 +1485,14 @@ var dict = {
         'showTrans': 'Tercümeyi göster',
         'diffLang': 'Uygulamadan farklı dil',
         'transliteration': 'Harf çevirisi',
-        'showTransliteration': 'Harf çevirisini göster'
+        'showTransliteration': 'Harf çevirisini göster',
+        'previous': 'Önceki Sure',
+        'next': 'Sonraki Sure',
+        'weather': 'Hava Durumu',
+        'showWeather': 'Hava durumunu göster',
+        'units': 'Birimler',
+        'celsius': 'Celsius',
+        'kelvin': 'Kelvin',
+        'fahrenheit': 'Fahrenheit',
     },
 }
