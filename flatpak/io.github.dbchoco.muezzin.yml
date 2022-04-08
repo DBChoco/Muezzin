@@ -4,19 +4,45 @@ runtime-version: '21.08'
 sdk: org.freedesktop.Sdk
 base: org.electronjs.Electron2.BaseApp
 base-version: '21.08'
-sdk-extensions:
-  - org.freedesktop.Sdk.Extension.node14
 command: muezzin-run
 separate-locales: false
+
+sdk-extensions:
+  - org.freedesktop.Sdk.Compat.i386
+  - org.freedesktop.Sdk.Extension.toolchain-i386
+
 finish-args:
   - --share=ipc
   - --socket=x11
+  - --socket=wayland
   - --socket=pulseaudio
   - --share=network
-build-options:
-  append-path: /usr/lib/sdk/node14/bin
-  env:
-    NPM_CONFIG_LOGLEVEL: info
+  - --allow=multiarch
+  - --device=all
+  - --talk-name=org.freedesktop.Notifications
+
+add-extensions:
+  org.freedesktop.Platform.Compat.i386:
+    directory: lib/i386-linux-gnu
+    version: '21.08'
+
+  org.freedesktop.Platform.Compat.i386.Debug:
+    directory: lib/debug/lib/i386-linux-gnu
+    version: '21.08'
+    no-autodownload: true
+  
+  org.freedesktop.Platform.GL32:
+    directory: lib/i386-linux-gnu/GL
+    version: '1.4'
+    versions: 21.08;1.4
+    subdirectories: true
+    no-autodownload: true
+    autodelete: false
+    add-ld-path: lib
+    merge-dirs: vulkan/icd.d;glvnd/egl_vendor.d;OpenCL/vendors;lib/dri;lib/d3d;vulkan/explicit_layer.d;vulkan/implicit_layer.d
+    download-if: active-gl-driver
+    enable-if: active-gl-driver
+
 modules:
     # --- Tools ---
   - name: unappimage
@@ -52,10 +78,20 @@ modules:
     buildsystem: simple
     build-commands:
       - |
+        mkdir -p /app/bin
+        mkdir -p /app/lib/i386-linux-gnu
+        mkdir -p /app/lib/debug/lib/i386-linux-gnu
+        mkdir -p /app/lib/i386-linux-gnu/GL
         install -Dm644 io.github.dbchoco.muezzin.png /app/share/icons/hicolor/128x128/apps/$FLATPAK_ID.png
         install -Dm644 io.github.dbchoco.muezzin.desktop /app/share/applications/${FLATPAK_ID}.desktop
+        install -Dm644 -t /app/etc ld.so.conf
         install -Dm644 io.github.dbchoco.muezzin.metainfo.xml /app/share/metainfo/$FLATPAK_ID.appdata.xml
     sources:
+      - type: inline
+        dest-filename: ld.so.conf
+        contents: |
+          /app/lib32
+          /app/lib/i386-linux-gnu
       - type: file
         path: io.github.dbchoco.muezzin.metainfo.xml
       - type: file

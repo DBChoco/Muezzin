@@ -229,7 +229,7 @@ app.whenReady().then(() => {
 
 
 
-var lat, lon, calculationMethod, prayerTimes, adhanPath;
+var lat, lon, calculationMethod, prayerTimes, adhanPath, timeformat;
 var customValues, delay;
 var prayerTimes, datePrayerTimes, tomorrowPrayers;
 var settings
@@ -262,38 +262,43 @@ function setUpdates(){
 
 function getVersion(){
   console.log("Looking for updates")
-  const request = net.request({
-    method: 'GET',
-    protocol: 'http:',
-    hostname: 'api.github.com',
-    path: '/repositories/459335904/releases/latest',
-    redirect: 'follow'
-  });
-  request.on('response', (response) => {
-    //console.log(`STATUS: ${response.statusCode}`);
-    //console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
-    response.on('data', (chunk) => {
-        if (app.getVersion() < JSON.parse(chunk).name){
-          mainWindow.webContents.send('update-available', [app.getVersion(), JSON.parse(chunk).name]);
-          showNotification(language.loadTrans(lang, 'updateAvailable'))
-          clearInterval(updateInterval);
-        }
+  try {
+    const request = net.request({
+      method: 'GET',
+      protocol: 'http:',
+      hostname: 'api.github.com',
+      path: '/repositories/459335904/releases/latest',
+      redirect: 'follow'
     });
-  });
-  request.on('finish', () => {
-    //console.log('Request is Finished')
-  });
-  request.on('abort', () => {
-    console.log('Request is Aborted')
-  });
-  request.on('error', (error) => {
-    console.log(`ERROR: ${JSON.stringify(error)}`)
-  });
-  request.on('close', (error) => {
-    //console.log('Last Transaction has occured')
-  });
-  request.setHeader('Content-Type', 'application/json');
-  request.end();
+    request.on('response', (response) => {
+      //console.log(`STATUS: ${response.statusCode}`);
+      //console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
+      response.on('data', (chunk) => {
+          if (app.getVersion() < JSON.parse(chunk).name){
+            mainWindow.webContents.send('update-available', [app.getVersion(), JSON.parse(chunk).name]);
+            showNotification(language.loadTrans(lang, 'updateAvailable'))
+            clearInterval(updateInterval);
+          }
+      });
+    });
+    request.on('finish', () => {
+      //console.log('Request is Finished')
+    });
+    request.on('abort', () => {
+      console.log('Request is Aborted')
+    });
+    request.on('error', (error) => {
+      console.log(`ERROR: ${JSON.stringify(error)}`)
+    });
+    request.on('close', (error) => {
+      //console.log('Last Transaction has occured')
+    });
+    request.setHeader('Content-Type', 'application/json');
+    request.end();
+  } catch (error) {
+    console.log("Couldn't look for updates: " + error)
+  }
+  
 }
 
 /**
@@ -353,6 +358,11 @@ async function loadSettings(){
   lat = await store.get('latitude', 0.00);
   lon = await store.get('longitude', 0.00);
   timezone = await store.get('timezone', 'Europe/Brussels');
+  timeDisplay = await store.get("timeDisplay", {
+    clockFormat: 12,
+    dateFormat: 'DD/MM/YYYY',
+    showSeconds: true
+  })
 
   calculationMethod = await store.get("calculationMethod", {
     calcMethod: 'MWL',
@@ -553,6 +563,7 @@ async function setUpHandlers(){
     console.log("Requesting prayer times for today")
     waitFor(lat, prayerTimes = calcPrayerTimes())
     event.sender.send('prayersReply', prayerTimes)
+    trayPrayerTimes()
   });
   ipcMain.handle('date-request',  (event, message)  => {
     console.log("Requesting prayer times for " + message)
@@ -867,5 +878,49 @@ function loadOldSettings(){
       autoStart: autoStart,
       minStart: minStart
     })
+  }
+}
+
+function trayPrayerTimes(){
+  const contextMenu = Menu.buildFromTemplate([
+    { label: 'Open', click:  function(){
+      mainWindow.show(); }},
+    { type: 'separator' },
+    { label: langFajr + ": " + changeclockDisplay(prayerTimes.fajr, timeDisplay.clockFormat), click: function(){}},
+    { label: langSunrise + ": " + changeclockDisplay(prayerTimes.sunrise, timeDisplay.clockFormat)},
+    { label: langDhuhr + ": " + changeclockDisplay(prayerTimes.dhuhr, timeDisplay.clockFormat)},
+    { label: langAsr + ": " + changeclockDisplay(prayerTimes.asr, timeDisplay.clockFormat)},
+    { label: langMaghrib + ": " + changeclockDisplay(prayerTimes.maghrib, timeDisplay.clockFormat)},
+    { label: langIsha + ": " + changeclockDisplay(prayerTimes.isha, timeDisplay.clockFormat)},
+    { type: 'separator' },
+    { label: 'Quit', click:  function(){
+      app.isQuiting = true;
+      app.quit();}}
+  ])
+  tray.setContextMenu(contextMenu)
+
+  function changeclockDisplay(date, timeformat){
+    if (timeformat == 24){
+      return show0(date.getHours()) + ":" + show0(date.getMinutes())
+    }
+    else{
+      let amPm = date.getHours() < 12 ? 'am' : 'pm'
+      if (amPm == 'am'){
+        return show0(date.getHours()) + ":" + show0(date.getMinutes()) + ' AM'
+      }
+      else{
+        return show0(date.getHours()%12 == 0 ? 12 : date.getHours()%12) + ":" + show0(date.getMinutes()) + ' PM'
+      }
+    }
+  
+    /**
+     * @param {Int} number 
+     * @returns A string of the  0 + number if it is < than 12 
+     */
+    function show0(number){
+      let res
+      number < 10 ? res = "0" + number.toString() : res = number.toString()
+      return res
+    }
   }
 }
