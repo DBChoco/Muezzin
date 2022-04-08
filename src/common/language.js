@@ -131,6 +131,132 @@ var dict = {
         'fahrenheit': 'Fahrenheit',
         'playDua': "Play Du'a after Adhan",
     },
+    bn: {
+        'settings': 'সেটিংস', //settingsTitle
+        'language': 'ভাষা', //langText
+        'timeformat': 'সময় ফরমেট', //tfText
+        '24hour': '২৪ ঘন্টা', //24hTimeFormatText
+        '12hour': '১২ ঘন্টা', //12hTimeFormatText
+        'showSseconds': 'সেকেন্ড প্রদর্শণ', //showSecondsText
+        'dateFormat': 'তারিখ ফরমেট', //dfText
+        'dateFormat1': 'দিন/মাস/বছর', //id="df1Text"
+        'dateFormat2': 'মাস/দিন/বছর', //id="df2Text"
+        'dateFormat3': 'বছর/মাস/দিন', //id="df3Text"
+        'notifications': 'নোটিফিকেশন', //notifText
+        'notifCheck': 'নোটিফিকেশন সক্রিয় করুন', //notifCheckText
+        'coordinates': 'স্থানাঙ্ক ‌/ কোঅরডিনেট', //coordinatesText
+        'latitude': 'অক্ষাংশ', //latText
+        'longitude': 'দ্রাঘিমা', //lonText
+        'timezone': 'সময়-মান মণ্ডল', // tzText
+        'adhan': 'আজান', //adhanText and others in main
+        'adhanCheck': 'আজান সক্রিয় করুন', //adhanCheckText
+        'AdhanMecca': 'আজান মক্কা', //adhanMeccaText //Traduire juste Mecca
+        'adhanAqsa': 'আজান আল-আকসা', //adhanAqsaText
+        'customAdhan': 'কাস্টমাইজড আজান', //customAdhanText
+        'duaAfterAdhan': "আজানের পর দোয়া", //duaAfterText
+        'theme': 'থিম', //themeText
+        'darkMode': 'অন্ধকার মোড', //darkModeText
+        'bgImage': 'ব্যাকগ্রাউন্ড ছবি', //bgImageText
+        'bgImageCheck': 'ব্যাকগ্রাউন্ড ছবি সক্রিয় করুন', //bgImageCheckText
+        'calcMethods': 'গণনা পদ্ধতি', //calcMethodsText
+        'mwl': 'মুসলিম বিশ্ব লীগ', //MWL
+        'egyptian': 'মিশরীয়', //Egyptian
+        'karachi': 'করাচি', //Karachi
+        'uaq': 'উম্মে আল-কোরা', //UAQ
+        'dubai': 'দুবাই', //Dubai
+        'qatar': 'কাতার', //Qatar
+        'kuwait': 'কুয়েত', //Kuwait
+        'mc': 'চাঁদ দেখা কমিটি', //MC //pas traduire ça
+        'singapore': 'সিংগাপুর', //Singapore
+        'turkey': 'তুর্কি', //Turkey
+        'tehran': 'তেহরান', //Tehran
+        'isna': 'উত্তর আমেরিকার ইসলামিক সোসাইটি (NA)', //ISNA
+        'madhab': 'মাজহাব', //MadhabText
+        'shafi': 'শাফী', //shafi
+        'hanafi': 'হানাফী', //Hanafi
+        'hlr': 'উচ্চ অক্ষাংশ নিয়ম', //hlrText
+        'motn': 'মধ্যরাত', //MOTN
+        'sotn': 'রাতের সপ্তমাংশ', //SOTN
+        'ta': 'সন্ধা কোণ', //TA
+        'pcr': 'মেরু অঞ্চলীয় রীতি', //pcrText
+        'cc': 'নিকটবর্তী শহর', //CC
+        'cd': 'নিকটবর্তী তারিখ', //CD
+        'und': 'গণনা প্রয়োজন নেই', //UND
+        'shafaq': 'সাফাক', //ShafaqText
+        'general': 'সাধারণ', //shafaqG
+        'ahmer': 'গোধূলি সন্ধা (ahmer)', //shafaqR
+        'abyad': 'সাদা সন্ধা (abyad)', //shafaqW
+        'return': 'ফেরত', //return
+        'general': 'সাধারণ', //v-pills-general-tab
+        'location': 'অবস্থান', //v-pills-location-tab
+        'audio': 'অডিও', //v-pills-audio-tab
+        'appearance': 'আবয়ব', //v-pills-appearance-tab
+        'advanced': 'এডভান্সড', //v-pills-advanced-tab
+        'muezzin': 'মুয়াজ্জিন',
+        'autoStart': 'স্বয়ংক্রিয় চালু', //autoStartText
+        'startAtLaunch': 'প্রারম্ভিক এ চালু', //autoStartCheckText
+        'copyright': 'কপিরাইট ২০২২, মুয়াজ্জিন, সকল স্বত্ব সংরক্ষিত।', //copyright
+        'quote': 'প্রকৃতপক্ষে, নির্দিষ্ট সময়ে নামায কায়িম করা মু’মিনদের জন্য অবশ্য কর্তব্য।', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'source': "আল-কোরআন: ৪/১০৩", //source
+        'fajr': 'ফজর',
+        'sunrise': 'সূর্যদয়',
+        'dhuhr': 'যুহর',
+        'asr': 'আসর',
+        'maghrib': 'মাগরিব',
+        'isha': 'এশা',
+        'now': 'এখন',
+        'timeUntil': 'পর্যন্ত',
+        'startUpSound': 'প্রারম্ভিক শব্দ', //startUpSoundText
+        'playSound': 'প্রারম্ভিক শব্দ চালু', //startUpSoundText2
+        'sysTray': 'সিস্টেম ট্রে', //systrayText
+        'minToTray': 'ট্রেতে মিনিমাইজ করুন', //systrayCheckText
+        'customSettings': 'পছন্দ অনুযায়ী সেটিংস', //customSettText
+        'enableCS': 'পছন্দ অনুযায়ী গণনা সেটিংস চালু করুন', //enableCalcText
+        'fAngle': 'ফজরের সময় কোণ', //fajrAngleText
+        'mAngle': 'মাগরিবের সময় কোণ', //maghribAngleText
+        'iAngle': 'এশার সময় কোন', //ishaAngleText
+        'delayAfterM': 'মাগরিবের বিলম্ব সময়', //delayText
+        'delayMin': 'বিলম্ব (মিনিট)', //delayFormText
+        'france': 'ফ্রান্স', //France12 15 & 18
+        'russia': 'রাশিয়া', //Russia
+        'gulf': 'উপসাগরীয় অঞ্চল', //Gulf
+        'preferences': 'অগ্রাধিকার', //menu label
+        'resetSettings': 'সেটিংস পুনঃস্থাপন', //menu label
+        'adjustements': 'সমন্বয়', //adjustmentsText
+        'here': 'এখানে',
+        'enableAdj': 'সমন্বয় সক্রিয় করুন', //adjCheckText
+        'fajrAdj': 'ফজরের সময় সমন্বয়', //fajrAdjText
+        'dhuhrAdj': 'যুহরের সময় সমন্বয়', //fajrAdjText
+        'asrAdj': 'আসরের সমন্বয়', //fajrAdjText
+        'maghribAdj': 'মাগরিবের সময় সমন্বয়', //fajrAdjText
+        'ishaAdj': 'এশার সময় সমন্বয়', //fajrAdjText
+        'showSunnah': 'সুন্নাহ এর সময় প্রদর্শিত করুন', //sunnahTimesText
+        'motn': 'মধ্যরাত',  //MOTNCheckText
+        'totn': 'রাতের শেষ তৃতীয়াংশ', //TOTNCheckText
+        'minStart': 'মিনিমাইজড অবস্থায় চালু করুন', //minStartCheckText
+        'updateAvailable': 'আপডেট উপলব্ধ', 
+        'version': 'ভার্সন',
+        'available': 'ডাউনলোড করার জন্য গিটহাব এ উপলব্ধ',
+        'download': 'ডাউনলোড',
+        'later': 'পরবর্তীতে',
+        'quran': "কোরআান",
+        'font': 'ফন্ট',
+        'fontsize': 'ফন্ট সাইজ',
+        'translation': 'অনুবাদ',
+        'showTrans': 'অনুবাদ প্রদর্শন করুন',
+        'diffLang': 'এপ্লিকেশন থেকে অন্য ভাষা',
+        'transliteration': 'বর্ণান্তরণ',
+        'showTransliteration': 'বর্ণান্তরণ প্রদর্শন করুন',
+        'previous': 'পূর্বের সূরা',
+        'next': 'পরের সূরা',
+        'weather': 'আবহাওয়া',
+        'showWeather': 'আবহাওয়া প্রদর্শন করুন',
+        'units': 'পরিমাপক',
+        'celsius': 'সেলসিয়াস',
+        'kelvin': 'ক্যালবিন',
+        'fahrenheit': 'ফারেনহাইট',
+        'playDua': "আজানের পর দোয়া",
+    },
     fr: {
         'settings': 'Options', //settingsTitle
         'language': 'Langue', //langText
