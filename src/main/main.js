@@ -265,14 +265,14 @@ function getVersion(){
   try {
     const request = net.request({
       method: 'GET',
-      protocol: 'http:',
+      protocol: 'https:',
       hostname: 'api.github.com',
       path: '/repositories/459335904/releases/latest',
       redirect: 'follow'
     });
     request.on('response', (response) => {
-      //console.log(`STATUS: ${response.statusCode}`);
-      //console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
+      console.log(`STATUS: ${response.statusCode}`);
+      console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
       response.on('data', (chunk) => {
           if (app.getVersion() < JSON.parse(chunk).name){
             mainWindow.webContents.send('update-available', [app.getVersion(), JSON.parse(chunk).name]);
@@ -291,7 +291,7 @@ function getVersion(){
       console.log(`ERROR: ${JSON.stringify(error)}`)
     });
     request.on('close', (error) => {
-      //console.log('Last Transaction has occured')
+      console.log(error)
     });
     request.setHeader('Content-Type', 'application/json');
     request.end();
@@ -883,7 +883,7 @@ function loadOldSettings(){
 
 function trayPrayerTimes(){
   const contextMenu = Menu.buildFromTemplate([
-    { label: 'Open', click:  function(){
+    { label: language.loadTrans(lang, 'open'), click:  function(){
       mainWindow.show(); }},
     { type: 'separator' },
     { label: langFajr + ": " + changeclockDisplay(prayerTimes.fajr, timeDisplay.clockFormat), click: function(){}},
@@ -893,7 +893,10 @@ function trayPrayerTimes(){
     { label: langMaghrib + ": " + changeclockDisplay(prayerTimes.maghrib, timeDisplay.clockFormat)},
     { label: langIsha + ": " + changeclockDisplay(prayerTimes.isha, timeDisplay.clockFormat)},
     { type: 'separator' },
-    { label: 'Quit', click:  function(){
+    { label: language.loadTrans(lang, 'settings'), click:  function(){
+      mainWindow.loadFile('src/settings/settings.html')
+      mainWindow.show(); }},
+    { label: language.loadTrans(lang, 'close'), click:  function(){
       app.isQuiting = true;
       app.quit();}}
   ])
