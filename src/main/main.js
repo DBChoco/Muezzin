@@ -271,8 +271,6 @@ function getVersion(){
       redirect: 'follow'
     });
     request.on('response', (response) => {
-      console.log(`STATUS: ${response.statusCode}`);
-      console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
       response.on('data', (chunk) => {
           if (app.getVersion() < JSON.parse(chunk).name){
             mainWindow.webContents.send('update-available', [app.getVersion(), JSON.parse(chunk).name]);
@@ -291,7 +289,9 @@ function getVersion(){
       console.log(`ERROR: ${JSON.stringify(error)}`)
     });
     request.on('close', (error) => {
-      console.log(error)
+      if (error != undefined){
+        console.log("Error at end of update check =>" + error)
+      }
     });
     request.setHeader('Content-Type', 'application/json');
     request.end();
@@ -896,12 +896,12 @@ function trayPrayerTimes(){
     { label: language.loadTrans(lang, 'settings'), click:  function(){
       mainWindow.loadFile('src/settings/settings.html')
       mainWindow.show(); }},
-    { label: language.loadTrans(lang, 'close'), click:  function(){
+    { label: language.loadTrans(lang, 'quit'), click:  function(){
       app.isQuiting = true;
       app.quit();}}
   ])
   tray.setContextMenu(contextMenu)
-
+  
   function changeclockDisplay(date, timeformat){
     if (timeformat == 24){
       return show0(date.getHours()) + ":" + show0(date.getMinutes())

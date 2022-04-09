@@ -4,68 +4,65 @@ runtime-version: '21.08'
 sdk: org.freedesktop.Sdk
 base: org.electronjs.Electron2.BaseApp
 base-version: '21.08'
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.node14
 command: muezzin-run
 separate-locales: false
-
 finish-args:
   - --share=ipc
   - --socket=x11
-  - --socket=wayland
   - --socket=pulseaudio
   - --share=network
-  - --allow=multiarch
-  - --device=all
-  - --talk-name=org.freedesktop.Notifications
-
+build-options:
+  append-path: /usr/lib/sdk/node14/bin
+  env:
+    NPM_CONFIG_LOGLEVEL: info
 modules:
-    # --- Tools ---
-  - name: unappimage
-    buildsystem: simple
-    build-commands:
-      - make -C squashfs-tools -j ${FLATPAK_BUILDER_N_JOBS} install INSTALL_DIR=/app/bin
-    cleanup: ["*"]
-    sources:
-      - type: git
-        url: https://github.com/refi64/unappimage
-        commit: d7f86f2a0d7ec3a69211125207d5f127386b849a
-
-
   - name: muezzin
     buildsystem: simple
-    build-commands:
-      - unappimage muezzin-*.AppImage
-      - mv squashfs-root /app/bin/muezzin
-      - install -D muezzin-run -t /app/bin
-
+    build-options:
+      env:
+        XDG_CACHE_HOME: /run/build/muezzin/flatpak-node/cache
+        npm_config_cache: /run/build/muezzin/flatpak-node/npm-cache
+        npm_config_nodedir: /usr/lib/sdk/node14
+        npm_config_offline: 'true'
+    subdir: main
     sources:
-      - type: file
-        url: https://github.com/DBChoco/Muezzin/releases/download/v0.2.1b/muezzin-0.2.1.AppImage
-        sha512: 2945263df66a62e951984b4d24043af5326da4aa380e5810fef81ba02ed45e5061d6e8758427d69f0c0ae1309677040991e2b191815549e5d0d5d78c3cbe7313
+      - type: archive
+        url: https://github.com/DBChoco/Muezzin/archive/refs/tags/v0.2.1b4.tar.gz
+        sha256: 6a4196a6dea031b00b9acc5694d4bd01e33dcc995e8ba2170aba057aa7936c8f
+        dest: main
+
+      - generated-sources.json
 
       # Wrapper to launch the app
       - type: script
         dest-filename: muezzin-run
         commands:
-          - zypak-wrapper.sh /app/bin/muezzin/muezzin "$@"
+          - zypak-wrapper.sh /app/main/muezzin "$@"
 
+    build-commands:
+      # Install npm dependencies
+      - npm install --offline
+      # Build the app; in this example the `dist` script
+      # in package.json runs electron-builder
+      - |
+        . ../flatpak-node/electron-builder-arch-args.sh
+        jq '.build.linux.target="dir"' <<<$(<package.json) > package.json
+        npm run dist -- $ELECTRON_BUILDER_ARCH_ARGS  --linux --dir
+      # Bundle app and dependencies
+      - cp -a dist/linux*unpacked /app/main
+      # Install app wrapper
+      - install -Dm755 -t /app/bin/ ../muezzin-run
+       
   - name: platform-bootstrap
     buildsystem: simple
     build-commands:
       - |
-        mkdir -p /app/bin
-        mkdir -p /app/lib/i386-linux-gnu
-        mkdir -p /app/lib/debug/lib/i386-linux-gnu
-        mkdir -p /app/lib/i386-linux-gnu/GL
         install -Dm644 io.github.dbchoco.muezzin.png /app/share/icons/hicolor/128x128/apps/$FLATPAK_ID.png
         install -Dm644 io.github.dbchoco.muezzin.desktop /app/share/applications/${FLATPAK_ID}.desktop
-        install -Dm644 -t /app/etc ld.so.conf
         install -Dm644 io.github.dbchoco.muezzin.metainfo.xml /app/share/metainfo/$FLATPAK_ID.appdata.xml
     sources:
-      - type: inline
-        dest-filename: ld.so.conf
-        contents: |
-          /app/lib32
-          /app/lib/i386-linux-gnu
       - type: file
         path: io.github.dbchoco.muezzin.metainfo.xml
       - type: file
