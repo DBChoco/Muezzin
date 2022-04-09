@@ -795,6 +795,7 @@ async function loadQuranSettings(){
   let transliFontSizeDiv = document.getElementById("transliterationFontSize")
 
   let quran = await window.api.getFromStore('quran', {
+    font: "text_uthmani",
     fontsize: 42,
     translation:{
         show: true,
@@ -814,6 +815,7 @@ async function loadQuranSettings(){
   loadTranslationList()
   loadLanguageList()
 
+  selectFromList(document.getElementById("fontList"), quran.font)
   quranFontsize.value = quran.fontsize;
   showTranslationDiv.checked = quran.translation.show;
   diffLangDiv.checked = quran.translation.lang.enabled;
@@ -941,6 +943,7 @@ async function loadQuranSettings(){
 
 async function saveQuran(){
   let quran = {
+    font: document.getElementById("fontList").value,
     fontsize: document.getElementById("quranFontSize").value,
     translation:{
         show: document.getElementById("showTranslationCheck").checked,

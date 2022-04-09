@@ -12,17 +12,16 @@ window.addEventListener('DOMContentLoaded', () => {
 
 //Generates the div for 1 single verse.
 //Calls the functio to generate the arabText as well
-function generateVerse(number, arabText){
+function generateVerse(number){
     let verseContainer = createDiv("verseContainer")
 
     var sidebarDiv = createDiv("sidebar")
     var verseNumberDiv = createDiv("verseNumber")
     var textContainerDiv = createDiv("textContainer")
     var arabTextDiv = createDiv("arabText")
+    arabTextDiv.id = "verse" + number
 
     verseNumberDiv.innerHTML = number;
-
-    generateArabText(arabTextDiv, arabText, number.split(":")[1])
 
     sidebarDiv.appendChild(verseNumberDiv)
     textContainerDiv.appendChild(arabTextDiv)
@@ -33,25 +32,6 @@ function generateVerse(number, arabText){
     verseContainer.appendChild(textContainerDiv)
 
     document.getElementById("reader").appendChild(verseContainer)
-}
-
-
-//Takes the div and the text, divides the text into divs and puts them into the mother div
-function generateArabText(arabTextDiv, arabText, verseNumber){
-    var arabWords = arabText.split(" ");
-    for (let word of arabWords){
-        wordDiv = document.createElement("div");
-        wordDiv.classList.add("word")
-        wordDiv.classList.add("arabicWord")
-        wordDiv.innerText = word;
-        wordDiv.style.fontSize = quran.fontsize +"px";
-        arabTextDiv.appendChild(wordDiv)
-    }
-    wordDiv = document.createElement("div");
-    wordDiv.classList.add("word")
-    wordDiv.innerText = new Intl.NumberFormat('ar-SA').format(verseNumber)
-    wordDiv.style.fontSize = quran.fontsize +"px";
-    arabTextDiv.appendChild(wordDiv)
 }
 
 
@@ -84,47 +64,49 @@ async function loadQuranList(){
 async function loadSurah(number){
     console.debug("Loading Surah n°" + number)
     document.getElementById("reader").innerHTML = ""
-    var numberVerses = 0;
-    try{
-        response = await fetch('https://api.quran.com/api/v4/quran/verses/uthmani?chapter_number=' + number + '', {method: "GET"})
-        .then(res => res.json())
-        .then((json) => { 
-            for (let verse of json["verses"]){
-                generateVerse(verse["verse_key"], verse["text_uthmani"])
-                numberVerses ++;
-            }
-        });
-    }catch(e){
-        console.error("Couldn't load the Surah: " + e);
-    }
 
-    var numberTranslated = 0;
+    var numberPages = 2;
     var page = 1;
-    if (quran.transliteration.show || quran.translation.show){
-        while (numberTranslated < numberVerses){
-            try{
-            response = await fetch('https://api.quran.com/api/v4/verses/by_chapter/' + number + '?language='+ quran.translation.lang + 
-            '&words=true&translations=' + quran.translation.trans  + '&page=' + page, {method: "GET"})
-            .then(res => res.json())
-            .then((json) => {
-                for (let verse of json["verses"]){
-                    if (quran.transliteration.show){
-                        addLatinText(verse)
-                    }
-                    if (quran.translation.show){
-                        addTranslation(verse)
-                    }
-                    numberTranslated ++;
+    while (page < numberPages){
+        try{
+        response = await fetch('https://api.quran.com/api/v4/verses/by_chapter/' + number + '?language='+ quran.translation.lang + 
+        '&words=true&translations=' + quran.translation.trans + "&word_fields=" + quran.font + '&page=' + page, {method: "GET"})
+        .then(res => res.json())
+        .then((json) => {
+            console.log(json)
+            numberPages = json["pagination"]["total_pages"]
+            for (let verse of json["verses"]){
+                generateVerse(verse["verse_key"])
+                generateArabText(verse)
+                if (quran.transliteration.show){
+                    addLatinText(verse)
                 }
-                page++
-            });
-            }catch(e){
-                console.error("Couldn't load the translation: " + e)
-                break; //If the user switches Surahs too fast, this saves lives.
+                if (quran.translation.show){
+                    addTranslation(verse)
+                }
             }
+            page++
+        });
+        }catch(e){
+            console.error("Couldn't load the translation: " + e)
+            break; //If the user switches Surahs too fast, this saves lives.
         }
     }
 }
+
+//Takes the div and the text, divides the text into divs and puts them into the mother div
+function generateArabText(verse){
+    var textContainerDiv = document.getElementById("verse" + verse["verse_key"])
+    for (let word of verse["words"]){
+        wordDiv = document.createElement("div");
+        wordDiv.classList.add("word")
+        wordDiv.style.fontFamily = quran.font
+        wordDiv.innerText = word[quran.font];
+        wordDiv.style.fontSize = quran.fontsize +"px";
+        textContainerDiv.appendChild(wordDiv)
+    }
+}
+
 
 //Takes a verse made up of words and adds them separatly to the verseContainer
 //Possibility to add mouseOver events later on.
@@ -166,6 +148,7 @@ async function loadSettings(){
     translate()
     
     quran = await window.api.getFromStore('quran', {
+        font: "text_uthmani",
         fontsize: 42,
         translation:{
             show: true,
