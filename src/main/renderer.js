@@ -10,7 +10,7 @@ var lon = 0;
 
 var timezone, timeFormat, shortTimeFormat, clockDisplay, lang;
 
-var prayerTimes, calPrayers, tommorowPrayers, sunnahTimes;
+var prayerTimes, calPrayers, tommorowPrayers, sunnahTimes, prayers;
 var datePick, volume;
 var loadedUI = false;
 var langFajr, langSunrise, langDhuhr, langMaghrib, langIsha, langAdhan, langNow, langTimeUntil;
@@ -41,7 +41,7 @@ window.addEventListener('loadedSettings', () => {
   setupButtonListeners()
   setupUpdateModal()
   setupWeather()
-  
+  prayers = nextPrayer();
   const interval = setInterval(function() {
     loadClock()
     loadNextPrayer()
@@ -212,7 +212,6 @@ async function loadSettings(){
 
 //Loads the next prayers text: Prayer X in Y time;
 function loadNextPrayer(){
-    var prayers = nextPrayer();
     if (prayers[0] != undefined){
         var timeUntilCurrentPrayer = timeUntilPrayer(prayers[0])
         if (athanPlaying && timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] >= -5){
@@ -220,10 +219,12 @@ function loadNextPrayer(){
         }
         else if(timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] >= -10){ //-1 because math.floor
             document.getElementById("timeLeft").innerText = langNow + ": " + prayers[2];
+            prayers = nextPrayer();
         }
         else{
             var time = timeUntilPrayer(prayers[1])
-            document.getElementById("timeLeft").innerText = langTimeUntil + " " + prayers[3] + ": " + intToHour(time);
+            if (lang != 'bn') document.getElementById("timeLeft").innerText = langTimeUntil + " " + prayers[3] + ": " + intToHour(time);
+            else document.getElementById("timeLeft").innerText = prayers[3] + " " +  langTimeUntil + ": " + intToHour(time);
         }   
     } 
     if (!loadedUI){
@@ -272,9 +273,45 @@ function nextPrayer(){
         currentName = langFajr
         nextName = langFajr
     }
+    selectPrayer(nextName)
     return [currentPrayer, nextPrayer, currentName, nextName]
   }
-  
+}
+
+function selectPrayer(prayerName){
+  var color = darkmode? "rgba(0, 0, 0, 0.6)" : "rgba(255, 255, 255, 0.6)"
+  switch(prayerName){
+    case langFajr:
+      document.getElementById("ishaTime").style.backgroundColor = "";
+      document.getElementById("isha").style.backgroundColor = "";
+      document.getElementById("fajrTime").style.backgroundColor = color;
+      document.getElementById("fajr").style.backgroundColor = color;
+      break;
+    case langDhuhr:
+      document.getElementById("fajrTime").style.backgroundColor = "";
+      document.getElementById("fajr").style.backgroundColor = "";
+      document.getElementById("dhuhrTime").style.backgroundColor = color;
+      document.getElementById("dhuhr").style.backgroundColor = color;
+      break;
+    case langAsr:
+      document.getElementById("dhuhrTime").style.backgroundColor = "";
+      document.getElementById("dhuhr").style.backgroundColor = "";
+      document.getElementById("asrTime").style.backgroundColor = color;
+      document.getElementById("asr").style.backgroundColor = color;
+      break;
+    case langMaghrib:
+      document.getElementById("asrTime").style.backgroundColor = "";
+      document.getElementById("asr").style.backgroundColor = "";
+      document.getElementById("maghribTime").style.backgroundColor = color;
+      document.getElementById("maghrib").style.backgroundColor = color;
+      break;
+    case langIsha:
+      document.getElementById("maghribTime").style.backgroundColor = "";
+      document.getElementById("maghrib").style.backgroundColor = "";
+      document.getElementById("ishaTime").style.backgroundColor = color;
+      document.getElementById("isha").style.backgroundColor = color;
+      break;
+  }
 }
 
 function timeUntilPrayer(prayer) {

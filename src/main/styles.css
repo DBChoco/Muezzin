@@ -37,7 +37,6 @@ body{
 #weatherContainer{
     font-size: 3vh;
     margin: 0px 10px 0 auto;
-    
 }
 
 #dateLoc{
@@ -161,4 +160,5 @@ body{
 
 .btn-light, .btn-light:hover{
     color: #212121;
+    color: rgba(255, 255, 255, 0.8)
 }

@@ -99,10 +99,10 @@ function generateArabText(verse){
     var textContainerDiv = document.getElementById("verse" + verse["verse_key"])
     for (let word of verse["words"]){
         wordDiv = document.createElement("div");
-        wordDiv.classList.add("word")
         wordDiv.style.fontFamily = quran.font
-        wordDiv.innerText = word[quran.font];
         wordDiv.style.fontSize = quran.fontsize +"px";
+        wordDiv.classList.add("word")
+        wordDiv.innerText = word[quran.font];
         textContainerDiv.appendChild(wordDiv)
     }
 }
