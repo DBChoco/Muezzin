@@ -283,36 +283,34 @@ function selectPrayer(prayerName){
   var color = darkmode? "rgba(0, 0, 0, 0.7)" : "rgba(255, 255, 255, 0.7)"
   switch(prayerName){
     case langFajr:
-      document.getElementById("ishaTime").style.backgroundColor = "";
-      document.getElementById("isha").style.backgroundColor = "";
-      document.getElementById("fajrTime").style.backgroundColor = color;
-      document.getElementById("fajr").style.backgroundColor = color;
+      highlight("isha", "fajr")
       break;
     case langDhuhr:
-      document.getElementById("fajrTime").style.backgroundColor = "";
-      document.getElementById("fajr").style.backgroundColor = "";
-      document.getElementById("dhuhrTime").style.backgroundColor = color;
-      document.getElementById("dhuhr").style.backgroundColor = color;
+      highlight("fajr", "dhuhr")
       break;
     case langAsr:
-      document.getElementById("dhuhrTime").style.backgroundColor = "";
-      document.getElementById("dhuhr").style.backgroundColor = "";
-      document.getElementById("asrTime").style.backgroundColor = color;
-      document.getElementById("asr").style.backgroundColor = color;
+      highlight("dhuhr", "asr")
       break;
     case langMaghrib:
-      document.getElementById("asrTime").style.backgroundColor = "";
-      document.getElementById("asr").style.backgroundColor = "";
-      document.getElementById("maghribTime").style.backgroundColor = color;
-      document.getElementById("maghrib").style.backgroundColor = color;
+      highlight("asr", "maghrib")
       break;
     case langIsha:
-      document.getElementById("maghribTime").style.backgroundColor = "";
-      document.getElementById("maghrib").style.backgroundColor = "";
-      document.getElementById("ishaTime").style.backgroundColor = color;
-      document.getElementById("isha").style.backgroundColor = color;
+      highlight("maghrib", "isha")
       break;
   }
+
+  function highlight(previous, next){
+    document.getElementById(previous + "Time").style.backgroundColor = "";
+    document.getElementById(previous).style.backgroundColor = "";
+    document.getElementById(previous + "Time").style.fontWeight = "normal";
+    document.getElementById(previous).style.fontWeight = "normal";
+
+    document.getElementById(next+"Time").style.backgroundColor = color;
+    document.getElementById(next).style.backgroundColor = color;
+    document.getElementById(next+"Time").style.fontWeight = "bold";
+    document.getElementById(next).style.fontWeight = "bold";
+  }
+
 }
 
 function timeUntilPrayer(prayer) {
@@ -443,7 +441,7 @@ function volumeSlider(){
 
 //Hides the media player in case the Adhan is disabled
 async function hidePlayer(){
-  var enableAdhan = await window.api.getFromStore('adhanCheck', true)
+  var enableAdhan = await window.api.getFromStore('settings.adhanCheck', true)
   if (!enableAdhan){
     document.getElementById('audioControls').style.display = "none";
   }
