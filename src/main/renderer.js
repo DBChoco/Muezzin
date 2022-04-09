@@ -280,7 +280,7 @@ function nextPrayer(){
 }
 
 function selectPrayer(prayerName){
-  var color = darkmode? "rgba(0, 0, 0, 0.6)" : "rgba(255, 255, 255, 0.6)"
+  var color = darkmode? "rgba(0, 0, 0, 0.7)" : "rgba(255, 255, 255, 0.7)"
   switch(prayerName){
     case langFajr:
       document.getElementById("ishaTime").style.backgroundColor = "";
