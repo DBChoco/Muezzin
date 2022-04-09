@@ -1553,7 +1553,7 @@ var dict = {
         'customAdhan': 'কাস্টমাইজড আজান', //customAdhanText
         'duaAfterAdhan': "আজানের পর দোয়া", //duaAfterText
         'theme': 'থিম', //themeText
-        'darkMode': 'অন্ধকার মোড', //darkModeText
+        'darkMode': 'অন্ধকার / ডার্ক মোড', //darkModeText
         'bgImage': 'ব্যাকগ্রাউন্ড ছবি', //bgImageText
         'bgImageCheck': 'ব্যাকগ্রাউন্ড ছবি সক্রিয় করুন', //bgImageCheckText
         'calcMethods': 'গণনা পদ্ধতি', //calcMethodsText
@@ -1603,7 +1603,7 @@ var dict = {
         'maghrib': 'মাগরিব',
         'isha': 'এশা',
         'now': 'এখন',
-        'timeUntil': 'পর্যন্ত',
+        'timeUntil': 'ওয়াক্ত শুরু হতে সময় বাকি',
         'startUpSound': 'প্রারম্ভিক শব্দ', //startUpSoundText
         'playSound': 'প্রারম্ভিক শব্দ চালু', //startUpSoundText2
         'sysTray': 'সিস্টেম ট্রে', //systrayText
@@ -1654,7 +1654,7 @@ var dict = {
         'kelvin': 'ক্যালবিন',
         'fahrenheit': 'ফারেনহাইট',
         'playDua': "আজানের পর দোয়া",
-        'open': "ওপেন",
-        'quit': "বন্ধ",
+        'open': "খুলুন",
+        'quit': "বন্ধ করুন",
     },
 }
