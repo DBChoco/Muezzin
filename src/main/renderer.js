@@ -13,7 +13,7 @@ var timezone, timeFormat, shortTimeFormat, clockDisplay, lang;
 var prayerTimes, calPrayers, tommorowPrayers, sunnahTimes, prayers;
 var datePick, volume;
 var loadedUI = false;
-var langFajr, langSunrise, langDhuhr, langMaghrib, langIsha, langAdhan, langNow, langTimeUntil;
+var langFajr, langSunrise, langDhuhr, langMaghrib, langIsha, langAdhan, langNow, langTimeUntil, selectedPrayer;
 var sunnahTimes, motnCheckOG, totnCheckOG, totn, motn;
 var athanPlaying = false;
 var weatherSettings;
@@ -212,31 +212,32 @@ async function loadSettings(){
 
 //Loads the next prayers text: Prayer X in Y time;
 function loadNextPrayer(){
-    if (prayers[0] != undefined){
-        var timeUntilCurrentPrayer = timeUntilPrayer(prayers[0])
-        var timeUntilNextPrayer = timeUntilPrayer(prayers[1])
-        console.log(timeUntilNextPrayer)
-        if (timeUntilNextPrayer[0] <= 0 && timeUntilNextPrayer[1] <= 0 && timeUntilNextPrayer[2] <= 3) prayers = nextPrayer();
-        if (athanPlaying && timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] >= -5){
-          document.getElementById("timeLeft").innerText = langAdhan
-        }
-        else if(timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] >= -10){ //-1 because math.floor
-            document.getElementById("timeLeft").innerText = langNow + ": " + prayers[2];
-        }
-        else{
-            if (lang != 'bn') document.getElementById("timeLeft").innerText = langTimeUntil + " " + prayers[3] + ": " + intToHour(timeUntilNextPrayer);
-            else document.getElementById("timeLeft").innerText = prayers[3] + " " +  langTimeUntil + ": " + intToHour(timeUntilNextPrayer);
-        }   
-    } 
-    if (!loadedUI){
-      window.dispatchEvent(event2)
+  prayers = nextPrayer()
+  if (prayers[0] != undefined){
+    var timeUntilCurrentPrayer = timeUntilPrayer(prayers[0])
+    //console.log(timeUntilCurrentPrayer)
+    //if (timeUntilNextPrayer[0] <= 0 && timeUntilNextPrayer[1] <= 0 && timeUntilNextPrayer[2] <= 3) prayers = nextPrayer();
+    if (athanPlaying && timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] >= -5){
+      document.getElementById("timeLeft").innerText = langAdhan
     }
+    else if(timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] >= -10){ //-1 because math.floor
+        document.getElementById("timeLeft").innerText = langNow + ": " + prayers[2];
+    }
+    else{
+      var timeUntilNextPrayer = timeUntilPrayer(prayers[1])
+      if (lang != 'bn') document.getElementById("timeLeft").innerText = langTimeUntil + " " + prayers[3] + ": " + intToHour(timeUntilNextPrayer);
+      else document.getElementById("timeLeft").innerText = prayers[3] + " " +  langTimeUntil + ": " + intToHour(timeUntilNextPrayer);
+    }   
+  } 
+  if (!loadedUI){
+    window.dispatchEvent(event2)
+  }
 }
 
 function nextPrayer(){
   var now = new Date();
   var currentPrayer, nextPrayer, currentName, nextName;
-  if (prayerTimes != undefined && langFajr != undefined){
+  if (prayerTimes != undefined && langFajr != undefined && tommorowPrayers != undefined){
     if (now >= prayerTimes.isha){
       currentPrayer = prayerTimes.isha;
       nextPrayer = tommorowPrayers.fajr
@@ -274,12 +275,14 @@ function nextPrayer(){
         currentName = langFajr
         nextName = langFajr
     }
-    selectPrayer(nextName)
+    if (selectedPrayer != nextName) selectPrayer(nextName)
+    
     return [currentPrayer, nextPrayer, currentName, nextName]
   }
 }
 
 function selectPrayer(prayerName){
+  selectedPrayer = prayerName
   var color = darkmode? "rgba(0, 0, 0, 0.7)" : "rgba(255, 255, 255, 0.7)"
   switch(prayerName){
     case langFajr:
