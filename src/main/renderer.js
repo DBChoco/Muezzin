@@ -214,17 +214,18 @@ async function loadSettings(){
 function loadNextPrayer(){
     if (prayers[0] != undefined){
         var timeUntilCurrentPrayer = timeUntilPrayer(prayers[0])
+        var timeUntilNextPrayer = timeUntilPrayer(prayers[1])
+        console.log(timeUntilNextPrayer)
+        if (timeUntilNextPrayer[0] <= 0 && timeUntilNextPrayer[1] <= 0 && timeUntilNextPrayer[2] <= 3) prayers = nextPrayer();
         if (athanPlaying && timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] >= -5){
           document.getElementById("timeLeft").innerText = langAdhan
         }
         else if(timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] >= -10){ //-1 because math.floor
             document.getElementById("timeLeft").innerText = langNow + ": " + prayers[2];
-            prayers = nextPrayer();
         }
         else{
-            var time = timeUntilPrayer(prayers[1])
-            if (lang != 'bn') document.getElementById("timeLeft").innerText = langTimeUntil + " " + prayers[3] + ": " + intToHour(time);
-            else document.getElementById("timeLeft").innerText = prayers[3] + " " +  langTimeUntil + ": " + intToHour(time);
+            if (lang != 'bn') document.getElementById("timeLeft").innerText = langTimeUntil + " " + prayers[3] + ": " + intToHour(timeUntilNextPrayer);
+            else document.getElementById("timeLeft").innerText = prayers[3] + " " +  langTimeUntil + ": " + intToHour(timeUntilNextPrayer);
         }   
     } 
     if (!loadedUI){
