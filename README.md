@@ -253,7 +253,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [Source of images](https://unsplash.com/)
 * [Source of Mecca Adhan](https://www.youtube.com/watch?v=MaEzj5eRmjc&t)
 * [Source of al-Aqsa Adhan](https://www.youtube.com/watch?v=z2xEwSi2vaI)
 * [Source of Bismillah startup sound](https://www.youtube.com/c/FatihSeferagic/featured)
