@@ -248,7 +248,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 [Official Discord server](https://discord.gg/cpF9TTstN5) 
 
-[Email](emailto:dbchoco.muezzin@gmail.com) 
+Email: dbchoco.muezzin@gmail.com
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
