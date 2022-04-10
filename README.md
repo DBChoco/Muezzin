@@ -136,6 +136,7 @@ The app also contains a Qur'an reader that is able to show translations and tran
 * Dansk
 * Urdu
 * Turkish (thanks @emrergin)
+* Bengali (thanks @iFarhaan)
 
 ### Built With
 
@@ -159,10 +160,8 @@ The app also contains a Qur'an reader that is able to show translations and tran
   - [ ] Manual times
   - [ ] Custom text 
 - [ ] Add Tasbih
-- [x] Add weather widget
-- [x] Add icons to settings
+- [ ] Add Sunnah (API key request sent)
 - [ ] Multi-language Support
-    - [x] Turkish
     - [ ] Russian
     - [ ] Indonesian
     - [ ] NEED TRANSLATORS ! 
@@ -182,7 +181,7 @@ You might receive a warning, that is because the app is not signed and I do not 
 
 ### macOS
 From the  <a href="https://github.com/DBChoco/MuezzinPrayerTimes/releases/latest"><strong>download page</strong></a>, select the .DMG installer.
-Download it and install it. 
+Download it and install it. Some versions might not have .DMG versions, you should then go look at an earlier version.
 
 Same problem as the Windows installer
 > You might receive a warning, that is because the app is not signed and I do not have the money to do so. The app is completely safe, you can read through the source code or have a trusted friend do it for you, all the code is <b>Open-Source</b>.
