@@ -119,6 +119,15 @@ footer{
     user-select: none;
 }
 
+.bismillahTitle{
+    font-family: arabic-symbols;
+    font-size: 14vh;
+    pointer-events: none;
+    user-select: none;
+    margin-top: -22vh;
+    margin-bottom: +15.5vh;
+}
+
 .btn-light, .btn-light:hover{
     color: #212121;
 }

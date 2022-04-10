@@ -35,8 +35,9 @@ function generateVerse(number){
 }
 
 
-//Loads the list of Surahs
-//TODO: Make it local.
+/**
+ * Loads the list of Surahs
+ */
 async function loadQuranList(){
     let chaptersList = document.getElementById("chaptersList")
     try{
@@ -55,7 +56,7 @@ async function loadQuranList(){
             chaptersList.selectedIndex = -1
         });
     }catch(e){
-        console.error("Error while loading list of Surahs" + e)
+        console.error("Error while loading list of Surahs => " + e)
     }
 }   
 
@@ -64,6 +65,7 @@ async function loadQuranList(){
 async function loadSurah(number){
     console.debug("Loading Surah n°" + number)
     document.getElementById("reader").innerHTML = ""
+    addBismillahTitle(number)
 
     var numberPages = 2;
     var page = 1;
@@ -91,6 +93,14 @@ async function loadSurah(number){
             console.error("Couldn't load the translation: " + e)
             break; //If the user switches Surahs too fast, this saves lives.
         }
+    }
+}
+
+async function addBismillahTitle(number){
+    if (number != 9 && number != 1){
+        wordDiv = createDiv("bismillahTitle")
+        wordDiv.innerHTML = "\uf046"
+        document.getElementById("reader").appendChild(wordDiv)
     }
 }
 
