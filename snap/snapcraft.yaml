@@ -1,0 +1,44 @@
+name: muezzin
+version: '0.2.1'
+summary: Islamic prayer times (Adhan) & Quran app
+description: |
+  **Islamic prayer times (Adhan) & Quran app**
+  Features:
+  * Multi-language support
+  * Highly customizable (appearance and audio)
+  * Advanced prayer times options
+  * Qur'an reader
+  * Much more to come inshaAllah
+  Keywords: Athan, Adhan, Azan, Islam, Muslim, Prayers, times, Muezzin, Salah, Salat, Namaz, Islamic, Hijri, Quran, Qur'an, Koran.
+base: core18
+confinement: strict
+grade: devel
+
+apps:
+  electron-packager-hello-world:
+    command: muezzin/muezzin --no-sandbox
+    extensions: [gnome-3-34]
+    plugs:
+    - browser-support
+    - network
+    - network-bind
+    environment:
+      # Correct the TMPDIR path for Chromium Framework/Electron to ensure
+      # libappindicator has readable resources.
+      TMPDIR: $XDG_RUNTIME_DIR
+
+parts:
+  muezzin:
+    plugin: nil
+    source: https://github.com/DBChoco/Muezzin.git
+    override-build: |
+        npm install electron electron-packager
+        npx electron-packager . --overwrite --platform=linux --output=release-build --prune=true
+        cp -rv ./muezzin-linux-* $SNAPCRAFT_PART_INSTALL/muezzin
+    build-snaps:
+    - node/14/stable
+    build-packages:
+    - unzip
+    stage-packages:
+    - libnss3
+    - libnspr4

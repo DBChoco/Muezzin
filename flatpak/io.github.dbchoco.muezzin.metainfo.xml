@@ -12,7 +12,7 @@
   <description>
     <p>
       Islamic prayer times (Adhan) and Qur'an application that is highly customizable, free and open source.
-      Muezzin supports many languages, advanced prayer options and many more.
+      Muezzin supports many languages, advanced prayer options, shows the weather, sunnah times and many more.
       
       Keywords: Athan, Adhan, Azan, Islam, Muslim, Prayers, times, Muezzin, Salah, Salat, Namaz, Islamic, Hijri, Quran, Qur'an, Koran.
     </p>
@@ -36,21 +36,24 @@
   <releases>
     <release version="v0.2.2" date="2022-04-10">
         <description>
-            <p>General</p>
-            <ul>
-                <li>Small weather widget added.</li>
-                <li>Added previous/next buttons in the Qur'an reader.</li>
-                <li>Removed necessary modules => loading speeds improved</li>
-                <li>Notifications now contain the Muezzin logo.</li>
-                <li>Almost complete remake of the settings variables (for a better code), you might have to set a few settings.</li>
-            </ul>
-            <p>BugFixes</p>
-            <ul>
-                <li>Arabic fonts for Qur'an reader are loaded before the text now, no flickering.</li>
-                <li>Timezone changes now affect the whole program, not only the time tables.</li>
-                <li>Only looking for updates when UI has finished loading.</li>
-                <li>HOTFIX: Removed deprecated calculation methods.</li>
-            </ul>
+          <p>Assalamou Alaykoum brothers/sisters and Ramadan Moubarak once again</p>
+          <p>General</p>
+          <ul>
+              <li>Prayer times are now shown in the tray menu.</li>
+              <li>Settings are accessible from the tray menu (suggested by @iFarhaan).</li>
+              <li>Added Bengali language (by @iFarhaan).</li>
+              <li>Tray menu is now language aware.</li>
+              <li>Added a few fonts to the Qur'an reader.</li>
+              <li>Next prayer is now highlighted [and in bold (suggested by @iFarhaan)].</li>
+          </ul>
+          <p>BugFixes</p>
+          <ul>
+              <li>Fixed error startup message (end of file JSON).</li>
+              <li>Removed unnecessary modules and lines from package.json.</li>
+              <li>Fixed flatpak builder.</li>
+              <li>Fixed the "Enable Adhan" check in settings.</li>
+          </ul>    
+          <p>If there is any problem, please contact me so that I can fix it. If you have any ideas, I'd gladly hear them. Jazzakoum Allahu khairan.</p>
         </description>
       </release>
   </releases>
