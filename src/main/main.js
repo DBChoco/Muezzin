@@ -37,6 +37,14 @@ function createWindow () {
   //DEBUG
   //mainWindow.webContents.openDevTools()
 
+  app.setAboutPanelOptions({
+    applicationName : "Muezzin - Prayer Times app",
+    applicationVersion: "v"+app.getVersion(),
+    authors: ["DarkBlackChocolate"],
+    website: "https://github.com/DBChoco/Muezzin",
+    iconPath: path.join(__dirname, '../../ressources/images/icon.png')
+  })
+  
   const isMac = process.platform === 'darwin'
   const template = [
     // { role: 'appMenu' }
@@ -132,6 +140,9 @@ function createWindow () {
           click: async () => {
             await shell.openExternal('https://github.com/DBChoco/Muezzin/issues/new')
           }
+        },
+        {role: "about",
+          click: () => app.showAboutPanel()
         }
       ]
     }
@@ -222,6 +233,7 @@ app.whenReady().then(() => {
   checkTime();  
 })
 
+console.debug("** Launching Muezzin v" + app.getVersion() + " **\n" + "Assalamou Alaykoum wa Rahmatou Lahi wa Baraketu")
 
 
 var lat, lon, calculationMethod, prayerTimes, adhanPath, timeformat;

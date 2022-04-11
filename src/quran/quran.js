@@ -287,10 +287,9 @@ function setupPlayStopButtons(){
         if (audioElement.paused && document.getElementsByClassName('verseContainer').length != 0){
             playingAll = true;
             let number = 0;
-            let odd = true;
             let verses = document.getElementsByClassName('verseContainer')     
-
             document.getElementById(verses[number].childNodes[1].id).scrollIntoView();
+            
             playAudio("https://verses.quran.com/" + document.getElementById(verses[number].childNodes[1].id).dataset.audioURL)
             number++;
 

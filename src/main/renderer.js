@@ -538,11 +538,11 @@ function setupSunnah(){
       calculateSunnah()
       document.getElementById("box").style.marginTop = "0"
       if (sunnahTimes.motn && sunnahTimes.totn) document.getElementById("clock").style.marginTop = "1vh";
-      else document.getElementById("clock").style.marginTop = "3vh";
+      else document.getElementById("clock").style.marginTop = "2.5vh";
     }
     else {
-      document.getElementById("clock").style.marginTop = "4vh"
-      document.getElementById("box").style.marginTop = "2vh"
+      document.getElementById("clock").style.marginTop = "3.5vh"
+      document.getElementById("box").style.marginTop = "1.5vh"
     }
 
     var motnDiv = document.getElementsByClassName("motn");
