@@ -5,13 +5,11 @@ window.addEventListener('DOMContentLoaded', () => {
     loadSettings()
     buttonListeners();
     loadQuranList();
-    //Make initial greeter when no Surahs are loaded
-    //Add settings
     setupPreviousNextButtons()
 })
 
 //Generates the div for 1 single verse.
-//Calls the functio to generate the arabText as well
+//Calls the function to generate the arabText as well
 function generateVerse(number){
     let verseContainer = createDiv("verseContainer")
 
@@ -214,6 +212,7 @@ function downloadOrFetch(link, path, filename){
 }
 
 function translate(){
+    document.title = window.api.getLanguage(lang, "muezzin") + " - " + window.api.getLanguage(lang, "quran");
     document.getElementById("title").innerHTML = window.api.getLanguage(lang, "quran");
     document.getElementById("settings").innerHTML = '<i class="fa-solid fa-gear"></i>  ' + window.api.getLanguage(lang, "settings");
     document.getElementById("return").innerHTML = '<i class="fa fa-arrow-circle-left"></i>    ' + window.api.getLanguage(lang, "return");
@@ -225,6 +224,7 @@ function setupPreviousNextButtons(){
     let chapterList = document.getElementById("chaptersList")
     let previous = document.getElementById("previousSurah")
     let next = document.getElementById("nextSurah")
+    previous.disabled = true;
     chapterList.addEventListener("change", function(){
         previous.disabled = false;
         next.disabled = false;

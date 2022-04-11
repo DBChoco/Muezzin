@@ -1,7 +1,4 @@
 module.exports = {
-    foo: function () {
-      // whatever
-    },
     toggleDarkMode: function toggleDarkMode(darkMode, mainCSS){
         var head = document.getElementsByTagName('HEAD')[0]; 
 

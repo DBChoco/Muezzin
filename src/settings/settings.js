@@ -543,6 +543,8 @@ function addLangListener(){
 * @param  lang   the language selected by the user
 */
 function loadLanguage(lang){
+  document.title = window.api.getLanguage(lang, "muezzin") + " - " + window.api.getLanguage(lang, "settings");
+
   document.getElementById("v-pills-general-tab").innerHTML = '<i class="fa-solid fa-kaaba"></i>  ' +  window.api.getLanguage(lang, "general");
   document.getElementById("v-pills-location-tab").innerHTML = '<i class="fa-solid fa-location-dot"></i>  ' + window.api.getLanguage(lang, "location");
   document.getElementById("v-pills-audio-tab").innerHTML = '<i class="fa-solid fa-volume-high"></i>  ' + window.api.getLanguage(lang, "audio");
