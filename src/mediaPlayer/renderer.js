@@ -54,7 +54,7 @@ function stop(){
 
 function setUpAdhanListeners(){
     athan.addEventListener('ended', function(){
-        window.api.send('progress-request', false)
+        window.api.send('progress-request', 0)
         if (playDua){
             dua.play();
         }
@@ -63,13 +63,17 @@ function setUpAdhanListeners(){
 
     athan.addEventListener('play', function(){
         loadSettings()
-        window.api.send('progress-request', true)
+        window.api.send('progress-request', progress())
         interval = setInterval(function(){
-            window.api.send('progress-request', true)
-        },5000)
+            window.api.send('progress-request', progress())
+        },1000)
     })
     athan.addEventListener('abort', function(){
-        window.api.send('progress-request', false)
+        window.api.send('progress-request', 0)
         clearInterval(interval)
     })
+}
+
+function progress(){
+    return (athan.currentTime /athan.duration)*100
 }

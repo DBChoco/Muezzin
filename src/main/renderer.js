@@ -15,7 +15,7 @@ var datePick, volume;
 var loadedUI = false;
 var langFajr, langSunrise, langDhuhr, langMaghrib, langIsha, langAdhan, langNow, langTimeUntil, selectedPrayer;
 var sunnahTimes, motnCheckOG, totnCheckOG, totn, motn;
-var athanPlaying = false;
+var athanProgress = 0;
 var weatherSettings;
 
 
@@ -45,10 +45,12 @@ window.addEventListener('loadedSettings', () => {
   const interval = setInterval(function() {
     loadClock()
     loadNextPrayer()
+    setProgress()
   }, 1000)
 })
 
-window.addEventListener('loadedUI', () => { 
+window.addEventListener('loadedUI', () => {
+  setProgress()
   loadedUI = true;
   hideLoader()
   window.api.send('loadedUI');
@@ -180,7 +182,6 @@ function loadPrayers(){
 }
 
 
-
 //Checks the store for saved settings, or gets default values
 async function loadSettings(){
     lat = await window.api.getFromStore('latitude', 0.00);
@@ -217,7 +218,7 @@ function loadNextPrayer(){
     var timeUntilCurrentPrayer = timeUntilPrayer(prayers[0])
     //console.log(timeUntilCurrentPrayer)
     //if (timeUntilNextPrayer[0] <= 0 && timeUntilNextPrayer[1] <= 0 && timeUntilNextPrayer[2] <= 3) prayers = nextPrayer();
-    if (athanPlaying && timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] >= -5){
+    if (athanProgress != 0 && timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] >= -5){
       document.getElementById("timeLeft").innerText = langAdhan
     }
     else if(timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] >= -10){ //-1 because math.floor
@@ -232,6 +233,12 @@ function loadNextPrayer(){
   if (!loadedUI){
     window.dispatchEvent(event2)
   }
+}
+
+function setProgress(){
+  let porcent
+  athanProgress != 0 ? porcent = athanProgress : porcent = ((new Date - prayers[0]) /  (prayers[1] - prayers[0])) * 100;
+  document.getElementById("prayerProgress").style.width = porcent + "%"
 }
 
 function nextPrayer(){
@@ -396,7 +403,7 @@ function loadHandles(){
     setupSunnah()
   })
   window.api.handle('progress-reply', msg => {
-    athanPlaying = msg;
+    athanProgress = msg;
   })
 
   window.api.handle('update', msg => {

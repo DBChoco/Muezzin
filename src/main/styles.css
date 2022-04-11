@@ -26,6 +26,7 @@ body{
 #clock{
     font-size: 10vh;
     margin-top: 4vh;
+    padding: 0 1vh 0 1vh;
 }
 
 #title{
@@ -46,6 +47,7 @@ body{
 
 #timeLeft{
     font-size: 6vh;
+    padding: 0 0.8vh 0 0.8vh;
 }
 
 .grid-container {
@@ -160,4 +162,11 @@ body{
 
 .btn-light, .btn-light:hover{
     color: #212121;
+}
+
+#prayerProgressContainer{
+    width: 48vh;
+    margin: 0 auto 0 auto;
+    height: 10px;
+    border-radius: 0;
 }

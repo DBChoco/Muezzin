@@ -13,8 +13,6 @@ module.exports = {
         var shaders = document.getElementsByClassName("shader")
         if (darkMode){
           link.href = '../../node_modules/bootstrap-dark-5/dist/css/bootstrap-night.min.css';
-          changeButtons(darkMode)
-          changeNavLink(darkMode)
           document.body.style.borderColor = "#FFFFFF";
           //document.body.style.backgroundColor = "#212121";
           for (let element of shaders){
@@ -23,14 +21,16 @@ module.exports = {
         }
         else{
           link.href = '../../node_modules/bootstrap-dark-5/dist/css/bootstrap.min.css';
-          changeButtons(darkMode)
-          changeNavLink(darkMode)
           document.body.style.borderColor = "#000000";
           //document.body.style.backgroundColor = "#FFFFFF";
           for (let element of shaders){
             element.style.backgroundColor = 'rgba(255, 255, 255, 0.5)'
           }
         }
+
+        changeButtons(darkMode)
+        changeNavLink(darkMode)
+        changeProgress(darkMode)
 
         css.rel = 'stylesheet'; 
 
@@ -82,6 +82,21 @@ module.exports = {
               element.classList.remove("dark-link")
             }
           }
+        }
+
+        function changeProgress(darkmode){
+          let progressBar = document.getElementById("prayerProgress")
+          if (progressBar != undefined){
+            if (darkmode && progressBar.classList.contains("bg-dark")){
+              progressBar.classList.remove("bg-dark")
+              progressBar.classList.add('bg-light')
+            }
+            else if (!darkmode && progressBar.classList.contains("bg-light")){
+              progressBar.classList.remove("bg-light")
+              progressBar.classList.add('bg-dark')
+            }
+          }
+          
         }
       }
   };
