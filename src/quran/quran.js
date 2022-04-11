@@ -32,6 +32,7 @@ function generateVerse(number, audioURL){
     playAudioButton.classList.add("versePlay")
     playAudioButton.addEventListener("click", function(){
         playAudio("https://verses.quran.com/" + audioURL)
+        playingAll = false;
     })
 
     sidebarDiv.appendChild(verseNumberDiv)
@@ -182,7 +183,8 @@ async function loadSettings(){
         font: "text_uthmani",
         fontsize: 42,
         recitation:{
-            reciter: "Mishari Rashid al-`Afasy"
+            reciter: "7",
+            volume: 50
           },
         translation:{
             show: true,
@@ -201,14 +203,18 @@ async function loadSettings(){
 
     var darkmode = await window.api.getFromStore('darkMode', false)
     window.api.setTheme(darkmode, "quran.css");
+
+    document.getElementById("volSlider").value = quran.recitation.volume
 }
 
 function buttonListeners(){
-    document.getElementById("settings").addEventListener("click", function(){
+    document.getElementById("settings").addEventListener("click", async function(){
+        await window.api.setToStore("quran.recitation.volume", document.getElementById("volSlider").value)
         window.location.assign("../settings/settings.html?page=quran");
     })
 
-    document.getElementById("return").addEventListener("click", function(){
+    document.getElementById("return").addEventListener("click", async function(){
+        await window.api.setToStore("quran.recitation.volume", document.getElementById("volSlider").value)
         window.location.assign("../main/index.html");
     }) 
 
@@ -281,20 +287,37 @@ function setupPlayStopButtons(){
         if (audioElement.paused && document.getElementsByClassName('verseContainer').length != 0){
             playingAll = true;
             let number = 0;
+            let odd = true;
             let verses = document.getElementsByClassName('verseContainer')     
+
             document.getElementById(verses[number].childNodes[1].id).scrollIntoView();
             playAudio("https://verses.quran.com/" + document.getElementById(verses[number].childNodes[1].id).dataset.audioURL)
             number++;
+
             playNext()
+
             function playNext(){
                 audioElement.addEventListener("ended", function(){
-                    document.getElementById(verses[number].childNodes[1].id).scrollIntoView();
                     playAudio("https://verses.quran.com/" + document.getElementById(verses[number].childNodes[1].id).dataset.audioURL)
+                    document.getElementById(verses[number].childNodes[1].id).scrollIntoView();
                     number++;
                     if (number < verses.length && playingAll) playNext()
                 })
             }
-            
         }
+    })
+
+    document.getElementById("stopB").addEventListener("click", function(){
+        playingAll = false;
+        audioElement.pause();
+    })
+    
+    document.getElementById("volSlider").addEventListener("change", function(){
+        audioElement.volume = document.getElementById("volSlider").value / 100
+        console.log(audioElement.volume)
+    })
+    document.getElementById("volSlider").addEventListener("mousemove", function(){
+        audioElement.volume = document.getElementById("volSlider").value / 100
+        console.log(audioElement.volume)
     })
 }
