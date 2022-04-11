@@ -1,5 +1,5 @@
 module.exports = {
-    loadTrans: function loadTranslation(lang, value){
+    loadTrans: function loadTranslation(lang, value) {
         return dict[lang][value];
     }
 }
@@ -108,7 +108,7 @@ var dict = {
         'motn': 'Middle of the night',  //MOTNCheckText
         'totn': 'Third of the night', //TOTNCheckText
         'minStart': 'Start minimized', //minStartCheckText
-        'updateAvailable': 'Update available', 
+        'updateAvailable': 'Update available',
         'version': 'Version',
         'available': 'is available for download on GitHub',
         'download': 'Download',
@@ -223,7 +223,7 @@ var dict = {
         'gulf': 'Région du Golfe', //Gulf
         'preferences': 'Préférences', //menu label
         'resetSettings': 'Réinitialiser les options', //menu label
-        'here': 'ici', 
+        'here': 'ici',
         'adjustements': 'Ajustements', //adjustmentsText
         'enableAdj': 'Activer les ajustements', //adjCheckText
         'fajrAdj': 'Ajustements de Fajr', //fajrAdjText
@@ -235,7 +235,7 @@ var dict = {
         'motn': 'Millieu de la nuit',  //MOTNCheckText
         'totn': 'Tiers de la nuit', //TOTNCheckText
         'minStart': 'Commencer minimisé', //minStartCheckText
-        'updateAvailable': 'Mise à jour disponible', 
+        'updateAvailable': 'Mise à jour disponible',
         'version': 'Version',
         'available': 'est disponible au téléchargement sur GitHub',
         'download': 'Télécharger',
@@ -362,7 +362,7 @@ var dict = {
         'motn': 'Mitad de la noche',  //MOTNCheckText
         'totn': 'Tercio de la noche', //TOTNCheckText
         'minStart': 'Iniciar minimizado', //minStartCheckText
-        'updateAvailable': 'Actualización disponible', 
+        'updateAvailable': 'Actualización disponible',
         'version': 'Versión',
         'available': 'está disponible para descargar en GitHub',
         'download': 'Descargar',
@@ -489,7 +489,7 @@ var dict = {
         'motn': 'منتصف الليل',  //MOTNCheckText
         'totn': 'ثالثا من الليل', //TOTNCheckText
         'minStart': 'بداية الحد الادنى ', //minStartCheckText
-        'updateAvailable': 'التحديث متاح', 
+        'updateAvailable': 'التحديث متاح',
         'version': 'الإصدار',
         'available': 'متاح للتحميل على جيثب',
         'download': 'تحميل',
@@ -616,7 +616,7 @@ var dict = {
         'motn': 'Nel mezzo della notte',  //MOTNCheckText
         'totn': 'Terzo della notte', //TOTNCheckText
         'minStart': 'Inizia minimizzato ', //minStartCheckText
-        'updateAvailable': 'Aggiornamento disponibile', 
+        'updateAvailable': 'Aggiornamento disponibile',
         'version': 'Versione',
         'available': 'è disponibile per il download su GitHub',
         'download': 'Scaricare',
@@ -742,7 +742,7 @@ var dict = {
         'motn': 'Mitten in der Nacht',  //MOTNCheckText
         'totn': 'Drittel der Nacht', //TOTNCheckText
         'minStart': 'Minimiert starten', //minStartCheckText
-        'updateAvailable': 'Update verfügbar', 
+        'updateAvailable': 'Update verfügbar',
         'version': 'Ausführung',
         'available': 'ist zum Download auf Github verfügbar',
         'download': 'Herunterladen',
@@ -868,7 +868,7 @@ var dict = {
         'motn': 'Middernacht',  //MOTNCheckText
         'totn': 'Derde van de nacht', //TOTNCheckText
         'minStart': 'Start geminimaliseerd', //minStartCheckText
-        'updateAvailable': 'Update beschikbaar', 
+        'updateAvailable': 'Update beschikbaar',
         'version': 'Versie',
         'available': 'is beschikbaar om te downloaden op GitHub',
         'download': 'Gedownload',
@@ -995,7 +995,7 @@ var dict = {
         'motn': 'Mitten av natten',  //MOTNCheckText
         'totn': 'Tredje av natten', //TOTNCheckText
         'minStart': 'Börja minimeras', //minStartCheckText
-        'updateAvailable': 'Uppdatering tillgänglig', 
+        'updateAvailable': 'Uppdatering tillgänglig',
         'version': 'Version',
         'available': 'är tillgänglig för nedladdning på GitHub',
         'download': 'Ladda ner',
@@ -1122,7 +1122,7 @@ var dict = {
         'motn': 'Midten av natten',  //MOTNCheckText
         'totn': 'Tredje av natten', //TOTNCheckText
         'minStart': 'Start minimert', //minStartCheckText
-        'updateAvailable': 'Oppdatering tilgjengelig', 
+        'updateAvailable': 'Oppdatering tilgjengelig',
         'version': 'Versjon',
         'available': 'er tilgjengelig for nedlasting på GitHub',
         'download': 'Nedlasting',
@@ -1249,7 +1249,7 @@ var dict = {
         'motn': 'Midten af natten',  //MOTNCheckText
         'totn': 'Tredje af natten', //TOTNCheckText
         'minStart': 'Start minimeret', //minStartCheckText
-        'updateAvailable': 'Opdatering tilgængelig', 
+        'updateAvailable': 'Opdatering tilgængelig',
         'version': 'Version',
         'available': 'er tilgængelig til download på Github',
         'download': 'Hent',
@@ -1278,91 +1278,91 @@ var dict = {
         'settings': 'ترتیبات', //settingsTitle
         'language': 'زبان', //langText
         'timeformat': 'وقت کی ترتیب', //tfText
-        '24hour': '24', //24hTimeFormatText
-        '12hour': '12', //12hTimeFormatText
+        '24hour': '24 گھنٹے', //24hTimeFormatText
+        '12hour': '12 گھنٹے', //12hTimeFormatText
         'showSseconds': 'سیکنڈ دکھائیں', //showSecondsText
-        'dateFormat': 'تاریخ کی شکل', //dfText
+        'dateFormat': 'تاریخ کی ترتیب', //dfText
         'dateFormat1': 'DD/MM/YYYY', //id="df1Text"
         'dateFormat2': 'MM/DD/YYYY', //id="df2Text"
         'dateFormat3': 'YYYY/MM/DD', //id="df3Text"
         'notifications': 'اطلاعات', //notifText
         'notifCheck': 'اطلاعات کو فعال کریں', //notifCheckText
-        'coordinates': ' سمتوں', //coordinatesText
-        'latitude': 'طول', //latText
-        'longitude': ' طول و عرض', //lonText
+        'coordinates': 'جگہ کے کوآرڈینیٹس', //coordinatesText
+        'latitude': 'عرض', //latText
+        'longitude': 'طول', //lonText
         'timezone': 'ٹائم زون', // tzText
-        'adhan': 'عدنان', //adhanText and others in main
-        'adhanCheck': 'ایڈن کو فعال کریں', //adhanCheckText
-        'AdhanMecca': 'Adhan Mecca', //adhanMeccaText //Traduire juste Mecca
-        'adhanAqsa': 'Adhan al-Aqsa', //adhanAqsaText
-        'customAdhan': 'اپنی مرضی کے مطابق', //customAdhanText
-        'duaAfterAdhan': "دعا", //duaAfterText
-        'theme': 'خیالیہ', //themeText
-        'darkMode': 'گہرا موڈ', //darkModeText
+        'adhan': 'اذان', //adhanText and others in main
+        'adhanCheck': 'اذان کو فعال کریں', //adhanCheckText
+        'AdhanMecca': 'اذانِ مکہ', //adhanMeccaText //Traduire juste Mecca
+        'adhanAqsa': 'اذانِ اقصیٰ', //adhanAqsaText
+        'customAdhan': 'اپنی مرضی کی اذان', //customAdhanText
+        'duaAfterAdhan': "دعا بعدِ اذان", //duaAfterText
+        'theme': 'تھیم', //themeText
+        'darkMode': 'ڈارک موڈ', //darkModeText
         'bgImage': 'پس منظر کی تصویر', //bgImageText
         'bgImageCheck': 'پس منظر کی تصویر کو فعال کریں', //bgImageCheckText
-        'calcMethods': 'حساب کے طریقوں', //calcMethodsText
+        'calcMethods': 'حسابِ جنتری کے طریقے', //calcMethodsText
         'mwl': 'مسلم ورلڈ لیگ', //MWL
         'egyptian': 'مصری', //Egyptian
         'karachi': 'کراچی', //Karachi
-        'uaq': 'ام القر', //UAQ
+        'uaq': 'ام القراء', //UAQ
         'dubai': 'دبئی', //Dubai
         'qatar': 'قطر', //Qatar
         'kuwait': 'کویت', //Kuwait
-        'mc': 'Moonsighting Committee', //MC //pas traduire ça
+        'mc': '(MC)رؤیتِ ہلال کمیٹی', //MC //pas traduire ça
         'singapore': 'سنگاپور', //Singapore
         'turkey': 'ترکی', //Turkey
         'tehran': 'تہران', //Tehran
         'isna': 'ISNA (NA)', //ISNA
-        'madhab': 'مداب', //MadhabText
-        'shafi': 'شفیع', //shafi
+        'madhab': 'مذہب', //MadhabText
+        'shafi': 'شافعی', //shafi
         'hanafi': 'حنفی', //Hanafi
-        'hlr': 'اعلی طول و عرض کی اصول', //hlrText
+        'hlr': 'اونچے طول و عرض کے اصول', //hlrText
         'motn': 'آدھی رات', //MOTN
         'sotn': 'رات کی ساتویں', //SOTN
         'ta': 'گودھولی زاویہ', //TA
-        'pcr': 'پولر سرکل قرارداد', //pcrText
+        'pcr': 'پولر سرکل ریوولیوشن', //pcrText
         'cc': 'قریب ترین شہر', //CC
         'cd': 'قریب ترین تاریخ', //CD
-        'und': 'حساب نہیں کرتے', //UND
-        'shafaq': 'شفیق', //ShafaqText
-        'general': 'جنرل', //shafaqG
-        'ahmer': 'ریڈ گودھولی (احمد)', //shafaqR
-        'abyad': 'وائٹ گودھولی (ابدی)', //shafaqW
-        'return': 'واپسی', //return
-        'general': 'جنرل', //v-pills-general-tab
+        'und': 'حساب مت کریں', //UND
+        'shafaq': 'شفق', //ShafaqText
+        'general': 'عمومی', //shafaqG
+        'ahmer': 'سرخ گودھولی (احمر)', //shafaqR
+        'abyad': 'سفید گودھولی (ابیض)', //shafaqW
+        'return': 'واپس', //return
+        'general': 'عمومی', //v-pills-general-tab
         'location': 'مقام', //v-pills-location-tab
         'audio': 'آڈیو', //v-pills-audio-tab
-        'appearance': 'ظہور', //v-pills-appearance-tab
-        'advanced': 'اعلی درجے کی', //v-pills-advanced-tab
-        'muezzin': 'Muezzin',
+        'appearance': 'پیش منظر', //v-pills-appearance-tab
+        'advanced': 'ایڈوانس', //v-pills-advanced-tab
+        'muezzin': 'مؤذن',
         'autoStart': 'خود بخود شروع', //autoStartText
         'startAtLaunch': 'لانچ پر شروع', //autoStartCheckText
-        'copyright': 'Copyright 2022, Muezzin, All rights reserved.', //copyright
-        'quote': ' قائم کرو۔ بیشک نماز مومنوں پر مقررہ وقت کے حساب سے فرض ہے', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'copyright': 'کاپی رائٹ 2022, Muezzin, جملہ حقوق محفوظ', //copyright
+        'quote': 'یقیناً نماز اہل ایمان پر فرض کی گئی ہے وقت کی پابندی کے ساتھ۔', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
         'source': "Qur'an: 4/103", //source
         'fajr': 'فجر',
-        'sunrise': 'سورج کی روشنی',
-        'dhuhr': 'دھہر',
-        'asr': 'عمر ',
+        'sunrise': 'طلوعِ آفتاب',
+        'dhuhr': 'ظہر',
+        'asr': 'عصر',
         'maghrib': 'مغرب',
         'isha': 'عشاء',
         'now': 'ابھی',
-        'timeUntil': 'ٹائمنٹیل',
-        'startUpSound': 'آواز شروع کرو', //startUpSoundText
-        'playSound': 'آغاز پر آواز کھیلیں', //startUpSoundText2
+        'timeUntil': 'باقی وقت برائے',
+        'startUpSound': 'آواز شروع کریں', //startUpSoundText
+        'playSound': 'آغاز پر آواز', //startUpSoundText2
         'sysTray': 'سسٹم ٹرے', //systrayText
-        'minToTray': 'ٹرے کو کم سے کم', //systrayCheckText
-        'customSettings': 'اپنی مرضی کے مطابق ترتیبات', //customSettText
-        'enableCS': 'اپنی مرضی کے مطابق حساب کی ترتیبات کو فعال کریں', //enableCalcText
-        'fAngle': 'فجر زاویہ', //fajrAngleText
-        'mAngle': 'مغرب زاویہ', //maghribAngleText
-        'iAngle': 'اسحا زاویہ', //ishaAngleText
-        'delayAfterM': 'مغرب کے بعد تاخیر', //delayText
+        'minToTray': 'ٹرے میں منمائز کریں', //systrayCheckText
+        'customSettings': 'کسٹم ترتیبات', //customSettText
+        'enableCS': 'کسٹم ترتیبات کو فعال کریں', //enableCalcText
+        'fAngle': 'فجر کا زاویہ', //fajrAngleText
+        'mAngle': 'مغرب کا زاویہ', //maghribAngleText
+        'iAngle': 'عشاء کا زاویہ', //ishaAngleText
+        'delayAfterM': 'تاخیر بعد مغرب', //delayText
         'delayMin': 'تاخیر (منٹ)', //delayFormText
         'france': 'فرانس', //France12 15 & 18
         'russia': 'روس', //Russia
-        'gulf': 'خلیج علاقے', //Gulf
+        'gulf': 'خلیجی علاقے', //Gulf
         'preferences': 'ترجیحات', //menu label
         'resetSettings': 'ترتیبات کو دوبارہ ترتیب دیں', //menu label
         'adjustements': 'ایڈجسٹمنٹ', //adjustmentsText
@@ -1372,13 +1372,13 @@ var dict = {
         'asrAdj': 'عصر ایڈجسٹمنٹ', //fajrAdjText
         'maghribAdj': 'مغرب ایڈجسٹمنٹ', //fajrAdjText
         'ishaAdj': 'عشاء ایڈجسٹمنٹ', //fajrAdjText
-        'showSunnah': 'سنت ٹائمز دکھائیں', //sunnahTimesText
+        'showSunnah': 'سنت اوقات دکھائیں', //sunnahTimesText
         'motn': 'آدھی رات',  //MOTNCheckText
-        'totn': 'رات کا تیسرا', //TOTNCheckText
-        'minStart': 'کم سے کم شروع', //minStartCheckText
-        'updateAvailable': 'اپ ڈیٹ دستیاب', 
+        'totn': 'تہائی', //TOTNCheckText
+        'minStart': 'آغاز کے وقت منمائز رکھیں', //minStartCheckText
+        'updateAvailable': 'اپ ڈیٹ دستیاب',
         'version': 'ورژن',
-        'available': 'GitHub پر ڈاؤن لوڈ کے لئے دستیاب ہے',
+        'available': 'گٹ ہب پر ڈاؤن لوڈ کے لئے دستیاب ہے',
         'download': 'ڈاؤن لوڈ کریں',
         'later': 'بعد میں',
         'quran': "قرآن",
@@ -1386,22 +1386,22 @@ var dict = {
         'fontsize': 'حرف کا سائز',
         'translation': 'ترجمہ',
         'showTrans': 'ترجمہ دکھائیں',
-        'diffLang': 'درخواست سے مختلف زبان',
-        'transliteration': 'نقل حرفی',
+        'diffLang': 'ایپ سے مختلف زبان',
+        'transliteration': 'نقل حرفی (ٹرانسلٹریشن)',
         'showTransliteration': 'نقل حرفی دکھائیں',
         'previous': 'پچھلی سورہ',
         'next': 'اگلی سورہ',
         'weather': 'موسم',
         'showWeather': 'موسم دکھائیں',
-        'units': 'یونٹس',
-        'celsius': 'سیلسیس',
-        'kelvin': 'کیلون',
+        'units': 'اکائیاں',
+        'celsius': 'سیلسیَس',
+        'kelvin': 'کیلوِن',
         'fahrenheit': 'فارن ہائیٹ',
-        'playDua': "دعا کے بعد غسل",
+        'playDua': "اذان کے بعد دعا بجائیں",
         'open': "کھولیں",
-        'quit': "چھوڑ دو",
+        'quit': "بند کریں",
     },
- tr: {
+    tr: {
         'settings': 'Ayarlar', //settingsTitle
         'language': 'Dil', //langText
         'timeformat': 'Zaman biçimi', //tfText
@@ -1504,7 +1504,7 @@ var dict = {
         'motn': 'Gecenin Ortası',  //MOTNCheckText
         'totn': 'Gecenin Üçte Biri', //TOTNCheckText
         'minStart': 'Küçültülmüş Olarak Başla', //minStartCheckText
-        'updateAvailable': 'Yeni Güncelleme', 
+        'updateAvailable': 'Yeni Güncelleme',
         'version': 'Versiyon',
         'available': "GitHub'tan indirilmeye hazırdır.",
         'download': 'İndir',
@@ -1632,7 +1632,7 @@ var dict = {
         'motn': 'মধ্যরাত',  //MOTNCheckText
         'totn': 'রাতের শেষ তৃতীয়াংশ', //TOTNCheckText
         'minStart': 'মিনিমাইজড অবস্থায় চালু করুন', //minStartCheckText
-        'updateAvailable': 'আপডেট উপলব্ধ', 
+        'updateAvailable': 'আপডেট উপলব্ধ',
         'version': 'ভার্সন',
         'available': 'ডাউনলোড করার জন্য গিটহাব এ উপলব্ধ',
         'download': 'ডাউনলোড',
