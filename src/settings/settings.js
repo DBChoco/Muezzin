@@ -788,6 +788,7 @@ async function saveAdjustments(){
 */
 async function loadQuranSettings(){
   let quranFontsize = document.getElementById("quranFontSize")
+  let reciterList = document.getElementById("reciter")
   let showTranslationDiv = document.getElementById("showTranslationCheck")
   let diffLangDiv = document.getElementById("quranLangCheck")
   let quranLangListDiv = document.getElementById("quranLangList")
@@ -799,6 +800,10 @@ async function loadQuranSettings(){
   let quran = await window.api.getFromStore('quran', {
     font: "text_uthmani",
     fontsize: 42,
+    recitation:{
+      reciter: 7,
+      volume: 50
+    },
     translation:{
         show: true,
         lang: {
@@ -815,6 +820,7 @@ async function loadQuranSettings(){
   })
 
   loadTranslationList()
+  loadReciterList()
   loadLanguageList()
 
   selectFromList(document.getElementById("fontList"), quran.font)
@@ -882,7 +888,7 @@ async function loadQuranSettings(){
   }
 
   /**
-  * Loads the list of translation from a downloaded JSON and fill an inputList
+  * Loads the list of translations from a downloaded JSON and fills an inputList
   */
   function loadTranslationList(){
     fetch('../../ressources/quran/translations.json')
@@ -899,7 +905,28 @@ async function loadQuranSettings(){
     })
     transListDiv.addEventListener("change", function(){
       quran.translation.trans = transListDiv.options[transListDiv.selectedIndex].value;
-      console.log(quran.translation.trans)
+    })
+  }
+
+    /**
+  * Loads the list of reciters from a downloaded JSON and fills an inputList
+  */
+  function loadReciterList(){
+    fetch('../../ressources/quran/recitations.json')
+    .then(reponse => reponse.json())
+    .then(json => {
+      console.log(json)
+      for (reciter of json["recitations"]){
+        var option = document.createElement("option")
+        option.value = reciter["id"]
+        reciter["style"] != null ? option.innerText = reciter["reciter_name"] + " - " + reciter["style"] : option.innerText = reciter["reciter_name"]
+        if (option.value == quran.recitation.reciter) option.selected = true;
+        reciterList.appendChild(option)
+      }
+    })
+    if (reciterList.selectedIndex == -1) reciterList.selectedIndex = 1
+    reciterList.addEventListener("change", function(){
+      quran.recitation.reciter = reciterList.options[transListDiv.selectedIndex].value;
     })
   }
 
@@ -944,9 +971,14 @@ async function loadQuranSettings(){
 }
 
 async function saveQuran(){
+  let volume = await window.api.getFromStore('quran.recitation.volume', 50)
   let quran = {
     font: document.getElementById("fontList").value,
     fontsize: document.getElementById("quranFontSize").value,
+    recitation:{
+      reciter: document.getElementById("reciter").value,
+      volume: volume,
+    },
     translation:{
         show: document.getElementById("showTranslationCheck").checked,
         lang: {

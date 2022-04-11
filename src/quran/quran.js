@@ -1,16 +1,21 @@
 var lang;
 var quran;
 
+var audioElement = new Audio;
+var playingAll = false;
+
+
 window.addEventListener('DOMContentLoaded', () => { 
     loadSettings()
     buttonListeners();
     loadQuranList();
     setupPreviousNextButtons()
+    setupPlayStopButtons()
 })
 
 //Generates the div for 1 single verse.
 //Calls the function to generate the arabText as well
-function generateVerse(number){
+function generateVerse(number, audioURL){
     let verseContainer = createDiv("verseContainer")
 
     var sidebarDiv = createDiv("sidebar")
@@ -21,7 +26,17 @@ function generateVerse(number){
 
     verseNumberDiv.innerHTML = number;
 
+    playAudioButton = document.createElement("i")
+    playAudioButton.classList.add("fa-solid")
+    playAudioButton.classList.add("fa-circle-play")
+    playAudioButton.classList.add("versePlay")
+    playAudioButton.addEventListener("click", function(){
+        playAudio("https://verses.quran.com/" + audioURL)
+    })
+
     sidebarDiv.appendChild(verseNumberDiv)
+    sidebarDiv.appendChild(playAudioButton)
+    textContainerDiv.dataset.audioURL = audioURL
     textContainerDiv.appendChild(arabTextDiv)
 
     textContainerDiv.id = "textContainer" + number
@@ -30,6 +45,13 @@ function generateVerse(number){
     verseContainer.appendChild(textContainerDiv)
 
     document.getElementById("reader").appendChild(verseContainer)
+}
+
+
+function playAudio(url){
+    if (!audioElement.paused) audioElement.pause()
+    audioElement = new Audio(url)
+    audioElement.play()
 }
 
 
@@ -67,16 +89,17 @@ async function loadSurah(number){
 
     var numberPages = 2;
     var page = 1;
-    while (page < numberPages){
+    while (page <= numberPages){
         try{
         response = await fetch('https://api.quran.com/api/v4/verses/by_chapter/' + number + '?language='+ quran.translation.lang + 
-        '&words=true&translations=' + quran.translation.trans + "&word_fields=" + quran.font + '&page=' + page, {method: "GET"})
+        '&words=true&translations=' + quran.translation.trans + "&word_fields=" + quran.font + '&page=' + page + "&audio=" + quran.recitation.reciter 
+        , {method: "GET"})
         .then(res => res.json())
         .then((json) => {
             console.log(json)
             numberPages = json["pagination"]["total_pages"]
             for (let verse of json["verses"]){
-                generateVerse(verse["verse_key"])
+                generateVerse(verse["verse_key"], verse["audio"]["url"])
                 generateArabText(verse)
                 if (quran.transliteration.show){
                     addLatinText(verse)
@@ -158,6 +181,9 @@ async function loadSettings(){
     quran = await window.api.getFromStore('quran', {
         font: "text_uthmani",
         fontsize: 42,
+        recitation:{
+            reciter: "Mishari Rashid al-`Afasy"
+          },
         translation:{
             show: true,
             lang: {
@@ -246,6 +272,29 @@ function setupPreviousNextButtons(){
         if (!next.disabled){
             chapterList.selectedIndex += 1;
             chapterList.dispatchEvent(new Event('change'))
+        }
+    })
+}
+
+function setupPlayStopButtons(){
+    document.getElementById("playB").addEventListener("click", function(){
+        if (audioElement.paused && document.getElementsByClassName('verseContainer').length != 0){
+            playingAll = true;
+            let number = 0;
+            let verses = document.getElementsByClassName('verseContainer')     
+            document.getElementById(verses[number].childNodes[1].id).scrollIntoView();
+            playAudio("https://verses.quran.com/" + document.getElementById(verses[number].childNodes[1].id).dataset.audioURL)
+            number++;
+            playNext()
+            function playNext(){
+                audioElement.addEventListener("ended", function(){
+                    document.getElementById(verses[number].childNodes[1].id).scrollIntoView();
+                    playAudio("https://verses.quran.com/" + document.getElementById(verses[number].childNodes[1].id).dataset.audioURL)
+                    number++;
+                    if (number < verses.length && playingAll) playNext()
+                })
+            }
+            
         }
     })
 }

@@ -90,6 +90,11 @@ header{
     margin: 10px;
 }
 
+.versePlay{
+    margin: 5px;
+    font-size: 30px;
+}
+
 .verse{
     width: 50%;
     height: max-content
@@ -130,4 +135,26 @@ footer{
 
 .btn-light, .btn-light:hover{
     color: #212121;
+}
+
+#audioControls{
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+}
+
+#stopB, #playB{
+    margin: 10px;
+    font-size: max(1.5vh, 14px);
+}
+
+#volume{
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    font-size: x-large;
+}
+
+#volSlider{
+    margin: 0px 10px 0px 10px;
 }
