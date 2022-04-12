@@ -362,6 +362,13 @@ async function loadAdhan(){
   var duaCheck = document.getElementById("duaCheck");
   duaCheck.checked = adhanFile[2]
 
+
+  document.getElementById('customAdhanFileButton').onclick = function() {
+    document.getElementById('customAdhanFile').click();
+  };
+  document.getElementById('customAdhanFileButton').value = shortenedString(adhanFile[1].split("/")[adhanFile[1].split("/").length - 1]) 
+
+
   if (!customCheck.checked){
     selectFromList(document.getElementById("adhanList"), adhanFile[1])
   }
@@ -373,6 +380,7 @@ async function loadAdhan(){
 
   document.getElementById("customAdhanFile").addEventListener("change", function(){
     var file = document.getElementById("customAdhanFile").files[0].path;
+    document.getElementById('customAdhanFileButton').value = shortenedString(file.split("/")[file.split("/").length - 1]) 
     console.debug("Loaded: " + file)
   })
 
@@ -380,15 +388,21 @@ async function loadAdhan(){
  function setUpAdhan(){ //changes the states of the forms if custom adhans are enabled/disabled
   if (!customCheck.checked){
     document.getElementById("customAdhanFile").disabled = true;
+    document.getElementById('customAdhanFileButton').disabled = true;
     document.getElementById("adhanList").disabled = false;
   }
   else{
     document.getElementById("customAdhanFile").disabled = false;
+    document.getElementById('customAdhanFileButton').disabled = false;
     document.getElementById("adhanList").disabled = true;
   }
  }
 }
 
+function shortenedString(text){
+  if (text.length > 20) return text.substr(0,15);
+  else return text
+}
 
 /**
 * Adds listeners to the many Adhan checkboxes and disables them when they are not used
@@ -403,6 +417,7 @@ function disableAdhanListener(){
   function disableAdhan(adhanCheck){
     if (!adhanCheck.checked){
       document.getElementById("customAdhanFile").disabled = true;
+      document.getElementById('customAdhanFileButton').disabled = true;
       document.getElementById("adhanList").disabled = true;
       document.getElementById("duaCheck").disabled = true;
       document.getElementById("customAdhan").disabled = true;
@@ -412,10 +427,12 @@ function disableAdhanListener(){
       document.getElementById("customAdhan").disabled = false;
       if (!document.getElementById("customAdhan").checked){
         document.getElementById("customAdhanFile").disabled = true;
+        document.getElementById('customAdhanFileButton').disabled = true;
         document.getElementById("adhanList").disabled = false;
       }
       else{
         document.getElementById("customAdhanFile").disabled = false;
+        document.getElementById('customAdhanFileButton').disabled = false;
         document.getElementById("adhanList").disabled = true;
       }
     }
@@ -488,16 +505,27 @@ async function loadBgImage(){
   var bgImageCheck = document.getElementById("bgImageCheck")
   bgImageCheck.checked  = bgImage[0];
   var file = document.getElementById("customBgImage")
+  var fileButton = document.getElementById("customBgImageButton")
+  fileButton.onclick = function() {
+    file.click();
+  };
+  fileButton.value = shortenedString(bgImage[1].split("/")[bgImage[1].split("/").length - 1]) 
   if (!bgImageCheck.checked ){
     file.disabled = true;
+    fileButton.disabled = true;
   }
   bgImageCheck.addEventListener('change', function(){
     if (!bgImageCheck.checked ){
       file.disabled = true;
+      fileButton.disabled = true;
     }
     else{
       file.disabled = false;
+      fileButton.disabled = false;
     }
+  })
+  file.addEventListener("change", function(){
+    fileButton.value = shortenedString(file.files[0].path.split("/")[file.files[0].path.split("/").length - 1]) 
   })
 }
 

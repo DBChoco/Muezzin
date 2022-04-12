@@ -149,3 +149,7 @@ footer{
   width: 100px;
   margin-left: auto;
 }
+
+.hiddenFile {
+  display: none;
+}
