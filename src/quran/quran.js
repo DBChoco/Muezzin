@@ -52,6 +52,7 @@ function generateVerse(number, audioURL){
 function playAudio(url){
     if (!audioElement.paused) audioElement.pause()
     audioElement = new Audio(url)
+    audioElement.volume = quran.recitation.volume/100
     audioElement.play()
 }
 
@@ -102,6 +103,7 @@ async function loadSurah(number){
             for (let verse of json["verses"]){
                 generateVerse(verse["verse_key"], verse["audio"]["url"])
                 generateArabText(verse)
+                console.log(verse["audio"]["url"])
                 if (quran.transliteration.show){
                     addLatinText(verse)
                 }
@@ -121,6 +123,7 @@ async function loadSurah(number){
 async function addBismillahTitle(number){
     if (number != 9 && number != 1){
         wordDiv = createDiv("bismillahTitle")
+        wordDiv.id = "bismillahTitle"
         wordDiv.innerHTML = "\uf046"
         document.getElementById("reader").appendChild(wordDiv)
     }
@@ -288,19 +291,33 @@ function setupPlayStopButtons(){
             playingAll = true;
             let number = 0;
             let verses = document.getElementsByClassName('verseContainer')     
-            document.getElementById(verses[number].childNodes[1].id).scrollIntoView();
             
-            playAudio("https://verses.quran.com/" + document.getElementById(verses[number].childNodes[1].id).dataset.audioURL)
-            number++;
+            
+            let surahNumber = (verses[number].childNodes[1].id).split(":")[0].replace("textContainer", "")
+
+            if (surahNumber != 9 && surahNumber != 1){
+                playAudio("https://verses.quran.com/Shuraym/mp3/001001.mp3")
+                console.log(document.getElementById("bismillahTitle"))
+                document.getElementById("bismillahTitle").scrollIntoView();
+            }
+            else{
+                playAudio("https://verses.quran.com/" + document.getElementById(verses[number].childNodes[1].id).dataset.audioURL)
+                document.getElementById(verses[number].childNodes[1].id).scrollIntoView();
+                number++;
+            }
 
             playNext()
 
             function playNext(){
-                audioElement.addEventListener("ended", function(){
-                    playAudio("https://verses.quran.com/" + document.getElementById(verses[number].childNodes[1].id).dataset.audioURL)
-                    document.getElementById(verses[number].childNodes[1].id).scrollIntoView();
-                    number++;
-                    if (number < verses.length && playingAll) playNext()
+                audioElement.addEventListener("timeupdate", function(){
+                    if (audioElement.currentTime >= audioElement.duration - 0.4){
+                        playAudio("https://verses.quran.com/" + document.getElementById(verses[number].childNodes[1].id).dataset.audioURL)
+                        document.getElementById(verses[number].childNodes[1].id).scrollIntoView();
+                        number++;
+                        if (number < verses.length && playingAll) playNext()
+                    }
+                    
+                    
                 })
             }
         }
@@ -313,10 +330,12 @@ function setupPlayStopButtons(){
     
     document.getElementById("volSlider").addEventListener("change", function(){
         audioElement.volume = document.getElementById("volSlider").value / 100
+        quran.recitation.volume = document.getElementById("volSlider").value
         console.log(audioElement.volume)
     })
     document.getElementById("volSlider").addEventListener("mousemove", function(){
         audioElement.volume = document.getElementById("volSlider").value / 100
+        quran.recitation.volume = document.getElementById("volSlider").value
         console.log(audioElement.volume)
     })
 }
