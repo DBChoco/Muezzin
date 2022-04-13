@@ -333,8 +333,8 @@ function checkTime(){
         console.debug("Time until " + prayers[3] + ": " + show0(timeUntilNextPrayer[0]) + ":" + show0(timeUntilNextPrayer[1]) + ":" + show0(timeUntilNextPrayer[2]))
         if(timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] == -1 && timeUntilCurrentPrayer[2] == 0){ //-1 because math.floor
           if (settings.adhanCheck){
-            if (prayers[3] == langFajr && adhanSettings.adhanFajr.custom) mediaWindow.webContents.send('play', adhanSettings.adhanFajr.path);
-            else mediaWindow.webContents.send('play', adhanSettings.adhan.path);
+            if (prayers[2] == langFajr && adhanSettings.adhanFajr.custom) mediaWindow.webContents.send('playFajr', adhanSettings);
+            else mediaWindow.webContents.send('play', adhanSettings);
           }
           if (settings.notifCheck){
             showNotification(langNow + ": " + prayers[2])

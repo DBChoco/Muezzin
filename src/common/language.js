@@ -454,12 +454,12 @@ var dict = {
         'copyright': 'Copyright 2022, Muezzin, All rights reserved.', //copyright
         'quote': 'إِنَّ الصَّلاةَ كانَت عَلَى المُؤمِنينَ كِتابًا مَوقوتًا', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
         'source': "القرآن: 4/103", //source
-        'fajr': 'فجر',
+        'fajr': 'الفجر',
         'sunrise': 'شروق',
         'dhuhr': 'الظهر',
-        'asr': 'عصر',
-        'maghrib': 'مغرب',
-        'isha': 'عشاء ',
+        'asr': 'العصر',
+        'maghrib': 'المغرب',
+        'isha': 'العشاء ',
         'now': 'الآن',
         'timeUntil': 'الوقت حتى',
         'startUpSound': 'بدء الصوت', //startUpSoundText

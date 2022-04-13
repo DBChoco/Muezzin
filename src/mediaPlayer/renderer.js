@@ -31,6 +31,19 @@ function setUpHandlers(){
         setUpAdhanListeners()
         athan.play();
     })
+
+    window.api.handle('playFajr', msg => {
+        if (!athan.paused || !dua.paused){
+            stop()
+        }
+        playDua = msg.dua.enabled
+        athan = new Audio(msg.adhanFajr.path);
+        setUpAdhanListeners()
+        athan.play();
+    })
+
+
+
     window.api.handle('stop', msg => {
         stop()
     })
