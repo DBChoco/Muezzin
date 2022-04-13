@@ -329,8 +329,8 @@ function checkTime(){
     var prayers = nextPrayer();
     if (prayers != undefined && prayers[0] != undefined && (settings.adhanCheck || settings.notifCheck)){
         var timeUntilCurrentPrayer = timeUntilPrayer(prayers[0])
-        var timeUntilNextPrayer = timeUntilPrayer(prayers[1]) // Shows prayer times in console.
-        console.debug("Time until " + prayers[3] + ": " + show0(timeUntilNextPrayer[0]) + ":" + show0(timeUntilNextPrayer[1]) + ":" + show0(timeUntilNextPrayer[2]))
+        //var timeUntilNextPrayer = timeUntilPrayer(prayers[1]) // Shows prayer times in console.
+        //console.debug("Time until " + prayers[3] + ": " + show0(timeUntilNextPrayer[0]) + ":" + show0(timeUntilNextPrayer[1]) + ":" + show0(timeUntilNextPrayer[2]))
         if(timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] == -1 && timeUntilCurrentPrayer[2] == 0){ //-1 because math.floor
           if (settings.adhanCheck){
             if (prayers[2] == langFajr && adhanSettings.adhanFajr.custom) mediaWindow.webContents.send('playFajr', adhanSettings);
@@ -742,6 +742,7 @@ function msToTime(duration){ //https://stackoverflow.com/questions/19700283/how-
 function checkFirstTime(){
   var first = !store.has("first")
   if (first){
+    console.log("first")
     var IPGeolocationAPI = require('ip-geolocation-api-javascript-sdk');
 
     // Create IPGeolocationAPI object. Constructor takes two parameters.
@@ -763,12 +764,12 @@ function checkFirstTime(){
       loadSettings()
       mainWindow.webContents.send('update');
     }
+    store.set("first", true)
   }
 
     //Looks at the continent and country of the user and chooses a calculation method
   function loadDefaultCalcMethod(continentCode, countryCode){
     if (countryCode == "RU"){
-
       store.set('calculationMethod.calcMethod', "Russia");
     }
     else if (countryCode == "GB"){
@@ -805,9 +806,7 @@ function checkFirstTime(){
     else{
       switch (continentCode){
         case "NA": //N America
-
           store.set('calculationMethod.calcMethod', "ISNA");
-
           break;
         case "AF": //Africa
           break;
@@ -830,11 +829,11 @@ function checkFirstTime(){
           store.set('calculationMethod.calcMethod', "MWL");
       }
     }
+    store.set("calculationMethod.madhab", 'Shafi')
+    store.set("calculationMethod.hlr", 'TA')
+    store.set("calculationMethod.pcr", 'CC')
+    store.set("calculationMethod.shafaq", 'shafaqG')
   }
-  store.set("calculationMethod.madhab", 'Shafi')
-  store.set("calculationMethod.hlr", 'TA')
-  store.set("calculationMethod.pcr", 'CC')
-  store.set("calculationMethod.shafaq", 'shafaqG')
 }
 
 
@@ -944,6 +943,14 @@ function trayPrayerTimes(){
       app.quit();}}
   ])
   tray.setContextMenu(contextMenu)
+
+  console.log(langFajr + ": " + changeclockDisplay(prayerTimes.fajr, timeDisplay.clockFormat) + "\n" +
+  langSunrise + ": " + changeclockDisplay(prayerTimes.sunrise, timeDisplay.clockFormat) + "\n" +
+  langDhuhr + ": " + changeclockDisplay(prayerTimes.dhuhr, timeDisplay.clockFormat) + "\n" +
+  langAsr + ": " + changeclockDisplay(prayerTimes.asr, timeDisplay.clockFormat) + "\n" +
+  langMaghrib + ": " + changeclockDisplay(prayerTimes.maghrib, timeDisplay.clockFormat) + "\n" +
+  langIsha + ": " + changeclockDisplay(prayerTimes.isha, timeDisplay.clockFormat)
+  )
   
   function changeclockDisplay(date, timeformat){
     if (timeformat == 24){

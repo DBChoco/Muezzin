@@ -92,6 +92,8 @@ async function loadSettings(){
     pcr: 'CC',
     shafaq: 'shafaqG'
   })
+
+  console.log(calculationMethod)
   
   await loadAdhan()
   await loadCustomSettings()
