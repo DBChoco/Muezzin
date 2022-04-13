@@ -204,7 +204,7 @@
                   <label class="form-check-label" for="adhanCheck" id="adhanCheckText">
                     Enable Adhan
                   </label>
-                  <input class="form-check-input" type="checkbox" id="adhanCheck" unchecked>
+                  <input class="form-check-input" type="checkbox" id="adhanCheck" checked>
                 </div>
                 
                 <div class="grid-R-spacer">
@@ -218,12 +218,28 @@
                   <label class="form-check-label" for="customAdhan" id="customAdhanText">
                     Custom Adhan
                   </label>
-                  <input class="form-check-input" type="checkbox" id="customAdhan" checked>
+                  <input class="form-check-input" type="checkbox" id="customAdhan" unchecked>
                 </div>
-                <div class="mb-3">
-                  <input class="form-control hiddenFile" type="file" id="customAdhanFile" accept="audio/*,.mp3, .ogg, .wav">
-                  <input type="button" class="btn btn-dark" id="customAdhanFileButton" value="No file chosen">
+                <div class="form-check grid-R-spacer">
+                  <div class="mb-3">
+                    <input class="form-control hiddenFile" type="file" id="customAdhanFile" accept="audio/*,.mp3, .ogg, .wav">
+                    <input type="button" class="btn btn-dark" id="customAdhanFileButton" value="No file chosen">
+                  </div>
                 </div>
+                
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="customAdhanFajr" id="customAdhanFajrText">
+                    Custom Fajr Adhan
+                  </label>
+                  <input class="form-check-input" type="checkbox" id="customAdhanFajr" unchecked>
+                </div>
+                <div class="form-check">
+                  <div class="mb-3">
+                    <input class="form-control hiddenFile" type="file" id="customAdhanFajrFile" accept="audio/*,.mp3, .ogg, .wav">
+                    <input type="button" class="btn btn-dark" id="customAdhanFajrFileButton" value="No file chosen">
+                  </div>
+                </div>
+
               </form>
             </div>
 

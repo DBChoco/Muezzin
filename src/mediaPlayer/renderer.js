@@ -26,8 +26,8 @@ function setUpHandlers(){
         if (!athan.paused || !dua.paused){
             stop()
         }
-        playDua = msg[2]
-        athan = new Audio(msg[1]);
+        playDua = msg.dua.enabled
+        athan = new Audio(msg.adhan.path);
         setUpAdhanListeners()
         athan.play();
     })

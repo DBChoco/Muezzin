@@ -134,10 +134,9 @@ async function loadSettings(){
   window.api.setTheme(darkMode, "settings.css");
   addChangeListeners()
   setTimeDateFormat()
-  disableAdhanListener()
   loadLanguage(language)
   loadBgImage()
-
+  disableAdhanListener()
   await loadQuranSettings()
 }
 
@@ -356,26 +355,44 @@ function setSavedVal(element, val){
 * Loads the custom/preset Adhan (bool, source path)
 */
 async function loadAdhan(){
-  adhanFile =  await window.api.getFromStore('adhanFile', [false, "ressources/audio/Adhan - Mecca.mp3", true]);
+  adhanFile =  await window.api.getFromStore('adhan', { 
+    adhan: {
+      custom: false,
+      path: "ressources/audio/Adhan - Mecca.mp3"
+    },
+    adhanFajr: {
+      custom: false,
+      path: "ressources/audio/Adhan - Mecca.mp3"
+    },
+    dua: { 
+      enabled: true
+    }
+  });
+
   var customCheck = document.getElementById("customAdhan");
-  customCheck.checked = adhanFile[0]
+  customCheck.checked = adhanFile.adhan.custom
   var duaCheck = document.getElementById("duaCheck");
-  duaCheck.checked = adhanFile[2]
+  duaCheck.checked = adhanFile.dua.enabled;
+  var customFajrCheck = document.getElementById("customAdhanFajr");
+  customFajrCheck.checked = adhanFile.adhanFajr.custom
 
 
   document.getElementById('customAdhanFileButton').onclick = function() {
     document.getElementById('customAdhanFile').click();
   };
-  document.getElementById('customAdhanFileButton').value = shortenedString(adhanFile[1].split("/")[adhanFile[1].split("/").length - 1]) 
+  document.getElementById('customAdhanFileButton').value = shortenedString(adhanFile.adhan.path.split("/")[adhanFile.adhan.path.split("/").length - 1]) 
 
+  document.getElementById('customAdhanFajrFileButton').onclick = function() {
+    document.getElementById('customAdhanFajrFile').click();
+  };
+  document.getElementById('customAdhanFajrFileButton').value = shortenedString(adhanFile.adhanFajr.path.split("/")[adhanFile.adhanFajr.path.split("/").length - 1]) 
 
-  if (!customCheck.checked){
-    selectFromList(document.getElementById("adhanList"), adhanFile[1])
-  }
+  document.getElementById("customAdhanFajrFile").disabled = !customFajrCheck.checked;
+  document.getElementById('customAdhanFajrFileButton').disabled = !customFajrCheck.checked;
 
-  setUpAdhan()
-  customCheck.addEventListener('change', function(){
-   setUpAdhan()
+  customFajrCheck.addEventListener("change", function(){
+    document.getElementById("customAdhanFajrFile").disabled = !customFajrCheck.checked;
+    document.getElementById('customAdhanFajrFileButton').disabled = !customFajrCheck.checked;
   })
 
   document.getElementById("customAdhanFile").addEventListener("change", function(){
@@ -383,20 +400,11 @@ async function loadAdhan(){
     document.getElementById('customAdhanFileButton').value = shortenedString(file.split("/")[file.split("/").length - 1]) 
     console.debug("Loaded: " + file)
   })
-
-
- function setUpAdhan(){ //changes the states of the forms if custom adhans are enabled/disabled
-  if (!customCheck.checked){
-    document.getElementById("customAdhanFile").disabled = true;
-    document.getElementById('customAdhanFileButton').disabled = true;
-    document.getElementById("adhanList").disabled = false;
-  }
-  else{
-    document.getElementById("customAdhanFile").disabled = false;
-    document.getElementById('customAdhanFileButton').disabled = false;
-    document.getElementById("adhanList").disabled = true;
-  }
- }
+  document.getElementById("customAdhanFajrFile").addEventListener("change", function(){
+    var file = document.getElementById("customAdhanFajrFile").files[0].path;
+    document.getElementById('customAdhanFajrFileButton').value = shortenedString(file.split("/")[file.split("/").length - 1]) 
+    console.debug("Loaded: " + file)
+  })
 }
 
 function shortenedString(text){
@@ -409,33 +417,26 @@ function shortenedString(text){
 */
 function disableAdhanListener(){
   var adhanCheck = document.getElementById("adhanCheck")
-  disableAdhan(adhanCheck)
+  var customAdhanCheck = document.getElementById("customAdhan")
+  disableAdhan()
   adhanCheck.addEventListener('change', function(){
-    disableAdhan(adhanCheck)
+    disableAdhan()
   })
+  
+  customAdhanCheck.addEventListener('change', function(){
+    disableAdhan()
+  })
+  
 
-  function disableAdhan(adhanCheck){
-    if (!adhanCheck.checked){
-      document.getElementById("customAdhanFile").disabled = true;
-      document.getElementById('customAdhanFileButton').disabled = true;
-      document.getElementById("adhanList").disabled = true;
-      document.getElementById("duaCheck").disabled = true;
-      document.getElementById("customAdhan").disabled = true;
-    } 
-    else{
-      document.getElementById("duaCheck").disabled = false;
-      document.getElementById("customAdhan").disabled = false;
-      if (!document.getElementById("customAdhan").checked){
-        document.getElementById("customAdhanFile").disabled = true;
-        document.getElementById('customAdhanFileButton').disabled = true;
-        document.getElementById("adhanList").disabled = false;
-      }
-      else{
-        document.getElementById("customAdhanFile").disabled = false;
-        document.getElementById('customAdhanFileButton').disabled = false;
-        document.getElementById("adhanList").disabled = true;
-      }
-    }
+  function disableAdhan(){
+    document.getElementById("duaCheck").disabled = !adhanCheck.checked
+    document.getElementById("customAdhan").disabled = !adhanCheck.checked
+    document.getElementById("customAdhanFile").disabled = !adhanCheck.checked || !customAdhanCheck.checked
+    document.getElementById('customAdhanFileButton').disabled = !adhanCheck.checked || !customAdhanCheck.checked
+    document.getElementById("adhanList").disabled = !adhanCheck.checked || customAdhanCheck.checked
+    document.getElementById("customAdhanFajr").disabled = !adhanCheck.checked
+    document.getElementById("customAdhanFajrFile").disabled = !adhanCheck.checked || !document.getElementById("customAdhanFajr").checked
+    document.getElementById("customAdhanFajrFileButton").disabled = !adhanCheck.checked || !document.getElementById("customAdhanFajr").checked
   }
 }
 
@@ -445,8 +446,10 @@ function disableAdhanListener(){
 */
 async function saveAdhan(){
   var customCheck = document.getElementById("customAdhan");
+  var customFajrCheck = document.getElementById("customAdhanFajr");
   var duaCheck = document.getElementById("duaCheck");
   var path;
+  var pathFajr
   if (!customCheck.checked){
     path = document.getElementById("adhanList").value;
   }
@@ -456,11 +459,37 @@ async function saveAdhan(){
       path = file[0].path;
     }
     else{
-      path = adhanFile[1]
+      path = adhanFile.adhan.path
     }
   }
-  adhanFile = [customCheck.checked, path, duaCheck.checked]
-  await window.api.setToStore('adhanFile', adhanFile)
+
+  if (!customFajrCheck.checked){
+    pathFajr = document.getElementById("adhanList").value;
+  }
+  else {
+    var file = document.getElementById("customAdhanFajrFile").files
+    if (file != undefined && file.length != 0){
+      pathFajr = file[0].path;
+    }
+    else{
+      pathFajr = adhanFile.adhanFajr.path
+    }
+  }
+
+  adhanFile = { adhan: {
+    custom: customCheck.checked,
+    path: path
+    },
+    adhanFajr: {
+      custom: customFajrCheck.checked,
+      path: pathFajr
+    },
+    dua: { 
+      enabled: duaCheck.checked
+    }
+  }
+
+  await window.api.setToStore('adhan', adhanFile)
 }
 
 

@@ -7,13 +7,33 @@
   <url type="homepage">https://github.com/DBChoco/Muezzin</url>
   <url type="bugtracker">https://github.com/DBChoco/Muezzin/issues</url>
   <url type="contact">https://www.reddit.com/r/Muezzin/</url>
+  <url type="translate"> https://discord.gg/cpF9TTstN5</url>
+  
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>MIT</project_license>
   <description>
     <p>
       Islamic prayer times (Adhan) and Qur'an application that is highly customizable, free and open source.
       Muezzin supports many languages, advanced prayer options, shows the weather, sunnah times and many more.
-      
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>Many settings</li>
+      <li>Weather widget</li>
+      <li>Qur'an reader</li>
+      <li>Custom background image</li>
+      <li>Custom Adhan</li>
+      <li>Light and dark mode</li>
+      <li>10+ languages</li>
+    </ul>
+    <p>
+      If you encounter a bug, want to add a language, want to contribute or just want to say Salam, join our discord server or subreddit!
+    </p>
+    <p>
+      Jazzakoum Allahu khairan.
+    </p>
+
+    <p>
       Keywords: Athan, Adhan, Azan, Islam, Muslim, Prayers, times, Muezzin, Salah, Salat, Namaz, Islamic, Hijri, Quran, Qur'an, Koran.
     </p>
   </description>
@@ -31,6 +51,10 @@
     <screenshot>
       <caption>Settings Screen</caption>
       <image>https://github.com/DBChoco/Muezzin/blob/master/screenshots/settingsDark.png?raw=true</image>
+    </screenshot>
+    <screenshot>
+      <caption>Quran Reader - Dark</caption>
+      <image>https://github.com/DBChoco/Muezzin/blob/master/screenshots/quranDark.png?raw=true</image>
     </screenshot>
   </screenshots>
   <releases>

@@ -236,7 +236,7 @@ app.whenReady().then(() => {
 console.debug("** Launching Muezzin v" + app.getVersion() + " **\n" + "Assalamou Alaykoum wa Rahmatou Lahi wa Baraketu")
 
 
-var lat, lon, calculationMethod, prayerTimes, adhanPath, timeformat;
+var lat, lon, calculationMethod, prayerTimes, adhanPath, adhanSettings;
 var customValues, delay;
 var prayerTimes, datePrayerTimes, tomorrowPrayers;
 var settings
@@ -329,11 +329,12 @@ function checkTime(){
     var prayers = nextPrayer();
     if (prayers != undefined && prayers[0] != undefined && (settings.adhanCheck || settings.notifCheck)){
         var timeUntilCurrentPrayer = timeUntilPrayer(prayers[0])
-        //var timeUntilNextPrayer = timeUntilPrayer(prayers[1]) // Shows prayer times in console.
-        //console.debug("Time until next prayer: " + show0(timeUntilNextPrayer[0]) + ":" + show0(timeUntilNextPrayer[1]) + ":" + show0(timeUntilNextPrayer[2]))
+        var timeUntilNextPrayer = timeUntilPrayer(prayers[1]) // Shows prayer times in console.
+        console.debug("Time until " + prayers[3] + ": " + show0(timeUntilNextPrayer[0]) + ":" + show0(timeUntilNextPrayer[1]) + ":" + show0(timeUntilNextPrayer[2]))
         if(timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] == -1 && timeUntilCurrentPrayer[2] == 0){ //-1 because math.floor
           if (settings.adhanCheck){
-            mediaWindow.webContents.send('play', adhanPath);
+            if (prayers[3] == langFajr && adhanSettings.adhanFajr.custom) mediaWindow.webContents.send('play', adhanSettings.adhanFajr.path);
+            else mediaWindow.webContents.send('play', adhanSettings.adhan.path);
           }
           if (settings.notifCheck){
             showNotification(langNow + ": " + prayers[2])
@@ -345,7 +346,7 @@ function checkTime(){
     if (today.getDate != (new Date).getDate){
       mainWindow.webContents.send('update');
     }
-  }, 900000)
+  }, 10000)
 }
 
 /**
@@ -389,7 +390,20 @@ async function loadSettings(){
   })
 
 
-  adhanPath = await store.get('adhanFile', [false, "../../ressources/audio/Adhan - Mecca.mp3", true]);
+  adhanSettings =  await store.get('adhan', { 
+    adhan: {
+      custom: false,
+      path: "ressources/audio/Adhan - Mecca.mp3"
+    },
+    adhanFajr: {
+      custom: false,
+      path: "ressources/audio/Adhan - Mecca.mp3"
+    },
+    dua: { 
+      enabled: true
+    }
+  });
+
   lang = await store.get('language', 'en');
   loadLang();
   customValues = await store.get('customSettings', [false, 0,0,0]);
@@ -592,7 +606,7 @@ async function setUpHandlers(){
 
   //Media Handlers
   ipcMain.handle('play',  (event, message)  => {
-    mediaWindow.webContents.send('play', adhanPath);
+    mediaWindow.webContents.send('play', adhanSettings);
   });
   ipcMain.handle('stop',  (event, message)  => {
     mediaWindow.webContents.send('stop', {});
@@ -857,34 +871,17 @@ function setAutoStart(autoStart){
   }
 }
 
-function loadOldSettings(){
+async function loadOldSettings(){
   if (store.has('calcmeth') && !store.has("calculationMethod")){
-    var calcMethod = document.getElementById("calcMethodList").value;
-    var madhab = document.getElementById("madhabList").value;
-    var hlr = document.getElementById("highLatitudeRuleList").value;
-    var pcr = document.getElementById("polarCircleResolutionList").value;
-    var shafaq = document.getElementById("shafaqList").value;
-    var notifCheck = document.getElementById("notifCheck").checked;
-    var adhanCheck = document.getElementById("adhanCheck").checked;
-    var systray = document.getElementById("systrayCheck").checked;
-    var startupSound = document.getElementById("startUpSound").checked;
-    var autoStart = document.getElementById("autoStartCheck").checked
-    var minStart = document.getElementById("minStartCheck").checked;
-    store.set("calculationMethod", {
-      calcMethod: calcMethod,
-      madhab: madhab,
-      hlr: hlr,
-      pcr: pcr,
-      shafaq: shafaq
-    })
-    store.set("settings", {
-      startupSound: startupSound,
-      notifCheck: notifCheck,
-      systray: systray,
-      adhanCheck: adhanCheck,
-      autoStart: autoStart,
-      minStart: minStart
-    })
+    reset()
+  }
+  else if (store.has("adhanFile") && !store.has("adhan")){
+    reset()
+  }
+  function reset(){
+    store.clear();
+    app.relaunch()
+    app.exit()
   }
 }
 
