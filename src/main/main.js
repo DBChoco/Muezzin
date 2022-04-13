@@ -393,11 +393,11 @@ async function loadSettings(){
   adhanSettings =  await store.get('adhan', { 
     adhan: {
       custom: false,
-      path: "ressources/audio/Adhan - Mecca.mp3"
+      path: "../../ressources/audio/Adhan - Ahmed Al-Nufais.mp3"
     },
     adhanFajr: {
       custom: false,
-      path: "ressources/audio/Adhan - Mecca.mp3"
+      path: "../../ressources/audio/Adhan - Ahmed Al-Nufais.mp3"
     },
     dua: { 
       enabled: true
@@ -871,17 +871,56 @@ function setAutoStart(autoStart){
   }
 }
 
+
+/**
+ * Checks if the old settings are still saved, if so, imports them into the new one.
+ */
 async function loadOldSettings(){
   if (store.has('calcmeth') && !store.has("calculationMethod")){
-    reset()
+    var calcmeth = await store.get('calcmeth', "MWL");
+    var madhab = await store.get('madhab', 'Shafi'); 
+    var hlr = await store.get( 'hlr', 'TA');
+    var pcr = await store.get('pcr', 'CC');
+    var shafaq = await store.get('shafaq', 'shafaqG');
+    store.set("calculationMethod", {
+      calcMethod: calcmeth,
+      madhab: madhab,
+      hlr: hlr,
+      pcr: pcr,
+      shafaq: shafaq
+    })
+  }
+  else if (store.has() && !store.has("settings")){
+    var adhanCheck = await store.get("adhanCheck", true)
+    var notifCheck = await store.get("notifCheck", true)
+    var systray = await store.get("systray", true)
+    var startupSound = await store.get("startupSound", true)
+    var autoStart = await store.get("autoStart", true)
+    var minStart = await store.get("minStart", true)
+    store.set("settings", {
+      startupSound: startupSound,
+      notifCheck: notifCheck,
+      systray: systray,
+      adhanCheck: adhanCheck,
+      autoStart: autoStart,
+      minStart: minStart
+    })
   }
   else if (store.has("adhanFile") && !store.has("adhan")){
-    reset()
-  }
-  function reset(){
-    store.clear();
-    app.relaunch()
-    app.exit()
+    var adhanFile = store.get('adhanFile', [false, "../../ressources/audio/Adhan - Ahmed Al-Nufais.mp3", true]);
+    store.set("adhan", {
+      adhan: {
+        custom: adhanFile[0],
+        path: adhanFile[1]
+      },
+      adhanFajr: {
+        custom: false,
+        path: adhanFile[1]
+      },
+      dua: { 
+        enabled: adhanFile[2]
+      }
+    })
   }
 }
 

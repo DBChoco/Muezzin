@@ -358,11 +358,11 @@ async function loadAdhan(){
   adhanFile =  await window.api.getFromStore('adhan', { 
     adhan: {
       custom: false,
-      path: "ressources/audio/Adhan - Mecca.mp3"
+      path: "../../ressources/audio/Adhan - Ahmed Al-Nufais.mp3"
     },
     adhanFajr: {
       custom: false,
-      path: "ressources/audio/Adhan - Mecca.mp3"
+      path: "../../ressources/audio/Adhan - Ahmed Al-Nufais.mp3"
     },
     dua: { 
       enabled: true
@@ -408,7 +408,7 @@ async function loadAdhan(){
 }
 
 function shortenedString(text){
-  if (text.length > 20) return text.substr(0,15);
+  if (text.length > 30) return text.substr(0,30);
   else return text
 }
 
