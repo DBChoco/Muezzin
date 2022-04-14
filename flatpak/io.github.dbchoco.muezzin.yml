@@ -29,8 +29,8 @@ modules:
     subdir: main
     sources:
       - type: archive
-        url: https://github.com/DBChoco/Muezzin/archive/refs/tags/v0.2.2.tar.gz
-        sha256: e66beda9c6765abf535609be3502437b4e6aa0d54fe99cd36f0d08e8fa80c629
+        url: https://github.com/DBChoco/Muezzin/archive/refs/tags/v2.3.1.tar.gz
+        sha256: 91f984a1cee94ff217829d9119ed02052cf13fa292227fe54ec0678da3bbdf0f
         dest: main
 
       - generated-sources.json

@@ -327,10 +327,9 @@ function showNotification (message) {
 function checkTime(){
   var interval = setInterval(function(){
     var prayers = nextPrayer();
-    if (prayers != undefined && prayers[0] != undefined && (settings.adhanCheck || settings.notifCheck)){
+    if (settings.adhanCheck || settings.notifCheck){
+      if (prayers != undefined && prayers[0] != undefined){
         var timeUntilCurrentPrayer = timeUntilPrayer(prayers[0])
-        //var timeUntilNextPrayer = timeUntilPrayer(prayers[1]) // Shows prayer times in console.
-        //console.debug("Time until " + prayers[3] + ": " + show0(timeUntilNextPrayer[0]) + ":" + show0(timeUntilNextPrayer[1]) + ":" + show0(timeUntilNextPrayer[2]))
         if(timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] == -1 && timeUntilCurrentPrayer[2] == 0){ //-1 because math.floor
           if (settings.adhanCheck){
             if (prayers[2] == langFajr && adhanSettings.adhanFajr.custom) mediaWindow.webContents.send('playFajr', adhanSettings);
@@ -340,23 +339,14 @@ function checkTime(){
             showNotification(langNow + ": " + prayers[2])
           }
         }
-    } 
+      } 
+    }
   }, 1000)
   setInterval(function(){
     if (today.getDate != (new Date).getDate){
       mainWindow.webContents.send('update');
     }
   }, 10000)
-}
-
-/**
-   * @param {Int} number 
-   * @returns A string of the  0 + number if it is < than 12 
-   */
- function show0(number){
-  let res
-  number < 10 ? res = "0" + number.toString() : res = number.toString()
-  return res
 }
 
 /**

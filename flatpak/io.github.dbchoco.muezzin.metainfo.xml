@@ -14,7 +14,6 @@
   <description>
     <p>
       Islamic prayer times (Adhan) and Qur'an application that is highly customizable, free and open source.
-      Muezzin supports many languages, advanced prayer options, shows the weather, sunnah times and many more.
     </p>
     <p>Features:</p>
     <ul>
@@ -58,24 +57,33 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="v0.2.2" date="2022-04-10">
+    <release version="v2.3.1" date="2022-04-14">
         <description>
           <p>Assalamou Alaykoum brothers/sisters and Ramadan Moubarak once again</p>
-          <p>General</p>
+          <p>New features:</p>
           <ul>
-              <li>Prayer times are now shown in the tray menu.</li>
-              <li>Settings are accessible from the tray menu (suggested by @iFarhaan).</li>
-              <li>Added Bengali language (by @iFarhaan).</li>
-              <li>Tray menu is now language aware.</li>
-              <li>Added a few fonts to the Qur'an reader.</li>
-              <li>Next prayer is now highlighted [and in bold (suggested by @iFarhaan)].</li>
+              <li>Progress bar indicating time left until prayer.</li>
+              <li>Custom Adhan for Fajr is now available (suggested by @iFarhaan).</li>
+              <li>New default Adhan by Ahmed Al-Nufeis</li>
+              <li>Qur'an audio enabled (per verse with auto-play and auto-scroll or individually).</li>
+              <li>Added Qur'an reciters to settings.</li>
+              <li>Qur'an media controls (Play - stop - volume).</li>
+          </ul>
+          <p>Small new features:</p>
+          <ul>
+              <li>Qur'an reader now shows a Bismillah line before the Surah.</li>
+              <li>Fixed Urdu translation (thanks @ShakesVision).</li>
+              <li>Pages titles changes depending on the language.</li>
+              <li>Added "About" menu button (suggested by @iFarhaan)</li>
+              <li>Added welcome message in terminal as well as time left until prayer.</li>
+              <li>File inputs are now shown as buttons (much prettier Alhamdoulillah).</li>
           </ul>
           <p>BugFixes</p>
           <ul>
-              <li>Fixed error startup message (end of file JSON).</li>
-              <li>Removed unnecessary modules and lines from package.json.</li>
-              <li>Fixed flatpak builder.</li>
-              <li>Fixed the "Enable Adhan" check in settings.</li>
+              <li>Fixed a bug that made calculation methods reset after each restart of the app (noticed by @iFarhaan) </li>
+              <li>Fixed bug where 1 page of the Qur'an was not loaded.</li>
+              <li>Window is now not hidden upon minimizing. (suggested by @iFarhaan)</li>
+              <li>Fixed some Arabic translations</li>
           </ul>    
           <p>If there is any problem, please contact me so that I can fix it. If you have any ideas, I'd gladly hear them. Jazzakoum Allahu khairan.</p>
         </description>
