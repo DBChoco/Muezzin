@@ -130,8 +130,12 @@ var dict = {
         'kelvin': 'Kelvin',
         'fahrenheit': 'Fahrenheit',
         'playDua': "Play Du'a after Adhan",
-        'open': "Open",
-        'quit': "Quit",
+        'open': 'Open',
+        'quit': 'Quit',
+        'ahmedNufeis': 'Ahmed Al-Nufais',
+        'customFajr': 'Custom Fajr Adhan',
+        'recitation': 'Recitation',
+        'reciter': 'Reciter',
     },
     fr: {
         'settings': 'Options', //settingsTitle
@@ -259,6 +263,10 @@ var dict = {
         'playDua': "Lancer Dua après Adhan",
         'open': "Ouvrir",
         'quit': "Quitter",
+        'ahmedNufeis': 'Ahmed Al-Nufais',
+        'customFajr': 'Adhan Fajr personnalisé',
+        'recitation': 'Recitation',
+        'reciter': 'Qari',
     },
     es: {
         'settings': 'Ajustes', //settingsTitle
@@ -386,6 +394,10 @@ var dict = {
         'playDua': "Lanzar Du'a después de Adhan",
         'open': "Abrir",
         'quit': "Cerrar",
+        'ahmedNufeis': 'Ahmed Al-Nufais',
+        'customFajr': 'Fajr adhan personalizado',
+        'recitation': 'Recitación',
+        'reciter': 'Recitador',
     },
     ar: {
         'settings': 'الإعدادات', //settingsTitle
@@ -513,6 +525,11 @@ var dict = {
         'playDua': "لعب الدعاء بعد الأذان",
         'open': "افتح",
         'quit': "اغلاق",
+        'ahmedNufeis': 'أحمد النفيس',
+        'customFajr': 'مخصص فجر آذان',
+        'recitation': 'التلاوة',
+        'reciter': 'القارئ',
+        
     },
     it: {
         'settings': 'Impostazioni', //settingsTitle
@@ -640,7 +657,11 @@ var dict = {
         'playDua': "Dua after the Adhan",
         'open': "Aprire",
         'quit': "Chiudere",
-    },
+        'ahmedNufeis': 'Ahmed Al-Nufais',
+        'customFajr': 'Fajr Adhan personalizzato',
+        'recitation': 'Recitazione',
+        'reciter': 'Qari',
+        },
     de: {
         'settings': 'Einstellungen', //settingsTitle
         'language': 'Sprache', //langText
@@ -766,6 +787,10 @@ var dict = {
         'playDua': "Dua nach dem Adhan",
         'open': "Öffnen",
         'quit': "Schließen",
+        'ahmedNufeis': 'Ahmed Al-Nufais',
+        'customFajr': 'Benutzerdefinierte Fajr Azan',
+        'recitation': 'Rezitation',
+        'reciter': 'Rezitator',
     },
     nl: {
         'settings': 'Instellingen', //settingsTitle
@@ -892,6 +917,10 @@ var dict = {
         'playDua': "Dua na de Adhan",
         'open': "Openen",
         'quit': "Sluiten",
+        'ahmedNufeis': 'Ahmed Al-Nufais',
+        'customFajr': 'Aangepaste fajr azan',
+        'recitation': 'Recitatie',
+        'reciter': 'Qari',
     },
     sv: {
         'settings': 'Inställningar', //settingsTitle
@@ -1019,6 +1048,10 @@ var dict = {
         'playDua': "Dua Efter Adhan",
         'open': "Öppen",
         'quit': "Stänga",
+        'ahmedNufeis': 'Ahmed Al-Nufais',
+        'customFajr': 'Anpassad Fajr Azan',
+        'recitation': 'Uppläsning',
+        'reciter': 'Recitatör',
     },
     no: {
         'settings': 'Innstillinger', //settingsTitle
@@ -1146,6 +1179,10 @@ var dict = {
         'playDua': "Dua etter Adhan",
         'open': "Åpen",
         'quit': "Lukk",
+        'ahmedNufeis': 'Ahmed Al-Nufais',
+        'customFajr': 'Tilpasset Fajr Azan',
+        'recitation': 'Recitering',
+        'reciter': 'Qari',
     },
     da: {
         'settings': 'Indstillinger', //settingsTitle
@@ -1273,6 +1310,10 @@ var dict = {
         'playDua': "Dua Efter Adhan",
         'open': "Åben",
         'quit': "Lukke",
+        'ahmedNufeis': 'Ahmed Al-Nufais',
+        'customFajr': 'Brugerdefineret Fajr Azan',
+        'recitation': 'Recitation',
+        'reciter': 'Qari',
     },
     ur: {
         'settings': 'ترتیبات', //settingsTitle
@@ -1400,6 +1441,10 @@ var dict = {
         'playDua': "اذان کے بعد دعا بجائیں",
         'open': "کھولیں",
         'quit': "بند کریں",
+        'ahmedNufeis': 'أحمد النفيس',
+        'customFajr': 'فجر کی اذان حسب ضرورت',
+        'recitation': 'تلاوت',
+        'reciter': 'تلاوت کرنے والا',
     },
     tr: {
         'settings': 'Ayarlar', //settingsTitle
@@ -1528,6 +1573,10 @@ var dict = {
         'playDua': "Adhan'dan sonra dua oyna",
         'open': "Açık",
         'quit': "Kapat",
+        'ahmedNufeis': 'Ahmed Al-Nufais',
+        'customFajr': 'Özel Fajr Adhan',
+        'recitation': 'Okuma',
+        'reciter': 'Qari',
     },
     bn: {
         'settings': 'সেটিংস', //settingsTitle
@@ -1637,7 +1686,7 @@ var dict = {
         'available': 'ডাউনলোড করার জন্য গিটহাব এ উপলব্ধ',
         'download': 'ডাউনলোড',
         'later': 'পরবর্তীতে',
-        'quran': "কোরআান",
+        'quran': "কোরআন",
         'font': 'ফন্ট',
         'fontsize': 'ফন্ট সাইজ',
         'translation': 'অনুবাদ',
@@ -1656,5 +1705,9 @@ var dict = {
         'playDua': "আজানের পর দোয়া",
         'open': "খুলুন",
         'quit': "বন্ধ করুন",
+        'ahmedNufeis': 'Ahmed Al-Nufais',
+        'customFajr': 'কাস্টম ফজর আজান',
+        'recitation': 'তিলাওয়াত',
+        'reciter': 'তিলাওয়াতকারী',
     },
 }

@@ -715,6 +715,11 @@ function loadLanguage(lang){
   document.getElementById("celsius").innerHTML  = window.api.getLanguage(lang, "celsius");
   document.getElementById("kelvin").innerHTML  = window.api.getLanguage(lang, "kelvin");
   document.getElementById("fahrenheit").innerHTML  = window.api.getLanguage(lang, "fahrenheit");  
+
+  document.getElementById("adhanAhmed").innerText = window.api.getLanguage(lang, "adhan") + " - " + window.api.getLanguage(lang, "ahmedNufeis")
+  document.getElementById("customAdhanFajrText").innerHTML  = window.api.getLanguage(lang, "customFajr"); 
+  document.getElementById("recitationText").innerHTML  = window.api.getLanguage(lang, "recitation"); 
+  document.getElementById("reciterText").innerHTML  = window.api.getLanguage(lang, "reciter"); 
 }
 
 

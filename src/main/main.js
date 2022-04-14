@@ -928,12 +928,12 @@ function trayPrayerTimes(){
     { label: language.loadTrans(lang, 'open'), click:  function(){
       mainWindow.show(); }},
     { type: 'separator' },
-    { label: langFajr + ": " + changeclockDisplay(prayerTimes.fajr, timeDisplay.clockFormat), click: function(){}},
-    { label: langSunrise + ": " + changeclockDisplay(prayerTimes.sunrise, timeDisplay.clockFormat)},
-    { label: langDhuhr + ": " + changeclockDisplay(prayerTimes.dhuhr, timeDisplay.clockFormat)},
-    { label: langAsr + ": " + changeclockDisplay(prayerTimes.asr, timeDisplay.clockFormat)},
-    { label: langMaghrib + ": " + changeclockDisplay(prayerTimes.maghrib, timeDisplay.clockFormat)},
-    { label: langIsha + ": " + changeclockDisplay(prayerTimes.isha, timeDisplay.clockFormat)},
+    { label: "Fajr: " + changeclockDisplay(prayerTimes.fajr, timeDisplay.clockFormat), click: function(){}},
+    { label: "Sunrise: " + changeclockDisplay(prayerTimes.sunrise, timeDisplay.clockFormat)},
+    { label: "Dhuhr: " + changeclockDisplay(prayerTimes.dhuhr, timeDisplay.clockFormat)},
+    { label: "Asr: " + changeclockDisplay(prayerTimes.asr, timeDisplay.clockFormat)},
+    { label: "Maghrib: " + changeclockDisplay(prayerTimes.maghrib, timeDisplay.clockFormat)},
+    { label: "Isha: " + changeclockDisplay(prayerTimes.isha, timeDisplay.clockFormat)},
     { type: 'separator' },
     { label: language.loadTrans(lang, 'settings'), click:  function(){
       mainWindow.loadFile('src/settings/settings.html')
