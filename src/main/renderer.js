@@ -237,7 +237,13 @@ function loadNextPrayer(){
 
 function setProgress(){
   let porcent
-  athanProgress != 0 ? porcent = athanProgress : porcent = ((new Date - prayers[0]) /  (prayers[1] - prayers[0])) * 100;
+  if (athanProgress != 0){
+    porcent = athanProgress
+  } else{
+    let now = new Date()
+    if (now >= prayers[0]) porcent = ((now - prayers[0]) /  (prayers[1] - prayers[0])) * 100;
+    else porcent = ((((1000 * 60 * 60 * 24) - prayers[0].getTime()) + now.getTime()) /  (prayers[1] - prayers[0])) * 100;
+  } 
   document.getElementById("prayerProgress").style.width = porcent + "%"
 }
 
@@ -245,7 +251,7 @@ function nextPrayer(){
   var now = new Date();
   var currentPrayer, nextPrayer, currentName, nextName;
   if (prayerTimes != undefined && langFajr != undefined && tommorowPrayers != undefined){
-    if (now >= prayerTimes.isha){
+    if (now >= prayerTimes.isha || now < prayerTimes.fajr){
       currentPrayer = prayerTimes.isha;
       nextPrayer = tommorowPrayers.fajr
       currentName = langIsha

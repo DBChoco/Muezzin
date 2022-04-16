@@ -1,17 +1,7 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow, ipcMain, Tray, Menu, Notification, nativeImage, net, shell} = require('electron')
 const path = require('path')
-const Store = require('electron-store');
-const store = new Store();
-const adhan = require('adhan')
-const language = require('../common/language.js')
-const AutoLaunch = require('auto-launch');
-var autoLauncher = new AutoLaunch({
-  name: "Muezzin", 
-  mac:{
-    useLaunchAgent: true
-  }
-});
+require('v8-compile-cache');
 
 let tray = null
 let mainWindow, mediaWindow;
@@ -233,8 +223,19 @@ app.whenReady().then(() => {
   checkTime();  
 })
 
-console.debug("** Launching Muezzin v" + app.getVersion() + " **\n" + "Assalamou Alaykoum wa Rahmatou Lahi wa Baraketu")
+const Store = require('electron-store');
+const store = new Store();
+const adhan = require('adhan')
+const language = require('../common/language.js')
+const AutoLaunch = require('auto-launch');
+var autoLauncher = new AutoLaunch({
+  name: "Muezzin", 
+  mac:{
+    useLaunchAgent: true
+  }
+});
 
+console.debug("** Launching Muezzin v" + app.getVersion() + " **\n" + "Assalamou Alaykoum wa Rahmatou Lahi wa Baraketu")
 
 var lat, lon, calculationMethod, prayerTimes, adhanPath, adhanSettings;
 var customValues, delay;

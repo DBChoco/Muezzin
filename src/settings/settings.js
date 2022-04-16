@@ -1,4 +1,5 @@
-var timeDisplay, language, adhanFile, bgImage;
+var timeDisplay, language, adhanFile, bgImage, sunnahTimes, settings, weather, 
+calculationMethod, quran;
 var lat,lon;
 var fromQuran = false;
 
@@ -23,25 +24,41 @@ async function saveSettings(){
   await window.api.setToStore('latitude', document.getElementById("latInput").value);
   await window.api.setToStore('longitude', document.getElementById("lonInput").value);
   await window.api.setToStore("timezone", document.getElementById("tzlist").value)
-  await window.api.setToStore("calculationMethod.calcMethod", document.getElementById("calcMethodList").value)
-  await window.api.setToStore("calculationMethod.madhab", document.getElementById("madhabList").value)
-  await window.api.setToStore("calculationMethod.hlr", document.getElementById("highLatitudeRuleList").value)
-  await window.api.setToStore("calculationMethod.pcr", document.getElementById("polarCircleResolutionList").value)
-  await window.api.setToStore("calculationMethod.shafaq", document.getElementById("shafaqList").value)
   await window.api.setToStore("language", document.getElementById("langlist").value)
-  await window.api.setToStore("weather.units", document.getElementById("unitList").value)
   await window.api.setToStore('darkMode', document.getElementById("darkModeCheck").checked)
-  await window.api.setToStore('settings.notifCheck', document.getElementById("notifCheck").checked)
-  await window.api.setToStore('settings.adhanCheck', document.getElementById("adhanCheck").checked)
-  await window.api.setToStore('settings.systray', document.getElementById("systrayCheck").checked)
-  await window.api.setToStore('settings.startupSound', document.getElementById("startUpSound").checked)
-  await window.api.setToStore('settings.autoStart', document.getElementById("autoStartCheck").checked)
-  await window.api.setToStore('settings.minStart', document.getElementById("minStartCheck").checked)
-  await window.api.setToStore('sunnahTimes.motn', document.getElementById("MOTNCheck").checked)
-  await window.api.setToStore("sunnahTimes.totn", document.getElementById("TOTNCheck").checked)
   await window.api.setToStore("timeDisplay.showSeconds", document.getElementById("showSeconds").checked)
-  await window.api.setToStore("weather.enabled", document.getElementById("weatherCheck").checked)
 
+  var newCalculationMethod = {
+    calcMethod: document.getElementById("calcMethodList").value,
+    madhab: document.getElementById("madhabList").value,
+    hlr: document.getElementById("highLatitudeRuleList").value,
+    pcr: document.getElementById("polarCircleResolutionList").value,
+    shafaq:  document.getElementById("shafaqList").value
+  }
+
+  var newSettings = {
+    startupSound: document.getElementById("startUpSound").checked,
+    notifCheck: document.getElementById("notifCheck").checked,
+    systray: document.getElementById("systrayCheck").checked,
+    adhanCheck: document.getElementById("adhanCheck").checked,
+    autoStart: document.getElementById("autoStartCheck").checked,
+    minStart: document.getElementById("minStartCheck").checked
+  }
+
+  var newSunnahTimes = {
+    motn: document.getElementById("MOTNCheck").checked,
+    totn: document.getElementById("TOTNCheck").checked
+  }
+
+  var newWeather = {
+    enabled: document.getElementById("weatherCheck").checked,
+    units: document.getElementById("unitList").value
+  }
+
+  if (calculationMethod != newCalculationMethod) await window.api.setToStore("calculationMethod", newCalculationMethod)
+  if (settings != newSettings) await window.api.setToStore("settings", newSettings)
+  if (sunnahTimes != newSunnahTimes) await window.api.setToStore("sunnahTimes", newSunnahTimes)
+  if (weather != newWeather) await window.api.setToStore("weather", newWeather)
 
   await saveAdhan()
   await saveBgImage()
@@ -60,7 +77,7 @@ async function loadSettings(){
   var darkMode = await window.api.getFromStore('darkMode', false);
   language = await window.api.getFromStore('language', 'en');
 
-  var sunnahTimes = await window.api.getFromStore("sunnahTimes", {
+  sunnahTimes = await window.api.getFromStore("sunnahTimes", {
     motn: false,
     totn: false
   })
@@ -71,7 +88,7 @@ async function loadSettings(){
     showSeconds: true
   })
 
-  var settings = await window.api.getFromStore("settings", {
+  settings = await window.api.getFromStore("settings", {
     startupSound: false,
     notifCheck: true,
     systray: true,
@@ -80,12 +97,12 @@ async function loadSettings(){
     minStart: false
   })
 
-  var weather = await window.api.getFromStore("weather", {
+  weather = await window.api.getFromStore("weather", {
     enabled: true,
     units: "C"
   })
 
-  var calculationMethod = await window.api.getFromStore("calculationMethod", {
+  calculationMethod = await window.api.getFromStore("calculationMethod", {
     calcMethod: 'MWL',
     madhab: 'Shafi',
     hlr: 'TA',
@@ -429,7 +446,6 @@ function disableAdhanListener(){
     disableAdhan()
   })
   
-
   function disableAdhan(){
     document.getElementById("duaCheck").disabled = !adhanCheck.checked
     document.getElementById("customAdhan").disabled = !adhanCheck.checked
@@ -861,7 +877,7 @@ async function loadQuranSettings(){
   let showTransliterationDiv = document.getElementById("showTransliterationCheck")
   let transliFontSizeDiv = document.getElementById("transliterationFontSize")
 
-  let quran = await window.api.getFromStore('quran', {
+  quran = await window.api.getFromStore('quran', {
     font: "text_uthmani",
     fontsize: 42,
     recitation:{
@@ -1036,7 +1052,7 @@ async function loadQuranSettings(){
 
 async function saveQuran(){
   let volume = await window.api.getFromStore('quran.recitation.volume', 50)
-  let quran = {
+  let newQuran = {
     font: document.getElementById("fontList").value,
     fontsize: document.getElementById("quranFontSize").value,
     recitation:{
@@ -1057,7 +1073,7 @@ async function saveQuran(){
         fontsize: document.getElementById("transliterationFontSize").value
     },
   }
-  await window.api.setToStore("quran", quran)
+  if (quran != newQuran) await window.api.setToStore("quran", newQuran)
 }
 
 function loadQueryString(){
