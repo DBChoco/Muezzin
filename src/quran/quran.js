@@ -48,6 +48,33 @@ function generateVerse(number, audioURL){
     document.getElementById("reader").appendChild(verseContainer)
 }
 
+//Generates the div for 1 single verse. It goes into the local quran.json for that.
+//Calls the function to generate the arabText as well
+function generateOfflineVerse(number, verse){
+    let verseContainer = createDiv("verseContainer")
+
+    var sidebarDiv = createDiv("sidebar")
+    var verseNumberDiv = createDiv("verseNumber")
+    var textContainerDiv = createDiv("textContainer")
+    var arabTextDiv = createDiv("arabText")
+    arabTextDiv.id = "verse" + number
+    arabTextDiv.style.fontFamily = "text_uthmani"
+    arabTextDiv.style.fontSize = quran.fontsize +"px";
+
+    verseNumberDiv.innerHTML = number;
+    arabTextDiv.innerHTML = verse;
+
+    sidebarDiv.appendChild(verseNumberDiv)
+    textContainerDiv.appendChild(arabTextDiv)
+
+    textContainerDiv.id = "textContainer" + number
+
+    verseContainer.appendChild(sidebarDiv)
+    verseContainer.appendChild(textContainerDiv)
+
+    document.getElementById("reader").appendChild(verseContainer)
+}
+
 
 function playAudio(url){
     if (!audioElement.paused) audioElement.pause()
@@ -115,7 +142,26 @@ async function loadSurah(number){
         });
         }catch(e){
             console.error("Couldn't load the translation: " + e)
-            break; //If the user switches Surahs too fast, this saves lives.
+            document.getElementById("reader").innerHTML = ""
+            addBismillahTitle(number)
+            try{
+                response = await fetch('../../ressources/quran/quran_en.json'
+                , {method: "GET"})
+                .then(res => res.json())
+                .then((json) => {
+                    console.log(json) 
+                    let verseNumber = 1;
+                    for (verse of json[number]["verses"]){
+                        generateOfflineVerse(number + ":" + verseNumber, json[number-1]["verses"][verseNumber]["text"])
+                        if (quran.translation.show) addOfflineLatinText(number + ":" + verseNumber, json[number-1]["verses"][verseNumber]["translation"])
+                        verseNumber ++;
+                    }
+                });
+            }catch(e){
+                console.error("Couldn't load the offline translation: " + e)
+            }
+
+            break; //Get out of the loop, because it is not needed offline
         }
     }
 }
@@ -159,6 +205,17 @@ function addLatinText(verse){
     textContainerDiv.appendChild(latinTextDiv)
 }
 
+//Takes a verse made up of words and adds them separatly to the verseContainer
+//Possibility to add mouseOver events later on.
+function addOfflineLatinText(key, verse){
+    var textContainerDiv = document.getElementById("textContainer" + key)
+    var latinTextDiv = createDiv("latinText")
+    
+    latinTextDiv.innerText = verse
+
+    latinTextDiv.style.fontSize = quran.transliteration.fontsize + "px";
+    textContainerDiv.appendChild(latinTextDiv)
+}
 
 //Takes a verse and loads the translation to the textContainerDiv
 function addTranslation(verse){
