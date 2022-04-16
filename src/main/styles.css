@@ -43,6 +43,7 @@ body{
 #dateLoc{
     font-size: 3vh;
     margin-bottom: 5vh;
+    padding: 0 0.6vh 0 0.6vh;
 }
 
 #timeLeft{

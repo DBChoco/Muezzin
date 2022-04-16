@@ -1,10 +1,3 @@
-// This file is required by the index.html file and will
-// be executed in the renderer process for that window.
-// No Node.js APIs are available in this process because
-// `nodeIntegration` is turned off. Use `preload.js` to
-// selectively enable features needed in the rendering
-// process.
-
 var lat = 0;
 var lon = 0;
 
@@ -104,13 +97,17 @@ function changeclockDisplay(date, timeformat){
 }
 
 function loadHijriDate(){
+  console.log(
+      )
   var hijri = true;
   document.getElementById("dateLoc").innerText = (new Date).toLocaleDateString(lang, 
     { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).capitalize()
   hijri = true;
   setInterval(function() {
     if (hijri){
-      document.getElementById("dateLoc").innerText = new Intl.DateTimeFormat(lang + '-TN-u-ca-islamic', 
+      let hijriDay = new Intl.DateTimeFormat(lang + '-TN-u-ca-islamic', {day: 'numeric'}).format(Date.now())
+      console.log(hijriDay)
+      document.getElementById("dateLoc").innerHTML = loadMoonIcon(hijriDay) + "  " + new Intl.DateTimeFormat(lang + '-TN-u-ca-islamic', 
       {day: 'numeric', month: 'long',weekday: 'long',year : 'numeric'}).format(Date.now()).capitalize();
       hijri = false;
     }
@@ -711,4 +708,74 @@ function loadWeatherIcon(weather, time = "day"){
   else if (weather == 804) return '<i class="wi wi-cloudy"></i>'
  
   else return '<i class="wi wi-na"></i>'
+}
+
+/**
+ * Depending on the hijri day, it loads the icon moon
+ * @param {String} day 
+ * @returns '<i class="wi wi-whatever-moon"></i>'
+ */
+function loadMoonIcon(day){
+  switch (day){
+    case "1":
+      return '<i class="wi wi-moon-new"></i>'
+    case "2":
+        return '<i class="wi wi-moon-waxing-crescent-1"></i>'
+    case "3":
+      return '<i class="wi wi-moon-waxing-crescent-2"></i>'
+    case "4":
+      return '<i class="wi wi-moon-waxing-crescent-3"></i>'
+    case "5":
+      return '<i class="wi wi-moon-waxing-crescent-4"></i>'
+    case "6":
+      return '<i class="wi wi-moon-waxing-crescent-5"></i>'
+    case "7":
+      return '<i class="wi wi-moon-waxing-crescent-6"></i>'
+    case "8":
+      return '<i class="wi wi-moon-first-quarter"></i>'
+    case "9":
+      return '<i class="wi wi-moon-waxing-gibbous-1"></i>'
+    case "10":
+      return '<i class="wi wi-moon-waxing-gibbous-2"></i>'
+    case "11":
+      return '<i class="wi wi-moon-waxing-gibbous-3"></i>'
+    case "12":
+      return '<i class="wi wi-moon-waxing-gibbous-4"></i>'
+    case "13":
+      return '<i class="wi wi-moon-waxing-gibbous-5"></i>'
+    case "14":
+      return '<i class="wi wi-moon-waxing-gibbous-6"></i>'
+    case "15":
+      return '<i class="wi wi-moon-full"></i>'
+    case "16":
+      return '<i class="wi wi-moon-waning-gibbous-1"></i>'
+    case "17":
+      return '<i class="wi wi-moon-waning-gibbous-2"></i>'
+    case "18":
+      return '<i class="wi wi-moon-waning-gibbous-3"></i>'
+    case "19":
+      return '<i class="wi wi-moon-waning-gibbous-4"></i>'
+    case "20":
+      return '<i class="wi wi-moon-waning-gibbous-5"></i>'
+    case "21":
+      return '<i class="wi wi-moon-waning-gibbous-6"></i>'
+    case "22":
+      return '<i class="wi wi-wi-moon-third-quarter"></i>'
+    case "23":
+      return '<i class="wi wi-moon-waning-crescent-1"></i>'
+    case "24":
+      return '<i class="wi wi-moon-waning-crescent-2"></i>'
+    case "25":
+      return '<i class="wi wi-moon-waning-crescent-3"></i>'
+    case "26":
+      return '<i class="wi wi-moon-waning-crescent-4"></i>'
+    case "27":
+      return '<i class="wi wi-moon-waning-crescent-5"></i>'
+    case "28":
+      return '<i class="wi wi-moon-waning-crescent-6"></i>'
+    case "29":
+      return '<i class="wi wi-moon-waning-crescent-6"></i>'
+    case "30":
+      return '<i class="wi wi-moon-new"></i>'
+  }
 }
