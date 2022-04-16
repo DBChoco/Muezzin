@@ -1,7 +1,7 @@
 var lat = 0;
 var lon = 0;
 
-var timezone, timeFormat, shortTimeFormat, clockDisplay, lang;
+var timezone, timeFormat, shortTimeFormat, lang, dateFormat;
 
 var prayerTimes, calPrayers, tommorowPrayers, sunnahTimes, prayers;
 var datePick, volume;
@@ -22,19 +22,20 @@ window.api.send('prayers');
 
 
 window.addEventListener('loadedSettings', () => { 
-  datePick = document.getElementById('calendar');
-  getTomorrowPrayers()
+  loadBackgroundImage()
+  
   loadClock();
   loadHijriDate();
+
+  datePick = document.getElementById('calendar');
   loadCalendar()
+
+  getTomorrowPrayers()
   loadPrayers()
-  volumeSlider()
-  loadBackgroundImage()
-  setKeyPress()
-  setupButtonListeners()
-  setupUpdateModal()
-  setupWeather()
   prayers = nextPrayer();
+
+  setupWeather()
+
   const interval = setInterval(function() {
     loadClock()
     loadNextPrayer()
@@ -43,6 +44,11 @@ window.addEventListener('loadedSettings', () => {
 })
 
 window.addEventListener('loadedUI', () => {
+  volumeSlider()
+  setKeyPress()
+  setupButtonListeners()
+  setupUpdateModal()
+
   setProgress()
   loadedUI = true;
   hideLoader()
@@ -97,8 +103,6 @@ function changeclockDisplay(date, timeformat){
 }
 
 function loadHijriDate(){
-  console.log(
-      )
   var hijri = true;
   document.getElementById("dateLoc").innerText = (new Date).toLocaleDateString(lang, 
     { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).capitalize()
@@ -106,7 +110,6 @@ function loadHijriDate(){
   setInterval(function() {
     if (hijri){
       let hijriDay = new Intl.DateTimeFormat(lang + '-TN-u-ca-islamic', {day: 'numeric'}).format(Date.now())
-      console.log(hijriDay)
       document.getElementById("dateLoc").innerHTML = loadMoonIcon(hijriDay) + "  " + new Intl.DateTimeFormat(lang + '-TN-u-ca-islamic', 
       {day: 'numeric', month: 'long',weekday: 'long',year : 'numeric'}).format(Date.now()).capitalize();
       hijri = false;
@@ -145,17 +148,32 @@ Object.defineProperty(String.prototype, 'capitalize', {
 
 //Picks the date from the calendar and adds a listener to the calendar, when the dates changes it sends a reuquest for time prayers.
 function loadCalendar(){
-    Date.prototype.toDateInputValue = (function() {
-      var local = new Date(this);
-      local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-      return local.toJSON().slice(0,10);
-    });
-    datePick.value = new Date().toDateInputValue();
-    //window.api.send('date-request', datePick.value);
-    datePick.addEventListener('change', function(){
-        window.api.send('date-request', datePick.value);
+  Date.prototype.toDateInputValue = (function() {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+  });
+  datePick.value = new Date().toDateInputValue();
+  //window.api.send('date-request', datePick.value);
+  datePick.addEventListener('change', function(){
+      window.api.send('date-request', datePick.value);
+  })
+
+  
+  datePick.lang = lang
+
+  function setupCalendarButton(){
+    setCalendarButtonValue()
+    calendarButton.addEventListener("click", function(){
+      datePick.showPicker() //This is currently not supported.
     })
   }
+
+  function setCalendarButtonValue(){
+    let date = datePick.value.split("-")
+    if (dateFormat == "DD/MM/YYYY") calendarButton.value = date[2] + "/" + date[1] + "/" + date[0]
+  }
+}
 
 //Load all the prayers of the day and shows them on the screen
 function loadPrayers(){
@@ -343,9 +361,7 @@ function msToTime(duration){ //https://stackoverflow.com/questions/19700283/how-
     minutes = Math.floor((duration / (1000 * 60)) % 60),
     hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
   if (seconds == 60){
-    if (minutes == 0){
-      minutes = 1;
-    }
+    minutes ++;
     seconds = 00;
   }
   var res = [hours, minutes, seconds]
@@ -423,7 +439,7 @@ async function loadClockDisplay(){
     dateFormat: 'DD/MM/YYYY',
     showSeconds: true
   })
-
+  dateFormat = clockDisplay.dateFormat
   timeFormat = "hh:mm"
   if (clockDisplay.showSeconds){
     timeFormat += ":ss"

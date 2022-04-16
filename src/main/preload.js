@@ -3,8 +3,8 @@
 
 const { contextBridge, ipcRenderer} = require('electron')
 const settings = require('../common/common.js')
-const language = require('../common/language.js')
-const shell = require('electron').shell
+const language = require('../common/language.js');
+const shell = require('electron').shell;
 
 contextBridge.exposeInMainWorld( 'api', {
     send: ( channel, data ) => ipcRenderer.invoke( channel, data ),
@@ -15,4 +15,3 @@ contextBridge.exposeInMainWorld( 'api', {
     getLanguage: (lang, value) => language.loadTrans(lang, value),
     openExternal: (link) => shell.openExternal(link)
 })
-
