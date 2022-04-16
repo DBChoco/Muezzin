@@ -245,7 +245,7 @@ Muezzin is a growing project and hopefully it'll grow even more inshaAllah. That
 
 If you want to help and can do so, here is a Paypal link: 
 
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QT54MSJR6QU7Y">
+<a href="https://www.paypal.com/donate/?hosted_button_id=DQFLG3KTZ9WU4">
   <img src="https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png" alt="Donate with PayPal" width="200px"/>
 </a>
 
