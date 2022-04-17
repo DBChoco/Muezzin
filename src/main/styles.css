@@ -1,9 +1,9 @@
-/* styles.css */
+@import url("../../ressources/fonts/fonts.css");
+
 header{
     display: flex;
     flex-direction: row;
 }
-
 
 body{
     background-repeat: no-repeat;

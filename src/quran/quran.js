@@ -11,6 +11,7 @@ window.addEventListener('DOMContentLoaded', () => {
     loadQuranList();
     setupPreviousNextButtons()
     setupPlayStopButtons()
+    loadFont()
 })
 
 //Generates the div for 1 single verse.
@@ -395,4 +396,10 @@ function setupPlayStopButtons(){
         quran.recitation.volume = document.getElementById("volSlider").value
         console.log(audioElement.volume)
     })
+}
+
+function loadFont(){
+    if (lang != "ar" && lang != "bn"){
+        document.body.style.fontFamily = 'quicksand'
+    }
 }

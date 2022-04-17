@@ -36,6 +36,8 @@ window.addEventListener('loadedSettings', () => {
 
   setupWeather()
 
+  loadFont()
+
   const interval = setInterval(function() {
     loadClock()
     loadNextPrayer()
@@ -109,7 +111,7 @@ function loadHijriDate(){
   hijri = true;
   setInterval(function() {
     if (hijri){
-      let hijriDay = new Intl.DateTimeFormat(lang + '-TN-u-ca-islamic', {day: 'numeric'}).format(Date.now())
+      let hijriDay = new Intl.DateTimeFormat('en-TN-u-ca-islamic', {day: 'numeric'}).format(Date.now())
       document.getElementById("dateLoc").innerHTML = loadMoonIcon(hijriDay) + "  " + new Intl.DateTimeFormat(lang + '-TN-u-ca-islamic', 
       {day: 'numeric', month: 'long',weekday: 'long',year : 'numeric'}).format(Date.now()).capitalize();
       hijri = false;
@@ -797,5 +799,11 @@ function loadMoonIcon(day){
       return '<i class="wi wi-moon-waning-crescent-6"></i>'
     case "30":
       return '<i class="wi wi-moon-new"></i>'
+  }
+}
+
+function loadFont(){
+  if (lang != "ar" && lang != "bn"){
+    document.body.style.fontFamily = 'quicksand'
   }
 }

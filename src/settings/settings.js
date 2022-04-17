@@ -13,6 +13,7 @@ window.addEventListener('DOMContentLoaded', () => {
   setKeyPress();
   addLangListener()
   loadQueryString()
+  loadFont()
 })
 
 /**
@@ -1093,4 +1094,10 @@ function addChangeListeners(){
   weatherCheck.addEventListener("change", function(){
     unitList.disabled = !weatherCheck.checked;
   })
+}
+
+function loadFont(){
+  if (language != "ar" && language != "bn"){
+    document.body.style.fontFamily = 'quicksand'
+  }
 }

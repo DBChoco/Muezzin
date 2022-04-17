@@ -1,3 +1,5 @@
+@import url("../../ressources/fonts/fonts.css");
+
 #settingsTitle{
   padding: 30px;
   font-size: 72px;
@@ -46,6 +48,7 @@
   border-width: 2px;
   padding-right: 20px;
   font-size: 26px;
+  font-weight: bold;
 }
 
  /* Style the button that is used to open and close the collapsible content */

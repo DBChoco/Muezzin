@@ -1,4 +1,4 @@
-@import url("../../ressources/fonts/arabic/fonts.css");
+@import url("../../ressources/fonts/fonts.css");
 
 header{
     text-align: center;
@@ -73,10 +73,12 @@ header{
     flex-wrap: wrap;
     margin-bottom: 15px;
     font-style: italic;
+    font-weight: 600;
 }
 
 .transText{
     margin-bottom: 20px;
+    font-weight: 600;
 }
 
 .sidebar{
