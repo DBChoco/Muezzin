@@ -364,6 +364,10 @@ function msToTime(duration){ //https://stackoverflow.com/questions/19700283/how-
     minutes ++;
     seconds = 00;
   }
+  if (minutes == 60){
+    hours ++;
+    minutes = 00;
+  }
   var res = [hours, minutes, seconds]
   return res;
 }

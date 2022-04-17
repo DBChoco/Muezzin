@@ -27,6 +27,7 @@ body{
     font-size: 10vh;
     margin-top: 4vh;
     padding: 0 1vh 0 1vh;
+    border-radius: 0.7vh;
 }
 
 #title{
@@ -44,11 +45,13 @@ body{
     font-size: 3vh;
     margin-bottom: 5vh;
     padding: 0 0.6vh 0 0.6vh;
+    border-radius: 0.4vh;
 }
 
 #timeLeft{
     font-size: 6vh;
     padding: 0 0.8vh 0 0.8vh;
+    border-radius: 0.6vh;
 }
 
 .grid-container {
@@ -169,5 +172,5 @@ body{
     width: 48vh;
     margin: 0 auto 0 auto;
     height: 8px;
-    border-radius: 0;
+    border-radius: 0.5vh 0.5vh 0 0 ;
 }
