@@ -22,7 +22,7 @@
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.63",
     "electron": "^17.0.0",
-    "electron-builder": "^22.14.13"
+    "electron-builder": "^22.5.1"
   },
   "dependencies": {
     "adhan": "^4.3.1",
