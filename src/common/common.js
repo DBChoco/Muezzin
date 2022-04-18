@@ -16,7 +16,7 @@ module.exports = {
           document.body.style.borderColor = "#FFFFFF";
           //document.body.style.backgroundColor = "#212121";
           for (let element of shaders){
-            element.style.backgroundColor = 'rgba(0, 0, 0, 0.5)'
+            element.style.backgroundColor = 'rgba(7, 7, 7, 0.5)'
           }
         }
         else{

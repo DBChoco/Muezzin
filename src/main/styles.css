@@ -60,6 +60,7 @@ body{
     display: grid;
     grid-template-columns:  auto auto;
     width: 48vh;
+    border-radius: 0 0 1vh 1vh;
 }
 
 .grid-item {
@@ -92,6 +93,7 @@ body{
 .box{
     margin: auto 0 auto 0;
     align-items: center;
+    
 }
 
 #calendar{

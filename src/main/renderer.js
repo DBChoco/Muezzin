@@ -38,6 +38,7 @@ window.addEventListener('loadedSettings', () => {
 
   loadFont()
 
+
   const interval = setInterval(function() {
     loadClock()
     loadNextPrayer()
@@ -50,7 +51,7 @@ window.addEventListener('loadedUI', () => {
   setKeyPress()
   setupButtonListeners()
   setupUpdateModal()
-
+  setupBorders()
   setProgress()
   loadedUI = true;
   hideLoader()
@@ -258,8 +259,9 @@ function setProgress(){
     porcent = athanProgress
   } else{
     let now = new Date()
-    if (now >= prayers[0]) porcent = ((now - prayers[0]) /  (prayers[1] - prayers[0])) * 100;
-    else porcent = ((((1000 * 60 * 60 * 24) - prayers[0].getTime()) + now.getTime()) /  (prayers[1] - prayers[0])) * 100;
+    if (prayers[2] != langIsha) porcent = ((now - prayers[0]) /  (prayers[1] - prayers[0])) * 100;
+    else porcent = ((((1000 * 60 * 60 * 24) - prayers[0].getTime()) + now.getTime()) /  (((1000 * 60 * 60 * 24) - prayers[0].getTime()) + prayers[1].getTime())) * 100;
+    //save : porcent = ((((1000 * 60 * 60 * 24) - prayers[0].getTime()) + now.getTime()) /  (prayers[1] - prayers[0])) * 100;
   } 
   document.getElementById("prayerProgress").style.width = porcent + "%"
 }
@@ -268,7 +270,7 @@ function nextPrayer(){
   var now = new Date();
   var currentPrayer, nextPrayer, currentName, nextName;
   if (prayerTimes != undefined && langFajr != undefined && tommorowPrayers != undefined){
-    if (now >= prayerTimes.isha || now < prayerTimes.fajr){
+    if (now >= prayerTimes.isha){
       currentPrayer = prayerTimes.isha;
       nextPrayer = tommorowPrayers.fajr
       currentName = langIsha
@@ -300,9 +302,9 @@ function nextPrayer(){
         nextName = langDhuhr
     }
     else{
-        currentPrayer = prayerTimes.fajr;
+        currentPrayer = prayerTimes.isha; //Should go look at yerterday's prayer, but for the progress bar, this is enough.
         nextPrayer = prayerTimes.fajr;
-        currentName = langFajr
+        currentName = langIsha
         nextName = langFajr
     }
     if (selectedPrayer != nextName) selectPrayer(nextName)
@@ -313,7 +315,7 @@ function nextPrayer(){
 
 function selectPrayer(prayerName){
   selectedPrayer = prayerName
-  var color = darkmode? "rgba(0, 0, 0, 0.7)" : "rgba(255, 255, 255, 0.7)"
+  var color = darkmode? "rgba(7, 7, 7, 0.7)" : "rgba(255, 255, 255, 0.7)"
   switch(prayerName){
     case langFajr:
       highlight("isha", "fajr")
@@ -408,10 +410,12 @@ function loadHandles(){
       if (calPrayers.date.getDate() == new Date().getDate() && calPrayers.date.getMonth() == new Date().getMonth() && calPrayers.date.getFullYear() == new Date().getFullYear()){
         sunnahTimes.motn =  motnCheckOG;
         sunnahTimes.totn =  totnCheckOG;
+        setupBorders()
       }
       else{
         sunnahTimes.motn = false;
         sunnahTimes.totn = false;
+        setupBorders(true)
       }
       setupSunnah();
       loadPrayers();
@@ -805,5 +809,26 @@ function loadMoonIcon(day){
 function loadFont(){
   if (lang != "ar" && lang != "bn"){
     document.body.style.fontFamily = 'quicksand'
+  }
+}
+
+function setupBorders(inCalendar = false){
+  if (!inCalendar){
+    document.getElementById("prayerGrid").style.borderRadius = "0 0 1vh 1vh"
+    if (!totnCheckOG && !motnCheckOG){
+      document.getElementById("isha").style.borderBottom = "none"
+      document.getElementById("ishaTime").style.borderBottom = "none"
+    }
+    else if (totnCheckOG){
+      document.getElementById("totn").style.borderBottom = "none"
+      document.getElementById("totnTime").style.borderBottom = "none"
+    }
+    else {
+      document.getElementById("motn").style.borderBottom = "none"
+      document.getElementById("motnTime").style.borderBottom = "none"
+    }
+  }
+  else{
+    document.getElementById("prayerGrid").style.borderRadius = "0"
   }
 }
