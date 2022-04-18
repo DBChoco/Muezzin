@@ -149,7 +149,7 @@ The app also contains a Qur'an reader that is able to show translations and tran
 * [Bootstrap-dark-5](https://vinorodrigues.github.io/bootstrap-dark-5/)
 * [adhan-js](https://github.com/batoulapps/adhan-js)
 * [FontAwesome](https://fontawesome.com/)
-* [Quran.com API](https://quran.api-docs.io)
+* [Quran.com API](https://quran.api-docs.io) & [Quran-JSON](https://github.com/risan/quran-json)
 * [OpenWeather](https://openweathermap.org/)
 * [Weather Icons](https://github.com/erikflowers/weather-icons)
 * Many electron modules
