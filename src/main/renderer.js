@@ -315,7 +315,7 @@ function nextPrayer(){
 
 function selectPrayer(prayerName){
   selectedPrayer = prayerName
-  var color = darkmode? "rgba(7, 7, 7, 0.7)" : "rgba(255, 255, 255, 0.7)"
+  var color = darkmode? "rgba(7, 7, 7, 0.95)" : "rgba(255, 255, 255, 0.95)"
   switch(prayerName){
     case langFajr:
       highlight("isha", "fajr")
@@ -496,10 +496,6 @@ async function loadBackgroundImage(){
     document.body.style.backgroundImage = "url('" + bgImage[1] + "')"; 
   }
   else{
-    var shaders = document.getElementsByClassName("shader")
-    for (let element of shaders){
-      element.style.backgroundColor = "transparent"
-    }
     document.body.style.backgroundImage = "none"; 
   }
 }
@@ -814,7 +810,7 @@ function loadFont(){
 
 function setupBorders(inCalendar = false){
   if (!inCalendar){
-    document.getElementById("prayerGrid").style.borderRadius = "0 0 1vh 1vh"
+    document.getElementById("prayerGrid").style.borderRadius = "0 0 0.5vh 0.5vh"
     if (!totnCheckOG && !motnCheckOG){
       document.getElementById("isha").style.borderBottom = "none"
       document.getElementById("ishaTime").style.borderBottom = "none"

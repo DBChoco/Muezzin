@@ -60,7 +60,7 @@ body{
     display: grid;
     grid-template-columns:  auto auto;
     width: 48vh;
-    border-radius: 0 0 1vh 1vh;
+    border-radius: 0 0 0.5vh 0.5vh;
 }
 
 .grid-item {
