@@ -53,7 +53,8 @@
         "AppImage",
         "snap",
         "tar.gz",
-        "pacman"
+        "pacman",
+        "deb"
       ]
     },
     "mac": {
@@ -71,11 +72,12 @@
     "files": [
       "**/*",
       "!screenshots",
-      "!flatpak"
+      "!flatpak",
+      "!dist"
     ]
   },
   "bugs": {
     "url": "https://github.com/DBChoco/Muezzin/issues"
   },
-  "homepage": "https://github.com/DBChoco/Muezzin#readme"
+  "homepage": "https://github.com/DBChoco/Muezzin"
 }

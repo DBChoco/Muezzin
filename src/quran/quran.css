@@ -95,6 +95,7 @@ header{
 .versePlay{
     margin: 5px;
     font-size: 30px;
+    cursor: pointer;
 }
 
 .verse{
