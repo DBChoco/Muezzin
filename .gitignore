@@ -5,3 +5,4 @@ flatpak/.flatpak-builder
 flatpak/build
 ressources/quran/downloads
 flatpak-test
+package-lock.json
