@@ -4,6 +4,7 @@ var lat,lon;
 var fromQuran = false;
 
 window.addEventListener('DOMContentLoaded', () => { 
+  document.body.style.backgroundColor = "#212121"
   loadSettings()
   setNumberLimit(document.getElementById("latInput"));
   setNumberLimit(document.getElementById("lonInput"));
@@ -321,7 +322,7 @@ async function saveTimeDateFormat(){
   else {
     timeDisplay.clockFormat = 12;
   }
-  if (document.getElementById("dateFormat1").checked){
+  /*if (document.getElementById("dateFormat1").checked){
     timeDisplay.dateFormat = "DD/MM/YYYY"
   }
   else if (document.getElementById("dateFormat2").checked){
@@ -329,9 +330,9 @@ async function saveTimeDateFormat(){
   }
   else{
     timeDisplay.dateFormat = "YYYY/MM/DD"
-  }
+  }*/
   await window.api.setToStore('timeDisplay.clockFormat', timeDisplay.clockFormat);
-  await window.api.setToStore('timeDisplay.dateFormat', timeDisplay.dateFormat);
+  //await window.api.setToStore('timeDisplay.dateFormat', timeDisplay.dateFormat);
 }
 
 
@@ -347,13 +348,13 @@ function setTimeDateFormat(){
       document.getElementById("12hTimeFormat").checked = true;
     }
 
-    if(timeDisplay.dateFormat == "DD/MM/YYYY"){
+    /*if(timeDisplay.dateFormat == "DD/MM/YYYY"){
       document.getElementById("dateFormat1").checked = true;
     }else if ( timeDisplay.dateFormat == "MM/DD/YYYY"){
       document.getElementById("dateFormat2").checked = true;
     }else{
       document.getElementById("dateFormat3").checked = true;
-    }
+    }*/
   }
 }
 
@@ -637,10 +638,10 @@ function loadLanguage(lang){
   document.getElementById("24hTimeFormatText").innerText = window.api.getLanguage(lang, "24hour");
   document.getElementById("12hTimeFormatText").innerText = window.api.getLanguage(lang, "12hour");
   document.getElementById("showSecondsText").innerText = window.api.getLanguage(lang, "showSseconds");
-  document.getElementById("dfText").innerText = window.api.getLanguage(lang, "dateFormat");
+  /*document.getElementById("dfText").innerText = window.api.getLanguage(lang, "dateFormat");
   document.getElementById("df1Text").innerText = window.api.getLanguage(lang, "dateFormat1");
   document.getElementById("df2Text").innerText = window.api.getLanguage(lang, "dateFormat2");
-  document.getElementById("df3Text").innerText = window.api.getLanguage(lang, "dateFormat3");
+  document.getElementById("df3Text").innerText = window.api.getLanguage(lang, "dateFormat3");*/
   document.getElementById("notifText").innerText = window.api.getLanguage(lang, "notifications");
   document.getElementById("notifCheckText").innerText = window.api.getLanguage(lang, "notifCheck");
   document.getElementById("coordinatesText").innerText = window.api.getLanguage(lang, "coordinates");
