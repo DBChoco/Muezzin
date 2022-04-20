@@ -261,9 +261,11 @@ function setProgress(){
     porcent = athanProgress
   } else{
     let now = new Date()
+    console.log()
     if (prayers[2] != langIsha) porcent = ((now - prayers[0]) /  (prayers[1] - prayers[0])) * 100;
+    else if (prayers[1] - prayers[0] > 0) porcent = ((now.getTime() - (prayers[0].getTime())) /  ((1000 * 60 * 60 * 24) - (prayers[0].getTime()) + prayers[1].getTime())) * 100;
     else porcent = ((((1000 * 60 * 60 * 24) - prayers[0].getTime()) + now.getTime()) /  (((1000 * 60 * 60 * 24) - prayers[0].getTime()) + prayers[1].getTime())) * 100;
-    //save : porcent = ((((1000 * 60 * 60 * 24) - prayers[0].getTime()) + now.getTime()) /  (prayers[1] - prayers[0])) * 100;
+    console.log(porcent)
   } 
   document.getElementById("prayerProgress").style.width = porcent + "%"
 }
