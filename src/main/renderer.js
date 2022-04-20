@@ -113,7 +113,7 @@ function loadHijriDate(){
   setInterval(function() {
     if (hijri){
       let date = new Date()
-      if (prayers[2] == langMaghrib || prayers[2] == langIsha) date = date.setDate(date.getDate() + 1)
+      if ((prayers[2] == langMaghrib || prayers[2] == langIsha) && date.getHours() >= 12) date = date.setDate(date.getDate() + 1)
       let hijriDay = new Intl.DateTimeFormat('en-TN-u-ca-islamic', {day: 'numeric'}).format(date)
       document.getElementById("dateLoc").innerHTML = loadMoonIcon(hijriDay) + "  " + new Intl.DateTimeFormat(lang + '-TN-u-ca-islamic', 
       {day: 'numeric', month: 'long',weekday: 'long',year : 'numeric'}).format(date).capitalize();
@@ -262,8 +262,11 @@ function setProgress(){
   } else{
     let now = new Date()
     console.log()
+    console.log(prayers[0].getTime())
+    console.log(prayers[1].getTime())
+    console.log(now.getTime())
     if (prayers[2] != langIsha) porcent = ((now - prayers[0]) /  (prayers[1] - prayers[0])) * 100;
-    else if (prayers[1] - prayers[0] > 0) porcent = ((now.getTime() - (prayers[0].getTime())) /  ((1000 * 60 * 60 * 24) - (prayers[0].getTime()) + prayers[1].getTime())) * 100;
+    else if (prayers[1] - prayers[0] > 0) porcent = ((now.getTime() - prayers[0].getTime()) / (prayers[1] - prayers[0])) * 100;
     else porcent = ((((1000 * 60 * 60 * 24) - prayers[0].getTime()) + now.getTime()) /  (((1000 * 60 * 60 * 24) - prayers[0].getTime()) + prayers[1].getTime())) * 100;
     console.log(porcent)
   } 
