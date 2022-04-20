@@ -112,9 +112,11 @@ function loadHijriDate(){
   hijri = true;
   setInterval(function() {
     if (hijri){
-      let hijriDay = new Intl.DateTimeFormat('en-TN-u-ca-islamic', {day: 'numeric'}).format(Date.now())
+      let date = new Date()
+      if (prayers[2] == langMaghrib || prayers[2] == langIsha) date = date.setDate(date.getDate() + 1)
+      let hijriDay = new Intl.DateTimeFormat('en-TN-u-ca-islamic', {day: 'numeric'}).format(date)
       document.getElementById("dateLoc").innerHTML = loadMoonIcon(hijriDay) + "  " + new Intl.DateTimeFormat(lang + '-TN-u-ca-islamic', 
-      {day: 'numeric', month: 'long',weekday: 'long',year : 'numeric'}).format(Date.now()).capitalize();
+      {day: 'numeric', month: 'long',weekday: 'long',year : 'numeric'}).format(date).capitalize();
       hijri = false;
     }
     else{

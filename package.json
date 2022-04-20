@@ -73,7 +73,8 @@
       "**/*",
       "!screenshots",
       "!flatpak",
-      "!dist"
+      "!dist",
+      "!package-lock.json"
     ]
   },
   "bugs": {
