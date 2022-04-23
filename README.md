@@ -183,6 +183,10 @@ Download it and install it.
 
 You might receive a warning, that is because the app is not signed and I do not have the money to do so. The app is completely safe, you can read through the source code or have a trusted friend do it for you, all the code is <b>Open-Source</b>.
 
+<a href="https://www.softpedia.com/get/Others/Miscellaneous/Muezzin.shtml#status">
+  <img src="https://www.softpedia.com/_img/sp100free.png?1" alt="Logo" height="150">
+</a>
+
 ### macOS
 From the  <a href="https://github.com/DBChoco/MuezzinPrayerTimes/releases/latest"><strong>download page</strong></a>, select the .DMG installer.
 Download it and install it. Some versions might not have .DMG versions, you should then go look at an earlier version.
