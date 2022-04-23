@@ -38,7 +38,8 @@ body{
 }
 
 #tasbih{
-    margin: 1.1vh 0 0 5px;
+    font-size: 1.8vh;
+    margin: 1.25vh 0 0 5px;
     cursor: pointer;
 }
 
