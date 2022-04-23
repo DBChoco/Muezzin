@@ -10,6 +10,7 @@ body{
     background-attachment: fixed;
     background-size: cover;
     background-position: center; 
+    user-select: none;
 }
 
 .shader{
@@ -33,6 +34,12 @@ body{
 #title{
     font-size: 3vh;
     margin: 0.2vh 0 0 5px;
+    cursor: pointer;
+}
+
+#tasbih{
+    margin: 1.1vh 0 0 5px;
+    cursor: pointer;
 }
 
 
@@ -93,7 +100,7 @@ body{
 .box{
     margin: auto 0 auto 0;
     align-items: center;
-    
+    user-select:text;
 }
 
 #calendar{

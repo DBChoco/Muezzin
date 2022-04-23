@@ -55,6 +55,9 @@ window.addEventListener('loadedUI', () => {
   setProgress()
   loadedUI = true;
   hideLoader()
+
+  setupTasbih()
+
   window.api.send('loadedUI');
 })
 
@@ -580,6 +583,27 @@ function setupButtonListeners(){
   document.getElementById('quranButton').addEventListener("click", function(){
     window.location.href = "../quran/quran.html";
   })
+}
+
+function setupTasbih(){
+  let tasbih = 0
+  let countdown;
+  document.getElementById('title').addEventListener("click", function(){
+    tasbih ++
+    document.getElementById('tasbih').innerHTML = '  | ' + '<i class="fa-solid fa-star-and-crescent"></i>  ' + tasbih
+    if (countdown != undefined) clearTimeout(countdown)
+    countdown = setTimeout(function(){
+      resetTasbih()
+    }, 10000)
+  })
+  document.getElementById('title').addEventListener("contextmenu", function(){
+    resetTasbih()
+  })
+
+  function resetTasbih(){
+    tasbih = 0
+    document.getElementById('tasbih').innerHTML = ""
+  }
 }
 
 function setupSunnah(){
