@@ -589,16 +589,26 @@ function setupTasbih(){
   let tasbih = 0
   let countdown;
   document.getElementById('title').addEventListener("click", function(){
+    startTasbih()}
+  )
+
+  document.addEventListener('keydown', function(key){
+    if (key.key == "Enter" || key.key == " ") startTasbih()
+    else if (key.key == "Escape" || key.key == "Backspace" || key.key == "Delete") resetTasbih()
+  })
+
+  document.getElementById('title').addEventListener("contextmenu", function(){
+    resetTasbih()
+  })
+
+  function startTasbih(){
     tasbih ++
     document.getElementById('tasbih').innerHTML = '  | ' + '<i class="fa-solid fa-star-and-crescent"></i>  ' + tasbih
     if (countdown != undefined) clearTimeout(countdown)
     countdown = setTimeout(function(){
       resetTasbih()
     }, 10000)
-  })
-  document.getElementById('title').addEventListener("contextmenu", function(){
-    resetTasbih()
-  })
+  }
 
   function resetTasbih(){
     tasbih = 0
