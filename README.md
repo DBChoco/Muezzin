@@ -152,7 +152,7 @@ The app also contains a Qur'an reader that is able to show translations and tran
 * [Quran.com API](https://quran.api-docs.io) & [Quran-JSON](https://github.com/risan/quran-json)
 * [OpenWeather](https://openweathermap.org/)
 * [Weather Icons](https://github.com/erikflowers/weather-icons)
-* Many electron modules
+* A few other electron modules
 
 <!-- ROADMAP -->
 ### Roadmap
@@ -163,7 +163,7 @@ The app also contains a Qur'an reader that is able to show translations and tran
   - [ ] Mosque interface with delays
   - [ ] Manual times
   - [ ] Custom text 
-- [ ] Add Tasbih
+- [x] Add Tasbih (Left-Click (or space) on top-left "Muezzin" to add 1, right click (or escape) to reset)
 - [ ] Add Sunnah (API key request sent)
 - [ ] Multi-language Support
     - [ ] Russian
