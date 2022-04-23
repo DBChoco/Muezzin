@@ -99,6 +99,9 @@ body{
 #calendar{
     height: max(25px, 3vh);
     font-size: max(12px, 1.5vh);
+    border-radius: max(5px, 0.5vh);
+    border: 0px;
+    padding: 5px;
 }
 
 #buttons{

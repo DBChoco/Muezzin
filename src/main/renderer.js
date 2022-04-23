@@ -59,6 +59,7 @@ window.addEventListener('loadedUI', () => {
 })
 
 
+
 function loadClock(){
   document.getElementById("clock").innerText = changeclockDisplay(new Date, timeFormat)
 }
@@ -69,7 +70,6 @@ function loadClock(){
  * @param {Date} date 
  * @param {String} timeformat 
  */
-
 function changeclockDisplay(date, timeformat){
   if (timeformat[0] == 'H'){
     if (timeformat[6] == 's'){
@@ -105,6 +105,8 @@ function changeclockDisplay(date, timeformat){
 
 }
 
+
+
 function loadHijriDate(){
   var hijri = true;
   document.getElementById("dateLoc").innerText = (new Date).toLocaleDateString(lang, 
@@ -133,6 +135,8 @@ function loadHijriDate(){
   }, 5000)
 }
 
+
+
 Object.defineProperty(String.prototype, 'capitalize', {
   value: function() {
     var upperCaseString = ''
@@ -150,6 +154,7 @@ Object.defineProperty(String.prototype, 'capitalize', {
   },
   enumerable: false
 });
+
 
 //Picks the date from the calendar and adds a listener to the calendar, when the dates changes it sends a reuquest for time prayers.
 function loadCalendar(){
@@ -180,6 +185,7 @@ function loadCalendar(){
   }
 }
 
+
 //Load all the prayers of the day and shows them on the screen
 function loadPrayers(){
   if (datePick.value == new Date().toDateInputValue()){
@@ -200,6 +206,7 @@ function loadPrayers(){
     }
   }
 }
+
 
 
 //Checks the store for saved settings, or gets default values
@@ -231,6 +238,8 @@ async function loadSettings(){
     window.dispatchEvent(event1)
 }
 
+
+
 //Loads the next prayers text: Prayer X in Y time;
 function loadNextPrayer(){
   prayers = nextPrayer()
@@ -255,23 +264,22 @@ function loadNextPrayer(){
   }
 }
 
+
+
 function setProgress(){
   let porcent
   if (athanProgress != 0){
     porcent = athanProgress
   } else{
     let now = new Date()
-    console.log()
-    console.log(prayers[0].getTime())
-    console.log(prayers[1].getTime())
-    console.log(now.getTime())
     if (prayers[2] != langIsha) porcent = ((now - prayers[0]) /  (prayers[1] - prayers[0])) * 100;
     else if (prayers[1] - prayers[0] > 0) porcent = ((now.getTime() - prayers[0].getTime()) / (prayers[1] - prayers[0])) * 100;
     else porcent = ((((1000 * 60 * 60 * 24) - prayers[0].getTime()) + now.getTime()) /  (((1000 * 60 * 60 * 24) - prayers[0].getTime()) + prayers[1].getTime())) * 100;
-    console.log(porcent)
   } 
   document.getElementById("prayerProgress").style.width = porcent + "%"
 }
+
+
 
 function nextPrayer(){
   var now = new Date();
@@ -320,6 +328,8 @@ function nextPrayer(){
   }
 }
 
+
+
 function selectPrayer(prayerName){
   selectedPrayer = prayerName
   var color = darkmode? "rgba(7, 7, 7, 0.95)" : "rgba(255, 255, 255, 0.95)"
@@ -354,6 +364,8 @@ function selectPrayer(prayerName){
   }
 
 }
+
+
 
 function timeUntilPrayer(prayer) {
   var now = new Date()

@@ -4,7 +4,6 @@ var lat,lon;
 var fromQuran = false;
 
 window.addEventListener('DOMContentLoaded', () => { 
-  document.body.style.backgroundColor = "#212121"
   loadSettings()
   setNumberLimit(document.getElementById("latInput"));
   setNumberLimit(document.getElementById("lonInput"));
