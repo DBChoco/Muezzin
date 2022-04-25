@@ -204,7 +204,7 @@ var dict = {
         'quote': 'En Effet, la Salât demeure, pour les croyants, une prescription, à des temps déterminés.', //quote
         'source': "Qur'an: 4/103", //source
         'fajr': 'Fajr',
-        'sunrise': 'Sunrise',
+        'sunrise': 'Lever du soleil',
         'dhuhr': 'Dhuhr',
         'asr': 'Asr',
         'maghrib': 'Maghrib',
@@ -336,7 +336,7 @@ var dict = {
         'quote': 'Ciertamente el salat es para los creyentes, un precepto en tiempos determinados.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
         'source': "Corán: 4/103", //source
         'fajr': 'Fajr',
-        'sunrise': 'Sunrise',
+        'sunrise': 'Amanecer',
         'dhuhr': 'Dhuhr',
         'asr': 'Asr',
         'maghrib': 'Maghrib',
