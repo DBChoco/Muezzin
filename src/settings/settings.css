@@ -156,3 +156,8 @@ footer{
 .hiddenFile {
   display: none;
 }
+
+#qibla{
+  margin: auto 0 5px 50%;
+  transform: translateX(-50%);
+}

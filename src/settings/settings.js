@@ -14,6 +14,7 @@ window.addEventListener('DOMContentLoaded', () => {
   addLangListener()
   loadQueryString()
   loadFont()
+  setQibla()
 })
 
 /**
@@ -1105,5 +1106,35 @@ function addChangeListeners(){
 function loadFont(){
   if (language != "ar" && language != "bn"){
     document.body.style.fontFamily = 'quicksand'
+  }
+}
+
+
+function setQibla(){
+  window.api.send('qibla-request');
+
+  window.api.handle('qibla-reply', msg => {
+    var qibla = msg.toFixed(2)
+    document.getElementById("qibla").innerHTML = loadQiblaIcon(qibla) + " " + qibla + "°"
+  })
+
+  function loadQiblaIcon(degree){
+    if (degree <= 11.25) return '<i class="wi wi-wind wi-towards-n"></i>'
+    else if (degree >= 11.25 && degree < 33.75) return '<i class="wi wi-wind wi-towards-nne"></i>'
+    else if (degree >= 33.75 && degree < 56.25) return '<i class="wi wi-wind wi-towards-ne"></i>'
+    else if (degree >= 56.25 && degree < 78.75) return '<i class="wi wi-wind wi-towards-ene"></i>'
+    else if (degree >= 78.75 && degree < 101.25) return '<i class="wi wi-wind wi-towards-e"></i>'
+    else if (degree >= 101.25 && degree < 123.75) return '<i class="wi wi-wind wi-towards-ese"></i>'
+    else if (degree >= 123.75 && degree < 146.25) return '<i class="wi wi-wind wi-towards-se"></i>'
+    else if (degree >= 146.25 && degree < 168.75) return '<i class="wi wi-wind wi-towards-sse"></i>'
+    else if (degree >= 168.75 && degree < 191.25) return '<i class="wi wi-wind wi-towards-s"></i>'
+    else if (degree >= 191.25 && degree < 213.75) return '<i class="wi wi-wind wi-towards-ssw"></i>'
+    else if (degree >= 213.75 && degree < 236.25) return '<i class="wi wi-wind wi-towards-sw"></i>'
+    else if (degree >= 236.25 && degree < 258.75) return '<i class="wi wi-wind wi-towards-wsw"></i>'
+    else if (degree >= 258.75 && degree < 281.25) return '<i class="wi wi-wind wi-towards-w"></i>'
+    else if (degree >= 281.25 && degree < 303.75) return '<i class="wi wi-wind wi-towards-wnw"></i>'
+    else if (degree >= 303.75 && degree < 326.25) return '<i class="wi wi-wind wi-towards-nw"></i>'
+    else if (degree >= 326.25 && degree < 348.75) return '<i class="wi wi-wind wi-towards-nnw"></i>'
+    else return '<i class="wi wi-wind wi-towards-n"></i>'
   }
 }

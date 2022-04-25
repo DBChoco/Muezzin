@@ -619,6 +619,12 @@ async function setUpHandlers(){
     }
   })
 
+  ipcMain.handle("qibla-request", (event, message)  => {
+    var coordinates = new adhan.Coordinates(lat, lon);
+    var qibla = adhan.Qibla(coordinates);
+    event.sender.send('qibla-reply', qibla)
+  })
+
 
   //Media Handlers
   ipcMain.handle('play',  (event, message)  => {
