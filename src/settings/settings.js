@@ -702,6 +702,12 @@ function loadLanguage(lang){
   document.getElementById("delayText").innerText = window.api.getLanguage(lang, "delayAfterM");
   document.getElementById("delayFormText").innerText = window.api.getLanguage(lang, "delayMin");
   
+  document.getElementById("France12").innerText = window.api.getLanguage(lang, "france") + " 12";
+  document.getElementById("France15").innerText = window.api.getLanguage(lang, "france") + " 15";
+  document.getElementById("France18").innerText = window.api.getLanguage(lang, "france") + " 18";
+  document.getElementById("Russia").innerText = window.api.getLanguage(lang, "russia");
+  document.getElementById("Gulf").innerText = window.api.getLanguage(lang, "gulf");
+
   document.getElementById("adjustmentsText").innerHTML = window.api.getLanguage(lang, "adjustements");
   document.getElementById("adjCheckText").innerText = window.api.getLanguage(lang, "enableAdj");
   document.getElementById("fajrAdjText").innerText = window.api.getLanguage(lang, "fajrAdj");

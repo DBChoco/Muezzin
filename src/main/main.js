@@ -460,6 +460,31 @@ function calcPrayerTimes(date = new Date()){
       case "ISNA":
         params = adhan.CalculationMethod.NorthAmerica();
         break;
+      case "France12":
+        params = adhan.CalculationMethod.Other();
+        params.fajrAngle = 12
+        params.ishaAngle = 12
+        break;
+      case "France15":
+        params = adhan.CalculationMethod.Other();
+        params.fajrAngle = 15
+        params.ishaAngle = 15
+        break;
+      case "France18":
+        params = adhan.CalculationMethod.Other();
+        params.fajrAngle = 18
+        params.ishaAngle = 18
+        break;
+      case "Russia":
+        params = adhan.CalculationMethod.Other();
+        params.fajrAngle = 16
+        params.ishaAngle = 15
+        break;
+      case "Gulf":
+        params = adhan.CalculationMethod.Other();
+        params.fajrAngle = 18
+        params.ishaInterval = 90
+        break;
       default:
         params = adhan.CalculationMethod.MuslimWorldLeague();
     } 
