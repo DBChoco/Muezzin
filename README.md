@@ -157,9 +157,10 @@ The app also contains a Qur'an reader that is able to show translations and tran
 <!-- ROADMAP -->
 ### Roadmap
 
+- [ ] Native app port [in-progress](https://github.com/DBChoco/Salawat)
 - [x] Add Qur'an reading page
   - [x] Improve the Qur'an page  
-- [ ] Add mosque mode (improved visibility from afar & delays to prayers) [work in progress](https://github.com/DBChoco/Muezzin-Mim)
+- [ ] Add mosque mode (improved visibility from afar & delays to prayers) [delayed](https://github.com/DBChoco/Muezzin-Mim)
   - [ ] Mosque interface with delays
   - [ ] Manual times
   - [ ] Custom text 
