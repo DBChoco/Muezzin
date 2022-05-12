@@ -217,7 +217,6 @@ app.whenReady().then(() => {
   })
 
   checkFirstTime()
-  loadOldSettings()
   loadSettings();
   setUpHandlers();
   checkTime();  
@@ -237,7 +236,7 @@ var autoLauncher = new AutoLaunch({
 
 console.debug("** Launching Muezzin v" + app.getVersion() + " **\n" + "Assalamou Alaykoum wa Rahmatou Lahi wa Baraketu")
 
-var lat, lon, calculationMethod, prayerTimes, adhanPath, adhanSettings;
+var lat, lon, calculationMethod, prayerTimes, adhanPath, adhanSettings, customTimes, jumuahTime;
 var customValues, delay;
 var prayerTimes, datePrayerTimes, tomorrowPrayers;
 var settings
@@ -280,7 +279,14 @@ function getVersion(){
     });
     request.on('response', (response) => {
       response.on('data', (chunk) => {
-          if (app.getVersion() < JSON.parse(chunk).name){
+        var version
+        try {
+          version = JSON.parse(chunk).name
+        } catch (error){
+          version = 0;
+          console.log("Couldn't look up Muezzins version: " + error)
+        }
+          if (app.getVersion() < version){
             mainWindow.webContents.send('update-available', [app.getVersion(), JSON.parse(chunk).name]);
             showNotification(language.loadTrans(lang, 'updateAvailable'))
             clearInterval(updateInterval);
@@ -306,7 +312,6 @@ function getVersion(){
   } catch (error) {
     console.log("Couldn't look for updates: " + error)
   }
-  
 }
 
 /**
@@ -380,7 +385,6 @@ async function loadSettings(){
     minStart: false
   })
 
-
   adhanSettings =  await store.get('adhan', { 
     adhan: {
       custom: false,
@@ -394,6 +398,19 @@ async function loadSettings(){
       enabled: true
     }
   });
+
+  customTimes = await store.get("customTimes", {
+    enabled: false,
+    fajr: "00:00",
+    dhuhr: "00:00",
+    asr: "00:00",
+    maghrib: "00:00",
+    isha: "00:00"
+  });
+  jumuahTime = await store.get("jumuahTime", {
+    enabled: false,
+    time: "00:00"
+  })
 
   lang = await store.get('language', 'en');
   loadLang();
@@ -562,6 +579,19 @@ function calcPrayerTimes(date = new Date()){
   }
 
   let calculatedTimes = new adhan.PrayerTimes(coordinates, date, params);
+
+  if (customTimes.enabled && (date.getDate() == (new Date()).getDate())){ //TODO make sure the day is today
+    if (customTimes.fajr != "00:00") calculatedTimes.fajr = newDate(customTimes.fajr.split(":")[0], customTimes.fajr.split(":")[1], 0);
+    if (customTimes.dhuhr != "00:00") calculatedTimes.dhuhr = newDate(customTimes.dhuhr.split(":")[0], customTimes.dhuhr.split(":")[1], 0);
+    if (customTimes.asr != "00:00") calculatedTimes.asr = newDate(customTimes.asr.split(":")[0], customTimes.asr.split(":")[1], 0);
+    if (customTimes.maghrib != "00:00") calculatedTimes.maghrib = newDate(customTimes.maghrib.split(":")[0], customTimes.maghrib.split(":")[1], 0);
+    if (customTimes.isha != "00:00") calculatedTimes.isha = newDate(customTimes.isha.split(":")[0], customTimes.isha.split(":")[1], 0);
+  }
+
+  if (jumuahTime.enabled && date.getDay() == 5){
+    if (jumuahTime.time != "00:00") calculatedTimes.dhuhr = newDate(jumuahTime.time.split(":")[0], jumuahTime.time.split(":")[1], 0);
+  }
+
   convertPrayerTimes(calculatedTimes)
   return calculatedTimes;
 }
@@ -576,6 +606,14 @@ function calcPrayerTimes(date = new Date()){
   prayers.asr = convertTZ(prayers.asr, timezone)
   prayers.maghrib = convertTZ(prayers.maghrib, timezone)
   prayers.isha = convertTZ(prayers.isha, timezone)
+}
+
+function newDate(hours, minutes, seconds){
+  let date = new Date();
+  date.setHours(hours)
+  date.setMinutes(minutes)
+  date.setSeconds(seconds)
+  return date
 }
 
 function convertTZ(date, timezone) {
@@ -651,8 +689,6 @@ async function setUpHandlers(){
   ipcMain.handle("startup-request", function(){
     mediaWindow.webContents.send('startup-reply', settings.startupSound);
   })
-
-
 }
 
 
@@ -777,14 +813,18 @@ function checkFirstTime(){
 
     // Function to handle response from IP Geolocation API
     function handleResponse(json) {
-      loadDefaultCalcMethod(json["continent_code"], json["country_code2"])
-      store.set('latitude', json["latitude"])
-      store.set('longitude', json["longitude"])
-      store.set('timezone', json["time_zone"]["name"])
-      //loadSettings()
-      store.set('first', false)
-      loadSettings()
-      mainWindow.webContents.send('update');
+      try{
+        loadDefaultCalcMethod(json["continent_code"], json["country_code2"])
+        store.set('latitude', json["latitude"])
+        store.set('longitude', json["longitude"])
+        store.set('timezone', json["time_zone"]["name"])
+        //loadSettings()
+        store.set('first', false)
+        loadSettings()
+        mainWindow.webContents.send('update');
+      }catch(e){
+        console.log("Couldn't handle location response: " + e)
+      }
     }
     store.set("first", true)
   }
@@ -892,59 +932,6 @@ function setAutoStart(autoStart){
   }
 }
 
-
-/**
- * Checks if the old settings are still saved, if so, imports them into the new one.
- */
-async function loadOldSettings(){
-  if (store.has('calcmeth') && !store.has("calculationMethod")){
-    var calcmeth = await store.get('calcmeth', "MWL");
-    var madhab = await store.get('madhab', 'Shafi'); 
-    var hlr = await store.get( 'hlr', 'TA');
-    var pcr = await store.get('pcr', 'CC');
-    var shafaq = await store.get('shafaq', 'shafaqG');
-    store.set("calculationMethod", {
-      calcMethod: calcmeth,
-      madhab: madhab,
-      hlr: hlr,
-      pcr: pcr,
-      shafaq: shafaq
-    })
-  }
-  else if (store.has() && !store.has("settings")){
-    var adhanCheck = await store.get("adhanCheck", true)
-    var notifCheck = await store.get("notifCheck", true)
-    var systray = await store.get("systray", true)
-    var startupSound = await store.get("startupSound", true)
-    var autoStart = await store.get("autoStart", true)
-    var minStart = await store.get("minStart", true)
-    store.set("settings", {
-      startupSound: startupSound,
-      notifCheck: notifCheck,
-      systray: systray,
-      adhanCheck: adhanCheck,
-      autoStart: autoStart,
-      minStart: minStart
-    })
-  }
-  else if (store.has("adhanFile") && !store.has("adhan")){
-    var adhanFile = store.get('adhanFile', [false, "../../ressources/audio/Adhan - Ahmed Al-Nufais.mp3", true]);
-    store.set("adhan", {
-      adhan: {
-        custom: adhanFile[0],
-        path: adhanFile[1]
-      },
-      adhanFajr: {
-        custom: false,
-        path: adhanFile[1]
-      },
-      dua: { 
-        enabled: adhanFile[2]
-      }
-    })
-  }
-}
-
 function trayPrayerTimes(){
   const contextMenu = Menu.buildFromTemplate([
     { label: language.loadTrans(lang, 'open'), click:  function(){
@@ -998,4 +985,8 @@ function trayPrayerTimes(){
       return res
     }
   }
+}
+
+function adjustPrayerTimes(){
+
 }

@@ -6,7 +6,7 @@ var timezone, timeFormat, shortTimeFormat, lang, dateFormat;
 var prayerTimes, calPrayers, tommorowPrayers, sunnahTimes, prayers;
 var datePick, volume;
 var loadedUI = false;
-var langFajr, langSunrise, langDhuhr, langMaghrib, langIsha, langAdhan, langNow, langTimeUntil, selectedPrayer;
+var langFajr, langSunrise, langDhuhr, langAsr, langMaghrib, langIsha, langAdhan, langNow, langTimeUntil, selectedPrayer;
 var sunnahTimes, motnCheckOG, totnCheckOG, totn, motn;
 var athanProgress = 0;
 var weatherSettings;
@@ -550,7 +550,9 @@ function hideLoader(){
 function loadLang(){
   langFajr =  window.api.getLanguage(lang, 'fajr')
   langSunrise =  window.api.getLanguage(lang, 'sunrise')
-  langDhuhr = window.api.getLanguage(lang, 'dhuhr')
+  if ((new Date()).getDay() == 5){
+    langDhuhr = window.api.getLanguage(lang, 'jumuah')
+  } else  langDhuhr = window.api.getLanguage(lang, 'dhuhr')
   langAsr= window.api.getLanguage(lang, 'asr')
   langMaghrib = window.api.getLanguage(lang, 'maghrib')
   langIsha = window.api.getLanguage(lang, 'isha')

@@ -28,6 +28,7 @@
         <button class="nav-link" id="v-pills-appearance-tab" data-bs-toggle="pill" data-bs-target="#v-pills-appearance" type="button" role="tab" aria-controls="v-pills-appearance" aria-selected="false">Appearance</button>
         <button class="nav-link" id="v-pills-advanced-tab" data-bs-toggle="pill" data-bs-target="#v-pills-advanced" type="button" role="tab" aria-controls="v-pills-advanced" aria-selected="false">Advanced</button>
         <button class="nav-link" id="v-pills-adjustments-tab" data-bs-toggle="pill" data-bs-target="#v-pills-adjustments" type="button" role="tab" aria-controls="v-pills-adjustments" aria-selected="false">Adjustments</button>
+        <button class="nav-link" id="v-pills-custom-tab" data-bs-toggle="pill" data-bs-target="#v-pills-custom" type="button" role="tab" aria-controls="v-pills-custom" aria-selected="false">Custom Times</button>
         <button class="nav-link" id="v-pills-quran-tab" data-bs-toggle="pill" data-bs-target="#v-pills-quran" type="button" role="tab" aria-controls="v-pills-quran" aria-selected="false">
           <i class="fa-solid fa-book-quran"></i>
           Qur'an
@@ -531,6 +532,83 @@
 
         </div>
         
+        <div class="tab-pane fade" id="v-pills-custom" role="tabpanel" aria-labelledby="v-pills-custom-tab"> <!-- Custom Times -->
+          <div class="grid-container">
+            <div class="grid-itemL"> 
+              <p class="h4" id="customTimesText">Custom Times</p> 
+            </div>
+            <div class="grid-itemR"> 
+              <form >
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="customTimesCheck" id="customCheckText">
+                    Enable custom times
+                  </label>
+                  <input class="form-check-input" type="checkbox" id="customTimesCheck" unchecked>
+                </div>
+                
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="fajrCustomInput" id="fajrCustomText">
+                    Fajr
+                  </label>
+                  <input id="fajrCustomInput"  class="form-control" type="time"> 
+                </div>
+
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="dhuhrCustomInput" id="dhuhrCustomText">
+                    Dhuhr
+                  </label>
+                  <input id="dhuhrCustomInput"  class="form-control" type="time"> 
+                </div>
+
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="asrCustomInput" id="asrCustomText">
+                    Asr
+                  </label>
+                  <input id="asrCustomInput"  class="form-control" type="time"> 
+                </div>
+
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="maghribCustomInput" id="maghribCustomText">
+                    Maghrib
+                  </label>
+                  <input id="maghribCustomInput"  class="form-control" type="time"> 
+                </div>
+              
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="ishaCustomInput" id="ishaCustomText">
+                    Isha
+                  </label>
+                  <input id="ishaCustomInput"  class="form-control" type="time"> 
+                </div>
+              </form>
+            </div>
+
+            <div class="grid-itemL"> 
+              <p class="h4" id="jumuahText">Jumuah Time</p> 
+            </div>
+            <div class="grid-itemR"> 
+              <form >
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="jumuahCheck" id="jumuahCheckText">
+                    Enable Jumuah Time
+                  </label>
+                  <input class="form-check-input" type="checkbox" id="jumuahCheck" unchecked>
+                </div>
+                
+                <div class="form-check grid-R-spacer">
+                  <label class="form-check-label" for="jumuahInput" id="jumuahInputText">
+                    Jumuah
+                  </label>
+                  <input id="jumuahInput"  class="form-control" type="time"> 
+                </div>
+              </form>
+            </div>
+
+
+          </div>
+
+        </div>
+
         <div class="tab-pane fade" id="v-pills-quran" role="tabpanel" aria-labelledby="v-pills-quran-tab"> <!-- Qur'an -->
           <div class="grid-container">
 

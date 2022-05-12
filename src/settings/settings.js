@@ -1,4 +1,4 @@
-var timeDisplay, language, adhanFile, bgImage, sunnahTimes, settings, weather, 
+var timeDisplay, language, adhanFile, bgImage, sunnahTimes, settings, weather, customTimes, jumuahTime, 
 calculationMethod, quran;
 var lat,lon;
 var fromQuran = false;
@@ -66,6 +66,7 @@ async function saveSettings(){
   await saveBgImage()
   await saveAdjustments()
   await saveCustomSettings()
+  await saveCustomTimes()
   await saveQuran()
 }
 
@@ -111,12 +112,11 @@ async function loadSettings(){
     pcr: 'CC',
     shafaq: 'shafaqG'
   })
-
-  console.log(calculationMethod)
   
   await loadAdhan()
   await loadCustomSettings()
   await loadAdjustments()
+  await loadCustomTimes()
 
   document.getElementById("latInput").value = lat
   document.getElementById("lonInput").value = lon
@@ -628,6 +628,7 @@ function loadLanguage(lang){
   document.getElementById("v-pills-appearance-tab").innerHTML = '<i class="fa-solid fa-palette"></i>  ' +  window.api.getLanguage(lang, "appearance");
   document.getElementById("v-pills-advanced-tab").innerHTML = '<i class="fa-solid fa-sliders"></i>  ' + window.api.getLanguage(lang, "advanced");
   document.getElementById("v-pills-adjustments-tab").innerHTML = '<i class="fa-solid fa-clock"></i>  ' + window.api.getLanguage(lang, "adjustements");
+  document.getElementById("v-pills-custom-tab").innerHTML = '<i class="fa-solid fa-stopwatch"></i>  ' + window.api.getLanguage(lang, "customTimes");
   document.getElementById("v-pills-quran-tab").innerHTML = '<i class="fa-solid fa-book-quran"></i>  ' + window.api.getLanguage(lang, "quran");
 
   document.getElementById("return").innerHTML = '<i class="fa fa-arrow-circle-left"></i>  ' + window.api.getLanguage(lang, "return");
@@ -744,6 +745,17 @@ function loadLanguage(lang){
   document.getElementById("customAdhanFajrText").innerHTML  = window.api.getLanguage(lang, "customFajr"); 
   document.getElementById("recitationText").innerHTML  = window.api.getLanguage(lang, "recitation"); 
   document.getElementById("reciterText").innerHTML  = window.api.getLanguage(lang, "reciter"); 
+
+  document.getElementById("customTimesText").innerHTML  = window.api.getLanguage(lang, "customTimes"); 
+  document.getElementById("customCheckText").innerHTML  = window.api.getLanguage(lang, "enableCustomTimes"); 
+  document.getElementById("fajrCustomText").innerHTML  = window.api.getLanguage(lang, "fajr"); 
+  document.getElementById("dhuhrCustomText").innerHTML  = window.api.getLanguage(lang, "dhuhr"); 
+  document.getElementById("asrCustomText").innerHTML  = window.api.getLanguage(lang, "asr"); 
+  document.getElementById("maghribCustomText").innerHTML  = window.api.getLanguage(lang, "maghrib"); 
+  document.getElementById("ishaCustomText").innerHTML  = window.api.getLanguage(lang, "isha"); 
+  document.getElementById("jumuahText").innerHTML  = window.api.getLanguage(lang, "jumuahTime"); 
+  document.getElementById("jumuahCheckText").innerHTML  = window.api.getLanguage(lang, "enableJumuahTime"); 
+  document.getElementById("jumuahInputText").innerHTML  = window.api.getLanguage(lang, "jumuah"); 
 }
 
 
@@ -949,7 +961,6 @@ async function loadQuranSettings(){
     })
     document.getElementById("langlist").addEventListener("change",function(){
       if (!diffLangDiv.checked){
-        console.log("YES")
         loadDefaultLang()
       }
     })
@@ -1003,7 +1014,6 @@ async function loadQuranSettings(){
     fetch('../../ressources/quran/recitations.json')
     .then(reponse => reponse.json())
     .then(json => {
-      console.log(json)
       for (reciter of json["recitations"]){
         var option = document.createElement("option")
         option.value = reciter["id"]
@@ -1109,7 +1119,6 @@ function loadFont(){
   }
 }
 
-
 function setQibla(){
   window.api.send('qibla-request');
 
@@ -1137,4 +1146,72 @@ function setQibla(){
     else if (degree >= 326.25 && degree < 348.75) return '<i class="wi wi-wind wi-towards-nnw"></i>'
     else return '<i class="wi wi-wind wi-towards-n"></i>'
   }
+}
+
+async function loadCustomTimes(){
+  customTimes = await window.api.getFromStore("customTimes", {
+    enabled: false,
+    fajr: "00:00",
+    dhuhr: "00:00",
+    asr: "00:00",
+    maghrib: "00:00",
+    isha: "00:00"
+  });
+  jumuahTime = await window.api.getFromStore("jumuahTime", {
+    enabled: false,
+    time: "00:00"
+  })
+
+  let customTimesCheck = document.getElementById("customTimesCheck")
+  let customFajr = document.getElementById("fajrCustomInput")
+  let customDhuhr = document.getElementById("dhuhrCustomInput")
+  let customAsr = document.getElementById("asrCustomInput")
+  let customMaghrib = document.getElementById("maghribCustomInput")
+  let customIsha = document.getElementById("ishaCustomInput")
+  customTimesCheck.checked = customTimes.enabled;
+  disableCustomTimes()
+  customTimesCheck.addEventListener("change", function(){
+    disableCustomTimes()
+  })
+  customFajr.value = customTimes.fajr;
+  customDhuhr.value = customTimes.dhuhr;
+  customAsr.value = customTimes.asr;
+  customMaghrib.value = customTimes.maghrib;
+  customIsha.value = customTimes.isha;
+
+  let jumuahCheck = document.getElementById("jumuahCheck")
+  let jumuahInput = document.getElementById("jumuahInput");
+  jumuahCheck.checked = customTimes.enabled;
+  jumuahInput.disabled = !jumuahCheck.checked;
+  jumuahCheck.addEventListener("change", function(){
+    jumuahInput.disabled = !jumuahCheck.checked;
+  })
+  jumuahInput.value = jumuahTime.time;
+
+  function disableCustomTimes(){
+    customFajr.disabled = !customTimesCheck.checked;
+    customDhuhr.disabled = !customTimesCheck.checked;
+    customAsr.disabled = !customTimesCheck.checked;
+    customMaghrib.disabled = !customTimesCheck.checked;
+    customIsha.disabled = !customTimesCheck.checked;
+  }
+}
+
+async function saveCustomTimes(){
+  let newCustomTimes = {
+    enabled: document.getElementById("customTimesCheck").checked,
+    fajr: document.getElementById("fajrCustomInput").value,
+    dhuhr: document.getElementById("dhuhrCustomInput").value,
+    asr: document.getElementById("asrCustomInput").value,
+    maghrib: document.getElementById("maghribCustomInput").value,
+    isha: document.getElementById("ishaCustomInput").value
+  };
+  let newJumuahTime ={
+    enabled: document.getElementById("jumuahCheck").checked,
+    time: document.getElementById("jumuahInput").value
+  }
+
+  if (customTimes != newCustomTimes) await window.api.setToStore("customTimes", newCustomTimes);
+  if (jumuahTime != newJumuahTime) await window.api.setToStore("jumuahTime", newJumuahTime);
+
 }

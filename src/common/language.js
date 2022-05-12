@@ -136,6 +136,12 @@ var dict = {
         'customFajr': 'Custom Fajr Adhan',
         'recitation': 'Recitation',
         'reciter': 'Reciter',
+        "customTimes": "Custom Times",
+        "enableCustomTimes" : "Enable custom times",
+        "jumuah" : "Jumuah",
+        "jumuahTime": "Jumuah Time",
+        "enableJumuahTime": "Enable Jumuah Time",
+
     },
     fr: {
         'settings': 'Options', //settingsTitle
@@ -267,6 +273,11 @@ var dict = {
         'customFajr': 'Adhan Fajr personnalisé',
         'recitation': 'Recitation',
         'reciter': 'Qari',
+        "customTimes": "Custom Times",
+        "enableCustomTimes" : "Enable custom times",
+        "jumuah" : "Jumuah",
+        "jumuahTime": "Jumuah Time",
+        "enableJumuahTime": "Enable Jumuah Time",
     },
     es: {
         'settings': 'Ajustes', //settingsTitle
@@ -398,6 +409,11 @@ var dict = {
         'customFajr': 'Fajr adhan personalizado',
         'recitation': 'Recitación',
         'reciter': 'Recitador',
+        "customTimes": "Custom Times",
+        "enableCustomTimes" : "Enable custom times",
+        "jumuah" : "Jumuah",
+        "jumuahTime": "Jumuah Time",
+        "enableJumuahTime": "Enable Jumuah Time",
     },
     ar: {
         'settings': 'الإعدادات', //settingsTitle
@@ -529,7 +545,11 @@ var dict = {
         'customFajr': 'مخصص فجر آذان',
         'recitation': 'التلاوة',
         'reciter': 'القارئ',
-        
+        "customTimes": "Custom Times",
+        "enableCustomTimes" : "Enable custom times",
+        "jumuah" : "Jumuah",
+        "jumuahTime": "Jumuah Time",
+        "enableJumuahTime": "Enable Jumuah Time",
     },
     it: {
         'settings': 'Impostazioni', //settingsTitle
@@ -661,6 +681,11 @@ var dict = {
         'customFajr': 'Fajr Adhan personalizzato',
         'recitation': 'Recitazione',
         'reciter': 'Qari',
+        "customTimes": "Custom Times",
+        "enableCustomTimes" : "Enable custom times",
+        "jumuah" : "Jumuah",
+        "jumuahTime": "Jumuah Time",
+        "enableJumuahTime": "Enable Jumuah Time",
         },
     de: {
         'settings': 'Einstellungen', //settingsTitle
@@ -791,6 +816,11 @@ var dict = {
         'customFajr': 'Benutzerdefinierte Fajr Azan',
         'recitation': 'Rezitation',
         'reciter': 'Rezitator',
+        "customTimes": "Custom Times",
+        "enableCustomTimes" : "Enable custom times",
+        "jumuah" : "Jumuah",
+        "jumuahTime": "Jumuah Time",
+        "enableJumuahTime": "Enable Jumuah Time",
     },
     nl: {
         'settings': 'Instellingen', //settingsTitle
@@ -921,6 +951,11 @@ var dict = {
         'customFajr': 'Aangepaste fajr azan',
         'recitation': 'Recitatie',
         'reciter': 'Qari',
+        "customTimes": "Custom Times",
+        "enableCustomTimes" : "Enable custom times",
+        "jumuah" : "Jumuah",
+        "jumuahTime": "Jumuah Time",
+        "enableJumuahTime": "Enable Jumuah Time",
     },
     sv: {
         'settings': 'Inställningar', //settingsTitle
@@ -1052,6 +1087,11 @@ var dict = {
         'customFajr': 'Anpassad Fajr Azan',
         'recitation': 'Uppläsning',
         'reciter': 'Recitatör',
+        "customTimes": "Custom Times",
+        "enableCustomTimes" : "Enable custom times",
+        "jumuah" : "Jumuah",
+        "jumuahTime": "Jumuah Time",
+        "enableJumuahTime": "Enable Jumuah Time",
     },
     no: {
         'settings': 'Innstillinger', //settingsTitle
@@ -1183,6 +1223,11 @@ var dict = {
         'customFajr': 'Tilpasset Fajr Azan',
         'recitation': 'Recitering',
         'reciter': 'Qari',
+        "customTimes": "Custom Times",
+        "enableCustomTimes" : "Enable custom times",
+        "jumuah" : "Jumuah",
+        "jumuahTime": "Jumuah Time",
+        "enableJumuahTime": "Enable Jumuah Time",
     },
     da: {
         'settings': 'Indstillinger', //settingsTitle
@@ -1314,6 +1359,11 @@ var dict = {
         'customFajr': 'Brugerdefineret Fajr Azan',
         'recitation': 'Recitation',
         'reciter': 'Qari',
+        "customTimes": "Custom Times",
+        "enableCustomTimes" : "Enable custom times",
+        "jumuah" : "Jumuah",
+        "jumuahTime": "Jumuah Time",
+        "enableJumuahTime": "Enable Jumuah Time",
     },
     ur: {
         'settings': 'ترتیبات', //settingsTitle
@@ -1445,6 +1495,11 @@ var dict = {
         'customFajr': 'فجر کی اذان حسب ضرورت',
         'recitation': 'تلاوت',
         'reciter': 'تلاوت کرنے والا',
+        "customTimes": "Custom Times",
+        "enableCustomTimes" : "Enable custom times",
+        "jumuah" : "Jumuah",
+        "jumuahTime": "Jumuah Time",
+        "enableJumuahTime": "Enable Jumuah Time",
     },
     tr: {
         'settings': 'Ayarlar', //settingsTitle
@@ -1577,6 +1632,11 @@ var dict = {
         'customFajr': 'Özel Fajr Adhan',
         'recitation': 'Okuma',
         'reciter': 'Qari',
+        "customTimes": "Custom Times",
+        "enableCustomTimes" : "Enable custom times",
+        "jumuah" : "Jumuah",
+        "jumuahTime": "Jumuah Time",
+        "enableJumuahTime": "Enable Jumuah Time",
     },
     bn: {
         'settings': 'সেটিংস', //settingsTitle
@@ -1709,5 +1769,10 @@ var dict = {
         'customFajr': 'কাস্টম ফজর আজান',
         'recitation': 'তিলাওয়াত',
         'reciter': 'তিলাওয়াতকারী',
+        "customTimes": "Custom Times",
+        "enableCustomTimes" : "Enable custom times",
+        "jumuah" : "Jumuah",
+        "jumuahTime": "Jumuah Time",
+        "enableJumuahTime": "Enable Jumuah Time",
     },
 }
