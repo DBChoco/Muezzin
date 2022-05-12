@@ -47,6 +47,8 @@ window.addEventListener('loadedSettings', () => {
 })
 
 window.addEventListener('loadedUI', () => {
+  addEffects()
+
   volumeSlider()
   setKeyPress()
   setupButtonListeners()
@@ -882,4 +884,11 @@ function setupBorders(inCalendar = false){
   else{
     document.getElementById("prayerGrid").style.borderRadius = "0"
   }
+}
+
+function addEffects(){
+  document.getElementById("clock").style.backdropFilter = "blur(10px)"
+  document.getElementById("dateLoc").style.backdropFilter = "blur(10px)"
+  document.getElementById("timeLeft").style.backdropFilter = "blur(10px)"
+  document.getElementById("prayerGrid").style.backdropFilter = "blur(10px)"
 }
