@@ -59,6 +59,15 @@
     <img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" />
 </a>
 
+<br>
+<br>
+
+<a href="[https://snapcraft.io/muezzin](https://github.com/DBChoco/Salawat)">
+    <img width='48' alt="Salawat" src="https://github.com/DBChoco/Salawat/blob/main/images/icon.png?raw=true" />
+</a>
+
+**Checkout my new app Adhan app made with Java, it is much faster but has overall the same design:** [Salawat](https://github.com/DBChoco/Salawat)
+
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
   
@@ -157,7 +166,7 @@ The app also contains a Qur'an reader that is able to show translations and tran
 <!-- ROADMAP -->
 ### Roadmap
 
-- [ ] Native app port [in-progress](https://github.com/DBChoco/Salawat)
+- [x] Native app port [done, still needs updates](https://github.com/DBChoco/Salawat)
 - [x] Add Qur'an reading page
   - [x] Improve the Qur'an page  
 - [ ] Add mosque mode (improved visibility from afar & delays to prayers) [delayed](https://github.com/DBChoco/Muezzin-Mim)
