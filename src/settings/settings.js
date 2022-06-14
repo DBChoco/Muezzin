@@ -742,6 +742,7 @@ function loadLanguage(lang){
   document.getElementById("fahrenheit").innerHTML  = window.api.getLanguage(lang, "fahrenheit");  
 
   document.getElementById("adhanAhmed").innerText = window.api.getLanguage(lang, "adhan") + " - " + window.api.getLanguage(lang, "ahmedNufeis")
+  document.getElementById("AllahuAkbarSound").innerText = window.api.getLanguage(lang, "shortAllahuAkbar")
   document.getElementById("customAdhanFajrText").innerHTML  = window.api.getLanguage(lang, "customFajr"); 
   document.getElementById("recitationText").innerHTML  = window.api.getLanguage(lang, "recitation"); 
   document.getElementById("reciterText").innerHTML  = window.api.getLanguage(lang, "reciter"); 

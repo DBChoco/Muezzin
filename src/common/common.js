@@ -14,7 +14,7 @@ module.exports = {
         if (darkMode){
           link.href = '../../node_modules/bootstrap-dark-5/dist/css/bootstrap-night.min.css';
           document.body.style.borderColor = "#FFFFFF";
-          //document.body.style.backgroundColor = "#212121";
+          document.body.style.backgroundColor = "#212121";
           for (let element of shaders){
             element.style.backgroundColor = 'rgba(7, 7, 7, 0.8)'
           }
@@ -22,7 +22,7 @@ module.exports = {
         else{
           link.href = '../../node_modules/bootstrap-dark-5/dist/css/bootstrap.min.css';
           document.body.style.borderColor = "#000000";
-          //document.body.style.backgroundColor = "#FFFFFF";
+          document.body.style.backgroundColor = "#FFFFFF";
           for (let element of shaders){
             element.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'
           }

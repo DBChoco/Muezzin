@@ -141,6 +141,7 @@ var dict = {
         "jumuah" : "Jumuah",
         "jumuahTime": "Jumuah Time",
         "enableJumuahTime": "Enable Jumuah Time",
+        "shortAllahuAkbar": "Short sound - Mishary Rashid Alafasy",
 
     },
     fr: {
@@ -278,6 +279,7 @@ var dict = {
         "jumuah" : "Jumuah",
         "jumuahTime": "Temps de Jumuah",
         "enableJumuahTime": "Activer temps de Jumuah",
+        "shortAllahuAkbar": "Son court - Mishary Rashid Alafasy",
     },
     es: {
         'settings': 'Ajustes', //settingsTitle
@@ -414,6 +416,7 @@ var dict = {
         "jumuah" : "Jumuá",
         "jumuahTime": "Hora de Jumuá",
         "enableJumuahTime": "Activar hora de Jumuá",
+        "shortAllahuAkbar": "Sonido corto - Mishary Rashid Alafasy",
     },
     ar: {
         'settings': 'الإعدادات', //settingsTitle
@@ -550,6 +553,7 @@ var dict = {
         "jumuah" : "جمعة",
         "jumuahTime": "وقت الجمعة",
         "enableJumuahTime": "تفعيل وقت الجمعة",
+        "shortAllahuAkbar": "صوت قصير",
     },
     it: {
         'settings': 'Impostazioni', //settingsTitle
@@ -686,6 +690,7 @@ var dict = {
         "jumuah" : "Jumuah",
         "jumuahTime": "Tempo di Jumuah",
         "enableJumuahTime": "Abilita il tempo di Jumuah",
+        "shortAllahuAkbar": "Suono breve - Mishary Rashid Alafasy",
         },
     de: {
         'settings': 'Einstellungen', //settingsTitle
@@ -821,6 +826,7 @@ var dict = {
         "jumuah" : "Jumuah",
         "jumuahTime": "Zeit von Jumuah",
         "enableJumuahTime": "Aktivieren Sie die Zeit von Jumuah",
+        "shortAllahuAkbar": "Kurzer Klang - Mishary Rashid Alafasy",
     },
     nl: {
         'settings': 'Instellingen', //settingsTitle
@@ -956,6 +962,7 @@ var dict = {
         "jumuah" : "Jumuah",
         "jumuahTime": "Tijd van Jumuah",
         "enableJumuahTime": "Tijd van Jumuah inschakelen",
+        "shortAllahuAkbar": "Korte klank - Mishary Rashid Alafasy",
     },
     sv: {
         'settings': 'Inställningar', //settingsTitle
@@ -1092,6 +1099,7 @@ var dict = {
         "jumuah" : "Jumuah",
         "jumuahTime": "Jumuahs tid",
         "enableJumuahTime": "Aktivera tid för Jumuah",
+        "shortAllahuAkbar": "Kortljud - Mishary Rashid Alafasy",
     },
     no: {
         'settings': 'Innstillinger', //settingsTitle
@@ -1228,6 +1236,7 @@ var dict = {
         "jumuah" : "Jumuah",
         "jumuahTime": "Jumuahs tid",
         "enableJumuahTime": "Aktiver tid for Jumuah",
+        "shortAllahuAkbar": "Kort lyd - Mishary Rashid Alafasy",
     },
     da: {
         'settings': 'Indstillinger', //settingsTitle
@@ -1364,6 +1373,7 @@ var dict = {
         "jumuah" : "Jumuah",
         "jumuahTime": "Jumuahs tid",
         "enableJumuahTime": "Aktiver tid for Jumuah",
+        "shortAllahuAkbar": "Kort lyd - Mishary Rashid Alafasy",
     },
     ur: {
         'settings': 'ترتیبات', //settingsTitle
@@ -1500,6 +1510,7 @@ var dict = {
         "jumuah" : "جمعہ",
         "jumuahTime": "جمعہ کا وقت",
         "enableJumuahTime": "جمعہ کے اوقات کو فعال کریں۔",
+        "shortAllahuAkbar": "مختصر آواز",
     },
     tr: {
         'settings': 'Ayarlar', //settingsTitle
@@ -1637,6 +1648,7 @@ var dict = {
         "jumuah" : "Cuma",
         "jumuahTime": "Cuma Zamanı",
         "enableJumuahTime": "Cuma zamanını aktifleştir",
+        "shortAllahuAkbar": "Short soundKısa ses - Mishary Rashid Alafasy",
     },
     bn: {
         'settings': 'সেটিংস', //settingsTitle
@@ -1774,5 +1786,6 @@ var dict = {
         "jumuah" : "জুমুআ",
         "jumuahTime": "জুমার সময়",
         "enableJumuahTime": "জুমার সময় চালু করুন",
+        "shortAllahuAkbar": "সংক্ষিপ্ত শব্দ - Mishary Rashid Alafasy",
     },
 }
