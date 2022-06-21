@@ -347,12 +347,14 @@ function checkTime(){
         }
       } 
     }
-  }, 1000)
-  setInterval(function(){
-    if (today.getDate != (new Date).getDate){
-      mainWindow.webContents.send('update');
+    if (today.getDate() != (new Date).getDate()){
+      today = new Date;
+      waitFor(lat, prayerTimes = calcPrayerTimes());
+      mainWindow.webContents.send('prayersReply', prayerTimes);
+      trayPrayerTimes();
+      console.log("Recalculating prayer times")
     }
-  }, 10000)
+  }, 1000);
 }
 
 /**
@@ -802,7 +804,6 @@ function checkFirstTime(){
   if (first){
     console.log("first")
     var IPGeolocationAPI = require('ip-geolocation-api-javascript-sdk');
-
     // Create IPGeolocationAPI object. Constructor takes two parameters.
     var ipgeolocationApi = new IPGeolocationAPI("b9aed80a71d043149013540fb449a384", false); 
 
