@@ -62,12 +62,6 @@
 <br>
 <br>
 
-<a href="[https://snapcraft.io/muezzin](https://github.com/DBChoco/Salawat)">
-    <img width='48' alt="Salawat" src="https://github.com/DBChoco/Salawat/blob/main/images/icon.png?raw=true" />
-</a>
-
-**Checkout my new app Adhan app made with Java, it is much faster but has overall the same design:** [Salawat](https://github.com/DBChoco/Salawat)
-
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
   
@@ -99,9 +93,6 @@
         </ul>
       </li>
       <li><a href="#contributing">Contributing</a>
-        <ul>
-         <li><a href="#support">Support</a></li>
-        </ul>
       </li>
       <li><a href="#license">License</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -249,23 +240,6 @@ If you have a suggestion that would make this better, please fork the repo and c
 If you noticed a translation error or want to add a language yourself, feel free to contact me!
 
 **Don't forget to give the project a star! Thanks again!**
-
-### Support
-
-Muezzin is a growing project and hopefully it'll grow even more inshaAllah. That means money is going to be needed to push the project further. Here are a few things I'd like to do, but currently can't:
-
-- Purchase Code Signing Certificates for Windows and macOs, so that the software won't be flagged as malware.
-- Upgrade from the current free-tier API's to premium (more requests => more people can use it)
-
-If you want to help and can do so, here is a Paypal link: 
-
-<a href="https://www.paypal.com/donate/?hosted_button_id=DQFLG3KTZ9WU4">
-  <img src="https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png" alt="Donate with PayPal" width="200px"/>
-</a>
-
-**But money matters aside, and perhaps more importantly, I need your du'as. Indeed without the Will of Allah, this project won't go nowhere.**
-
-**You know what to do brothers & sisters!**
 
 ***Jazzaka Lahu khairan!***
 
