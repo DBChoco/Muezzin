@@ -36,8 +36,34 @@ function generateVerse(number, audioURL){
         playingAll = false;
     })
 
+    forwardAudioButton = document.createElement("i")
+    forwardAudioButton.classList.add("fa-solid")
+    forwardAudioButton.classList.add("fa-forward")
+    forwardAudioButton.classList.add("versePlay")
+    forwardAudioButton.addEventListener("click", function(){
+        let progress = number.split(":")[1];
+        let verses = document.getElementsByClassName('verseContainer');
+        playAudio("https://verses.quran.com/" + audioURL)
+        playNext();
+        playingAll = true;
+        function playNext(){   
+            console.log(progress)
+            audioElement.addEventListener("timeupdate", function(){
+                if (audioElement.currentTime >= audioElement.duration - 0.4){
+                    playAudio("https://verses.quran.com/" + document.getElementById(verses[progress].childNodes[1].id).dataset.audioURL)
+                    document.getElementById(verses[progress].childNodes[1].id).scrollIntoView();
+                    progress++;
+                    if (progress < verses.length && playingAll) playNext()
+                } 
+            })
+        }
+    })
+
+    
+
     sidebarDiv.appendChild(verseNumberDiv)
     sidebarDiv.appendChild(playAudioButton)
+    sidebarDiv.appendChild(forwardAudioButton)
     textContainerDiv.dataset.audioURL = audioURL
     textContainerDiv.appendChild(arabTextDiv)
 
@@ -113,6 +139,10 @@ async function loadQuranList(){
 //When selecting a Surah, this is launched.
 //Calls the apis for the arabText, latins and translations and applies them.
 async function loadSurah(number){
+    //stop any audio playing
+    playingAll = false;
+    audioElement.pause();
+
     console.debug("Loading Surah n°" + number)
     document.getElementById("reader").innerHTML = ""
     addBismillahTitle(number)
@@ -374,8 +404,6 @@ function setupPlayStopButtons(){
                         number++;
                         if (number < verses.length && playingAll) playNext()
                     }
-                    
-                    
                 })
             }
         }

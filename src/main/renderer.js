@@ -20,7 +20,6 @@ loadSettings()
 
 window.api.send('prayers');
 
-
 window.addEventListener('loadedSettings', () => { 
   loadBackgroundImage()
   
@@ -31,8 +30,8 @@ window.addEventListener('loadedSettings', () => {
   loadCalendar()
 
   getTomorrowPrayers()
-  loadPrayers()
   prayers = nextPrayer();
+  loadPrayers()
 
   setupWeather()
 
@@ -194,7 +193,18 @@ function loadCalendar(){
 //Load all the prayers of the day and shows them on the screen
 function loadPrayers(){
   if (datePick.value == new Date().toDateInputValue()){
-    calPrayers = prayerTimes
+    if (prayers != undefined){
+      if (prayers[3] == langFajr && new Date().getHours() <= 24){
+        calPrayers = tommorowPrayers
+      }
+      else{
+        calPrayers = prayerTimes
+      }
+      console.log(prayers[3] + " " + new Date().getHours() <= 24)
+    }
+    else{
+      calPrayers = prayerTimes
+    }
   }
   if (calPrayers != undefined){
     document.getElementById("fajrTime").innerText = changeclockDisplay(calPrayers.fajr, shortTimeFormat);
@@ -327,7 +337,10 @@ function nextPrayer(){
         currentName = langIsha
         nextName = langFajr
     }
-    if (selectedPrayer != nextName) selectPrayer(nextName)
+    if (selectedPrayer != nextName){
+      loadPrayers();
+      selectPrayer(nextName)
+    } 
     
     return [currentPrayer, nextPrayer, currentName, nextName]
   }
@@ -461,7 +474,6 @@ function loadHandles(){
 
   window.api.handle('update', msg => {
     loadSettings()
-    window.api.send('prayers', "Send me the times please");
   })
 }
 

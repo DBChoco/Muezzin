@@ -353,6 +353,7 @@ function checkTime(){
       mainWindow.webContents.send('prayersReply', prayerTimes);
       trayPrayerTimes();
       console.log("Recalculating prayer times")
+      mainWindow.webContents.send('update');
     }
   }, 1000);
 }
@@ -846,6 +847,7 @@ function checkFirstTime(){
     }
     else if (countryCode == "TR"){
       store.set('calculationMethod.calcMethod', "Turkey");
+      //store.set('language', 'tk')
     }
     else if (countryCode == "IR"){
       store.set('calculationMethod.calcMethod', "Tehran");
