@@ -1,6 +1,9 @@
 module.exports = {
     loadTrans: function loadTranslation(lang, value) {
         return dict[lang][value];
+    },
+    langAvailable: function langAvailable(lang){
+        return (lang in dict);
     }
 }
 

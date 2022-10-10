@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow, ipcMain, Tray, Menu, Notification, nativeImage, net, shell} = require('electron')
+const {app, BrowserWindow, ipcMain, Tray, Menu, Notification, nativeImage, nativeTheme, net, shell} = require('electron')
 const path = require('path')
 require('v8-compile-cache');
 
@@ -802,8 +802,15 @@ function msToTime(duration){ //https://stackoverflow.com/questions/19700283/how-
 //checks if the app is being launched for the first time and if so, get location from location api
 function checkFirstTime(){
   var first = !store.has("first")
+  
+  
+
   if (first){
-    console.log("first")
+    loadSystemLang() //Chekcs system language and applies it if available
+
+    loadTheme() //loads theme bases on system theme (light/dark)
+
+    console.log("First time using the app, loading geolocation")
     var IPGeolocationAPI = require('ip-geolocation-api-javascript-sdk');
     // Create IPGeolocationAPI object. Constructor takes two parameters.
     var ipgeolocationApi = new IPGeolocationAPI("b9aed80a71d043149013540fb449a384", false); 
@@ -829,6 +836,21 @@ function checkFirstTime(){
       }
     }
     store.set("first", true)
+  }
+
+  function loadSystemLang(){
+    if (language.langAvailable(app.getLocale().split('-')[0])){
+      store.set('language', app.getLocale().split('-')[0])
+      lang = app.getLocale().split('-')[0]
+    }
+  }
+
+  function loadTheme(){
+    if(nativeTheme.shouldUseDarkColors){
+      store.set('darkMode', true);
+      store.set('bgImage', [true, '../../ressources/images/bgImage_dark.avif'])
+    }
+    // mainWindow.webContents.send('reloadTheme'); if needed
   }
 
     //Looks at the continent and country of the user and chooses a calculation method

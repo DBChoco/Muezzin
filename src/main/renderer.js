@@ -475,6 +475,11 @@ function loadHandles(){
   window.api.handle('update', msg => {
     loadSettings()
   })
+
+  window.api.handle('reloadTheme', msg => {
+    loadBackgroundImage()
+    console.log("themechanged")
+  })
 }
 
 
