@@ -1,6 +1,6 @@
 {
   "name": "muezzin",
-  "version": "2.5.8",
+  "version": "2.5.9",
   "description": "Prayer Time Caller",
   "main": "src/main/main.js",
   "scripts": {
@@ -44,7 +44,10 @@
     ],
     "win": {
       "icon": "ressources/images/icon-256x256.ico",
-      "target": "nsis"
+      "target": ["nsis", 
+        "portable",
+        "msi"
+      ]
     },
     "linux": {
       "icon": "ressources/images/icon.png",

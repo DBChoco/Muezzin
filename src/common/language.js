@@ -1788,4 +1788,142 @@ var dict = {
         "enableJumuahTime": "জুমার সময় চালু করুন",
         "shortAllahuAkbar": "সংক্ষিপ্ত শব্দ - Mishary Rashid Alafasy",
     },
+    ru: {
+        'settings': 'Настройки', //settingsTitle
+        'language': 'Язык', //langText
+        'timeformat': 'Формат времени', //tfText
+        '24hour': '24-часовой', //24hTimeFormatText
+        '12hour': '12-часовой', //12hTimeFormatText
+        'showSseconds': 'Отображать секунды', //showSecondsText
+        'dateFormat': 'Формат даты', //dfText
+        'dateFormat1': 'ДД/ММ/ГГГГ', //id="df1Text"
+        'dateFormat2': 'ММ/ДД/ГГГГ', //id="df2Text"
+        'dateFormat3': 'ГГГГ/ММ/ДД', //id="df3Text"
+        'notifications': 'Уведомления', //notifText
+        'notifCheck': 'Включить уведомления', //notifCheckText
+        'coordinates': 'Координаты', //coordinatesText
+        'latitude': 'Широта', //latText
+        'longitude': 'Долгота', //lonText
+        'timezone': 'Часовой пояс', // tzText
+        'adhan': 'Азан', //adhanText and others in main
+        'adhanCheck': 'Включить Азан', //adhanCheckText
+        'AdhanMecca': 'Азан Мекка', //adhanMeccaText //Traduire juste Mecca
+        'adhanAqsa': 'Азан аль-Акса', //adhanAqsaText
+        'customAdhan': 'Выбрать Азан', //customAdhanText
+        'duaAfterAdhan': "Ду'а после Азана", //duaAfterText
+        'theme': 'Тема', //themeText
+        'darkMode': 'Темный режим', //darkModeText
+        'bgImage': 'Фоновое изображение', //bgImageText
+        'bgImageCheck': 'Включить Фоновое изображение', //bgImageCheckText
+        'calcMethods': 'Методы расчёта', //calcMethodsText
+        'mwl': 'Всемирная исламская лига', //MWL
+        'egyptian': 'Египетский', //Egyptian
+        'karachi': 'Карачи', //Karachi
+        'uaq': 'Умм аль-Кура', //UAQ
+        'dubai': 'Дубаи', //Dubai
+        'qatar': 'Катар', //Qatar
+        'kuwait': 'Кувейт', //Kuwait
+        'mc': 'Комитет наблюдения луны', //MC //pas traduire ça
+        'singapore': 'Сингапур', //Singapore
+        'turkey': 'Турция', //Turkey
+        'tehran': 'Тегеран', //Tehran
+        'isna': 'ISNA (Сев.Ам.)', //ISNA
+        'madhab': 'Мазхаб', //MadhabText
+        'shafi': 'Шафии', //shafi
+        'hanafi': 'Ханафи', //Hanafi
+        'hlr': 'Правило высоких широт', //hlrText
+        'motn': 'Середина ночи', //MOTN
+        'sotn': 'Одна седьмая ночи', //SOTN
+        'ta': 'Угловой метод', //TA
+        'pcr': 'Решение для Полярного круга', //pcrText
+        'cc': 'Ближайший город', //CC
+        'cd': 'Ближайшая дата', //CD
+        'und': 'Не рассчитывать', //UND
+        'shafaq': 'Сумерки', //ShafaqText
+        'general': 'Общее правило', //shafaqG
+        'ahmer': 'Красные сумерки (ахмар)', //shafaqR
+        'abyad': 'Белые сумерки (абйад)', //shafaqW
+        'return': 'Назад', //return
+        'general': 'Общий', //v-pills-general-tab
+        'location': 'Местоположение', //v-pills-location-tab
+        'audio': 'Аудио', //v-pills-audio-tab
+        'appearance': 'Внешний вид', //v-pills-appearance-tab
+        'advanced': 'Продвинутые', //v-pills-advanced-tab
+        'muezzin': 'Муэдзин',
+        'autoStart': 'Автозапуск', //autoStartText
+        'startAtLaunch': 'Открывать при запуске', //autoStartCheckText
+        'copyright': 'Copyright 2022, Muezzin, Все права защищены.', //copyright
+        'quote': 'Воистину, молитва предписана верующим в определённое время', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'source': "Кур'ан: 4/103", //source
+        'fajr': 'Фаджр',
+        'sunrise': 'Восход',
+        'dhuhr': 'Зухр',
+        'asr': 'Аср',
+        'maghrib': 'Магриб',
+        'isha': 'Иша',
+        'now': 'Сейчас',
+        'timeUntil': 'Осталось до',
+        'startUpSound': 'Звук при запуске', //startUpSoundText
+        'playSound': 'Проигрывать звук при запуске', //startUpSoundText2
+        'sysTray': 'Системный трей', //systrayText
+        'minToTray': 'Свернуть в трей', //systrayCheckText
+        'customSettings': 'Свои настройки', //customSettText
+        'enableCS': 'Включить свой Метод расчёта', //enableCalcText
+        'fAngle': 'Угол Фаджра', //fajrAngleText
+        'mAngle': 'Угол Магриба', //maghribAngleText
+        'iAngle': 'Угол Иша', //ishaAngleText
+        'delayAfterM': 'Отсрочить Магриб', //delayText
+        'delayMin': 'Отсрочка (в минутах)', //delayFormText
+        'france': 'Франция', //France12 15 & 18
+        'russia': 'Россия', //Russia
+        'gulf': 'Страны Персидского залива', //Gulf
+        'preferences': 'Предпочтения', //menu label
+        'resetSettings': 'Сбросить настройки', //menu label
+        'adjustements': 'Поправки', //adjustmentsText
+        'here': 'Здесь',
+        'enableAdj': 'Включить поправки', //adjCheckText
+        'fajrAdj': 'Поправка Фаджра', //fajrAdjText
+        'dhuhrAdj': 'Поправка Зухра', //fajrAdjText
+        'asrAdj': 'Поправка Асра', //fajrAdjText
+        'maghribAdj': 'Поправка Магриба', //fajrAdjText
+        'ishaAdj': 'Поправка Иша', //fajrAdjText
+        'showSunnah': 'Показывать время Сунны', //sunnahTimesText
+        'motn': 'Середина ночи',  //MOTNCheckText
+        'totn': 'Последняя треть ночи', //TOTNCheckText
+        'minStart': 'Запускать свёрнутым', //minStartCheckText
+        'updateAvailable': 'Доступно обновление',
+        'version': 'Версия',
+        'available': 'доступна для скачивания на GitHub',
+        'download': 'Скачать',
+        'later': 'Позже',
+        'quran': "Кур'ан",
+        'font': 'Шрифт',
+        'fontsize': 'Размер шрифта',
+        'translation': 'Перевод',
+        'showTrans': 'Отображать перевод',
+        'diffLang': 'Выбрать свой язык',
+        'transliteration': 'Транслитерация',
+        'showTransliteration': 'Отображать транслитерацию',
+        'previous': 'Прошлая Сура',
+        'next': 'Следующая Сура',
+        'weather': 'Погода',
+        'showWeather': 'Показывать погоду',
+        'units': 'Единицы измерения',
+        'celsius': 'Цельсий',
+        'kelvin': 'Кельвин',
+        'fahrenheit': 'Фаренгейт',
+        'playDua': "Проигрывать Ду'а после Азана",
+        'open': 'Открыть',
+        'quit': 'Выйти',
+        'ahmedNufeis': 'Ахмад аль-Нуфейс',
+        'customFajr': 'Свой Азан для Фаджра',
+        'recitation': 'Чтение',
+        'reciter': 'Чтец',
+        "customTimes": "Своё время",
+        "enableCustomTimes" : "Выбрать своё время",
+        "jumuah" : "Джума",
+        "jumuahTime": "Время Джума",
+        "enableJumuahTime": "Добавить время Джума",
+        "shortAllahuAkbar": "Короткий звук - Мишари Рашид аль-Афаси",
+    },
 }
