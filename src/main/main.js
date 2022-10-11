@@ -803,8 +803,6 @@ function msToTime(duration){ //https://stackoverflow.com/questions/19700283/how-
 function checkFirstTime(){
   var first = !store.has("first")
   
-  
-
   if (first){
     loadSystemLang() //Chekcs system language and applies it if available
 

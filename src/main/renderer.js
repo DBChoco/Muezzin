@@ -10,6 +10,7 @@ var langFajr, langSunrise, langDhuhr, langAsr, langMaghrib, langIsha, langAdhan,
 var sunnahTimes, motnCheckOG, totnCheckOG, totn, motn;
 var athanProgress = 0;
 var weatherSettings;
+var hijriAdj
 
 
 var loaded = true;
@@ -119,10 +120,17 @@ function loadHijriDate(){
   setInterval(function() {
     if (hijri){
       let date = new Date()
+      date.setDate(date.getDate() + hijriAdj);
       if ((prayers[2] == langMaghrib || prayers[2] == langIsha) && date.getHours() >= 12) date = date.setDate(date.getDate() + 1)
       let hijriDay = new Intl.DateTimeFormat('en-TN-u-ca-islamic', {day: 'numeric'}).format(date)
-      document.getElementById("dateLoc").innerHTML = loadMoonIcon(hijriDay) + "  " + new Intl.DateTimeFormat(lang + '-TN-u-ca-islamic', 
-      {day: 'numeric', month: 'long',weekday: 'long',year : 'numeric'}).format(date).capitalize();
+      if (lang == "ru"){
+        document.getElementById("dateLoc").innerHTML = loadMoonIcon(hijriDay) + "  " + new Intl.DateTimeFormat(lang + '-TN-u-ca-islamic', 
+      {day: 'numeric', month: 'long',year : 'numeric'}).format(date).capitalize().replace(" AH", "П.Х.")
+      }
+      else {
+        document.getElementById("dateLoc").innerHTML = loadMoonIcon(hijriDay) + "  " + new Intl.DateTimeFormat(lang + '-TN-u-ca-islamic', 
+      {day: 'numeric', month: 'long',year : 'numeric'}).format(date).capitalize();
+      }
       hijri = false;
     }
     else{
@@ -246,6 +254,8 @@ async function loadSettings(){
       enabled: true,
       unit: "C"
     })
+
+    hijriAdj = await window.api.getFromStore('hijriAdj', 0)
 
     loadLang()
     await hidePlayer()
@@ -877,7 +887,7 @@ function loadMoonIcon(day){
 }
 
 function loadFont(){
-  if (lang != "ar" && lang != "bn"){
+  if (lang != "ar" && lang != "bn" && lang != "ru"){
     document.body.style.fontFamily = 'quicksand'
   }
 }

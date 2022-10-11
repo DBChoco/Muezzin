@@ -1865,7 +1865,7 @@ var dict = {
         'maghrib': 'Магриб',
         'isha': 'Иша',
         'now': 'Сейчас',
-        'timeUntil': 'Осталось до',
+        'timeUntil': 'До молитвы',
         'startUpSound': 'Звук при запуске', //startUpSoundText
         'playSound': 'Проигрывать звук при запуске', //startUpSoundText2
         'sysTray': 'Системный трей', //systrayText
