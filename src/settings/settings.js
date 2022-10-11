@@ -757,6 +757,9 @@ function loadLanguage(lang){
   document.getElementById("jumuahText").innerHTML  = window.api.getLanguage(lang, "jumuahTime"); 
   document.getElementById("jumuahCheckText").innerHTML  = window.api.getLanguage(lang, "enableJumuahTime"); 
   document.getElementById("jumuahInputText").innerHTML  = window.api.getLanguage(lang, "jumuah"); 
+
+  document.getElementById("hijriAdjTitle").innerHTML  = window.api.getLanguage(lang, "hijriAdjTitle");
+  document.getElementById("hijriAdjText").innerHTML  = window.api.getLanguage(lang, "hijriAdjText");
 }
 
 

@@ -145,6 +145,8 @@ var dict = {
         "jumuahTime": "Jumuah Time",
         "enableJumuahTime": "Enable Jumuah Time",
         "shortAllahuAkbar": "Short sound - Mishary Rashid Alafasy",
+        "hijriAdjTitle" : "Hijri date adjustments",
+        "hijriAdjText" : "Hijri date difference",
 
     },
     fr: {
@@ -283,6 +285,8 @@ var dict = {
         "jumuahTime": "Temps de Jumuah",
         "enableJumuahTime": "Activer temps de Jumuah",
         "shortAllahuAkbar": "Son court - Mishary Rashid Alafasy",
+        "hijriAdjTitle" : "Ajustements de la date Hijri",
+        "hijriAdjText" : "Différence de date Hijri",
     },
     es: {
         'settings': 'Ajustes', //settingsTitle
@@ -420,6 +424,8 @@ var dict = {
         "jumuahTime": "Hora de Jumuá",
         "enableJumuahTime": "Activar hora de Jumuá",
         "shortAllahuAkbar": "Sonido corto - Mishary Rashid Alafasy",
+        "hijriAdjTitle" : "Ajustes de fecha Hijri",
+        "hijriAdjText" : "Diferencia de fecha Hijri",
     },
     ar: {
         'settings': 'الإعدادات', //settingsTitle
@@ -557,6 +563,8 @@ var dict = {
         "jumuahTime": "وقت الجمعة",
         "enableJumuahTime": "تفعيل وقت الجمعة",
         "shortAllahuAkbar": "صوت قصير",
+        "hijriAdjTitle" : "تعديلات التاريخ الهجري",
+        "hijriAdjText" : "فرق التاريخ الهجري",
     },
     it: {
         'settings': 'Impostazioni', //settingsTitle
@@ -694,6 +702,8 @@ var dict = {
         "jumuahTime": "Tempo di Jumuah",
         "enableJumuahTime": "Abilita il tempo di Jumuah",
         "shortAllahuAkbar": "Suono breve - Mishary Rashid Alafasy",
+        "hijriAdjTitle" : "Aggiustamenti della data di Hijri",
+        "hijriAdjText" : "Differenza di data Hijri",
         },
     de: {
         'settings': 'Einstellungen', //settingsTitle
@@ -830,6 +840,8 @@ var dict = {
         "jumuahTime": "Zeit von Jumuah",
         "enableJumuahTime": "Aktivieren Sie die Zeit von Jumuah",
         "shortAllahuAkbar": "Kurzer Klang - Mishary Rashid Alafasy",
+        "hijriAdjTitle" : "Hijri-Datumsanpassungen",
+        "hijriAdjText" : "Hijri-Datumsunterschied",
     },
     nl: {
         'settings': 'Instellingen', //settingsTitle
@@ -966,6 +978,8 @@ var dict = {
         "jumuahTime": "Tijd van Jumuah",
         "enableJumuahTime": "Tijd van Jumuah inschakelen",
         "shortAllahuAkbar": "Korte klank - Mishary Rashid Alafasy",
+        "hijriAdjTitle" : "Hijri datum aanpassingen",
+        "hijriAdjText" : "Hijri datum verschil",
     },
     sv: {
         'settings': 'Inställningar', //settingsTitle
@@ -1103,6 +1117,8 @@ var dict = {
         "jumuahTime": "Jumuahs tid",
         "enableJumuahTime": "Aktivera tid för Jumuah",
         "shortAllahuAkbar": "Kortljud - Mishary Rashid Alafasy",
+        "hijriAdjTitle" : "Hijri datumjusteringar",
+        "hijriAdjText" : "Hijri datum skillnad",
     },
     no: {
         'settings': 'Innstillinger', //settingsTitle
@@ -1240,6 +1256,8 @@ var dict = {
         "jumuahTime": "Jumuahs tid",
         "enableJumuahTime": "Aktiver tid for Jumuah",
         "shortAllahuAkbar": "Kort lyd - Mishary Rashid Alafasy",
+        "hijriAdjTitle" : "Hijri-datojusteringer",
+        "hijriAdjText" : "Hijri datoforskjell",
     },
     da: {
         'settings': 'Indstillinger', //settingsTitle
@@ -1377,6 +1395,8 @@ var dict = {
         "jumuahTime": "Jumuahs tid",
         "enableJumuahTime": "Aktiver tid for Jumuah",
         "shortAllahuAkbar": "Kort lyd - Mishary Rashid Alafasy",
+        "hijriAdjTitle" : "Hijri-datojusteringer",
+        "hijriAdjText" : "Hijri dato forskel",
     },
     ur: {
         'settings': 'ترتیبات', //settingsTitle
@@ -1514,6 +1534,8 @@ var dict = {
         "jumuahTime": "جمعہ کا وقت",
         "enableJumuahTime": "جمعہ کے اوقات کو فعال کریں۔",
         "shortAllahuAkbar": "مختصر آواز",
+        "hijriAdjTitle" : "ہجری تاریخ کی ایڈجسٹمنٹ",
+        "hijriAdjText" : "ہجری تاریخ کا فرق",
     },
     tr: {
         'settings': 'Ayarlar', //settingsTitle
@@ -1652,6 +1674,8 @@ var dict = {
         "jumuahTime": "Cuma Zamanı",
         "enableJumuahTime": "Cuma zamanını aktifleştir",
         "shortAllahuAkbar": "Short soundKısa ses - Mishary Rashid Alafasy",
+        "hijriAdjTitle" : "Hicri tarih ayarlamaları",
+        "hijriAdjText" : "Hicri tarih farkı",
     },
     bn: {
         'settings': 'সেটিংস', //settingsTitle
@@ -1790,6 +1814,8 @@ var dict = {
         "jumuahTime": "জুমার সময়",
         "enableJumuahTime": "জুমার সময় চালু করুন",
         "shortAllahuAkbar": "সংক্ষিপ্ত শব্দ - Mishary Rashid Alafasy",
+        "hijriAdjTitle" : "হিজরি তারিখ সমন্বয়",
+        "hijriAdjText" : "হিজরি তারিখের পার্থক্য",
     },
     ru: {
         'settings': 'Настройки', //settingsTitle
@@ -1928,5 +1954,7 @@ var dict = {
         "jumuahTime": "Время Джума",
         "enableJumuahTime": "Добавить время Джума",
         "shortAllahuAkbar": "Короткий звук - Мишари Рашид аль-Афаси",
+        "hijriAdjTitle" : "Поправка даты по Хиджре",
+        "hijriAdjText" : "Разница в дате по Хиджре",
     },
 }
