@@ -1957,4 +1957,145 @@ var dict = {
         "hijriAdjTitle" : "Поправка даты по Хиджре",
         "hijriAdjText" : "Разница в дате по Хиджре",
     },
+    id: {
+        'settings': 'Pengaturan', //settingsTitle
+        'language': 'Bahasa', //langText
+        'timeformat': 'Format waktu', //tfText
+        '24hour': '24 Jam', //24hTimeFormatText
+        '12hour': '12 Jam', //12hTimeFormatText
+        'showSseconds': 'Perlihatkan detik', //showSecondsText
+        'dateFormat': 'Format waktu', //dfText
+        'dateFormat1': 'HH/BB/TTTT', //id="df1Text"
+        'dateFormat2': 'BB/HH/TTTT', //id="df2Text"
+        'dateFormat3': 'TTTT/BB/HH', //id="df3Text"
+        'notifications': 'Notifikasi', //notifText
+        'notifCheck': 'Aktifkan notifikasi', //notifCheckText
+        'coordinates': 'Koordinat', //coordinatesText
+        'latitude': 'Garis Lintang', //latText
+        'longitude': 'Garis Bujur', //lonText
+        'timezone': 'Zona waktu', // tzText
+        'adhan': 'Azan', //adhanText and others in main
+        'adhanCheck': 'Aktifkan Azan', //adhanCheckText
+        'AdhanMecca': 'Azan Makkah', //adhanMeccaText //Traduire juste Mecca
+        'adhanAqsa': 'Azan al-Aqsa', //adhanAqsaText
+        'customAdhan': 'Azan Kustom', //customAdhanText
+        'duaAfterAdhan': "Doa setelah Azan", //duaAfterText
+        'theme': 'Tema', //themeText
+        'darkMode': 'Mode Gelap', //darkModeText
+        'bgImage': 'Gambar Latar Belakang', //bgImageText
+        'bgImageCheck': 'Aktifkan Gambar Latar Belakang', //bgImageCheckText
+        'calcMethods': 'Metode Kalkulasi', //calcMethodsText
+        'mwl': 'Liga Muslim Dunia', //MWL
+        'egyptian': 'Mesir', //Egyptian
+        'karachi': 'Karachi', //Karachi
+        'uaq': 'Ummul Quro', //UAQ
+        'dubai': 'Dubai', //Dubai
+        'qatar': 'Qatar', //Qatar
+        'kuwait': 'Kuwait', //Kuwait
+        'mc': 'Moonsighting Committee', //MC //pas traduire ça
+        'singapore': 'Singapura', //Singapore
+        'turkey': 'Turki', //Turkey
+        'tehran': 'Tehran', //Tehran
+        'isna': 'ISNA (NA)', //ISNA
+        'madhab': 'Mazhab', //MadhabText
+        'shafi': 'Syafi`i', //shafi
+        'hanafi': 'Hanafi', //Hanafi
+        'hlr': 'Aturan Lintang Tinggi', //hlrText
+        'motn': 'Pertengahan Malam', //MOTN
+        'sotn': 'Sepertujuh Malam', //SOTN
+        'ta': 'Sudut Senja', //TA
+        'pcr': 'Resolusi Lingkaran Kutub', //pcrText
+        'cc': 'Kota Terdekat', //CC
+        'cd': 'Tanggal Terdekat', //CD
+        'und': 'Jangan kalkulasi', //UND
+        'shafaq': 'Shafaq', //ShafaqText
+        'general': 'Umum', //shafaqG
+        'ahmer': 'Senja Merah (ahmer)', //shafaqR
+        'abyad': 'Senja Putih (abyad)', //shafaqW
+        'return': 'Kembali', //return
+        'general': 'Umum', //v-pills-general-tab
+        'location': 'Lokasi', //v-pills-location-tab
+        'audio': 'Audio', //v-pills-audio-tab
+        'appearance': 'Tampilan', //v-pills-appearance-tab
+        'advanced': 'Tingkat Lanjut', //v-pills-advanced-tab
+        'muezzin': 'Muezzin',
+        'autoStart': 'Mulai Otomatis', //autoStartText
+        'startAtLaunch': 'Mulai otomatis saat launch', //autoStartCheckText
+        'copyright': 'Copyright 2022, Muezzin, All rights reserved.', //copyright
+        'quote': 'Sesungguhnya salat itu merupakan kewajiban yang waktunya telah ditentukan atas orang-orang mukmin.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'source': "QS. An-Nisa (4):103", //source
+        'fajr': 'Subuh',
+        'sunrise': 'Terbit',
+        'dhuhr': 'Zuhur',
+        'asr': 'Asar',
+        'maghrib': 'Magrib',
+        'isha': 'Isya',
+        'now': 'Sekarang',
+        'timeUntil': 'Waktu sampai',
+        'startUpSound': 'Suara Start Up', //startUpSoundText
+        'playSound': 'Putar suara saat startup', //startUpSoundText2
+        'sysTray': 'System tray', //systrayText
+        'minToTray': 'Perkecil ke system tray', //systrayCheckText
+        'customSettings': 'Pengaturan kustom', //customSettText
+        'enableCS': 'Aktifkan Pengaturan Kalkulasi Kustom', //enableCalcText
+        'fAngle': 'Sudut Subuh', //fajrAngleText
+        'mAngle': 'Sudut Magrib', //maghribAngleText
+        'iAngle': 'Sudut Isya', //ishaAngleText
+        'delayAfterM': 'Jeda setelah Magrib', //delayText
+        'delayMin': 'Jeda (menit)', //delayFormText
+        'france': 'Prancis', //France12 15 & 18
+        'russia': 'Rusia', //Russia
+        'gulf': 'Wilayah Teluk (Gulf Region)', //Gulf
+        'preferences': 'Preferensi', //menu label
+        'resetSettings': 'Atur ulang pengaturan', //menu label
+        'adjustements': 'Penyesuaian', //adjustmentsText
+        'here': 'disini',
+        'enableAdj': 'Aktifkan penyesuaian jadwal salat', //adjCheckText
+        'fajrAdj': 'Penyesuaian Subuh', //fajrAdjText
+        'dhuhrAdj': 'Penyesuaian Zuhur', //fajrAdjText
+        'asrAdj': 'Penyesuaian Asar', //fajrAdjText
+        'maghribAdj': 'Penyesuaian Magrib', //fajrAdjText
+        'ishaAdj': 'Penyesuaian Isya', //fajrAdjText
+        'showSunnah': 'Perlihatkan Waktu Salat Sunah', //sunnahTimesText
+        'motn': 'Pertengahan malam',  //MOTNCheckText
+        'totn': 'Sepertiga malam', //TOTNCheckText
+        'minStart': 'Perkecil saat mulai', //minStartCheckText
+        'updateAvailable': 'Update tersedia',
+        'version': 'Versi',
+        'available': 'tersedia untuk diunduh di GitHub',
+        'download': 'Unduh',
+        'later': 'Nanti',
+        'quran': "Qur'an",
+        'font': 'Font',
+        'fontsize': 'Ukuran font',
+        'translation': 'Terjemahan',
+        'showTrans': 'Perlihatkan terjemahan',
+        'diffLang': 'Bahasa yang berbeda dengan aplikasi',
+        'transliteration': 'Transliterasi',
+        'showTransliteration': 'Perlihatkan transliterasi',
+        'previous': 'Surah sebelumnya',
+        'next': 'Surah berikutnya',
+        'weather': 'Cuaca',
+        'showWeather': 'Perlihatkan cuaca',
+        'units': 'Unit suhu',
+        'celsius': 'Celsius',
+        'kelvin': 'Kelvin',
+        'fahrenheit': 'Fahrenheit',
+        'playDua': "Putar doa setelah Azan",
+        'open': 'Buka',
+        'quit': 'Keluar',
+        'ahmedNufeis': 'Ahmad Al-Nufais',
+        'customFajr': 'Azan Subuh Kustom',
+        'recitation': 'Pembacaan',
+        'reciter': 'Pembaca',
+        "customTimes": "Jadwal Kustom",
+        "enableCustomTimes" : "Aktifkan jadwal salat kustom",
+        "jumuah" : "Jumat",
+        "jumuahTime": "Jadwal Jumat",
+        "enableJumuahTime": "Aktifkan Jadwal Jumat",
+        "shortAllahuAkbar": "Suara pendek - Mishary Rashid Alafasy",
+        "hijriAdjTitle" : "Penyesuaian tanggal Hijriah",
+        "hijriAdjText" : "Perbedaan tanggal Hijriah",
+
+    },
 }
