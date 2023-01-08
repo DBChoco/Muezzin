@@ -31,8 +31,7 @@
     "bootstrap-dark-5": "^1.1.3",
     "electron-store": "^8.0.1",
     "ip-geolocation-api-javascript-sdk": "^1.0.7",
-    "v8-compile-cache": "^2.3.0",
-    "yarn": "^1.22.19"
+    "v8-compile-cache": "^2.3.0"
   },
   "build": {
     "appId": "io.github.dbchoco.muezzin",
@@ -45,8 +44,7 @@
     ],
     "win": {
       "icon": "ressources/images/icon-256x256.ico",
-      "target": [
-        "nsis",
+      "target": ["nsis", 
         "portable",
         "msi"
       ]
