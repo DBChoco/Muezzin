@@ -1974,12 +1974,12 @@ var dict = {
         'latitude': 'Garis Lintang', //latText
         'longitude': 'Garis Bujur', //lonText
         'timezone': 'Zona waktu', // tzText
-        'adhan': 'Adzan', //adhanText and others in main
-        'adhanCheck': 'Aktifkan Adzan', //adhanCheckText
-        'AdhanMecca': 'Adzan Mekkah', //adhanMeccaText //Traduire juste Mecca
-        'adhanAqsa': 'Adzan al-Aqsa', //adhanAqsaText
-        'customAdhan': 'Adzan Kustom', //customAdhanText
-        'duaAfterAdhan': "Doa setelah Adzan", //duaAfterText
+        'adhan': 'Azan', //adhanText and others in main
+        'adhanCheck': 'Aktifkan Azan', //adhanCheckText
+        'AdhanMecca': 'Azan Makkah', //adhanMeccaText //Traduire juste Mecca
+        'adhanAqsa': 'Azan al-Aqsa', //adhanAqsaText
+        'customAdhan': 'Azan Kustom', //customAdhanText
+        'duaAfterAdhan': "Doa setelah Azan", //duaAfterText
         'theme': 'Tema', //themeText
         'darkMode': 'Mode Gelap', //darkModeText
         'bgImage': 'Gambar Latar Belakang', //bgImageText
@@ -2022,13 +2022,13 @@ var dict = {
         'autoStart': 'Mulai Otomatis', //autoStartText
         'startAtLaunch': 'Mulai otomatis saat launch', //autoStartCheckText
         'copyright': 'Copyright 2022, Muezzin, All rights reserved.', //copyright
-        'quote': 'Sungguh, shalat itu adalah kewajiban yang ditentukan waktunya atas orang-orang yang beriman.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'quote': 'Sesungguhnya salat itu merupakan kewajiban yang waktunya telah ditentukan atas orang-orang mukmin.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
         'source': "QS. An-Nisa (4):103", //source
         'fajr': 'Subuh',
         'sunrise': 'Terbit',
-        'dhuhr': 'Dzuhur',
-        'asr': 'Ashar',
-        'maghrib': 'Maghrib',
+        'dhuhr': 'Zuhur',
+        'asr': 'Asar',
+        'maghrib': 'Magrib',
         'isha': 'Isya',
         'now': 'Sekarang',
         'timeUntil': 'Waktu sampai',
@@ -2039,9 +2039,9 @@ var dict = {
         'customSettings': 'Pengaturan kustom', //customSettText
         'enableCS': 'Aktifkan Pengaturan Kalkulasi Kustom', //enableCalcText
         'fAngle': 'Sudut Subuh', //fajrAngleText
-        'mAngle': 'Sudut Maghrib', //maghribAngleText
+        'mAngle': 'Sudut Magrib', //maghribAngleText
         'iAngle': 'Sudut Isya', //ishaAngleText
-        'delayAfterM': 'Jeda setelah Maghrib', //delayText
+        'delayAfterM': 'Jeda setelah Magrib', //delayText
         'delayMin': 'Jeda (menit)', //delayFormText
         'france': 'Prancis', //France12 15 & 18
         'russia': 'Rusia', //Russia
@@ -2050,13 +2050,13 @@ var dict = {
         'resetSettings': 'Atur ulang pengaturan', //menu label
         'adjustements': 'Penyesuaian', //adjustmentsText
         'here': 'disini',
-        'enableAdj': 'Aktifkan penyesuaian jadwal shalat', //adjCheckText
+        'enableAdj': 'Aktifkan penyesuaian jadwal salat', //adjCheckText
         'fajrAdj': 'Penyesuaian Subuh', //fajrAdjText
-        'dhuhrAdj': 'Penyesuaian Dzuhur', //fajrAdjText
-        'asrAdj': 'Penyesuaian Ashar', //fajrAdjText
-        'maghribAdj': 'Penyesuaian Maghrib', //fajrAdjText
+        'dhuhrAdj': 'Penyesuaian Zuhur', //fajrAdjText
+        'asrAdj': 'Penyesuaian Asar', //fajrAdjText
+        'maghribAdj': 'Penyesuaian Magrib', //fajrAdjText
         'ishaAdj': 'Penyesuaian Isya', //fajrAdjText
-        'showSunnah': 'Perlihatkan Waktu Shalat Sunnah', //sunnahTimesText
+        'showSunnah': 'Perlihatkan Waktu Salat Sunah', //sunnahTimesText
         'motn': 'Pertengahan malam',  //MOTNCheckText
         'totn': 'Sepertiga malam', //TOTNCheckText
         'minStart': 'Perkecil saat mulai', //minStartCheckText
@@ -2081,18 +2081,18 @@ var dict = {
         'celsius': 'Celsius',
         'kelvin': 'Kelvin',
         'fahrenheit': 'Fahrenheit',
-        'playDua': "Putar doa setelah Adzan",
+        'playDua': "Putar doa setelah Azan",
         'open': 'Buka',
         'quit': 'Keluar',
         'ahmedNufeis': 'Ahmad Al-Nufais',
-        'customFajr': 'Adzan Subuh Kustom',
+        'customFajr': 'Azan Subuh Kustom',
         'recitation': 'Pembacaan',
         'reciter': 'Pembaca',
         "customTimes": "Jadwal Kustom",
-        "enableCustomTimes" : "Aktifkan jadwal shalat kustom",
-        "jumuah" : "Jum'at",
-        "jumuahTime": "Jadwal Jum'at",
-        "enableJumuahTime": "Aktifkan Jadwal Jum'at",
+        "enableCustomTimes" : "Aktifkan jadwal salat kustom",
+        "jumuah" : "Jumat",
+        "jumuahTime": "Jadwal Jumat",
+        "enableJumuahTime": "Aktifkan Jadwal Jumat",
         "shortAllahuAkbar": "Suara pendek - Mishary Rashid Alafasy",
         "hijriAdjTitle" : "Penyesuaian tanggal Hijriah",
         "hijriAdjText" : "Perbedaan tanggal Hijriah",
