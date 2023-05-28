@@ -114,8 +114,7 @@ function changeclockDisplay(date, timeformat){
 
 function loadHijriDate(){
   var hijri = true;
-  document.getElementById("dateLoc").innerText = (new Date).toLocaleDateString(lang, 
-    { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).capitalize()
+  setGregorianDate();
   hijri = true;
   setInterval(function() {
     if (hijri){
@@ -134,20 +133,26 @@ function loadHijriDate(){
       hijri = false;
     }
     else{
-      if (lang == "ur"){
-        document.getElementById("dateLoc").innerText = ((new Date).toLocaleDateString("ar", 
-          { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })).capitalize()
-      }
-      else{
-        document.getElementById("dateLoc").innerText = ((new Date).toLocaleDateString(lang, 
-          { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })).capitalize()
-      }
+      setGregorianDate();
       hijri = true;
     };
   }, 5000)
 }
 
-
+function setGregorianDate(){
+  if (lang == "ur"){
+    document.getElementById("dateLoc").innerText = ((new Date).toLocaleDateString("ar", 
+      { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })).capitalize()
+  }
+  else if (lang == "uz"){
+    document.getElementById("dateLoc").innerText = ((new Date).toLocaleDateString("uzb", 
+      { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })).capitalize()
+  }
+  else{
+    document.getElementById("dateLoc").innerText = ((new Date).toLocaleDateString(lang, 
+      { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })).capitalize()
+  }
+}
 
 Object.defineProperty(String.prototype, 'capitalize', {
   value: function() {
@@ -168,7 +173,7 @@ Object.defineProperty(String.prototype, 'capitalize', {
 });
 
 
-//Picks the date from the calendar and adds a listener to the calendar, when the dates changes it sends a reuquest for time prayers.
+//Picks the date from the calendar and adds a listener to the calendar, when the dates changes it sends a request for time prayers.
 function loadCalendar(){
   Date.prototype.toDateInputValue = (function() {
     var local = new Date(this);
@@ -280,7 +285,7 @@ function loadNextPrayer(){
     }
     else{
       var timeUntilNextPrayer = timeUntilPrayer(prayers[1])
-      if (lang != 'bn') document.getElementById("timeLeft").innerText = langTimeUntil + " " + prayers[3] + ": " + intToHour(timeUntilNextPrayer);
+      if (lang != 'bn' && lang != 'uz') document.getElementById("timeLeft").innerText = langTimeUntil + " " + prayers[3] + ": " + intToHour(timeUntilNextPrayer);
       else document.getElementById("timeLeft").innerText = prayers[3] + " " +  langTimeUntil + ": " + intToHour(timeUntilNextPrayer);
     }   
   } 

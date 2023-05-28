@@ -2237,6 +2237,5 @@ var dict = {
         "shortAllahuAkbar": "Qisqa azon - Mishary Rashid Alafasy",
         "hijriAdjTitle" : "Hijriy vaqtga o'tkazish",
         "hijriAdjText" : "Hijri vaqt tafovuti",
-
     },
 }

@@ -212,9 +212,6 @@ app.whenReady().then(() => {
   ])
   tray.setToolTip('Muezzin')
   tray.setContextMenu(contextMenu)
-  tray.addListener("double-click", function(){
-    mainWindow.show();
-  })
 
   checkFirstTime()
   loadSettings();
