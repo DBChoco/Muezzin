@@ -2367,7 +2367,7 @@ var dict = {
         'quit': 'خارج شدن',
         'ahmedNufeis': 'أحمد النفيس',
         'customFajr': 'اذان دلخوله فجر',
-        'recitation': 'Recitation',
+        'recitation': 'قرائت',
         'reciter': 'قاری',
         "customTimes": "زمان های دلخواه",
         "enableCustomTimes" : "فعال کردن زمان های دلخواه",
