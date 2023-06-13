@@ -36,3 +36,7 @@ Source: https://fonts.qurancomplex.gov.sa/ & https://cdn.jsdelivr.net/gh/fawazah
     font-family: quicksand;
     src: url(Quicksand-VariableFont_wght.ttf);
 }
+@font-face {
+    font-family: quicksandMono;
+    src: url(quicksandMono.ttf);
+}

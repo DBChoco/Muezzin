@@ -16,10 +16,11 @@ function createWindow () {
     backgroundColor:"#212121",
     icon: '../../ressources/images/icon.png',
     webPreferences: {
-      nodeIntegration: false, // is default value after Electron v5
+      //nodeIntegration: false, // is default value after Electron v5
       contextIsolation: true, // protect against prototype pollution
       enableRemoteModule: false, // turn off remote
       preload: path.join(__dirname, 'preload.js'),
+      sandbox: false,
       webviewTag: true
     }
   })
@@ -232,6 +233,11 @@ var autoLauncher = new AutoLaunch({
 });
 
 console.debug("** Launching Muezzin v" + app.getVersion() + " **\n" + "Assalamou Alaykoum wa Rahmatou Lahi wa Baraketu")
+
+console.log(Intl.DateTimeFormat("en", {
+  timeZone: "Asia/Tehran",
+  timeStyle: "long"
+}).format(new Date()))
 
 var lat, lon, calculationMethod, prayerTimes, adhanPath, adhanSettings, customTimes, jumuahTime;
 var customValues, delay;
@@ -592,7 +598,13 @@ function calcPrayerTimes(date = new Date()){
     if (jumuahTime.time != "00:00") calculatedTimes.dhuhr = newDate(jumuahTime.time.split(":")[0], jumuahTime.time.split(":")[1], 0);
   }
 
-  convertPrayerTimes(calculatedTimes)
+  if (date.getDate() != (new Date()).getDate()) convertPrayerTimes(calculatedTimes);
+  else{
+    console.log(date)
+    console.log(timezone)
+    convertPrayerTimesCustom(calculatedTimes)
+    //convertPrayerTimes(calculatedTimes);
+  }
   return calculatedTimes;
 }
 
@@ -608,6 +620,33 @@ function calcPrayerTimes(date = new Date()){
   prayers.isha = convertTZ(prayers.isha, timezone)
 }
 
+/**
+ * Converts PrayerTimes to the saved timezone except custom times.
+ */
+function convertPrayerTimesCustom(prayers = prayerTimes){
+  if (customTimes.enabled){
+    if (customTimes.fajr != "00:00") prayers.fajr = notConvertTZ(prayers.fajr)
+    else prayers.fajr =  convertTZ(prayers.fajr, timezone)
+    if (customTimes.dhuhr != "00:00") prayers.dhuhr = notConvertTZ(prayers.dhuhr)
+    else prayers.dhuhr =  convertTZ(prayers.dhuhr, timezone)
+    if (customTimes.asr != "00:00") prayers.asr = notConvertTZ(prayers.asr)
+    else prayers.asr = convertTZ(prayers.asr, timezone)
+    if (customTimes.maghrib != "00:00") prayers.maghrib = notConvertTZ(prayers.maghrib)
+    else prayers.maghrib =  convertTZ(prayers.maghrib, timezone)
+    if (customTimes.isha != "00:00") prayers.isha = notConvertTZ(prayers.isha)
+    else prayers.isha = convertTZ(prayers.isha, timezone)
+  }
+  else{
+    prayers.fajr = convertTZ(prayers.fajr, timezone)
+    prayers.sunrise = convertTZ(prayers.sunrise, timezone)
+    prayers.dhuhr = convertTZ(prayers.dhuhr, timezone)
+    prayers.asr = convertTZ(prayers.asr, timezone)
+    prayers.maghrib = convertTZ(prayers.maghrib, timezone)
+    prayers.isha = convertTZ(prayers.isha, timezone)
+  }
+
+}
+
 function newDate(hours, minutes, seconds){
   let date = new Date();
   date.setHours(hours)
@@ -618,6 +657,12 @@ function newDate(hours, minutes, seconds){
 
 function convertTZ(date, timezone) {
   return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: timezone}));   
+}
+
+function notConvertTZ(date){
+  console.log('SALALM')
+  console.log(new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: timezone})))
+  return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US"));   
 }
 
 //Sets up all the IPC handlers for communication with renderers

@@ -73,7 +73,7 @@ var dict = {
         'autoStart': 'Auto Start', //autoStartText
         'startAtLaunch': 'Start at launch', //autoStartCheckText
         'copyright': 'Copyright 2022, Muezzin, All rights reserved.', //copyright
-        'quote': 'Indeed, prayer has been decreed upon the believers a decree of specified times.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'quote': '... Indeed, prayer has been decreed upon the believers a decree of specified times.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
         'source': "Qur'an: 4/103", //source
         'fajr': 'Fajr',
         'sunrise': 'Sunrise',
@@ -213,7 +213,7 @@ var dict = {
         'autoStart': 'Démarrage automatique ', //autoStartText
         'startAtLaunch': 'Lancer au demarrage', //autoStartCheckText
         'copyright': 'Copyright 2022, Muezzin, Tous droits réservés.', //copyright
-        'quote': 'En Effet, la Salât demeure, pour les croyants, une prescription, à des temps déterminés.', //quote
+        'quote': '... En Effet, la Salât demeure, pour les croyants, une prescription, à des temps déterminés.', //quote
         'source': "Qur'an: 4/103", //source
         'fajr': 'Fajr',
         'sunrise': 'Lever du soleil',
@@ -353,7 +353,7 @@ var dict = {
         'autoStart': 'Inicio automático', //autoStartText
         'startAtLaunch': 'Iniciar en el lanzamiento', //autoStartCheckText
         'copyright': 'Copyright 2022, Muezzin, Todos los derechos reservados.', //copyright
-        'quote': 'Ciertamente el salat es para los creyentes, un precepto en tiempos determinados.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'quote': '... Ciertamente el salat es para los creyentes, un precepto en tiempos determinados.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
         'source': "Corán: 4/103", //source
         'fajr': 'Fajr',
         'sunrise': 'Amanecer',
@@ -492,7 +492,7 @@ var dict = {
         'autoStart': 'بدء تلقائي', //autoStartText
         'startAtLaunch': 'ابدأ عند الإطلاق', //autoStartCheckText
         'copyright': 'Copyright 2022, Muezzin, All rights reserved.', //copyright
-        'quote': 'إِنَّ الصَّلاةَ كانَت عَلَى المُؤمِنينَ كِتابًا مَوقوتًا', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'quote': 'إِنَّ الصَّلاةَ كانَت عَلَى المُؤمِنينَ كِتابًا مَوقوتًا ...', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
         'source': "القرآن: 4/103", //source
         'fajr': 'الفجر',
         'sunrise': 'شروق',
@@ -631,7 +631,7 @@ var dict = {
         'autoStart': 'Avvio automatico', //autoStartText
         'startAtLaunch': 'Inizia al lancio', //autoStartCheckText
         'copyright': 'Copyright 2022, Muezzin, Tutti i diritti riservati.', //copyright
-        'quote': 'Infatti, la preghiera è stata decretata sui credenti con un decreto di tempi determinati.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'quote': '... Infatti, la preghiera è stata decretata sui credenti con un decreto di tempi determinati.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
         'source': "Qur'an: 4/103", //source
         'fajr': 'Fajr',
         'sunrise': 'Alba',
@@ -769,7 +769,7 @@ var dict = {
         'muezzin': 'Muezzin',
         'autoStart': 'Auto-Start', //autoStartText
         'startAtLaunch': 'Beim Start beginnen', //autoStartCheckText
-        'quote': 'Wahrlich das Gebet zu bestimmten Zeiten ist für die Gläubigen eine Pflicht.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'quote': '... Wahrlich das Gebet zu bestimmten Zeiten ist für die Gläubigen eine Pflicht.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
         'source': "Qur'an: 4/103", //source
         'fajr': 'Fajr',
         'sunrise': 'Sonnenaufgang',
@@ -907,7 +907,7 @@ var dict = {
         'muezzin': 'Muezzin',
         'autoStart': 'Auto Start', //autoStartText
         'startAtLaunch': 'Begin bij lancering', //autoStartCheckText
-        'quote': 'Voorwaar, het gebed is de gelovigen op vaste tijden voorgeschreven.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'quote': '... Voorwaar, het gebed is de gelovigen op vaste tijden voorgeschreven.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
         'source': "Qur'an: 4/103", //source
         'fajr': 'Fajr',
         'sunrise': 'Zonsopkomst',
@@ -1046,7 +1046,7 @@ var dict = {
         'autoStart': 'Auto Start', //autoStartText
         'startAtLaunch': 'Börja vid lanseringen', //autoStartCheckText
         'copyright': 'Copyright 2022, Muezzin, Alla rättigheter förbehållna.', //copyright
-        'quote': 'Bönen är alla troendes plikt, knuten till bestämda tider.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'quote': '... Bönen är alla troendes plikt, knuten till bestämda tider.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
         'source': "Qur'an: 4/103", //source
         'fajr': 'Fajr',
         'sunrise': 'Soluppgång',
@@ -1185,7 +1185,7 @@ var dict = {
         'autoStart': 'Auto Start', //autoStartText
         'startAtLaunch': 'Start ved lansering', //autoStartCheckText
         'copyright': 'Copyright 2022, Muezzin, Alle rettigheter forbeholdt.', //copyright
-        'quote': 'Sannelig, tidebønnen er pålagt de troende ifølge fastsatte tider.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'quote': '... Sannelig, tidebønnen er pålagt de troende ifølge fastsatte tider.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
         'source': "Qur'an: 4/103", //source
         'fajr': 'Fajr',
         'sunrise': 'Soloppgang',
@@ -1324,7 +1324,7 @@ var dict = {
         'autoStart': 'Auto Start', //autoStartText
         'startAtLaunch': 'Start ved lanceringen', //autoStartCheckText
         'copyright': 'Copyright 2022, Muezzin, Alle rettigheder forbeholdes.', //copyright
-        'quote': 'Sandelig, bønnen er foreskrevet de troende på fastsatte tider.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'quote': '... Sandelig, bønnen er foreskrevet de troende på fastsatte tider.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
         'source': "Qur'an: 4/103", //source
         'fajr': 'Fajr',
         'sunrise': 'Solopgang',
@@ -1463,7 +1463,7 @@ var dict = {
         'autoStart': 'خود بخود شروع', //autoStartText
         'startAtLaunch': 'لانچ پر شروع', //autoStartCheckText
         'copyright': 'کاپی رائٹ 2022, Muezzin, جملہ حقوق محفوظ', //copyright
-        'quote': 'یقیناً نماز اہل ایمان پر فرض کی گئی ہے وقت کی پابندی کے ساتھ۔', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'quote': 'یقیناً نماز اہل ایمان پر فرض کی گئی ہے وقت کی پابندی کے ساتھ۔ ...', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
         'source': "Qur'an: 4/103", //source
         'fajr': 'فجر',
         'sunrise': 'طلوعِ آفتاب',
@@ -1602,7 +1602,7 @@ var dict = {
         'autoStart': 'Kendinden Başlama', //autoStartText
         'startAtLaunch': 'Açılışta Başla', //autoStartCheckText
         'copyright': 'Telif Hakkı 2022, Muezzin, Tüm Hakları Saklıdır.', //copyright
-        'quote': "Çünkü namaz, mü'minlere vakitli olarak farz kılınmıştır.", //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'quote': "... Çünkü namaz, mü'minlere vakitli olarak farz kılınmıştır.", //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
         'source': "Nisa Suresi 103. ayet", //source
         'fajr': 'İmsak',
         'sunrise': 'Güneş',
@@ -1742,7 +1742,7 @@ var dict = {
         'autoStart': 'স্বয়ংক্রিয় চালু', //autoStartText
         'startAtLaunch': 'প্রারম্ভিক এ চালু', //autoStartCheckText
         'copyright': 'কপিরাইট ২০২২, মুয়াজ্জিন, সকল স্বত্ব সংরক্ষিত।', //copyright
-        'quote': 'প্রকৃতপক্ষে, নির্দিষ্ট সময়ে নামায কায়িম করা মু’মিনদের জন্য অবশ্য কর্তব্য।', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'quote': '... প্রকৃতপক্ষে, নির্দিষ্ট সময়ে নামায কায়িম করা মু’মিনদের জন্য অবশ্য কর্তব্য।', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
         'source': "আল-কোরআন: ৪/১০৩", //source
         'fajr': 'ফজর',
         'sunrise': 'সূর্যদয়',
@@ -1882,7 +1882,7 @@ var dict = {
         'autoStart': 'Автозапуск', //autoStartText
         'startAtLaunch': 'Открывать при запуске', //autoStartCheckText
         'copyright': 'Copyright 2022, Muezzin, Все права защищены.', //copyright
-        'quote': 'Воистину, молитва предписана верующим в определённое время', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'quote': '... Воистину, молитва предписана верующим в определённое время', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
         'source': "Кур'ан: 4/103", //source
         'fajr': 'Фаджр',
         'sunrise': 'Восход',
@@ -2022,7 +2022,7 @@ var dict = {
         'autoStart': 'Mulai Otomatis', //autoStartText
         'startAtLaunch': 'Mulai otomatis saat launch', //autoStartCheckText
         'copyright': 'Copyright 2022, Muezzin, All rights reserved.', //copyright
-        'quote': 'Sesungguhnya salat itu merupakan kewajiban yang waktunya telah ditentukan atas orang-orang mukmin.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'quote': '... Sesungguhnya salat itu merupakan kewajiban yang waktunya telah ditentukan atas orang-orang mukmin.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
         'source': "QS. An-Nisa (4):103", //source
         'fajr': 'Subuh',
         'sunrise': 'Terbit',
@@ -2163,7 +2163,7 @@ var dict = {
         'autoStart': 'Auto boshlash', 
         'startAtLaunch': 'Ishga tushirilganda boshlash', 
         'copyright': 'Mualliflik huquqi 2022, Muezzin, Barcha Huquqlar Kafolatlangan.', 
-        'quote': "Albatta, namoz mo'minlarga vaqtida farz qilingandir.", 
+        'quote': "... Albatta, namoz mo'minlarga vaqtida farz qilingandir.", 
         'source': "Qur'on: 4/103", 
         'fajr': 'Bomdod',
         'sunrise': 'Quyosh chiqishi',

@@ -281,12 +281,12 @@ function loadNextPrayer(){
       document.getElementById("timeLeft").innerText = langAdhan
     }
     else if(timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] >= -10){ //-1 because math.floor
-        document.getElementById("timeLeft").innerText = langNow + ": " + prayers[2];
+        document.getElementById("timeLeft").innerHTML = langNow + ": " + prayers[2];
     }
     else{
       var timeUntilNextPrayer = timeUntilPrayer(prayers[1])
-      if (lang != 'bn' && lang != 'uz') document.getElementById("timeLeft").innerText = langTimeUntil + " " + prayers[3] + ": " + intToHour(timeUntilNextPrayer);
-      else document.getElementById("timeLeft").innerText = prayers[3] + " " +  langTimeUntil + ": " + intToHour(timeUntilNextPrayer);
+      if (lang != 'bn' && lang != 'uz') document.getElementById("timeLeft").innerHTML = langTimeUntil + " " + prayers[3] + ": " + '<span style="font-family:quicksandMono">' +  intToHour(timeUntilNextPrayer) + '</span';
+      else document.getElementById("timeLeft").innerHTML = prayers[3] + " " +  langTimeUntil + ": " + '<span style="font-family:quicksandMono">' +  intToHour(timeUntilNextPrayer) + '</span';
     }   
   } 
   if (!loadedUI){
@@ -895,6 +895,10 @@ function loadFont(){
   if (lang != "ar" && lang != "bn" && lang != "ru"){
     document.body.style.fontFamily = 'quicksand'
   }
+
+  document.getElementById("clock").style.fontFamily = 'quicksandMono'
+  document.getElementById("boxContainer").style.fontFamily = 'quicksandMono'
+  
 }
 
 function setupBorders(inCalendar = false){
