@@ -2303,7 +2303,7 @@ var dict = {
         'autoStart': 'باز شدن خودکار', //autoStartText
         'startAtLaunch': 'باز شدن هنگان راه اندازی', //autoStartCheckText
         'copyright': 'Copyright 2022, Muezzin, All rights reserved.', //copyright
-        'quote': '... همانا نماز بر مؤمنان، در اوقات معین مقرر شده است.', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
+        'quote': 'همانا نماز بر مؤمنان، در اوقات معین مقرر شده است ...', //quote //à rechercher sur internet, la traduction sur internet est très mauvaise
         'source': "قرآن: سوره نساء، آیه ۱۰۳", //source
         'fajr': 'فجر',
         'sunrise': 'طلوع',
@@ -2377,6 +2377,5 @@ var dict = {
         "shortAllahuAkbar": "صدای کوتاه - مشاری بن راشد العفاسی",
         "hijriAdjTitle" : "تغییرات تاریخ هجری",
         "hijriAdjText" : "اختلاف تاریخ هجری",
-
     },
 }
