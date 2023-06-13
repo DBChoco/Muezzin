@@ -600,8 +600,6 @@ function calcPrayerTimes(date = new Date()){
 
   if (date.getDate() != (new Date()).getDate()) convertPrayerTimes(calculatedTimes);
   else{
-    console.log(date)
-    console.log(timezone)
     convertPrayerTimesCustom(calculatedTimes)
     //convertPrayerTimes(calculatedTimes);
   }
@@ -660,8 +658,6 @@ function convertTZ(date, timezone) {
 }
 
 function notConvertTZ(date){
-  console.log('SALALM')
-  console.log(new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: timezone})))
   return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US"));   
 }
 
