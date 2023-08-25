@@ -594,15 +594,18 @@ function calcPrayerTimes(date = new Date()){
     if (customTimes.isha != "00:00") calculatedTimes.isha = newDate(customTimes.isha.split(":")[0], customTimes.isha.split(":")[1], 0);
   }
 
+
   if (jumuahTime.enabled && date.getDay() == 5){
     if (jumuahTime.time != "00:00") calculatedTimes.dhuhr = newDate(jumuahTime.time.split(":")[0], jumuahTime.time.split(":")[1], 0);
   }
+
 
   if (date.getDate() != (new Date()).getDate()) convertPrayerTimes(calculatedTimes);
   else{
     convertPrayerTimesCustom(calculatedTimes)
     //convertPrayerTimes(calculatedTimes);
   }
+
   return calculatedTimes;
 }
 
@@ -612,7 +615,12 @@ function calcPrayerTimes(date = new Date()){
  function convertPrayerTimes(prayers = prayerTimes){
   prayers.fajr = convertTZ(prayers.fajr, timezone)
   prayers.sunrise = convertTZ(prayers.sunrise, timezone)
-  prayers.dhuhr = convertTZ(prayers.dhuhr, timezone)
+  if (today.getDay() == 5 && jumuahTime.enabled){
+    prayers.dhuhr = notConvertTZ(prayers.dhuhr)
+  }
+  else{
+    prayers.dhuhr = convertTZ(prayers.dhuhr, timezone)
+  }
   prayers.asr = convertTZ(prayers.asr, timezone)
   prayers.maghrib = convertTZ(prayers.maghrib, timezone)
   prayers.isha = convertTZ(prayers.isha, timezone)
@@ -625,7 +633,7 @@ function convertPrayerTimesCustom(prayers = prayerTimes){
   if (customTimes.enabled){
     if (customTimes.fajr != "00:00") prayers.fajr = notConvertTZ(prayers.fajr)
     else prayers.fajr =  convertTZ(prayers.fajr, timezone)
-    if (customTimes.dhuhr != "00:00") prayers.dhuhr = notConvertTZ(prayers.dhuhr)
+    if (customTimes.dhuhr != "00:00" ) prayers.dhuhr = notConvertTZ(prayers.dhuhr)
     else prayers.dhuhr =  convertTZ(prayers.dhuhr, timezone)
     if (customTimes.asr != "00:00") prayers.asr = notConvertTZ(prayers.asr)
     else prayers.asr = convertTZ(prayers.asr, timezone)
@@ -637,12 +645,16 @@ function convertPrayerTimesCustom(prayers = prayerTimes){
   else{
     prayers.fajr = convertTZ(prayers.fajr, timezone)
     prayers.sunrise = convertTZ(prayers.sunrise, timezone)
-    prayers.dhuhr = convertTZ(prayers.dhuhr, timezone)
+     if (today.getDay() == 5 && jumuahTime.enabled){
+    prayers.dhuhr = notConvertTZ(prayers.dhuhr)
+    }
+    else{
+      prayers.dhuhr = convertTZ(prayers.dhuhr, timezone)
+    }
     prayers.asr = convertTZ(prayers.asr, timezone)
     prayers.maghrib = convertTZ(prayers.maghrib, timezone)
     prayers.isha = convertTZ(prayers.isha, timezone)
   }
-
 }
 
 function newDate(hours, minutes, seconds){
