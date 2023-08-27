@@ -1,6 +1,6 @@
 
 
-var athan = new Audio('../../ressources/audio/azan3.mp3');
+var athan = new Audio('../../ressources/audio/Adhan - Ahmed Al-Nufais.mp3');
 var dua = new Audio('../../ressources/audio/dua.mp3');
 var playDua = true;
 var interval;
@@ -30,6 +30,7 @@ function setUpHandlers(){
         athan = new Audio(msg.adhan.path);
         setUpAdhanListeners()
         athan.play();
+        console.log("SALAMAMAMAM")
     })
 
     window.api.handle('playFajr', msg => {

@@ -418,11 +418,11 @@ function msToTime(duration){ //https://stackoverflow.com/questions/19700283/how-
     hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
   if (seconds == 60){
     minutes ++;
-    seconds = 00;
+    seconds = 0;
   }
   if (minutes == 60){
     hours ++;
-    minutes = 00;
+    minutes = 0;
   }
   var res = [hours, minutes, seconds]
   return res;
