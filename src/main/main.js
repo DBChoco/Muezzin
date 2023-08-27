@@ -165,7 +165,7 @@ function createWindow () {
 
   //Create hidden mediaPlayer
   mediaWindow = new BrowserWindow({
-    show: true,
+    show: false,
     webPreferences: {
       //nodeIntegration: false, // is default value after Electron v5
       contextIsolation: true, // protect against prototype pollution
