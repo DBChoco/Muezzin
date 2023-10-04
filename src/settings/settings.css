@@ -177,6 +177,8 @@ footer{
   top: 100%;
   left: 0;
   right: 0;
+  max-height: 60vh;
+  overflow-y: auto;
 }
 
 .autocomplete-items div {
@@ -188,11 +190,11 @@ footer{
 
 /*when hovering an item:*/
 .autocomplete-items div:hover {
-  background-color: #212121;
+  background-color: #161616;
 }
 
 /*when navigating through the items using the arrow keys:*/
 .autocomplete-active {
-  background-color: #13111e !important;
+  background-color: #161616 !important;
   color: #ffffff;
 }

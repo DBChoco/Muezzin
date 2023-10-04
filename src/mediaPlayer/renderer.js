@@ -30,7 +30,6 @@ function setUpHandlers(){
         athan = new Audio(msg.adhan.path);
         setUpAdhanListeners()
         athan.play();
-        console.log("SALAMAMAMAM")
     })
 
     window.api.handle('playFajr', msg => {
