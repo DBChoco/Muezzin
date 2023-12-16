@@ -42,6 +42,15 @@ function setUpHandlers(){
         athan.play();
     })
 
+    window.api.handle('playReminder', msg => {
+        if (!athan.paused || !dua.paused){
+            stop()
+        }
+        athan = new Audio("../../ressources/audio/AllahuAkbar.mp3");
+        playDua = false;
+        athan.play();
+    })
+
 
 
     window.api.handle('stop', msg => {

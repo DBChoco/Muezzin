@@ -245,6 +245,7 @@ var customValues, delay;
 var prayerTimes, datePrayerTimes, tomorrowPrayers;
 var settings
 var langFajr, langDhuhr, langAsr, langMaghrib, langIsha, langNow;
+var reminderTimes;
 
 var adjustements;
 var updateInterval;
@@ -339,14 +340,38 @@ function checkTime(){
     var prayers = nextPrayer();
     if (settings.adhanCheck || settings.notifCheck){
       if (prayers != undefined && prayers[0] != undefined){
-        var timeUntilCurrentPrayer = timeUntilPrayer(prayers[0])
-        if(timeUntilCurrentPrayer[0] == -1 && timeUntilCurrentPrayer[1] == -1 && timeUntilCurrentPrayer[2] == 0){ //-1 because math.floor
+        var timeUntilCurrentPrayer = timeUntilPrayer(prayers[1])
+        if(timeUntilCurrentPrayer[0] == 0 && timeUntilCurrentPrayer[1] == 0 && timeUntilCurrentPrayer[2] == 1){ //-1 because math.floor
           if (settings.adhanCheck){
             if (prayers[2] == langFajr && adhanSettings.adhanFajr.custom) mediaWindow.webContents.send('playFajr', adhanSettings);
             else mediaWindow.webContents.send('play', adhanSettings);
           }
           if (settings.notifCheck){
             showNotification(langNow + ": " + prayers[2])
+          }
+        }
+
+        if (reminderTimes.enabled){
+          if (prayers[3] == langFajr && reminderTimes.fajr != '0'){
+            launchReminder(timeUntilCurrentPrayer, reminderTimes.fajr)
+          }
+          else if ((prayers[3] == langDhuhr)){
+            if ((new Date).getDay() == 5 && reminderTimes.jumuah != '0'){ //Jumuah
+              launchReminder(timeUntilCurrentPrayer, reminderTimes.jumuah)
+            }
+            else if (reminderTimes.dhuhr != '0'){
+              launchReminder(timeUntilCurrentPrayer, reminderTimes.dhuhr)
+            }
+          }
+
+          else if ((prayers[3] == langAsr && reminderTimes.asr != '0')){
+            launchReminder(timeUntilCurrentPrayer, reminderTimes.asr)
+          }
+          else if ((prayers[3] == langMaghrib && reminderTimes.maghrib != '0')){
+            launchReminder(timeUntilCurrentPrayer, reminderTimes.maghrib)
+          }
+          else if ((prayers[3] == langIsha && reminderTimes.isha != '0')){
+            launchReminder(timeUntilCurrentPrayer, reminderTimes.isha)
           }
         }
       } 
@@ -360,6 +385,15 @@ function checkTime(){
       mainWindow.webContents.send('update');
     }
   }, 1000);
+}
+
+function launchReminder(timeUntilCurrentPrayer, time){
+  if (timeUntilCurrentPrayer[0] == 0 && timeUntilCurrentPrayer[1] == parseInt(time) && timeUntilCurrentPrayer[2] == 1){
+    mediaWindow.webContents.send('playReminder');
+    if (settings.notifCheck){
+      showNotification("Adhan in " + time + " minutes") //Add languages
+    }
+  }
 }
 
 /**
@@ -425,6 +459,16 @@ async function loadSettings(){
   delay = await store.get('delay', [false, 0]);
 
   adjustements = await store.get('adj', [false, 0,0,0,0,0]);
+
+  reminderTimes = await store.get('reminderTimes', {
+    enabled: false,
+    fajr: 0,
+    dhuhr: 0,
+    asr: 0,
+    maghrib: 0,
+    isha: 0,
+    jumuah: 0
+  });
 
   if (settings.minStart && startup){
     mainWindow.hide()

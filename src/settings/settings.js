@@ -1,5 +1,5 @@
 var timeDisplay, language, adhanFile, bgImage, sunnahTimes, settings, weather, customTimes, jumuahTime, 
-calculationMethod, quran;
+calculationMethod, reminderTimes, quran;
 var lat,lon;
 var fromQuran = false;
 var locationName;
@@ -70,6 +70,7 @@ async function saveSettings(){
   await saveAdjustments()
   await saveCustomSettings()
   await saveCustomTimes()
+  await saveReminderTimes()
   await saveQuran()
 }
 
@@ -121,6 +122,7 @@ async function loadSettings(){
   await loadCustomSettings()
   await loadAdjustments()
   await loadCustomTimes()
+  await loadReminderTimes()
 
   document.getElementById("latInput").value = lat
   document.getElementById("lonInput").value = lon
@@ -1373,4 +1375,71 @@ function autocomplete(inp, arr) {
   document.addEventListener("click", function (e) {
     closeAllLists(e.target);
   });
+}
+
+/*
+Reminder before Adhan settings
+*/
+
+async function loadReminderTimes(){
+  reminderTimes = await window.api.getFromStore("reminderTimes", {
+    enabled: false,
+    fajr: 0,
+    dhuhr: 0,
+    asr: 0,
+    maghrib: 0,
+    isha: 0,
+    jumuah: 0
+  });
+
+  let reminderTimesCheck = document.getElementById("reminderCheck")
+  let reminderFajr = document.getElementById("fajrReminderInput")
+  let reminderDhuhr = document.getElementById("dhuhrReminderInput")
+  let reminderAsr = document.getElementById("asrReminderInput")
+  let reminderMaghrib = document.getElementById("maghribReminderInput")
+  let reminderIsha = document.getElementById("ishaReminderInput")
+  let reminderJumuah = document.getElementById("jumuahReminderInput")
+  reminderTimesCheck.checked = reminderTimes.enabled;
+
+  disableReminderTimes()
+  reminderTimesCheck.addEventListener("change", function(){
+    disableReminderTimes()
+  })
+  reminderFajr.value = reminderTimes.fajr;
+  reminderDhuhr.value = reminderTimes.dhuhr;
+  reminderAsr.value = reminderTimes.asr;
+  reminderMaghrib.value = reminderTimes.maghrib;
+  reminderIsha.value = reminderTimes.isha;
+
+  let jumuahCheck = document.getElementById("jumuahCheck")
+  let jumuahInput = document.getElementById("jumuahInput");
+  jumuahCheck.checked = reminderTimes.enabled;
+  jumuahInput.disabled = !jumuahCheck.checked;
+  jumuahCheck.addEventListener("change", function(){
+    jumuahInput.disabled = !jumuahCheck.checked;
+  })
+  jumuahInput.value = jumuahTime.time;
+
+  function disableReminderTimes(){
+    reminderFajr.disabled = !reminderTimesCheck.checked;
+    reminderDhuhr.disabled = !reminderTimesCheck.checked;
+    reminderAsr.disabled = !reminderTimesCheck.checked;
+    reminderMaghrib.disabled = !reminderTimesCheck.checked;
+    reminderIsha.disabled = !reminderTimesCheck.checked;
+    reminderJumuah.disabled = !reminderTimesCheck.checked;
+  }
+}
+
+async function saveReminderTimes(){
+  let newreminderTimes = {
+    enabled: document.getElementById("reminderCheck").checked,
+    fajr: document.getElementById("fajrReminderInput").value,
+    dhuhr: document.getElementById("dhuhrReminderInput").value,
+    asr: document.getElementById("asrReminderInput").value,
+    maghrib: document.getElementById("maghribReminderInput").value,
+    isha: document.getElementById("ishaReminderInput").value,
+    jumuah: document.getElementById("jumuahReminderInput").value
+  };
+
+  if (reminderTimes != newreminderTimes) await window.api.setToStore("reminderTimes", newreminderTimes);
 }
