@@ -147,7 +147,11 @@ var dict = {
         "shortAllahuAkbar": "Short sound - Mishary Rashid Alafasy",
         "hijriAdjTitle" : "Hijri date adjustments",
         "hijriAdjText" : "Hijri date difference",
-
+        "reminder" : "Adhan Reminder",
+        "reminderBA" : "Reminder before Adhan",
+        "reminderCheck" : "Enable Reminder",
+        "minBefore" : "Minutes before",
+        "jumReminder" : "Jumuah Reminder"
     },
     fr: {
         'settings': 'Options', //settingsTitle

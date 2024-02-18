@@ -434,6 +434,10 @@ async function loadAdhan(){
     document.getElementById('customAdhanFajrFileButton').value = shortenedString(file.split("/")[file.split("/").length - 1]) 
     console.debug("Loaded: " + file)
   })
+
+  if (!customCheck.checked){
+    document.getElementById("adhanList").value = adhanFile.adhan.path
+  }
 }
 
 function shortenedString(text){
@@ -637,6 +641,7 @@ function loadLanguage(lang){
   document.getElementById("v-pills-advanced-tab").innerHTML = '<i class="fa-solid fa-sliders"></i>  ' + window.api.getLanguage(lang, "advanced");
   document.getElementById("v-pills-adjustments-tab").innerHTML = '<i class="fa-solid fa-clock"></i>  ' + window.api.getLanguage(lang, "adjustements");
   document.getElementById("v-pills-custom-tab").innerHTML = '<i class="fa-solid fa-stopwatch"></i>  ' + window.api.getLanguage(lang, "customTimes");
+  document.getElementById("v-pills-reminder-tab").innerHTML = '<i class="fa-solid fa-bell"></i>  ' + window.api.getLanguage(lang, "reminder");
   document.getElementById("v-pills-quran-tab").innerHTML = '<i class="fa-solid fa-book-quran"></i>  ' + window.api.getLanguage(lang, "quran");
 
   document.getElementById("return").innerHTML = '<i class="fa fa-arrow-circle-left"></i>  ' + window.api.getLanguage(lang, "return");
