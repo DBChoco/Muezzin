@@ -121,13 +121,13 @@ function loadHijriDate(){
       let date = new Date()
       date.setDate(date.getDate() + hijriAdj);
       if ((prayers[2] == langMaghrib || prayers[2] == langIsha) && date.getHours() >= 12) date = date.setDate(date.getDate() + 1)
-      let hijriDay = new Intl.DateTimeFormat('en-TN-u-ca-islamic', {day: 'numeric'}).format(date)
+      let hijriDay = new Intl.DateTimeFormat('en-TN-u-ca-islamic-umalqura', {day: 'numeric'}).format(date)
       if (lang == "ru"){
-        document.getElementById("dateLoc").innerHTML = loadMoonIcon(hijriDay) + "  " + new Intl.DateTimeFormat(lang + '-TN-u-ca-islamic', 
+        document.getElementById("dateLoc").innerHTML = loadMoonIcon(hijriDay) + "  " + new Intl.DateTimeFormat(lang + '-TN-u-ca-islamic-umalqura', 
       {day: 'numeric', month: 'long',year : 'numeric'}).format(date).capitalize().replace(" AH", "П.Х.")
       }
       else {
-        document.getElementById("dateLoc").innerHTML = loadMoonIcon(hijriDay) + "  " + new Intl.DateTimeFormat(lang + '-TN-u-ca-islamic', 
+        document.getElementById("dateLoc").innerHTML = loadMoonIcon(hijriDay) + "  " + new Intl.DateTimeFormat(lang + '-TN-u-ca-islamic-umalqura', 
       {day: 'numeric', month: 'long',year : 'numeric'}).format(date).capitalize();
       }
       hijri = false;
