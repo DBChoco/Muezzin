@@ -3,6 +3,9 @@
   "version": "2.6.0",
   "description": "Prayer Time Caller",
   "main": "src/main/main.js",
+  "bin": {
+    "muezzin-cli": "src/cli/muezzin-cli.js"
+  },
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
